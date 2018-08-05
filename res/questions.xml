@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <question>
+    <exercise>0</exercise>
+    <name>Gender</name>
+    <text>Please select your gender.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Female</answerOption>
+        <answerOption>Male</answerOption>
+        <answerOption>Other</answerOption>
+        <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Ethnicity</name>
+    <text>Please select all ethnicities that apply.</text>
+    <answerType>Check</answerType>
+    <answerOptions>
+        <answerOption>Asian / Pacific Islander</answerOption>
+        <answerOption>Black or African American</answerOption>
+        <answerOption>Native American</answerOption>
+        <answerOption>White</answerOption>
+        <answerOption>Hispanic or Latino</answerOption>
+        <answerOption>Other / Not listed</answerOption>
+        <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Age</name>
+    <text>Please select your age category.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Under 12 years old</answerOption>
+        <answerOption>12 to 17 years</answerOption>
+        <answerOption>18 to 24 years</answerOption>
+        <answerOption>25 to 34 years</answerOption>
+        <answerOption>35 to 44 years</answerOption>
+        <answerOption>45 to 54 years</answerOption>
+        <answerOption>55 to 64 years</answerOption>
+        <answerOption>65 to 74 years</answerOption>
+        <answerOption>Age 75 or older</answerOption>
+        <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>English Language Ability</name>
+    <text>Please select your level of English language ability.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Fluent (native)</answerOption>
+        <answerOption>Fluent (non-native)</answerOption>
+        <answerOption>Working proficiency</answerOption>
+        <answerOption>Intermediate</answerOption>
+        <answerOption>Basic</answerOption>
+        <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Computer Skill</name>
+    <text>Please estimate your level of computer skill.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Very high</answerOption>
+        <answerOption>High</answerOption>
+        <answerOption>Medium</answerOption>
+        <answerOption>Low</answerOption>
+        <answerOption>Very low</answerOption>
+        <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Residence</name>
+    <text>Please provide your state (if in USA) or country (if outside USA)CR
+    of residence.</text>
+    <answerType>Input</answerType>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Household Income</name>
+    <text>Please estimate your total yearly househould incomeCRbefore taxes (in USD).</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+      <answerOption>Less than $25,000</answerOption>
+      <answerOption>$25,000 to $34,999</answerOption>
+      <answerOption>$35,000 to $49,999</answerOption>
+      <answerOption>$50,000 to $74,999</answerOption>
+      <answerOption>$75,000 to $99,999</answerOption>
+      <answerOption>$100,000 to $149,999</answerOption>
+      <answerOption>$150,000 to $199,999</answerOption>
+      <answerOption>$200,000 or more</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Education Level</name>
+    <text>Please select your education level.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+      <answerOption>Completed some high school</answerOption>
+      <answerOption>High school graduate</answerOption>
+      <answerOption>Completed some college</answerOption>
+      <answerOption>Associate degree</answerOption>
+      <answerOption>Bachelor's degree</answerOption>
+      <answerOption>Completed some postgraduate</answerOption>
+      <answerOption>Master's degree</answerOption>
+      <answerOption>Law degree</answerOption>
+      <answerOption>Medical degree</answerOption>
+      <answerOption>Ph.D.</answerOption>
+      <answerOption>Other advanced degree beyond master's</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Study Areas</name>
+    <text>What were the primary areas of study (majors, research focuses, etc.)CR
+    during your academic career?  Please list all areas.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Systems Thinking Experience</name>
+    <text>Do you have any prior experience in systems thinking?  If yes,CR
+    where does this experience come from (classes, books, conferences, workCR
+    experience, etc.)?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Volunteer Activities</name>
+    <text>Are you involved with any volunteer activities?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+      <answerOption>Volunteer on a regular basis</answerOption>
+      <answerOption>Some volunteer activity</answerOption>
+      <answerOption>Do not volunteer</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Computer Gaming</name>
+    <text>Please select your computer gaming background.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+      <answerOption>Play computer games often</answerOption>
+      <answerOption>Play computer games rarely</answerOption>
+      <answerOption>Almost never play computer games</answerOption>
+      <answerOption>Never play computer games</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Myers Briggs Personality Type</name>
+    <text>Please select your Myers Briggs personality type, if known.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+      <answerOption>Do not know</answerOption>
+      <answerOption>INFP (The Healer)</answerOption>
+      <answerOption>INFJ (The Counselor)</answerOption>
+      <answerOption>INTJ (The Mastermind)</answerOption>
+      <answerOption>INTP (The Architect)</answerOption>
+      <answerOption>ISFJ (The Protector)</answerOption>
+      <answerOption>ISFP (The Composer)</answerOption>
+      <answerOption>ISTJ (The Inspector)</answerOption>
+      <answerOption>ISTP (The Craftsman)</answerOption>
+      <answerOption>ENFJ (The Teacher)</answerOption>
+      <answerOption>ENFP (The Champion)</answerOption>
+      <answerOption>ENTJ (The Commander)</answerOption>
+      <answerOption>ENTP (The Visionary)</answerOption>
+      <answerOption>ESFJ (The Provider)</answerOption>
+      <answerOption>ESFP (The Performer)</answerOption>
+      <answerOption>ESTJ (The Supervisor)</answerOption>
+      <answerOption>ESTP (The Dynamo)</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Big 5 - Openness to Experience</name>
+    <text>
+    Please estimate your openness to experience.  An individual who is highCR
+    in openness to experience is likely someone who has a love of learning,CR
+    enjoys the arts, engages in a creative career or hobby, and likes meetingCR
+    new people.  An individual who is low in openness to experience probablyCR
+    prefers routine over variety, sticks to what he/she knows, and prefers lessCR
+    abstract arts and entertainment.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+      <answerOption>High</answerOption>
+      <answerOption>Medium</answerOption>
+      <answerOption>Low</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Big 5 - Conscientiousness</name>
+    <text>
+    Please estimate your conscientiousness.  Someone who is high inCR
+    conscientiousness is likely to be self-disciplined and organized.  ACR
+    person who is low in conscientiousness is more likely to be easy-going,CR
+    to procrastinate, and to be impulsive.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+      <answerOption>High</answerOption>
+      <answerOption>Medium</answerOption>
+      <answerOption>Low</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Big 5 - Agreeableness</name>
+    <text> Please estimate your agreeableness.  People high in agreeablenessCR
+    tend to have few enemies, are sympathetic and affectionate to theirCR
+    friends and loved ones, and are sympathetic to the plights of strangers.CR
+    People low in agreeableness tend to have a more analytic and detachedCR
+    personality and can be seen as competitive or argumentative.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+      <answerOption>High</answerOption>
+      <answerOption>Medium</answerOption>
+      <answerOption>Low</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Big 5 - Neuroticism</name>
+    <text>
+    Please estimate your neuroticism.  Those high in neuroticism are generallyCR
+    given to anxiety, sadness, and worry.  They may be temperamental, self-consciousCR
+    or unsure of themselves.  Individuals who score on the low end of neuroticismCR
+    are more likely to feel confident, sure of themselves, and adventurous.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+      <answerOption>High</answerOption>
+      <answerOption>Medium</answerOption>
+      <answerOption>Low</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Big 5 - Extraversion</name>
+    <text>
+    Please estimate your extraversion.  People high in extraversion tend to seekCR
+    out opportunities for social interaction. They are comfortable with others,CR
+    gregarious, and prone to action rather than contemplation.  People low inCR
+    extraversion are more likely to be quiet, introspective, reserved, andCR
+    thoughtful.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+      <answerOption>High</answerOption>
+      <answerOption>Medium</answerOption>
+      <answerOption>Low</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>0</exercise>
+    <name>Learning Style</name>
+    <text>Please select your preferred learning styles, if any.</text>
+    <answerType>Check</answerType>
+    <answerOptions>
+      <answerOption>Do not know</answerOption>
+      <answerOption>No preference</answerOption>
+      <answerOption>Visual</answerOption>
+      <answerOption>Aural</answerOption>
+      <answerOption>Verbal</answerOption>
+      <answerOption>Physical</answerOption>
+      <answerOption>Logical</answerOption>
+      <answerOption>Social</answerOption>
+      <answerOption>Solitary</answerOption>
+      <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>1</exercise>
+    <name>Occupational Area</name>
+    <text> Please provide your general area(s) of occupation (Ex: medicine,CR
+    computer software, biology, elementary education, school administration,CR
+    business management).</text>
+    <answerType>Input</answerType>
+  </question>
+  <question>
+    <exercise>1</exercise>
+    <name>Current Position</name>
+    <text> Please provide your most relevant current and past position title(s)CR
+    (Ex: Researcher, System Architect, Technical Lead, Distinguished Professor,CR
+    Director of Technology, Competency Manager, etc.)</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>1</exercise>
+    <name>Current Job Duties</name>
+    <text>Please briefly provide your current job duties.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>1</exercise>
+    <name>Career Background</name>
+    <text> Please provide the kinds of jobs you've held leading up to yourCR
+    current position; e.g. your career progression up to the present.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>2</exercise>
+    <name>Practice</name>
+    <text>After the introduction and practice exercise, do you feel likeCR
+    you understand how to play the game?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Yes, very well</answerOption>
+        <answerOption>Yes, somewhat</answerOption>
+        <answerOption>No, not very well</answerOption>
+        <answerOption>No, not at all</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text> After observing all turns, you may have noticed that most of theCR
+    shapes are sometimes gone.  Why?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Actually this did not happen</answerOption>
+        <answerOption>Stars destroy them all</answerOption>
+        <answerOption>The shapes aren't large enough</answerOption>
+        <answerOption>There is not enough rain</answerOption>
+        <answerOption>The shapes did not move enough</answerOption>
+        <answerOption>Multiple interrelated factors</answerOption>
+        <answerOption>Not enough information to answer</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>What makes a shape divide into two?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Impacting with another shape</answerOption>
+        <answerOption>Impacting with a star</answerOption>
+        <answerOption>Its size</answerOption>
+        <answerOption>Its spin</answerOption>
+        <answerOption>Random</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>What would most likely happen if the rain rate were increasedCR by a large amount?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>The system would be stable</answerOption>
+        <answerOption>Shapes would grow and multiply</answerOption>
+        <answerOption>Shapes would shrink and possibly disappear</answerOption>
+        <answerOption>Not enough information to say</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>What are they key things that make the spinning shapes move?</text>
+    <answerType>Check</answerType>
+    <answerOptions>
+        <answerOption>Random</answerOption>
+        <answerOption>Other spinning shapes</answerOption>
+        <answerOption>The shape's own size</answerOption>
+        <answerOption>The stars</answerOption>
+        <answerOption>The falling rain</answerOption>
+        <answerOption>The moving balls</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>Does this system remind you of any real life system?</text>
+    <answerType>Input</answerType>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>If you had to give the small red balls a name, what would you call them?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>A resource</answerOption>
+        <answerOption>A subsystem</answerOption>
+        <answerOption>A bunch of floating dots</answerOption>
+        <answerOption>Balloons</answerOption>
+        <answerOption>I would not name them collectively</answerOption>
+        <answerOption>Not enough information</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>Please briefly describe your strategy for this scenario.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>Are there any variables you wish you could have changed, but weren't available?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>If you could play this scenario over again, is there anything you would do differently?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>Is there anything that prevented you from doing your best?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>4</exercise>
+    <name>Eight Shapes</name>
+    <text>Which of the following would you include as important parts of this system?</text>
+    <answerType>Check</answerType>
+    <answerOptions>
+      <answerOption>Shape spin direction</answerOption>
+      <answerOption>Shape color</answerOption>
+      <answerOption>Speed of the rain</answerOption>
+      <answerOption>Number of corners of a shape</answerOption>
+      <answerOption>Speed of your PC</answerOption>
+      <answerOption>Design of the program's user interface</answerOption>
+      <answerOption>The random seed that determines when and where rain drops appear</answerOption>
+      <answerOption>What you ate for dinner last night</answerOption>
+      <answerOption>None of these</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>4</exercise>
+    <name>Eight Shapes</name>
+    <text>Please briefly describe your strategy for this scenario.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>4</exercise>
+    <name>Eight Shapes</name>
+    <text>If you could do this scenario over, is there anything you would do differently?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>4</exercise>
+    <name>Eight Shapes</name>
+    <text>Do you feel that your gameplay style has changed since the first scenario?  If so, how?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>5</exercise>
+    <name>Chaos</name>
+    <text>What do you think the special trait for triangles is?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Growth - They grow more from rain and balls</answerOption>
+        <answerOption>Defense - They take less damage from stars</answerOption>
+        <answerOption>Offense - They take size from other shapes faster</answerOption>
+        <answerOption>Movement - They move faster than other shapes</answerOption>
+        <answerOption>None of those</answerOption>
+        <answerOption>Not enough information</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>5</exercise>
+    <name>Chaos</name>
+    <text> If a large shape, rapidly spinning left (counter-clockwise), wereCR 
+    introduced to the system, what do you think would happen to it overCR
+    time?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>It would become smaller</answerOption>
+        <answerOption>It would become larger</answerOption>
+        <answerOption>It would stay the same size</answerOption>
+        <answerOption>It would spin faster</answerOption>
+        <answerOption>It would spin slower</answerOption>
+        <answerOption>I don't know</answerOption>
+        <answerOption>Not enough information</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>5</exercise>
+    <name>Chaos</name>
+    <text>What does the color of a spinning shape mean?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>It determines how fast a shape grows</answerOption>
+        <answerOption>It determines how fast a shape moves</answerOption>
+        <answerOption>Light colored shapes spin faster</answerOption>
+        <answerOption>Nothing - color has no effect</answerOption>
+        <answerOption>Not enough information</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>5</exercise>
+    <name>Chaos</name>
+    <text>Please briefly describe your strategy for this scenario.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>5</exercise>
+    <name>Chaos</name>
+    <text>In addition to the 7 variables offered in the Change the System screen
+    (Shape Type, Rain Rate, Paradigm, etc.), 
+    were there any others that you would have liked to have been able to change?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>5</exercise>
+    <name>Chaos</name>
+    <text>Did you feel like any of the 7 variables did not do what you expected it to do when
+    you changed it?  If yes, please explain which one(s) and why you felt this way.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>5</exercise>
+    <name>Chaos</name>
+    <text>If you could do this scenario over, is there anything you would do differently?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>5</exercise>
+    <name>Chaos</name>
+    <text>Do you feel that your game play style has changed over the course of the game?  If so, how?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Post-Assessment Feedback</name>
+    <text>What are the things you found most difficult about this simulation?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Post-Assessment Feedback</name>
+    <text>What are the things you found easiest about this simulation?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Post-Assessment Feedback</name>
+    <text>Is there anything about the simulation that you feel hindered your ability 
+    to perform well?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Post-Assessment Feedback</name>
+    <text>Did any external factors affect your ability to perform well (disruptions, noisy
+    environment, need for coffee, etc.)?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Post-Assessment Feedback</name>
+    <text>Do you feel that your performance in the game reflected your ability 
+    to think systemically? Why or why not?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Post-Assessment Feedback</name>
+    <text>Was any part of the simulation itself confusing?  If yes, please explain.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Post-Assessment Feedback</name>
+    <text>Did you fully understand the simulation tasks, and your objectives as a player?  
+    If not, please explain.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Post-Assessment Feedback</name>
+    <text>If there are any other comments you would like to make, please enter them here.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+</questions>

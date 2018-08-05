@@ -1,0 +1,1 @@
+java -Dfile.encoding=UTF8 -cp "bin;../ext/*;../ext/drive/*;../ext/drive/libs/*;." gos.Gos

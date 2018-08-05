@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<jnlp>
+    <information>
+        <title>Systems Thinking Assessment</title>
+        <vendor>Ross Arnold</vendor>
+    </information>
+    <resources>
+        <!-- Application Resources -->
+        <j2se version="1.7+"
+              href="http://java.sun.com/products/autodl/j2se"/>
+        <jar href="http://www.knightlysoftware.com/systemsthinking/Gos.jar"
+            main="true" />
+
+    </resources>
+    <application-desc
+         name="The Systems Thinking Game"
+         main-class=
+           "gos.Gos"
+         width="850"
+         height="850">
+     </application-desc>
+     <update check="background"/>
+</jnlp>

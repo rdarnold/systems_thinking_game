@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infoList>
+    <info name="Introduction">
+        <name>Introduction</name>
+        <text>
+        You will be presented a scenario, and given a set of questions.  After the questions, 
+        you will be asked to actually take actions on the system to enact changes.  There 
+        are no right or wrong answers.  This is simply to determine how you approach different 
+        kinds of problems.  Please try your best and answer to the best of your ability. 
+        </text>
+    </info>
+    <info name="General">
+        <name>General</name>
+        <text>
+        This scenario consists of several shapes that move around screen and behave in certain ways., 
+        some laws that restrict how things work, and other hidden variables.  It will be your job to try 
+        to understand how this system works, answer questions about it, and make changes to make it behave 
+        certain ways.
+        </text>
+    </info>
+    <info name="Node">
+        <name>Node</name>
+        <text>
+        A Node is sort of like a self-contained sub-system within the greater system.  
+        It has variables and different parts that work together to accomplish tasks, mainly to 
+        increase its Success. During this simulation, you will occasionally be given control of Node 1. 
+        </text>
+    </info>
+    <info name="Success">
+        <name>Success</name>
+        <text>
+        Success is a general measure of the success of a Node and how well a Node 
+        is performing.  It can be "spent" or used to improve or change other parts of the Node. 
+        </text>
+    </info>
+    <info name="Entropy">
+        <name>Entropy</name>
+        <text>
+        Entropy is a measure of chaos within a Node.   Entropy consumes Success and can 
+        spiral out of control if not carefully monitored and accounted for. 
+        </text>
+    </info>
+    <info name="Matter">
+        <name>Matter</name>
+        <text>
+        Nodes use Matter to create things.  Matter is consumed to create Success, 
+        and can be used for other purposes such as changes and upgrades to your Node. 
+        </text>
+    </info>
+    <info name="Energy">
+        <name>Energy</name>
+        <text>
+        Nodes use Energy to make things happen.  It takes Energy to process Matter into 
+        other things like Success.
+        </text>
+    </info>
+    <info name="Knowledge">
+        <name>Knowledge</name>
+        <text>
+        Knowledge helps to prevent Entropy growth, reduces the cost of upgrading, allows 
+        for better upgrades, and increases the efficiency of Matter and Energy collection. 
+        </text>
+    </info>
+    <info name="Security">
+        <name>Security</name>
+        <text>
+        Security helps defend against theft by other Nodes and attacks from external sources. 
+        </text>
+    </info>
+    <info name="Culture">
+        <name>Culture</name>
+        <text>
+        Culture reflects the behavioral traits and beliefs of a Node.  A Node's Culture 
+        affects its decision choices and behaviors. 
+        </text>
+    </info>
+    <info name="Environment">
+        <name>Environment</name>
+        <text>
+        Environment determines how fast Matter and Energy grow.  However, environment 
+        also affects Entropy growth. 
+        </text>
+    </info>
+    <info name="Laws">
+        <name>Laws</name>
+        <text>
+        Laws can be implemented to control various parts of the system. 
+        </text>
+    </info>
+    <info name="Mindset">
+        <name>Mindset</name>
+        <text>
+        Mindset is the general mindset under which all of the Nodes operate. 
+        </text>
+    </info>
+    <info name="Matter Taker">
+        <name>Matter Taker</name>
+        <text>
+        The Matter Taker's purpose is to gather Matter from the Matter Pool.  Unless told 
+        otherwise, it will draw as much Matter as it can each turn.  It 
+        is able to hold a limited amount of Matter between turns. 
+        The Matter Taker has some limits based on its design. 
+        </text>
+    </info>
+    <info name="Energy Taker">
+        <name>Energy Taker</name>
+        <text>
+        The Energy Taker's purpose is to gather Energy from the Energy Pool.  Unless told 
+        otherwise, it will only draw as much Energy as is needed per turn.  It 
+        is not able to hold Energy between turns unless upgraded to do so. 
+        The Energy Taker has some limits based on its design. 
+        </text>
+    </info>
+    <info name="Success Maker">
+        <name>Success Maker</name>
+        <text>
+        The Success Maker takes the Matter and Energy from your Node and turns it 
+        into Success.  Generally, the more Matter and Energy you are able to get, the more 
+        Success you can make.  
+        The Success Maker has some limits based on its design. 
+        </text>
+    </info>
+    
+    <info name="Shapes">
+        <name>Shapes</name>
+        <text>
+        The angled shapes have a certain number of angles, size, color, spin speed, direction, 
+        and other attributes.  Some of these attributes affect things strongly, while others have 
+        little to no effect.  Try to pay attention to which is which.
+        </text>
+    </info>
+    <info name="Size">
+        <name>Size</name>
+        <text>
+        A shape's size can be rougly equated to its health or success.  Shapes, in general, 
+        try to grow larger, with varying degrees of success.  If a shape becomes too 
+        small it is destroyed permanently.  If it becomes too large, a shape either splits into
+        two smaller shapes, or gains a level, depending on the scenario.
+        </text>
+    </info>
+    <info name="Rain">
+        <name>Rain</name>
+        <text>
+        Small objects that look something like rain can be seen falling from one side of the screen to
+        another (usually top to bottom).  Rain has variety of effects when impacting other 
+        objects such as spinning shapes, spikes, and circles.  Understanding how the rain affects
+        the other parts of the system is important.
+        </text>
+    </info>
+    <info name="Gravity">
+        <name>Gravity</name>
+        <text>
+        Shapes move around the screen based on a property called Gravity.  Try to pay attention to
+        how it works and what causes it.
+        </text>
+    </info>
+    <info name="Circles">
+        <name>Circles</name>
+        <text>
+        Circles are created when rain reaches the bottom of the screen.  Each drop of rain
+        creates a pair of circles.  Notice how, when two circles collide with each other, 
+        they actually create a third circle?  Can this phenomenon be exploited to your advantage?
+        </text>
+    </info>
+    <info name="Paradigm">
+        <name>Paradigm</name>
+        <text>
+        Depending on the Paradigm chosen, shapes either compete with each other (Competitive), 
+        cooperate and work together (Cooperative), or ignore each other and do not interact 
+        (Independent).
+        </text>
+    </info>
+    <info name="System Description">
+        <name>System Description</name>
+        <text>
+        This system consists of spinning shapes, falling rain, small red circles, and spikes.CR
+        - Rain falls from the top of the screen towards the bottom.CR
+        - When a drop of rain hits a shape, the shape grows.CR
+        - When a drop of rain hits the bottom of the screen, it turns into two small circles.CR
+        - When a circle hits a shape, the shape grows.CR
+        - However, when a drop of rain hits a circle, the circle turns into a spike.CR
+        - When a spike hits a shape, the shape shrinks and can be destroyed.CR
+        - When a spike hits a circle, the circle is destroyed.CR
+        Together these interactions can result a wide variety of situations and phenomena.
+        </text>
+    </info>
+</infoList>

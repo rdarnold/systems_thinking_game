@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exercises>
+  <exercise>
+    <id>0</id>
+    <displayId>0</displayId>
+    <name>Demographic Survey</name>
+    <popupText>Before we get started, we just need to ask for some standard 
+    demographic information to help with the research. Your answers will be kept 
+    anonymous through use of the ID system. CRCRThank you very much for your participation!
+    </popupText>
+  </exercise>
+  <exercise>
+    <id>1</id>
+    <displayId>0</displayId>
+    <name>Career Survey</name>
+    <popupText>Thank you for completing the demographic survey! The information is extremely
+    important to the research.CRCR
+    The following questions relate to your career progression. The goal of these questions 
+    is to determine whether a particular career progression path may lead to a 
+    higher level of systems thinking ability.
+    </popupText>
+  </exercise>
+  <exercise>
+    <id>2</id>
+    <displayId>1</displayId>
+    <name>Practice</name>
+    <text>This is the first exercise and introduces you to the platform. It's just a practice 
+    exercise so that you can become familiar with the game. Use the 
+    'Observe' button on the left of the screen to watch the system without moving 
+    forward by a turn.  You have 5 turns to practice.
+    CRCRClick the 'Change System' button at the bottom of the screen when you are ready to
+    advance the system forward and move on to the next turn.</text>
+  </exercise>
+  <exercise>
+    <id>3</id>
+    <displayId>2</displayId>
+    <name>Four Shapes</name>
+    <text>This is the first real exercise of the game.  Use the Ask,
+    Observe, and Experiment buttons on the left of the screen to figure out how the system works. 
+    Keep in mind that you have a limited number of
+    Discovery Points to use.  They can all be used on the first turn, or some saved for later turns.
+    CRCRClick the 'Change System' button at the bottom of the screen when you are ready to
+    advance the system forward and move on to the next turn.</text>
+  </exercise>
+  <exercise>
+    <id>4</id>
+    <displayId>3</displayId>
+    <name>Eight Shapes</name>
+    <text>This exercise is more complicated than the previous one, introducing additional
+    shapes. The systemic knowledge you gained during the previous exercise can be applied
+    to this new exercise as the underlying system is the same.</text>
+  </exercise>
+  <exercise>
+    <id>5</id>
+    <displayId>4</displayId>
+    <usesLevels>true</usesLevels>
+    <noSelect>true</noSelect>
+    <noDeath>true</noDeath>
+    <name>Chaos</name>
+    <text>This exercise pulls together the things you've learned about the system in previous 
+    exercises.  There are two major changes in this exercise. First, shapes do not divide anymore. 
+    Instead, they have a "level" which increases when the shape would have 
+    divided previously. The level will appear as a number in the 
+    center of the shape when it reaches 1 or higher. Higher level is better.  Secondly, 
+    now you only control a single shape. You cannot make changes 
+    to other shapes, but you can still change overall system parameters.</text>
+  </exercise>
+  <exercise>
+    <id>6</id>
+    <displayId>0</displayId>
+    <name>Post-Assessment Feedback Questionnaire</name>
+    <popupText>Thank you for playing the game! Your input is extremely valuable. As the final step,
+    we would like you to provide some feedback on your experience.
+    CRCRYour feedback will be used to help improve the computer simulation experience and achieve 
+    more accurate results in future research activities.</popupText>
+  </exercise>
+</exercises>

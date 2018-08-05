@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tasks>
+  <task>
+    <exercise>2</exercise>
+    <turns>5</turns>
+    <name>Play</name>
+    <text>
+    There is no goal in the practice exercise!  Just play around with the game and get familiar 
+    with how it works.
+    </text>
+  </task>
+  <task>
+    <exercise>3</exercise>
+    <turns>5</turns>
+    <name>Growth</name>
+    <text>
+    Your goal is to increase the number of spinning shapes in the system to 50 in as few 
+    turns as possible.
+    </text>
+  </task>
+  <task>
+    <exercise>3</exercise>
+    <turns>5</turns>
+    <name>Growth Round 2</name>
+    <text>
+    Could you have done better?  Try again!  Make 50 spinning shapes as quickly as possible.
+    </text>
+  </task>
+  <task>
+    <exercise>4</exercise>
+    <turns>5</turns>
+    <name>Exploration</name>
+    <text>
+    Your goal is to maximize the space between shapes.  You'll need to figure out
+    a way to keep the shapes from moving towards each other and congregating.
+    </text>
+  </task>
+  <task>
+    <exercise>4</exercise>
+    <turns>5</turns>
+    <name>Exploration Round 2</name>
+    <text>
+    Round 2!  Use what you learned last time to maximize the space between shapes.
+    </text>
+  </task>
+  <task>
+    <exercise>5</exercise>
+    <turns>10</turns>
+    <name>Mastery</name>
+    <text>
+    Your shape is the circled shape in the middle of the screen.  
+    Your goal is to raise your shape's level as high as possible.  
+    Levels are gained by growing bigger.
+    </text>
+  </task>
+  <task>
+    <exercise>5</exercise>
+    <turns>10</turns>
+    <name>Mastery Round 2</name>
+    <text>
+    Think you could have done better? 
+    Use what you learned last time to try to do better this time by
+    raising your shape's level as high as possible.
+    </text>
+  </task>
+</tasks>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infoList>
+    <info name="Welcome">
+        <name>Welcome</name>
+        <text>
+        This game is part of a research project to help define and measure  
+        complex problem-solving skills.  In this game, you’ll be asked to observe 
+        and interact with a system of shapes and other things that move around the 
+        screen and interact with each other.  Your gameplay data will be periodically 
+        uploaded to a research server as you play the game.
+        </text>
+    </info>
+    <info name="Introduction">
+        <name>Introduction</name>
+        <text>
+        The purpose of this game is to understand how people approach and solve certain 
+        types of complex problems. During the game, you will be presented with a 
+        set of scenarios.  In each scenario, there is a system which has a
+        set of spinning shapes of various types, colors, sizes, and properties.  The scenario will 
+        provide tasks for you to complete, each within a certain number of turns.  
+        CRCREach turn is an interval of several seconds during which the system moves forward 
+        in time.  Before each turn of the task, you’ll be able to make changes to the system.  
+        You’ll also be able to discover information 
+        about the system through inquiry, observation, and experimentation. 
+        CRCRThe bottom line is, learn about the system, and use that knowledge to change it 
+        to do what you want.  CRCRThere are no wrong answers. Just do what you think makes the 
+        most sense!  CRCRPlease enjoy!
+        </text>
+    </info>
+    <info name="General">
+        <name>General</name>
+        <text>
+        Each scenario consists of several shapes that move around screen and behave in certain ways, 
+        some laws that restrict how things work, and other hidden variables.  It will be your job to try 
+        to understand how this system works, answer questions about it, and make changes to make it behave 
+        certain ways.
+        </text>
+    </info>
+    <info name="Turns">
+        <name>Turns</name>
+        <text>
+        Each turn in the game represents several seconds of time.  Between each turn
+        you will have the opportunity to make changes to the system and spend Discovery Points to
+        learn more about the system.
+        </text>
+    </info>
+    <info name="Game Play">
+        <name>Game Play</name>
+        <text>
+        The point of this game is to figure out how a system works, and then make changes to make
+        it do what you want. To do that, you'll need to know:CRCR
+        1: Some things about how the system works.CR
+        2: What things you should change.CR
+        3: How much to change them (or in which direction).CRCR
+        You find out about the system by spending Discovery Points.  Your Discovery Points are
+        limited, so take care how you use them.  You won't be able to learn everything about every
+        system so you'll have to carefully choose what you want to learn about.  
+        </text> 
+    </info>
+    <info name="Discovery Points">
+        <name>Discovery Points</name>
+        <text>
+        Discovery Points can be used to ask about the system, observe the system in action,
+        and experiment with the system.  Your Discovery Points are
+        limited, so take care how you use them.  You won't be able to learn everything about every
+        system so you'll have to carefully choose what you want to learn about.  CRCRDuring each
+        task, you start with a certain number of Discovery Points.  You then gain one
+        new Discovery Point each turn.  You do not
+        need to spend all of your Discovery Points on the first turn.  You may want to save some to
+        use later in the task.  Discovery Points do not carry over between tasks or scenarios.
+        </text>
+    </info>
+    <info name="Ask">
+        <name>Ask</name>
+        <text>
+        Seek textual and numerical facts about the system.  These facts tend to be very precise but
+        also very specific.  Take care when choosing which facts to reveal,
+        as they may not all be useful.
+        </text>
+    </info>
+    <info name="Observe">
+        <name>Observe</name>
+        <text>
+        Observe how the system behaves over time.  Observations can only be performed starting from
+        the default system, before you make any changes.  Thus they cannot be used to precisely predict
+        how your changes will affect the system.  But, they can be used to try to figure out how the
+        systems works or will work in the absence of any changes.
+        </text>
+    </info>
+    <info name="Experiment">
+        <name>Experiment</name>
+        <text>
+        Devise experiments to test and learn about the system.  You can design an experiment that shows
+        how a particular set of changes will affect the system over the course of one turn.  The experiment
+        must begin from a known system state; this is to say, either the system in its current state,
+        or the system resulting from an experiment.  So it is possible to chain experiments together to
+        create interesting sets of behaviors.  
+        CRCRWhen creating an experiment, you will be presented with a set of dials, sliders, and selections
+        that allow you to tweak the system to your needs.  The options presented during experimentation
+        are not necessarily the same as those presented when proceeding to the next turn.
+        CRCRNote that you may only have a limited number of experiments in existence
+        at any one time.  Once you create an experiment, you can watch and re-watch it as many times as you
+        want.  Or, you can delete it to make room for a different experiment.
+        </text>
+    </info>
+    <info name="Change System">
+        <name>Change System</name>
+        <text>
+        Make desired changes to the system, then proceed to the next turn in the task.  Each task has
+        only a set number of turns, with a goal that you will be trying to achieve within those turns.
+        CRCRWhen proceeding to the next turn, you will be presented with a set of sliders and selections
+        that allow you to tweak the system as you wish.
+        </text>
+    </info>
+    <info name="Shapes">
+        <name>Shapes</name>
+        <text>
+        The angled shapes have a certain number of angles, size, color, spin speed, direction, 
+        and other attributes.  Some of these attributes affect things strongly, while others have 
+        little to no effect.  Try to pay attention to which is which.
+        </text>
+    </info>
+    <info name="Size">
+        <name>Size</name>
+        <text>
+        A shape's size can be rougly equated to its health or success.  Shapes, in general, 
+        try to grow larger, with varying degrees of success.  If a shape becomes too 
+        small it is destroyed permanently.  If it becomes too large, a shape either splits into
+        two smaller shapes, or gains a level, depending on the scenario.
+        </text>
+    </info>
+    <info name="Rain">
+        <name>Rain</name>
+        <text>
+        Small objects that look something like rain can be seen falling from one side of the screen to
+        another (usually top to bottom).  Rain has variety of effects when impacting other 
+        objects such as spinning shapes, spikes, and circles.  Understanding how the rain affects
+        the other parts of the system is important.
+        </text>
+    </info>
+    <info name="Gravity">
+        <name>Gravity</name>
+        <text>
+        Shapes move around the screen based on a property called Gravity.  Try to pay attention to
+        how it works and what causes it.
+        </text>
+    </info>
+    <info name="Circles">
+        <name>Circles</name>
+        <text>
+        Circles are created when rain reaches the bottom of the screen.  Each drop of rain
+        creates a pair of circles.  Notice how, when two circles collide with each other, 
+        they actually create a third circle?  Can this phenomenon be exploited to your advantage?
+        </text>
+    </info>
+    <info name="Paradigm">
+        <name>Paradigm</name>
+        <text>
+        Depending on the Paradigm chosen, shapes either compete with each other (Competitive), 
+        cooperate and work together (Cooperative), or ignore each other and do not interact 
+        (Independent).
+        </text>
+    </info>
+</infoList>

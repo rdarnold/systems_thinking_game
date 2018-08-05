@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<values>
+    <globalMoveRate>1.0</globalMoveRate>
+    <rainOrigin>0</rainOrigin>
+    <rainRate>0.25</rainRate>
+    <rainSpeedVar>1.0</rainSpeedVar>
+    <movingDotSpeedRate>1.0</movingDotSpeedRate>
+    <movingDotR>120</movingDotR>
+    <movingDotG>42</movingDotG>
+    <movingDotB>42</movingDotB>
+    <movingDotSize>10</movingDotSize>
+    <turnSeconds>5</turnSeconds>
+    <gravityRate>1.0</gravityRate>
+    <gravityRules>0</gravityRules>
+    <armorRules>0</armorRules>
+    <paradigm>0</paradigm>
+    <growthRules>0</growthRules>
+    <noGiveSize>false</noGiveSize>
+    <noTakeSize>false</noTakeSize>
+    <cultureTraits>
+        <cultureTrait>Aggressive</cultureTrait>
+        <cultureTrait>Dynamic</cultureTrait>
+        <cultureTrait>Defensive</cultureTrait>
+        <cultureTrait>Industrious</cultureTrait>
+        <cultureTrait>Ethnocentric</cultureTrait>
+    </cultureTraits>
+</values>
