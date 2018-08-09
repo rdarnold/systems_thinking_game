@@ -53,6 +53,8 @@ import javafx.scene.image.Image;
 import javafx.scene.control.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
 import gos.*;
 
@@ -65,6 +67,35 @@ public class SysPane extends Pane {
 
     public void create() {
         VBox.setVgrow(this, Priority.ALWAYS);
+
+        // Add our outline to the playing area
+        Line line = new Line(Constants.SIM_WIDTH, 0, Constants.SIM_WIDTH, Constants.SIM_HEIGHT);
+        line.setStrokeWidth(4);
+        getChildren().add(line);
+        
+        line = new Line(0, Constants.SIM_HEIGHT, Constants.SIM_WIDTH, Constants.SIM_HEIGHT);
+        line.setStrokeWidth(4);
+        getChildren().add(line);
+
+        // And beyond the lines I guess I'll just add like a big gray shape or something... kind of
+        // weird but should work.
+        Rectangle rec = new Rectangle();
+        rec.setFill(Color.LIGHTGRAY);
+        rec.setStroke(Color.LIGHTGRAY);
+        rec.setX(Constants.SIM_WIDTH);
+        rec.setY(0);
+        rec.setWidth(1200);
+        rec.setHeight(1200);
+        getChildren().add(rec);
+
+        rec = new Rectangle();
+        rec.setFill(Color.LIGHTGRAY);
+        rec.setStroke(Color.LIGHTGRAY);
+        rec.setX(0);
+        rec.setY(Constants.SIM_HEIGHT);
+        rec.setWidth(1200);
+        rec.setHeight(1200);
+        getChildren().add(rec);
     }
 
     public void addShape(SysShape shape) {

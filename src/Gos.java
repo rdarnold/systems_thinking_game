@@ -159,7 +159,7 @@ public class Gos extends Application {
         sim.addSimulatorEventListener(simRunner);
 
         stage = primaryStage;
-        stage.setTitle("The Systems Thinking Game v0.2");
+        stage.setTitle("The Systems Thinking Game v" + Constants.VERSION_NUMBER_STRING);
 
         showMainScreen();
 

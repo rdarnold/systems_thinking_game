@@ -11,8 +11,8 @@ import javafx.animation.Animation;
 public class Simulator {
 
     // This could be defined by the outer constructs as well
-    int width = 525;
-    int height = 525;
+    int width = Constants.SIM_WIDTH;
+    int height = Constants.SIM_HEIGHT;
 
     //used to store the current time to calculate fps
     private long currentTime = 0;

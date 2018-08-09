@@ -128,7 +128,7 @@ public class VariableWindow extends DialogWindow {
               "1 is most important, 7 is least important.";*/
         str = "Please rate the variables by how important you think they are right now. " +
             "5 is extremely important, 1 is not important.  You may rate two or more variables " + 
-            "at the same importance level.";
+            "at the same importance level.  You do not have to rate all variables.";
         titleLabel = addCenteredLabel(str);
         Utils.addVerticalSpace(box, space);
 

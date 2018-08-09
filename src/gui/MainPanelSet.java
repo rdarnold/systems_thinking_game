@@ -93,7 +93,7 @@ public class MainPanelSet extends PanelSetBase {
         "left will show this text again.  The 'Info' button shows a list of " + 
         "all different types of information about the game, in case you get " + 
         "stuck, confused, or just want to re-read something to refresh your memory.\r\n\r\n" + 
-        "Your goal for this task is show in bold on the top panel of the screen.";
+        "Your goal for this task is shown in bold on the top panel of the screen.";
         mainPanelWindow = new OKWindow(400, 500, strTitle, strText);
 
         // And set the helper text for the info area

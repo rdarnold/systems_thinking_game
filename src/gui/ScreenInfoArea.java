@@ -110,12 +110,23 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         ));
         getChildren().add(lblDiscoveryPoints);
 
+
+        VBox buttonVBox = new VBox();
+        buttonVBox.setSpacing(2);
+        buttonVBox.setAlignment(Pos.CENTER);
+        getChildren().add(buttonVBox);
+
         // So we will create an HBox so we can put these buttons next to each other
         // and save some space.
         HBox buttonBox = new HBox();
         buttonBox.setSpacing(2);
         buttonBox.setAlignment(Pos.CENTER);
-        getChildren().add(buttonBox);
+        buttonVBox.getChildren().add(buttonBox);
+        
+        HBox buttonBox2 = new HBox();
+        buttonBox2.setSpacing(2);
+        buttonBox2.setAlignment(Pos.CENTER);
+        buttonVBox.getChildren().add(buttonBox2);
 
         MovableButton btn = null;
 
@@ -155,6 +166,18 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         buttonList.add(btn);
         buttonBox.getChildren().add(btn);
 
+        btn = new MovableButton("Scratch Pad");
+        btn.setPrefWidth(184);
+        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Player.recordButtonAction(event, className() + " " + m_strCondensedName);
+                onClickScratchPad();
+            }
+        });
+        buttonList.add(btn);
+        buttonBox2.getChildren().add(btn);
+
         m_HelpWindow = new OKWindow(400, 500, "", "");
         m_ScoreWindow = new OKWindow(400, 500, "Score Record", "No scores yet.");
         m_ScoreWindow.centerText();
@@ -183,6 +206,11 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
     protected void onClickHelp() {
         // Pop up a window with help text.
         m_HelpWindow.showAndWait(true);
+    }
+
+    protected void onClickScratchPad() {
+        // Pop up the scratch pad window
+        //m_ScratchPadWindow.showAndWait(true);
     }
 
     protected void onClickScore() {

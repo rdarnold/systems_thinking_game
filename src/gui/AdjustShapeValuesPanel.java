@@ -72,7 +72,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
     ColorPicker picker;
     Slider sizeSlider;
     Slider spinSlider;
-    Button btnSac;
+    //Button btnSac;
     
     ActionPanelVBox avbCorner;
     ActionPanelVBox avbSpin;
@@ -155,7 +155,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
             }
         });*/
 
-        btnSac = new Button("Sacrifice");
+        //btnSac = new Button("Sacrifice");
         /*addButton(btnSac);
         btnSac.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -203,9 +203,9 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         setValues(null);
     } 
 
-    private void onClickSacrifice() {
+    /*private void onClickSacrifice() {
         Gos.sim.sacrificeShapeForSpikes(Player.getSelectedShape());
-    }
+    }*/
 
     public void setToCurrentValues() {
         if (selected == null) {

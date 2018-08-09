@@ -372,7 +372,7 @@
   <question>
     <exercise>3</exercise>
     <name>Four Shapes</name>
-    <text>What are they key things that make the spinning shapes move?</text>
+    <text>What are the key things that make the spinning shapes move?</text>
     <answerType>Check</answerType>
     <answerOptions>
         <answerOption>Random</answerOption>
@@ -517,7 +517,7 @@
   <question>
     <exercise>5</exercise>
     <name>Chaos</name>
-    <text>In addition to the 7 variables offered in the Change the System screen
+    <text>In addition to the variables offered in the Change the System screen
     (Shape Type, Rain Rate, Paradigm, etc.), 
     were there any others that you would have liked to have been able to change?</text>
     <answerType>MultilineInput</answerType>

@@ -74,8 +74,7 @@
         <name>Ask</name>
         <text>
         Seek textual and numerical facts about the system.  These facts tend to be very precise but
-        also very specific.  Take care when choosing which facts to reveal,
-        as they may not all be useful.
+        also very specific.
         </text>
     </info>
     <info name="Observe">
@@ -123,7 +122,7 @@
     <info name="Size">
         <name>Size</name>
         <text>
-        A shape's size can be rougly equated to its health or success.  Shapes, in general, 
+        A shape's size can be roughly equated to its health or success.  Shapes, in general, 
         try to grow larger, with varying degrees of success.  If a shape becomes too 
         small it is destroyed permanently.  If it becomes too large, a shape either splits into
         two smaller shapes, or gains a level, depending on the scenario.

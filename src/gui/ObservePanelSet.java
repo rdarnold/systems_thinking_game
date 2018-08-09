@@ -95,6 +95,8 @@ public class ObservePanelSet extends PanelSetBase {
         "You can observe the system in action using the controls " +
         "at the bottom of the screen. " +
         "\r\n\r\n" +
+        "The physics of this system are identical to the system you will be working with in the game." +
+        "\r\n\r\n" +
         "Note that when you observe a turn several times over, you may not always see the same " +
         "exact result.  Elements of randomness in the game can cause differences in outcomes." +
          "\r\n\r\nThe 'Play All' button is a good place to start!";

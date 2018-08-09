@@ -2,7 +2,7 @@
 <values>
     <globalMoveRate>1.0</globalMoveRate>
     <rainOrigin>0</rainOrigin>
-    <rainRate>0.4125</rainRate>
+    <rainRate>0.25</rainRate>
     <rainSpeedVar>1.0</rainSpeedVar>
     <movingDotSpeedRate>1.0</movingDotSpeedRate>
     <movingDotR>120</movingDotR>

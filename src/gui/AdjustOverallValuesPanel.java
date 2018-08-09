@@ -134,8 +134,8 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         avbParadigm.addToolTip(info.getText());
 
         //info = Data.getInfoByName("Growth");
-        String str = "When Growth is set to 'No Growth' shapes will not grow through absorbing " +
-        "rain or absorbing circles.  However, spikes will also not form.";
+        String str = "When Growth is set to 'No Growth' shapes will not grow through environmental " +
+        "factors.  However, spikes will also not form.";
         //Utils.addToolTip(cbGrowth, str);   
         avbGrowth.addToolTip(str);
     }
