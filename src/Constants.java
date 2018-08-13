@@ -23,7 +23,7 @@ public final class Constants {
     public static final int SIM_WIDTH = 590;
     public static final int SIM_HEIGHT = 525;
 
-    public static final String VERSION_NUMBER_STRING = "0.4";
+    public static final String VERSION_NUMBER_STRING = "0.5";
 
     public static enum ResourceType {
         Matter, Energy;

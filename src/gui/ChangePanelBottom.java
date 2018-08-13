@@ -118,6 +118,7 @@ public class ChangePanelBottom extends PanelBottomBase {
                 }
                 Player.recordButtonAction(event, thisScreen.className());
                 m_ParentPanelSet.onSubmitButton(thisScreen.className());
+                //FileTransfer.runUploadThread();
             }
         });
         getChildren().add(btn);

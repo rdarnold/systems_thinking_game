@@ -309,6 +309,10 @@ public final class Player {
         return result.toString(); 
     }
 
+    public static String getScratchPadData() {
+        return "\r\nScratchPad:\r\n" + Gos.scratchPadWindow.getText();
+    }
+
     public static void copyDataToClipboard() {
         final Clipboard clipboard = Clipboard.getSystemClipboard();
         final ClipboardContent content = new ClipboardContent();
@@ -350,6 +354,7 @@ public final class Player {
 
         result.append(getAnswerData());
         result.append(getActionData());
+        result.append(getScratchPadData());
 
         return result.toString(); 
     }

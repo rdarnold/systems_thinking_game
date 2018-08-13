@@ -94,6 +94,7 @@ public class Gos extends Application {
     public static BetaWindow betaWindow;
     public static VariableWindow variableWindow;
     public static OKWindow noDiscoveryPointsWindow;
+    public static ScratchPadWindow scratchPadWindow;
 
     @Override
     public void start(Stage primaryStage) {
@@ -128,6 +129,7 @@ public class Gos extends Application {
         startSimulationWindow = new StartSimulationWindow(600, 500);
         startRealGameWindow = new StartRealGameWindow(600, 700);
         variableWindow = new VariableWindow(400, 600);
+        scratchPadWindow = new ScratchPadWindow(600, 600);
 
         String str = "Sorry, you don't have enough Discovery Points to do that.  You will " +
         "get another one next turn.";
@@ -250,6 +252,10 @@ public class Gos extends Application {
             "New Task: " + Player.getCurrentTaskNameTracker() + "!", 
             Player.getCurrentTaskTextTracker());
         wind.showAndWait(true);
+    }
+
+    public static void showScratchPad() {
+        scratchPadWindow.show();
     }
 
     public static boolean checkDiscoveryPoints() {

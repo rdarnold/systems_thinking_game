@@ -45,7 +45,7 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
                  "-fx-border-width: 2;");
  
         setPrefWidth(220);       
-        //setPrefHeight(130);          
+        setPrefHeight(220);          
         //setMinWidth(200);       
         //setMinHeight(200);              
         setAlignment(Pos.CENTER);
@@ -210,7 +210,7 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
 
     protected void onClickScratchPad() {
         // Pop up the scratch pad window
-        //m_ScratchPadWindow.showAndWait(true);
+        Gos.gos.showScratchPad();
     }
 
     protected void onClickScore() {

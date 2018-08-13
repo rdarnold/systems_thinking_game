@@ -83,6 +83,7 @@ src/gui/PanelTopBase.java
 src/gui/PanelSetBase.java
 src/gui/PlayedBeforeWindow.java
 src/gui/RevealButton.java
+src/gui/ScratchPadWindow.java
 src/gui/ScreenInfoArea.java
 src/gui/SelectableShapePanel.java
 src/gui/StartRealGameWindow.java

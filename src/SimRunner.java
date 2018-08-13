@@ -324,15 +324,15 @@ public class SimRunner implements SimulatorEventListener {
     }
 
     public void uploadData() {
-        Utils.log("Upload temporarily disabled");
-        return;
+        //Utils.log("Upload temporarily disabled");
+        //return;
         // Show some kind of "please wait while your data is uploaded
         // to the research server"
         // This works very strangely for some reason.
         //Gos.mainScene.showPleaseWaitForUploadWindow();
 
         // This is it, pretty simple call from here.
-        //FileTransfer.runUploadThread();
+        FileTransfer.runUploadThread();
     }
 
    /* public void finishQuestion() {

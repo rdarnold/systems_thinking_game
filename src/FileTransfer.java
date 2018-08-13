@@ -262,24 +262,30 @@ public final class FileTransfer {
         body.setDescription(description);
         body.setMimeType(mimeType);
 
-        // Set the parent folder.
-        //if (parentId != null && parentId.length() > 0) {
-        //body.setParents(
-          //  Arrays.asList(new ParentReference().setId(parentId)));
-        //}
+        // Set the parent folder.  
+        // It is the SimulationResults folder but then we create one based on the ID of the
+        // player.
+        // Get the Id fo the folder by clicking on "Get shareable link" after clicking into
+        // the folder in Google Drive and clicking the little down arrow next to the folder name.
+        String parentFolderId = "0B9qbayJt45sFV3FkaTJxeWZQRnM";  
+        body.setParents(Arrays.asList(parentFolderId));
 
         // File's content.
         ByteArrayContent mediaContent = new ByteArrayContent(mimeType, contents.getBytes());
         setUploadProgress(.3);
         if (service == null) {
-            Utils.log("BEWBS2222");
+            Utils.log("Service was NULL, unable to create file");
         }
         try {
             File file = service.files().create(body, mediaContent).execute();
             setUploadProgress(.7);
 
             System.out.println("File created: " + file.getName() + " (" + file.getId() + ")");
-            setPermission(service, file.getId());
+            // Actually setPermissions does work, but I don't need to do it anymore because I'm
+            // uploading directly to a shared folder in the main account.  If I wasn't doing
+            // that, I would need to set permissions to share the file with the other accounts
+            // I wanted to see it.
+            //setPermission(service, file.getId());
             setUploadProgress(.8);
 
             return file;
@@ -290,7 +296,7 @@ public final class FileTransfer {
         }
     }
 
-    private static File createFileFromFile(Drive service, String name, String description,
+    /*private static File createFileFromFile(Drive service, String name, String description,
         String mimeType, String filename) 
     {
         // File's metadata.
@@ -299,6 +305,8 @@ public final class FileTransfer {
         body.setDescription(description);
         body.setMimeType(mimeType);
 
+        String parentFolderId = "0B9qbayJt45sFV3FkaTJxeWZQRnM";  
+        body.setParents(Arrays.asList(parentFolderId));
         // Set the parent folder.
         //if (parentId != null && parentId.length() > 0) {
         //body.setParents(
@@ -318,7 +326,7 @@ public final class FileTransfer {
             Utils.log("An error occurred: " + e.toString());
             return null;
         }
-    }
+    }*/
 
     /**
      * Insert a new permission.
@@ -332,12 +340,33 @@ public final class FileTransfer {
      * @return The inserted permission if successful, {@code null} otherwise.
      */
     private static Permission setPermission(Drive service, String fileId) {
-        return setPermission(service, fileId, "systemsthinkingtest@gmail.com", "user", "writer");
+        return setPermission(service, fileId, "systemsthinkingtest@gmail.com", "user", "writer", 0);
     }
 
     private static Permission setPermission(Drive service, String fileId,
-        String email, String type, String role) 
+        String email, String type, String role, int times) 
     {
+        // Ok so pause a little before we set permission because the file might not even be uploaded or
+        // ready to use yet.  Actually we should do some check to see if it's ready.  Or we should
+        // just sleep and try again if we get a 500 error, or do some back-off thing where we keep
+        // trying every few seconds.
+
+        // If we have retried 10 times we've spent almost a minute on this.  Time to call it quits.
+        if (times > 10) {
+            System.out.println("Unable to set permissions on file after 10 retries: " + fileId);
+            return null;
+        }
+
+        // Actually just give it a few seconds to sleep the first time, because it seems to often
+        // mess up without it.  Then we do a 5 second looping retry until we get it or we just try
+        // too many times.
+        try {
+            Thread.sleep(3000);
+        } 
+        catch (Exception e) {
+            System.out.println("Unable to sleep: " + e);
+        }
+
         Permission userPermission = new Permission()
             .setType(type)
             .setRole(role)
@@ -351,8 +380,16 @@ public final class FileTransfer {
         } 
         catch (IOException e) {
             System.out.println("An error occurred: " + e);
+            System.out.println("Retrying in 5 seconds.");
+            try {
+                Thread.sleep(5000);
+            } 
+            catch (Exception efx) {
+                System.out.println("Unable to sleep: " + efx);
+            }
+            return setPermission(service, fileId, email, type, role, times+1);
         }
-        return null;
+        //return null;
     }
 
     public static void deleteFiles() {
