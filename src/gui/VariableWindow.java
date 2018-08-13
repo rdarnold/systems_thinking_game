@@ -82,14 +82,14 @@ public class VariableWindow extends DialogWindow {
     private ArrayList<Label> labOrderedList;
     //private boolean showWelcome = true; //false; // True to turn this back on for live mode.
 
-    private Label m_labShapeSpinSpeed;
+    /*private Label m_labShapeSpinSpeed;
     private Label m_labShapeSpinDir;
     private Label m_labShapeCorners;
     private Label m_labGravity;
     private Label m_labRainRate;
     //private Label m_labMovingDotSpeed;
     private Label m_labGrowth;
-    private Label m_labParadigm;
+    private Label m_labParadigm;*/
     
     private TextArea m_taRationale;
     
@@ -154,6 +154,7 @@ public class VariableWindow extends DialogWindow {
         addLabel("Shape Spin Speed");
         addLabel("Shape Spin Direction");
         addLabel("Shape Type");
+        addLabel("Shape Color");
 
         // Should this also have a rationale area?  Probably.
         Label lab = new Label("Rationale:");

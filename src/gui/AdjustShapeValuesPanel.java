@@ -147,13 +147,13 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         });
         
         picker = new ColorPicker((Color)selected.getFill());
-        /*addColorControl(picker, "Color");
+        addColorControl(picker, "Color");
         picker.setOnAction(new EventHandler() {
             public void handle(Event t) {
                 Color c = (Color)picker.getValue();
                 selected.setFill(c);
             }
-        });*/
+        });
 
         //btnSac = new Button("Sacrifice");
         /*addButton(btnSac);
@@ -172,7 +172,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
     }
     
     public void addToolTips() {
-        String str = "The spin speed of a shape has an effect on how it interacts with " +
+        /*String str = "The spin speed of a shape has an effect on how it interacts with " +
         "other parts of the system.";
         avbSpinSpeed.addToolTip(str);
 
@@ -180,7 +180,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         avbSpin.addToolTip(str);
 
         str = "Each type of shape (triangle, square, etc.) has a different special trait.";
-        avbCorner.addToolTip(str);
+        avbCorner.addToolTip(str);*/
     }
 
     private void setStyles() {
