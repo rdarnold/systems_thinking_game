@@ -164,12 +164,13 @@ public class SimRunner implements SimulatorEventListener {
         //SystemSnapshot shot = new SystemSnapshot(sim);
         //actualSnapshots.add(shot);
         //Player.addCurrentTurnNumber();
-        Turn turn = runOneTurn(false); // Typically we don't need to record.  It's very CPU intensive.
+        //Turn turn = runOneTurn(false); // Typically we don't need to record.  It's very CPU intensive.
+        Turn turn = runOneTurn(true); // Now actually we always record so that we can use the new slider
         Player.getPlayedTurns().addTurn(turn);
         return true;
     }
 
-    private void skipToExercise(int num) {
+    public void skipToExercise(int num) {
         sim.start();
         //Advance the exercise twice past the surveys.
         Player.goToExercise(num);
@@ -190,6 +191,12 @@ public class SimRunner implements SimulatorEventListener {
 
         if (Gos.skipSurveys == true) {
             skipSurveys();
+            Gos.showStartSimulation();
+        }
+
+        // The player used the debugging Skip screen which shouldn't appear in the regular
+        // game version
+        if (Player.getSkipped() == true && Player.getCurrentExercise().getId() >= 2) {    
             Gos.showStartSimulation();
         }
 
@@ -220,6 +227,13 @@ public class SimRunner implements SimulatorEventListener {
         //actualSnapshots.clear();
         sim.reset();
         maker.prepareExercise(Player.getCurrentExercise());
+        
+        // If it's the last exercise, we change the helper text a little bit.
+        // A better way to do this is to just notify the GUI when we
+        // update the exercise and then let it do whatever it wants.
+        if (Player.getCurrentExercise().getId() == 5) {
+            Gos.mainScene.getChangePanelSet().changeShapeHelperText("You can only change your own shape.  It is the shape with the circle around it.");
+        }
     }
 
     public void startTask(Task task) {

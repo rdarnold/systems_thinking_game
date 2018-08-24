@@ -48,6 +48,11 @@ public final class Player {
     private static boolean m_bInPracticeMode = true;
     public static boolean inPracticeMode() { return m_bInPracticeMode; }
 
+    // Did the player skip sections?  Only for testing and debugging
+    private static boolean m_bSkipped = false;
+    public static boolean getSkipped() { return m_bSkipped; }
+    public static void setSkipped() { m_bSkipped = true; }
+
     // Info if the player wants to provide it.
     private static int id = 0;
     private static int submittedId = 0; // If they tried to submit their own ID we record that too
@@ -390,19 +395,17 @@ public final class Player {
 
     public static Exercise setCurrentExercise(Exercise exe) {
         currentExercise = exe;
-
-        // 2 is the practice exercise.  If we are past that, we
-        // aren't in practice mode anymore.
-        if (currentExercise.getId() > 2) {
-            m_bInPracticeMode = false;
-        }
-        else {
-            m_bInPracticeMode = true;
-        }
-
         // Set the bound value on the Player structure, so that
         // all of our bindings update on the screens
         if (currentExercise != null) {
+            // 2 is the practice exercise.  If we are past that, we
+            // aren't in practice mode anymore.
+            if (currentExercise.getId() > 2) {
+                m_bInPracticeMode = false;
+            }
+            else {
+                m_bInPracticeMode = true;
+            }
             setCurrentExerciseNumberTracker(currentExercise.getId());
             setCurrentExerciseDisplayIdTracker(currentExercise.getDisplayId());
             setCurrentExerciseNameTracker(currentExercise.getName());
@@ -455,12 +458,14 @@ public final class Player {
 
     public static Exercise nextExercise() {
         Exercise exe = null;
-        int nextNum = currentExercise.getId() + 1;
-        if (nextNum >= Data.exerciseList.size()) {
-            exe = null;
-        }
-        else {
-            exe = Data.exerciseList.get(nextNum);
+        if (currentExercise != null) {
+            int nextNum = currentExercise.getId() + 1;
+            if (nextNum >= Data.exerciseList.size()) {
+                exe = null;
+            }
+            else {
+                exe = Data.exerciseList.get(nextNum);
+            }
         }
         return setCurrentExercise(exe);
     }

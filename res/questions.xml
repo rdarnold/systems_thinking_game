@@ -517,16 +517,17 @@
   <question>
     <exercise>5</exercise>
     <name>Chaos</name>
-    <text>In addition to the variables offered in the Change the System screen
-    (Shape Type, Rain Rate, Paradigm, etc.), 
-    were there any others that you would have liked to have been able to change?</text>
+    <text>In addition to the variables offered in the Change the System screenCR
+    (Shape Type, Rain Rate, Paradigm, etc.), were there any others that you wouldCR
+    have liked to have been able to change?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>5</exercise>
     <name>Chaos</name>
-    <text>Did you feel like any of the 7 variables did not do what you expected it to do when
-    you changed it?  If yes, please explain which one(s) and why you felt this way.</text>
+    <text>Did you feel like any of the 8 variables did not do what you expectedCR
+    them to do when you changed them?  If yes, please explain which one(s) and whyCR
+    you felt this way.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
@@ -538,7 +539,8 @@
   <question>
     <exercise>5</exercise>
     <name>Chaos</name>
-    <text>Do you feel that your game play style has changed over the course of the game?  If so, how?</text>
+    <text>Do you feel that your game play style has changed over the course of theCR
+    game?  If so, how?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
@@ -563,14 +565,14 @@
   <question>
     <exercise>6</exercise>
     <name>Post-Assessment Feedback</name>
-    <text>Did any external factors affect your ability to perform well (disruptions, noisy
-    environment, need for coffee, etc.)?</text>
+    <text>Did any external factors affect your ability to perform well (disruptions,CR
+    noisy environment, need for coffee, etc.)?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>6</exercise>
     <name>Post-Assessment Feedback</name>
-    <text>Do you feel that your performance in the game reflected your ability 
+    <text>Do you feel that your performance in the game reflected your abilityCR 
     to think systemically? Why or why not?</text>
     <answerType>MultilineInput</answerType>
   </question>

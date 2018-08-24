@@ -128,6 +128,10 @@ public class ChangePanelSet extends PanelSetBase {
         panelLeft.setValues(node);
     }
 
+    public void changeShapeHelperText(String strNewText) {
+        panelLeft.changeHelperText(strNewText);
+    }
+
     public void onSubmitButton(String fromClassName) {
         ChangeSet changeSet = new ChangeSet(Data.currentValues, Player.getSelectedShape());
 

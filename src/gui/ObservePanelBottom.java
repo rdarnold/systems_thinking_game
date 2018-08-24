@@ -312,7 +312,7 @@ public class ObservePanelBottom extends PanelBottomBase {
     public void updateOneFrame(boolean running, Turn currentTurn) {
         // It's a little weird to use the simRunner to check to see
         // if we are observing but there's actually no other way.  The simulator
-        // itself doesnt have a conccept of observing or not, it just runs
+        // itself doesnt have a concept of observing or not, it just runs
         // a turn of the simulation.  The runner is what controls it, so the
         // runner is what knows whether or not an observation is actually ongoing.
         // Technically the runner is actually the observer of the sim.  So that
@@ -551,6 +551,7 @@ public class ObservePanelBottom extends PanelBottomBase {
         observationTurnText = new Label();
         observationTurnText.setMinWidth(Constants.BUTTON_WIDTH / 2);
         observationTurnText.setAlignment(Pos.CENTER);
+        observationTurnText.setStyle("-fx-font-weight: bold; ");
 
         observationTurnText.textProperty().bind(Bindings.createStringBinding(() -> 
             "Turn " + (m_Observation.getTurnNumber() + 1) + " / " + 

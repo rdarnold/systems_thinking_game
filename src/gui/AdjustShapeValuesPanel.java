@@ -78,6 +78,8 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
     ActionPanelVBox avbSpin;
     ActionPanelVBox avbSpinSpeed;
 
+    Label helperText;
+
     // Which config of change panel?  If the config is the same we don't need to remove and re-add
     // everything.
     private Configs config = Configs.None; 
@@ -90,6 +92,17 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         }
         
         config = configType;
+
+        Label title = new Label("Shape Values");
+        title.setAlignment(Pos.CENTER);
+        title.setStyle("-fx-font-weight: bold; ");
+        m_MainVBox.getChildren().add(title);
+
+        helperText = new Label("You can only change one shape per turn.  Click on a different shape to select it.");
+        helperText.setAlignment(Pos.CENTER);
+        helperText.setWrapText(true);
+        //helperText.setPrefHeight(100);
+        m_MainVBox.getChildren().add(helperText);
 
         removeControls();
 
@@ -169,6 +182,12 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         clearStyles(controlsList); // This clears styles from the vboxes
         setValues();
         setupListeners(localControlsList);
+    }
+
+    public void changeHelperText(String strNewText) {
+        if (helperText != null) {
+            helperText.setText(strNewText);
+        }
     }
     
     public void addToolTips() {

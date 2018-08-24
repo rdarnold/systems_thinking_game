@@ -81,6 +81,12 @@ public class TurnSet {
         return getTurn(getTurnNumber()); 
     }
 
+    public Turn getPreviousTurn() { 
+        if (getTurnNumber() <= 0)
+            return null;
+        return getTurn(getTurnNumber() - 1); 
+    }
+
     public Turn getTurn(int num) {
         if (turns.size() <= 0) {
             return null;

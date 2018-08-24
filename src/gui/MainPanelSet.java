@@ -140,6 +140,13 @@ public class MainPanelSet extends PanelSetBase {
                 break;
         }
     }
+    
+    @Override
+    public void updateOneFrame(boolean running, Turn currentTurn) {
+        if (panelBottom != null) {
+            panelBottom.updateOneFrame(running, currentTurn);
+        }
+    }
 
     public void enableDefaultButtons() {
         panelLeft.enableDefaultButtons();

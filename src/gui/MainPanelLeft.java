@@ -120,6 +120,8 @@ public class MainPanelLeft extends PanelLeftBase {
             @Override
             public void handle(MouseEvent event) {
                 Player.recordButtonAction(event, thisScreen.className());
+                // Unpause it if we were paused
+                Gos.sim.unpause();
                 Gos.mainScene.showObservePanelSet();
             }
         });
@@ -137,6 +139,8 @@ public class MainPanelLeft extends PanelLeftBase {
             @Override
             public void handle(MouseEvent event) {
                 Player.recordButtonAction(event, thisScreen.className());
+                // Unpause it if we were paused
+                Gos.sim.unpause();
                 Gos.mainScene.showInquirePanelSet();
             }
         });
@@ -153,6 +157,8 @@ public class MainPanelLeft extends PanelLeftBase {
             @Override
             public void handle(MouseEvent event) {
                 Player.recordButtonAction(event, thisScreen.className());
+                // Unpause it if we were paused
+                Gos.sim.unpause();
                 Gos.mainScene.showExperimentPanelSet();
             }
         });

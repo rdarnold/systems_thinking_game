@@ -143,6 +143,7 @@ public class ChangePanelBottom extends PanelBottomBase {
         turnText = new Label();
         turnText.setMinWidth(Constants.BUTTON_WIDTH / 2);
         turnText.setAlignment(Pos.CENTER);
+        turnText.setStyle("-fx-font-weight: bold; ");
         getChildren().add(turnText);
         GridPane.setRowIndex(turnText, 0);
         GridPane.setColumnIndex(turnText, 4);

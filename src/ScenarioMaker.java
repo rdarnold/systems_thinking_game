@@ -176,7 +176,7 @@ public class ScenarioMaker {
 
         // System 2 is eight different types.
         SysShape shape;
-        int x = 200;
+        int x = 100;
         int y = 200;
         
         shape = sim.addShape(x, y, 6);

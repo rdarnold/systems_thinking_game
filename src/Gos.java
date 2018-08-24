@@ -69,8 +69,18 @@ public class Gos extends Application {
     int wid = 1000;
     int hgt = 800;
 
+    ////////////////////////////////////////////
+    ///// Testing and debugging variables //////
+    ////////////////////////////////////////////
+    // All should be false for deployment //////
+    ////////////////////////////////////////////
     public static boolean testing = false;
     public static boolean skipSurveys = false;
+    public static boolean showSkipWindow = true;
+    ////////////////////////////////////////////
+    ////////////////////////////////////////////
+    ////////////////////////////////////////////
+
     public static Stage stage;
 
     // Some statics that people can access from wherever so we don't have to
@@ -95,6 +105,7 @@ public class Gos extends Application {
     public static VariableWindow variableWindow;
     public static OKWindow noDiscoveryPointsWindow;
     public static ScratchPadWindow scratchPadWindow;
+    public static SkipToWindow skipToWindow;
 
     @Override
     public void start(Stage primaryStage) {
@@ -130,6 +141,7 @@ public class Gos extends Application {
         startRealGameWindow = new StartRealGameWindow(600, 700);
         variableWindow = new VariableWindow(400, 600);
         scratchPadWindow = new ScratchPadWindow(600, 600);
+        skipToWindow = new SkipToWindow(400, 600);
 
         String str = "Sorry, you don't have enough Discovery Points to do that.  You will " +
         "get another one next turn.";
@@ -195,6 +207,16 @@ public class Gos extends Application {
 
         Player.startTime = System.currentTimeMillis();
         welcomeWindow.showAndWait();
+
+        // Now let them skip to whereever they want
+        if (showSkipWindow == true) {
+            skipToWindow.showAndWait();
+            if (Player.getSkipped() == true) { 
+                simRunner.startTest();
+                return;
+            }
+        }
+
         // They will have indicated on the prior screen if they played before or not
         if (Player.getPlayedBefore() == true) {
             playedBeforeWindow.showAndWait();
