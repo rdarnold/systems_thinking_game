@@ -54,6 +54,7 @@ public class Score {
         switch (exId) {
             case 0:
             case 1:
+            case 5:
             case 6:
                 // These are all surveys and questionairres and practice
                 break;
@@ -66,9 +67,9 @@ public class Score {
             case 4:
                 createExerciseScore2();
                 break;
-            case 5:
-                createExerciseScore3();
-                break;
+            /*case 5:
+                createExerciseScore3createExerciseScore3();
+                break;*/
             default:
                 break;
         }
@@ -108,7 +109,7 @@ public class Score {
         }
     }
 
-    private void createExerciseScore2() {
+    /*private void createExerciseScore2() {
         switch (taskId) {
             case 0: 
             case 1:{
@@ -154,9 +155,9 @@ public class Score {
                 break;
             }
         }
-    }
+    }*/
 
-    private void createExerciseScore3() {
+    private void createExerciseScore2() {
         switch (taskId) {
             case 0: 
             case 1: {

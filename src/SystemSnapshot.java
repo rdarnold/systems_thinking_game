@@ -8,12 +8,10 @@ public class SystemSnapshot {
     int maxTurns = -1;
     int selectedShapeIndex = 0; // Which shape was selected when this snap was taken?
 
-    // We'll start these with some size so they don't have to keep re-allocating.
-    // Maybe this will save us a little crunch time.  It does not seem to.
-    public ArrayList<SysShape> shapes = new ArrayList<SysShape>(100);
-    public ArrayList<Raindrop> drops = new ArrayList<Raindrop>(100);
-    public ArrayList<Spike> spikes = new ArrayList<Spike>(100);
-    public ArrayList<Earthpatch> patches = new ArrayList<Earthpatch>(100);
+    public ArrayList<SysShape> shapes = new ArrayList<SysShape>();
+    public ArrayList<Raindrop> drops = new ArrayList<Raindrop>();
+    public ArrayList<Spike> spikes = new ArrayList<Spike>();
+    public ArrayList<Earthpatch> patches = new ArrayList<Earthpatch>();
 
     /*public ArrayList<SysShape> shapes; 
     public ArrayList<Raindrop> drops; 
@@ -31,11 +29,15 @@ public class SystemSnapshot {
     public ArrayList<Earthpatch> getPatches() { return patches; }
     public Values getValues() { return values; }
 
-    public void snap(Simulator sim) {
+    public void clear() {
         shapes.clear();
         drops.clear();
         spikes.clear();
         patches.clear();
+    }
+    
+    public void snap(Simulator sim) {
+        clear();
 
         // Allocate them with exactly the right sizes from the get-go
         /*shapes = new ArrayList<SysShape>(sim.shapes.size());
@@ -122,13 +124,6 @@ public class SystemSnapshot {
             Earthpatch newItem = new Earthpatch(item);
             sim.addEarthpatch(newItem);
         }
-        
-        /*if (currentTurnNumber != -1) {
-            Player.setCurrentTurnNumber(currentTurnNumber);
-        }
-        if (maxTurns != -1) {
-            Player.setMaxTurns(maxTurns);
-        }*/
 
         if (selectedShapeIndex < sim.shapes.size()) {
             Gos.selectShape(sim.shapes.get(selectedShapeIndex));

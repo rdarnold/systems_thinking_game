@@ -119,9 +119,13 @@ public class ContactConsentWindow extends DialogWindow {
         titleLabel = addCenteredLabel(str);
         Utils.addVerticalSpace(box, space);
 
+
         str = "If you consent to being contacted about your gameplay data and results, " +
-         "please fill out the name and/or email fields below.  Any personally identifiable " +
-         "data you provide will be protected and stored offline.";
+         "please fill out the name and/or email fields below. Any personally identifiable " +
+         "data you provide will be protected and stored offline. All subjects providing " +
+         "personally identifiable data must be over 18 years of age. At the time of this study, " +
+         "the method of assessment is still unproven and thus each subject’s score should not " +
+         "be regarded as authoritative.";
         textLabel = addLeftLabel(str);
         Utils.addVerticalSpace(box, space);
 

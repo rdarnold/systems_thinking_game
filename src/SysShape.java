@@ -45,7 +45,8 @@ public class SysShape extends MovablePolygon {
     int totalSpikeHits = 0;
     double growArmorDesire = 0;
 
-    double spikeDamageMultiplier = 1.0; //0.2;
+    // Increased this to make it more significant
+    double spikeDamageMultiplier = 1.5; //1.0; //0.2;
     double armorGrowthRate = 2.0;
 
     // How much of spinSpeed per frame?
@@ -83,29 +84,29 @@ public class SysShape extends MovablePolygon {
 
     // These four variables all depend on the number of corners; they
     // can be viewed almost like "cultural traits"
+    // But these have all been minimized to have less effect
     public double getStealRate() {
         if (getNumCorners() == 3) {
-            return 2.0;
+            return 1.2;
         }
         return 1.0;
     }
+    // This only affects earth patches and rain.
     public double getGrowthRate() {
         if (getNumCorners() == 4) {
-            // Had it as 2.0 but I think that's too
-            // much
-            return 1.5;
+            return 1.2;
         }
         return 1.0;
     }
     public double getMoveRate() {
         if (getNumCorners() == 5) {
-            return 2.0;
+            return 1.2;
         }
         return 1.0;
     }
     public double getSpikeDefense() {
         if (getNumCorners() == 6) {
-            return 2.0;
+            return 1.2;
         }
         return 1.0;
     }
@@ -451,7 +452,8 @@ public class SysShape extends MovablePolygon {
         }*/
     }
 
-    private static int amountPerPatch = 6;
+    // Doubling this for our experimental version
+    private static int amountPerPatch = 12;
     public static int getAmountPerPatch() { return amountPerPatch; }
     public void hitEarth(Earthpatch patch) {
         if (patch.getHit() == true) {
@@ -639,6 +641,9 @@ public class SysShape extends MovablePolygon {
         for (SysShape shape : inRange) {
             shape.grow(amt, true);
         }
+        // Post-clear so we don't somehow leak this memory if the shape itself is 
+        // cleared 
+        inRange.clear();
 
         return amt;
     }
@@ -672,7 +677,10 @@ public class SysShape extends MovablePolygon {
         // not trigger this.
         if (shared == false && 
             Data.currentValues.paradigm == Constants.Paradigms.Cooperative.getValue()) {
-            amt = share(amt);
+            // And actually we're going to say that the sum is more than the addition
+            // of the parts, so when we share we actually improve growth more.  So we
+            // multiply by 2.
+            amt = share(amt * 2);
         }
 
         // We could do a transition graphic here to make this look better.

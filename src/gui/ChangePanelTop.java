@@ -92,11 +92,13 @@ public class ChangePanelTop extends AdjustOverallValuesPanel {
         infoLabel.setPrefWidth(instructionTextWidth);
         infoLabel.setStyle("-fx-font-weight: bold; ");
         infoLabel.textProperty().bind(Bindings.createStringBinding(() -> 
-            "Task " + (Player.getCurrentTaskNumberTracker() + 1) +
+            /*"Task " + (Player.getCurrentTaskNumberTracker() + 1) +
             ", " + Player.getCurrentTaskNameTracker() +
             ": " + Player.getCurrentTaskTextTracker(),
             Player.currentTaskNumberTrackerProperty(),
             Player.currentTaskNameTrackerProperty(),
+            Player.currentTaskTextTrackerProperty()*/
+            Player.getCurrentTaskTextTracker(),
             Player.currentTaskTextTrackerProperty()
         ));
         super.m_MainVBox.getChildren().add(infoLabel);

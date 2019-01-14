@@ -239,6 +239,21 @@ public class Simulator {
         playingTurn = turn;
     }
 
+    Turn testTurn; // = new Turn();
+    // This is a test to see if our deallocation is working properly for frames
+    public void frameTest() {
+        testTurn = new Turn();
+        for (int i = 0; i < 1000; i++) {
+            testTurn.addFrame(this);
+        }
+        Utils.log("Allocated...");
+    }
+    public void frameTestClear() {
+        testTurn.clearFrames();
+        testTurn = null;
+        Utils.log("Cleared...");
+    }
+
     public void updateOneFrame(boolean running) {
         // Ok in this case we are playing through a turn,
         // we've pre-generated everything already.
@@ -358,10 +373,6 @@ public class Simulator {
     public void addRaindrop(Raindrop drop) {
         rainDrops.add(drop);
         // Signal that it was added
-        /*if (simulatorListener != null) {
-            simulatorListener.onRaindropAdded(drop);
-        }*/
-        //for (SimulatorEventListener simulatorListener : simulatorListeners) {
         for (int i = 0; i < simulatorListeners.size(); i++) {
             simulatorListeners.get(i).onRaindropAdded(drop);
         }
@@ -514,20 +525,9 @@ public class Simulator {
         }
         patches.add(patch);
         // Signal that it was added
-        /*if (simulatorListener != null) {
-            simulatorListener.onEarthpatchAdded(patch);
-        }*/
-        //for (SimulatorEventListener simulatorListener : simulatorListeners) {
         for (int i = 0; i < simulatorListeners.size(); i++) {
             simulatorListeners.get(i).onEarthpatchAdded(patch);
         }
-    }
-
-    public void addRandomEarthpatch() {
-        Earthpatch patch = new Earthpatch(this);
-        int num = (int)(patch.getSize()/2.0);
-        patch.moveTo(Utils.number(num, width - num), Utils.number(num, height - num));
-        addEarthpatch(patch);
     }
 
     public void updatePatches() {
@@ -551,8 +551,6 @@ public class Simulator {
         if (Utils.number(0, 15) != 1) {
             return;
         }
-
-        //addRandomEarthpatch();
     }
 
     public void addSpike(Spike spike) {
@@ -826,6 +824,8 @@ public class Simulator {
         int num = frameNum;
         num = Utils.clamp(num, 0, currentTurn.getFrames().size() - 1);
         SystemSnapshot shot = currentTurn.getFrame(num);
+        if (shot == null)
+            return;
         shot.restore(this);
         currentTurn.setCurrentFrameNumber(num);
     }

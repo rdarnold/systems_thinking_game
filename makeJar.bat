@@ -1,1 +1,1 @@
-jar.exe cvmf META-INF/manifest.mf build/SystemsThinkingGame.jar css res -C bin gos
+jar.exe cvmf META-INF/manifest.mf build/SystemsThinkingGameEvolved.jar css res -C bin gos

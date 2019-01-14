@@ -97,16 +97,6 @@ public class Earthpatch extends MovableCircle {
         setSpeed(Utils.random(-2, 2), Utils.random(-2, 2));
     }
 
-    public void spawnNewShape(Earthpatch patch) {
-        // Average the two centers and spawn a new shape.
-        hit = true;
-        patch.hit = true;
-        double x = (getCenterX() + patch.getCenterX()) / 2;
-        double y = (getCenterY() + patch.getCenterY()) / 2;
-        SysShape shape = sim.spawnRandomSysShape(x, y);
-        shape.setSize(Utils.number(10, (int)maxSize));
-    }
-
     // They should need something to spawn.  I have to limit
     // this growth somehow.  Or when they spawn they are smaller.
     public void spawnNewEarthpatch(Earthpatch patch) {

@@ -497,11 +497,24 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
     }
 
     // So get the variability in a variable from the slider.
-    // For now we are doing 0 is 0.5, and full is double.
+    // For now we are doing 0 is 0.25, and full is x4.
     private double getMultiplierForSlider(Slider slider) {
         double mult = 1;
         double val = slider.getValue();
-        if (val == 50)
+        double min = 0.25;
+        double max = 4;
+        double mid = 50;
+
+        // The range is 0-100, so the midpoint is 50.  At
+        // the min, which is 0, the multiplier is 0.25.  At the max,
+        // which is 100, multiplier is 4.  So we need a range from
+        // 0.25 to 4.00, over the course of 100 units.
+        double total = max - min;
+        double oneUnitVal = total / 100.0;
+
+        return min + (val * oneUnitVal);
+
+        /*if (val == 50)
             mult = 1;
         else if (val > 50) {
             val -= 50;
@@ -513,15 +526,15 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
             // Now, val is 0-50, make it so that 50 is 1 and
             // 0 is 0.5
             mult = (0.5 + (val / 100F));
-        }
-        return mult;
+        }*/
+        //return mult;
     }
 
     public void submit(Values values) {
         // Apply changes.
         // Basically take what we have on the screen and apply it to current values.
-        values.globalMoveRate = 
-            Data.startingValues.globalMoveRate * getMultiplierForSlider(globalSlider);
+        //values.globalMoveRate = 
+          //  Data.startingValues.globalMoveRate * getMultiplierForSlider(globalSlider);
 
         values.turnSeconds = cbDur.getSelectionModel().getSelectedIndex() + 1;
 
@@ -530,14 +543,14 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         values.rainRate = 
             Data.startingValues.rainRate * getMultiplierForSlider(rainRateSlider);
 
-        values.rainSpeedVar = 
-            Data.startingValues.rainSpeedVar * getMultiplierForSlider(rainSpeedSlider);
+        //values.rainSpeedVar = 
+          //  Data.startingValues.rainSpeedVar * getMultiplierForSlider(rainSpeedSlider);
 
-        values.movingDotSpeedRate = 
-            Data.startingValues.movingDotSpeedRate * getMultiplierForSlider(dotSpeed);
+        //values.movingDotSpeedRate = 
+            //Data.startingValues.movingDotSpeedRate * getMultiplierForSlider(dotSpeed);
 
-        values.movingDotSize = 
-            Data.startingValues.movingDotSize * getMultiplierForSlider(dotSize);
+        //values.movingDotSize = 
+           // Data.startingValues.movingDotSize * getMultiplierForSlider(dotSize);
 
         Color color = (Color)dotColor.getValue();
         // Extremely strange that I need to multiply by 255 in this case as sometimes

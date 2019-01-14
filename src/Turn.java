@@ -11,7 +11,7 @@ public class Turn {
     int m_nMaxFrames = 0;
 
     // Initialize to 300 because there are 300 frames max in a turn, generally.
-    ArrayList<SystemSnapshot> frames = new ArrayList<SystemSnapshot>(300);
+    ArrayList<SystemSnapshot> frames = new ArrayList<SystemSnapshot>();
     
     public boolean recordFrames = false;
     public void setMaxFrames(int num) {m_nMaxFrames = num; }
@@ -26,6 +26,31 @@ public class Turn {
         frames.add(snap);
     }
 
+    // Just remove all but the first one.
+    public void clearFrames() {
+        // THIS IS THE PROBLEM:
+        //  The garbage collector doesn't have to return memory to the OS after it collects.
+        //   So YES this is being garbage collected within the application but the memory
+        //   is NOT being returned to the HEAP because the GC doesn't like to return memory
+        //   to the heap.  To fix, I used Xmx to set max memory size to 512 MB which makes
+        //   it return memory to the heap when it reaches that point.
+        SystemSnapshot frame = null;
+        if (frames.size() > 0) {
+            frame = frames.get(0);
+        }
+        // Shouldn't need to do this but maybe it'll help with memory issues...
+        for (int i = 1; i < frames.size(); i++) {
+            frames.get(i).clear();
+        }
+        frames.clear();
+        frames = new ArrayList<SystemSnapshot>();
+        if (frame != null) {
+            frames.add(frame);
+        }
+        m_nCurrentFrameNumber = 0;
+        m_nMaxFrames = 1;
+    }
+
     // Clear all frames after frameNum
     public void trimFrames(int frameNum) {
         if (frames == null || frameNum > frames.size())
@@ -37,7 +62,10 @@ public class Turn {
     }
 
     public SystemSnapshot getFrame(int num) {
-        if (num >= frames.size()) {
+        if (frames == null || frames.size() <= 0) {
+            return null;
+        }
+        if (num < 0 || num >= frames.size()) {
             return null;
         }
         return frames.get(num);

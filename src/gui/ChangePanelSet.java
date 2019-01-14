@@ -146,6 +146,23 @@ public class ChangePanelSet extends PanelSetBase {
         // Show default areas again.
  	    parent.showDefaultAreas();
 
+        // At this point we always want to clear out the frames from all previous turns from anything
+        // the player has done because they're all lost now.  This should actually be clear already
+        // when we get here but just in case.  We know once we hit the Submit button here, we
+        // are moving forward with no way to go back.
+        TurnSet ts = Player.getPlayedTurns();
+        if (ts.getTurns() != null) {
+            for (Turn turn : ts.getTurns()) {
+                turn.clearFrames();
+            }
+        }
+
+        // This should not be necessary...
+        //System.gc();
+        /*try {
+            Thread.sleep(100);
+        } catch (Exception e) {}*/
+
         // Do next turn.
         Gos.simRunner.advanceTask();
         

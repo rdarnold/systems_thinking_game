@@ -118,11 +118,13 @@ public class MainPanelTop extends PanelTopBase {
         taskTask.setPrefWidth(instructionTextWidth);
         taskTask.setStyle("-fx-font-weight: bold; ");
         taskTask.textProperty().bind(Bindings.createStringBinding(() -> 
-            "Task " + (Player.getCurrentTaskNumberTracker() + 1) +
+            /*"Task " + (Player.getCurrentTaskNumberTracker() + 1) +
             ", " + Player.getCurrentTaskNameTracker() +
             ": " + Player.getCurrentTaskTextTracker(),
             Player.currentTaskNumberTrackerProperty(),
             Player.currentTaskNameTrackerProperty(),
+            Player.currentTaskTextTrackerProperty()*/
+            Player.getCurrentTaskTextTracker(),
             Player.currentTaskTextTrackerProperty()
         ));
 

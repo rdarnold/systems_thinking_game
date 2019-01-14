@@ -114,20 +114,6 @@ public final class Player {
         if (discoveryPoints.get() < 0) { discoveryPoints.set(0); }
     }
 
-    /*private static final IntegerProperty maxTurns = 
-        new SimpleIntegerProperty(defaultMaxTurns);
-    public static IntegerProperty maxTurnsProperty() { return maxTurns; }
-    public static int getMaxTurns() { return maxTurns.get(); }
-    public static void setMaxTurns(int num) { maxTurns.set(num); }
-    public static void resetMaxTurns() { maxTurns.set(defaultMaxTurns); }
-    public static void addMaxTurns() { addMaxTurns(1); }
-    public static void addMaxTurns(int num) {  maxTurns.set(maxTurns.get() + num); }
-    public static void subMaxMaxTurns() { subMaxMaxTurns(1); }
-    public static void subMaxMaxTurns(int num) {
-        maxTurns.set(maxTurns.get() - num);
-        if (maxTurns.get() < 0) {  maxTurns.set(0);  }
-    }*/
-
     // Unfortunately this has to be different than the turn number in the TurnSet.
     // Because when we start a new turn, we haven't added a turn obj to the turn set
     // yet.  And we won't until we actually hit submit from Change System, and that's

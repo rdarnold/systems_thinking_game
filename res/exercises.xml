@@ -45,14 +45,6 @@
   <exercise>
     <id>4</id>
     <displayId>3</displayId>
-    <name>Eight Shapes</name>
-    <text>This exercise is more complicated than the previous one, introducing additional
-    shapes. The systemic knowledge you gained during the previous exercise can be applied
-    to this new exercise as the underlying system is the same.</text>
-  </exercise>
-  <exercise>
-    <id>5</id>
-    <displayId>4</displayId>
     <usesLevels>true</usesLevels>
     <noSelect>true</noSelect>
     <noDeath>true</noDeath>
@@ -66,7 +58,7 @@
     to other shapes, but you can still change overall system parameters.</text>
   </exercise>
   <exercise>
-    <id>6</id>
+    <id>5</id>
     <displayId>0</displayId>
     <name>Post-Assessment Feedback Questionnaire</name>
     <popupText>Thank you for playing the game! Your input is extremely valuable. As the final step,

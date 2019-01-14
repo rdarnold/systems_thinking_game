@@ -142,6 +142,8 @@ public class MainPanelLeft extends PanelLeftBase {
                 // Unpause it if we were paused
                 Gos.sim.unpause();
                 Gos.mainScene.showInquirePanelSet();
+                // Do a test for now - TODO REMOVE THIS
+                //Gos.sim.frameTest();
             }
         });
         buttonList.add(btn);
@@ -160,6 +162,8 @@ public class MainPanelLeft extends PanelLeftBase {
                 // Unpause it if we were paused
                 Gos.sim.unpause();
                 Gos.mainScene.showExperimentPanelSet();
+                // Do a test for now - TODO REMOVE THIS
+                //Gos.sim.frameTestClear();
             }
         });
         buttonList.add(btn);

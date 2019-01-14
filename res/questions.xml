@@ -429,56 +429,6 @@
   </question>
   <question>
     <exercise>4</exercise>
-    <name>Eight Shapes</name>
-    <text>Which of the following would you include as important parts of this system?</text>
-    <answerType>Check</answerType>
-    <answerOptions>
-      <answerOption>Shape spin direction</answerOption>
-      <answerOption>Shape color</answerOption>
-      <answerOption>Speed of the rain</answerOption>
-      <answerOption>Number of corners of a shape</answerOption>
-      <answerOption>Speed of your PC</answerOption>
-      <answerOption>Design of the program's user interface</answerOption>
-      <answerOption>The random seed that determines when and where rain drops appear</answerOption>
-      <answerOption>What you ate for dinner last night</answerOption>
-      <answerOption>None of these</answerOption>
-    </answerOptions>
-  </question>
-  <question>
-    <exercise>4</exercise>
-    <name>Eight Shapes</name>
-    <text>Please briefly describe your strategy for this scenario.</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>4</exercise>
-    <name>Eight Shapes</name>
-    <text>If you could do this scenario over, is there anything you would do differently?</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>4</exercise>
-    <name>Eight Shapes</name>
-    <text>Do you feel that your gameplay style has changed since the first scenario?  If so, how?</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>5</exercise>
-    <name>Chaos</name>
-    <text>What do you think the special trait for triangles is?</text>
-    <answerType>Choice</answerType>
-    <answerOptions>
-        <answerOption>Growth - They grow more from rain and balls</answerOption>
-        <answerOption>Defense - They take less damage from stars</answerOption>
-        <answerOption>Offense - They take size from other shapes faster</answerOption>
-        <answerOption>Movement - They move faster than other shapes</answerOption>
-        <answerOption>None of those</answerOption>
-        <answerOption>Not enough information</answerOption>
-        <answerOption>I don't know</answerOption>
-    </answerOptions>
-  </question>
-  <question>
-    <exercise>5</exercise>
     <name>Chaos</name>
     <text> If a large shape, rapidly spinning left (counter-clockwise), wereCR 
     introduced to the system, what do you think would happen to it overCR
@@ -495,7 +445,7 @@
     </answerOptions>
   </question>
   <question>
-    <exercise>5</exercise>
+    <exercise>4</exercise>
     <name>Chaos</name>
     <text>What does the color of a spinning shape mean?</text>
     <answerType>Choice</answerType>
@@ -509,13 +459,13 @@
     </answerOptions>
   </question>
   <question>
-    <exercise>5</exercise>
+    <exercise>4</exercise>
     <name>Chaos</name>
     <text>Please briefly describe your strategy for this scenario.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>5</exercise>
+    <exercise>4</exercise>
     <name>Chaos</name>
     <text>In addition to the variables offered in the Change the System screenCR
     (Shape Type, Rain Rate, Paradigm, etc.), were there any others that you wouldCR
@@ -523,7 +473,7 @@
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>5</exercise>
+    <exercise>4</exercise>
     <name>Chaos</name>
     <text>Did you feel like any of the 8 variables did not do what you expectedCR
     them to do when you changed them?  If yes, please explain which one(s) and whyCR
@@ -531,66 +481,66 @@
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>5</exercise>
+    <exercise>4</exercise>
     <name>Chaos</name>
     <text>If you could do this scenario over, is there anything you would do differently?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>5</exercise>
+    <exercise>4</exercise>
     <name>Chaos</name>
     <text>Do you feel that your game play style has changed over the course of theCR
     game?  If so, how?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>6</exercise>
+    <exercise>5</exercise>
     <name>Post-Assessment Feedback</name>
     <text>What are the things you found most difficult about this simulation?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>6</exercise>
+    <exercise>5</exercise>
     <name>Post-Assessment Feedback</name>
     <text>What are the things you found easiest about this simulation?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>6</exercise>
+    <exercise>5</exercise>
     <name>Post-Assessment Feedback</name>
     <text>Is there anything about the simulation that you feel hindered your ability 
     to perform well?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>6</exercise>
+    <exercise>5</exercise>
     <name>Post-Assessment Feedback</name>
     <text>Did any external factors affect your ability to perform well (disruptions,CR
     noisy environment, need for coffee, etc.)?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>6</exercise>
+    <exercise>5</exercise>
     <name>Post-Assessment Feedback</name>
     <text>Do you feel that your performance in the game reflected your abilityCR 
     to think systemically? Why or why not?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>6</exercise>
+    <exercise>5</exercise>
     <name>Post-Assessment Feedback</name>
     <text>Was any part of the simulation itself confusing?  If yes, please explain.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>6</exercise>
+    <exercise>5</exercise>
     <name>Post-Assessment Feedback</name>
     <text>Did you fully understand the simulation tasks, and your objectives as a player?  
     If not, please explain.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>6</exercise>
+    <exercise>5</exercise>
     <name>Post-Assessment Feedback</name>
     <text>If there are any other comments you would like to make, please enter them here.</text>
     <answerType>MultilineInput</answerType>

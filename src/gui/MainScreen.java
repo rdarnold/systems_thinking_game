@@ -99,8 +99,6 @@ public class MainScreen extends GosSceneBase {
 
     @Override
     public void createBuildingBlocks() {
-        //InputStream stream = getClass().getClassLoader().getResourceAsStream("css/naru.main.css");
-        //scene.getStylesheets().add(getClass().getResource("css/naru.main.css").toExternalForm());
         getStylesheets().add("css/gos.main.css");
 
         /*scene.setOnKeyReleased(new EventHandler<KeyEvent>() {

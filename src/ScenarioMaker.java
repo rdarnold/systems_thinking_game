@@ -42,12 +42,12 @@ public class ScenarioMaker {
             prepareSystem1();
         }
         else if (exercise.getId() == 4) {
-            prepareSystem2();
-        }
-        else if (exercise.getId() == 5) {
             prepareSystem3();
         }
-        else if (exercise.getId() == 6) {
+        /*else if (exercise.getId() == 5) {
+            prepareSystem3();
+        }*/
+        else if (exercise.getId() == 5) {
             // Post-assessment survey
             return;
         }
@@ -171,7 +171,7 @@ public class ScenarioMaker {
         shape.setSpinRight();
     }
 
-    public void prepareSystem2() {
+    /*public void prepareSystem2() {
         sim.reset();
 
         // System 2 is eight different types.
@@ -219,7 +219,7 @@ public class ScenarioMaker {
         shape.setSize(50);
         shape.setSpinSpeed(4);
         shape.setSpinLeft();
-    }
+    }*/
 
     
     // The insanity exercise.  We just scatter random

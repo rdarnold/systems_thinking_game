@@ -166,6 +166,12 @@ public class SimRunner implements SimulatorEventListener {
         //Player.addCurrentTurnNumber();
         //Turn turn = runOneTurn(false); // Typically we don't need to record.  It's very CPU intensive.
         Turn turn = runOneTurn(true); // Now actually we always record so that we can use the new slider
+        // But we have to make sure we free all the frames of our old turn so we don't waste memory.
+        // We don't need them anymore anyway.
+        Turn oldTurn = Player.getPlayedTurns().getCurrentTurn();
+        if (oldTurn != null) {
+            oldTurn.clearFrames();
+        }
         Player.getPlayedTurns().addTurn(turn);
         return true;
     }
