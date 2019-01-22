@@ -109,6 +109,7 @@ public class Simulator {
         reset();
     }
 
+    boolean frame_skip = false;
     public void initMainLoop() {
         //lastTime = System.nanoTime();
         mainLoop = new AnimationTimer() {
@@ -129,6 +130,13 @@ public class Simulator {
 
                 if (paused == true)
                     return;
+
+                // We don't need a 60 fps, 30 is fine, so we just skip every other frame.
+                if (frame_skip == true) {
+                    frame_skip = false;
+                    return;
+                }
+                frame_skip = true;
 
                 updateOneFrame(running);
                 if (running == true) {

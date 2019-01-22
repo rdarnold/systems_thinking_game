@@ -6,7 +6,7 @@
     </information>
     <resources>
         <!-- Application Resources -->
-        <j2se version="1.7+" max-heap-size="512M" href="http://java.sun.com/products/autodl/j2se"/>
+        <j2se version="1.7+" max-heap-size="256M" href="http://java.sun.com/products/autodl/j2se"/>
         <jar href="http://systemsthinkingtest.com/SystemsThinkingGameEvolved.jar"/>
         <jar href="http://systemsthinkingtest.com/ext/javax.json-1.0.4.jar"/>
         <jar href="http://systemsthinkingtest.com/ext/drive/google-api-services-drive-v3-rev76-1.22.0.jar"/>

@@ -132,10 +132,17 @@ public class MainPanelSet extends PanelSetBase {
         }
 
         // Do some different things depending on what scenario and task we're in
+        // Or should we do this at the end of the turn instead of immediately when the
+        // shapes are removed or added?
         switch (Player.getCurrentExerciseNumberTracker()) {
             case 3:
-                if (numberShapes >= 50 || numberShapes <= 0) {
-                    Gos.mainScene.forceCompleteTask();
+                if (numberShapes >= 50) {
+                    // Win
+                    Gos.mainScene.forceCompleteTask(true);
+                }
+                else if (numberShapes <= 0) {
+                    // Lose
+                    Gos.mainScene.forceCompleteTask(false);
                 }
                 break;
         }

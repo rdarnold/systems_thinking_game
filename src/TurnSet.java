@@ -120,6 +120,10 @@ public class TurnSet {
         return turn.getCurrentFrame();
     }
 
+    public void setToLastTurn() {
+        setTurnNumber(getMaxTurns()-1);
+    }
+
     public boolean onLastTurn() {
         return (getTurnNumber() >= (getMaxTurns()-1));
     }

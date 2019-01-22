@@ -221,7 +221,11 @@ public class MainScreen extends GosSceneBase {
     }
 
     public void showNextTaskWindow() {
-        nextTaskWindow.showAndWait();
+        nextTaskWindow.showAndWait(true);
+    }
+
+    public void showNextTaskWindow(boolean won) {
+        nextTaskWindow.showAndWait(won);
     }
 
     public void showDefaultAreas() {
@@ -257,13 +261,20 @@ public class MainScreen extends GosSceneBase {
 
     // Just stop what we are doing and complete the task, maybe we reached
     // some kind of goal.
-    public void forceCompleteTask() {
-        sim.pause();
+    public void forceCompleteTask(boolean won) {
+        //sim.pause();
+        sim.endTurn();
         enableDefaultButtons();
         update();
+        Player.getPlayedTurns().setToLastTurn();
 
+        // But we also have to update all the other stuff like advancing to the end of
+        // the task and resetting the simulator
+
+        // Wait, is this also being called from sim.endTurn()?  Which should trigger
+        // the onEndTurn function in this class?
         Platform.runLater(() -> {
-            Gos.mainScene.showNextTaskWindow();
+            Gos.mainScene.showNextTaskWindow(won);
         });
     }
 

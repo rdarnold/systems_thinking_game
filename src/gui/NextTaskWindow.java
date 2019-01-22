@@ -37,7 +37,9 @@ public class NextTaskWindow extends DialogWindow {
         thisScreen = this;
     }
 
-    private void build() {
+    // Won of true means we won the turn, false means we lost so we'd want to
+    // display something a little different
+    private void build(boolean won) {
         removeTempControls();
 
         int wid = m_nWidth;
@@ -60,7 +62,12 @@ public class NextTaskWindow extends DialogWindow {
 
         //str = "Congratulations, you have completed " + task.toStringTitle() + "!";
         // Maybe I shouldn't be so enthusiastic - what if they sucked and lost all their shapes.
-        str = "You have completed " + task.toStringTitle() + ".";
+        if (won == true) {
+            str = "You have completed " + task.toStringTitle() + ".";
+        }
+        else {
+            str = "All of your shapes have been destroyed so you cannot continue. " + task.toStringTitle() + " is over.";
+        }
         addCenteredLabel(str);
         Utils.addVerticalSpace(box, space);
 
@@ -108,7 +115,12 @@ public class NextTaskWindow extends DialogWindow {
     
     @Override
     public void showAndWait() {
-        build();
+        build(true);
+        super.showAndWait();
+    }
+
+    public void showAndWait(boolean won) {
+        build(won);
         super.showAndWait();
     }
 }
