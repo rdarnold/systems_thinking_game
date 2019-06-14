@@ -1,3 +1,3 @@
 cd build
-jarsigner -verify -certs -verbose Gos.jar
+jarsigner -verify -certs -verbose SystemsThinkingGame.jar
 cd ..
