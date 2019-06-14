@@ -1,0 +1,8 @@
+For the Sectigo cert (received in email)
+- Must open/install the cert in FireFox
+    Then, go to Options
+    Privacy and Security
+    Certificate->View Certificates
+    Click on the Sectigo cert and click "Backup" 
+    set password for **SystemsThinkingGame12
+- Once I have the .p12 file, use Keystore Explorer to open it, and "Rename" to "ra_id" instead of "ross arnold's sectigo limited id"
