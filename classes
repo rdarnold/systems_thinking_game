@@ -11,6 +11,7 @@ src/GameDataItem.java
 src/Gos.java
 src/ExerciseListWrapper.java
 src/FileTransfer.java
+src/GravityWell.java
 src/Info.java
 src/InfoListWrapper.java
 src/MovableCircle.java

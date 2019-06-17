@@ -64,6 +64,7 @@ public class SysPane extends Pane {
     public ArrayList<Raindrop> drops = new ArrayList<Raindrop>();
     public ArrayList<Spike> spikes = new ArrayList<Spike>();
     public ArrayList<Earthpatch> patches = new ArrayList<Earthpatch>();
+    public ArrayList<GravityWell> wells = new ArrayList<GravityWell>();
 
     public void create() {
         VBox.setVgrow(this, Priority.ALWAYS);
@@ -159,7 +160,17 @@ public class SysPane extends Pane {
         getChildren().remove(patch);
         patches.remove(patch);
     }
-    
+
+    public void addGravityWell(GravityWell item) {
+        getChildren().add(item);
+        wells.add(item);
+    }
+
+    public void removeGravityWell(GravityWell item) {
+        getChildren().remove(item);
+        wells.remove(item);
+    }
+       
     public void reset() {
         // Must do these one at a time since they have
         // additional stuff like text, bounding circle.
@@ -170,9 +181,11 @@ public class SysPane extends Pane {
         getChildren().removeAll(drops);
         getChildren().removeAll(spikes);
         getChildren().removeAll(patches);
+        getChildren().removeAll(wells);
         shapes.clear();
         drops.clear();
         spikes.clear();
         patches.clear();
+        wells.clear();
     }
 }

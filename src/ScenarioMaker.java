@@ -62,6 +62,14 @@ public class ScenarioMaker {
         sim.snapCurrent();
     }
 
+    // The generic stuff that's common for all systems in the game
+    public void prePrepareSystem() {
+        GravityWell item = new GravityWell(sim);
+        item.centerInSim();
+        //item.moveTo(10, 10);
+        sim.addGravityWell(item);
+    }
+
     // This class prepares a variety of different scenarios
     // for us based on the task at hand.
     public void prepareRandomSystem() {
@@ -105,11 +113,12 @@ public class ScenarioMaker {
 
     public void prepareSystem0() {
         sim.reset();
+        prePrepareSystem();
 
         // System 0 is six different types.
         SysShape shape;
-        int x = 150;
-        int y = 150;
+        int x = 145;
+        int y = 145;
         
         shape = sim.addShape(x, y, 6);
         shape.setSize(55);
@@ -144,11 +153,12 @@ public class ScenarioMaker {
 
     public void prepareSystem1() {
         sim.reset();
+        prePrepareSystem();
 
         // System 1 is just four different types.
         SysShape shape;
-        int x = 200;
-        int y = 200;
+        int x = 190;
+        int y = 165;
         
         shape = sim.addShape(x, y, 6);
         shape.setSize(55);
@@ -230,6 +240,7 @@ public class ScenarioMaker {
     // folks.
     public void prepareSystem3() {
         sim.reset();
+        prePrepareSystem();
 
         // System 3 is 100 different types.
         SysShape shape;

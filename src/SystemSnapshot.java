@@ -12,6 +12,7 @@ public class SystemSnapshot {
     public ArrayList<Raindrop> drops = new ArrayList<Raindrop>();
     public ArrayList<Spike> spikes = new ArrayList<Spike>();
     public ArrayList<Earthpatch> patches = new ArrayList<Earthpatch>();
+    public ArrayList<GravityWell> wells = new ArrayList<GravityWell>();
 
     /*public ArrayList<SysShape> shapes; 
     public ArrayList<Raindrop> drops; 
@@ -27,6 +28,7 @@ public class SystemSnapshot {
     public ArrayList<Raindrop> getDrops() { return drops; }
     public ArrayList<Spike> getSpikes() { return spikes; }
     public ArrayList<Earthpatch> getPatches() { return patches; }
+    public ArrayList<GravityWell> getGravityWells() { return wells; }
     public Values getValues() { return values; }
 
     public void clear() {
@@ -34,6 +36,7 @@ public class SystemSnapshot {
         drops.clear();
         spikes.clear();
         patches.clear();
+        wells.clear();
     }
     
     public void snap(Simulator sim) {
@@ -81,6 +84,12 @@ public class SystemSnapshot {
             patches.add(newItem);
         }
         //Utils.log("Patches done " + (System.currentTimeMillis() - time));
+        
+        for (int i = 0; i < sim.wells.size(); i++) {
+            GravityWell item = sim.wells.get(i); 
+            GravityWell newItem = new GravityWell(item);
+            wells.add(newItem);
+        }
 
         currentTurnNumber = Player.getCurrentTurnNumber();
         maxTurns = Player.getMaxTurns();
@@ -123,6 +132,12 @@ public class SystemSnapshot {
             Earthpatch item = patches.get(i); 
             Earthpatch newItem = new Earthpatch(item);
             sim.addEarthpatch(newItem);
+        }
+
+        for (int i = 0; i < wells.size(); i++) {
+            GravityWell item = wells.get(i); 
+            GravityWell newItem = new GravityWell(item);
+            sim.addGravityWell(newItem);
         }
 
         if (selectedShapeIndex < sim.shapes.size()) {

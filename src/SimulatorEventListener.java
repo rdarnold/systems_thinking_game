@@ -15,5 +15,7 @@ public interface SimulatorEventListener {
     void onSpikeRemoved(Spike spike);
     void onEarthpatchAdded(Earthpatch patch);
     void onEarthpatchRemoved(Earthpatch patch);
+    void onGravityWellAdded(GravityWell item);
+    void onGravityWellRemoved(GravityWell item);
     void onNumberOfShapesChanged(int numberShapes);
 }

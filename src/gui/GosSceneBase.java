@@ -51,5 +51,7 @@ public abstract class GosSceneBase extends Scene implements SimulatorEventListen
     public void onSpikeRemoved(Spike item) { }
     public void onEarthpatchAdded(Earthpatch item) { }
     public void onEarthpatchRemoved(Earthpatch item) { }
+    public void onGravityWellAdded(GravityWell item) { }
+    public void onGravityWellRemoved(GravityWell item) { }
     public void onNumberOfShapesChanged(int numberShapes) { }
 }

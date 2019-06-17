@@ -34,11 +34,13 @@ public class Simulator {
     public ArrayList<Raindrop> rainDrops;
     public ArrayList<Spike> spikes;
     public ArrayList<Earthpatch> patches;
+    public ArrayList<GravityWell> wells;
 
     public ArrayList<SysShape> getShapes() { return shapes; }
     public ArrayList<Raindrop> getDrops() { return rainDrops; }
     public ArrayList<Spike> getSpikes() { return spikes; }
     public ArrayList<Earthpatch> getPatches() { return patches; }
+    public ArrayList<GravityWell> getGravityWell() { return wells; }
 
     public ArrayList<SystemSnapshot> snapshots;
     public SystemSnapshot currentSnapshot;
@@ -103,6 +105,7 @@ public class Simulator {
         rainDrops = new ArrayList<Raindrop>();
         spikes = new ArrayList<Spike>();
         patches = new ArrayList<Earthpatch>();
+        wells = new ArrayList<GravityWell>();
         snapshots = new ArrayList<SystemSnapshot>();
         currentSnapshot = new SystemSnapshot();
         baseSnapshot = new SystemSnapshot();
@@ -513,6 +516,26 @@ public class Simulator {
         addRandomRaindrop();
     }
 
+    public void removeGravityWell(GravityWell item) {
+        wells.remove(item);
+        // Signal that it was removed
+        /*if (simulatorListener != null) {
+            simulatorListener.onEarthpatchRemoved(item);
+        }*/
+        //for (SimulatorEventListener simulatorListener : simulatorListeners) {
+        for (int i = 0; i < simulatorListeners.size(); i++) {
+            simulatorListeners.get(i).onGravityWellRemoved(item);
+        }
+    }
+
+    public void addGravityWell(GravityWell item) {
+        wells.add(item);
+        // Signal that it was added
+        for (int i = 0; i < simulatorListeners.size(); i++) {
+            simulatorListeners.get(i).onGravityWellAdded(item);
+        }
+    }
+
     public void removeEarthpatch(Earthpatch item) {
         patches.remove(item);
         // Signal that it was removed
@@ -609,11 +632,12 @@ public class Simulator {
         }
         // For each shape, exercise its gravitational pull
         // on all other shapes.
+        // RDA 2019-06-16: New method is that only gravity wells exert pull
         //for (SysShape shape : shapes) {
         for (int i = 0; i < shapes.size(); i++) {
             SysShape shape = shapes.get(i); 
             //for (SysShape otherShape : shapes) {
-            for (int j = 0; j < shapes.size(); j++) {
+            /*for (int j = 0; j < shapes.size(); j++) {
                 SysShape otherShape = shapes.get(j); 
                 if (shape == otherShape || shape.equals(otherShape)) {
                     continue;
@@ -630,7 +654,10 @@ public class Simulator {
                 Earthpatch patch = patches.get(j); 
                 // Apply gravity changes from each other shape
                 shape.receiveGravity(patch, (getGravity(patch) * 4));
-            }
+            }*/
+
+            // New strategy is we only receive from wells
+            shape.receiveGravityFromWells(wells);
 
             // Now evenly apply it.
             shape.applyGravity();

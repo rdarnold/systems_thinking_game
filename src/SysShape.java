@@ -85,29 +85,30 @@ public class SysShape extends MovablePolygon {
     // These four variables all depend on the number of corners; they
     // can be viewed almost like "cultural traits"
     // But these have all been minimized to have less effect
+    // 2019-06-16: Removed the effects entirely to simplify the game
     public double getStealRate() {
-        if (getNumCorners() == 3) {
+        /*if (getNumCorners() == 3) {
             return 1.2;
-        }
+        }*/
         return 1.0;
     }
     // This only affects earth patches and rain.
     public double getGrowthRate() {
-        if (getNumCorners() == 4) {
+        /*if (getNumCorners() == 4) {
             return 1.2;
-        }
+        }*/
         return 1.0;
     }
     public double getMoveRate() {
-        if (getNumCorners() == 5) {
+        /*if (getNumCorners() == 5) {
             return 1.2;
-        }
+        }*/
         return 1.0;
     }
     public double getSpikeDefense() {
-        if (getNumCorners() == 6) {
+        /*if (getNumCorners() == 6) {
             return 1.2;
-        }
+        }*/
         return 1.0;
     }
 
@@ -739,6 +740,17 @@ public class SysShape extends MovablePolygon {
         return (getPrevSize() - getSize());
     }
 
+    // RDA 2019-06-16: Removing the old gravity rules and using a new concept called Gravity Well
+    public void receiveGravity(MovablePolygon from, double amount) {}
+    public void receiveGravity(MovableCircle from, double amount) {}
+
+    public void receiveGravityFromWells(ArrayList<GravityWell> wells) {
+        for (GravityWell well : wells) {
+            receiveGravity(well.getCenterX(), well.getCenterY(), well.getGravityPull());
+        }
+    }
+
+    /*
     public void receiveGravity(MovablePolygon from, double amount) {
         // if you're already colliding, stop applying gravity.
         if (Data.currentValues.gravityRules == Constants.GravityRules.Normal.getValue() &&
@@ -763,7 +775,7 @@ public class SysShape extends MovablePolygon {
         // Based on size, 
         // Should it be based on proximity too?
         receiveGravity(from.getCenterX(), from.getCenterY(), amount);
-    }
+    }*/
 
     int numPulls = 0;
     double totalXPull = 0;

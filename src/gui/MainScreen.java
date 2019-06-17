@@ -389,6 +389,18 @@ public class MainScreen extends GosSceneBase {
     }
 
     @Override
+    public void onGravityWellAdded(GravityWell item) {
+        // Update our shapes.
+        sysPane.addGravityWell(item);
+    }
+
+    @Override
+    public void onGravityWellRemoved(GravityWell item) {
+        // Update our shapes.
+        sysPane.removeGravityWell(item);
+    }
+
+    @Override
     public void update() {
         for (PanelSetBase panelset : panelSetList) {
             panelset.update();
