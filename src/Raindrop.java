@@ -28,6 +28,8 @@ public class Raindrop extends MovableCircle {
             return;
         }
         setSize(3);
+
+        //setOnMouseClicked(t -> Utils.log("RAINDROP"));
     }
 
     public void setDir(Constants.Dir dir) {

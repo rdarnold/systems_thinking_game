@@ -102,41 +102,41 @@ public class SystemSnapshot {
     public void restore(Simulator sim) {
         sim.reset();
         sim.signalReset();
+
+        // We shouldn't need to do these clears because we already cleared in the sim.reset
         sim.shapes.clear();
         sim.rainDrops.clear();
         sim.spikes.clear();
         sim.patches.clear();
+        sim.wells.clear();
+
+        // Now we re-build from the snapshot
         
         //for (SysShape item : shapes) {
         for (int i = 0; i < shapes.size(); i++) {
-            SysShape item = shapes.get(i); 
-            SysShape newItem = new SysShape(item);
+            SysShape newItem = new SysShape(shapes.get(i));
             sim.addShape(newItem);
         }
         
         //for (Raindrop item : drops) {
         for (int i = 0; i < drops.size(); i++) {
-            Raindrop item = drops.get(i); 
-            Raindrop newItem = new Raindrop(item);
+            Raindrop newItem = new Raindrop(drops.get(i));
             sim.addRaindrop(newItem);
         }
 
         //for (Spike item : spikes) {
         for (int i = 0; i < spikes.size(); i++) {
-            Spike item = spikes.get(i); 
-            Spike newItem = new Spike(item);
+            Spike newItem = new Spike(spikes.get(i));
             sim.addSpike(newItem);
         }
 
         for (int i = 0; i < patches.size(); i++) {
-            Earthpatch item = patches.get(i); 
-            Earthpatch newItem = new Earthpatch(item);
+            Earthpatch newItem = new Earthpatch(patches.get(i));
             sim.addEarthpatch(newItem);
         }
 
         for (int i = 0; i < wells.size(); i++) {
-            GravityWell item = wells.get(i); 
-            GravityWell newItem = new GravityWell(item);
+            GravityWell newItem = new GravityWell(wells.get(i));
             sim.addGravityWell(newItem);
         }
 
@@ -153,10 +153,16 @@ public class SystemSnapshot {
         }
 
         Data.currentValues.setTo(values);
+        
+        // BUT REMEMGBER when we set the values, we also need to update the GravityWell
+        // position.  Although theoretically it's already in the correct position just from
+        // being saved out in its regular array.  
+        GravityWell well = sim.wells.get(0);
+        well.moveTo(values.gravityWellCenterX, values.gravityWellCenterY);
     }
 
     // How much "stuff" is in this snapshot?
     public int getNumItems() {
-        return shapes.size() + drops.size() + spikes.size() + patches.size();
+        return shapes.size() + drops.size() + spikes.size() + patches.size() + wells.size();
     }
 }

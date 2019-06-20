@@ -216,6 +216,15 @@ public class MainScreen extends GosSceneBase {
         mainPanelSet.show();
     }
 
+    // Basically so I can check if we're on a screen that allows changing stuff.
+    public boolean isShowingChangePanelSet() {
+        return changePanelSet.isShown();
+    }
+    public boolean isShowingExpCreationPanelSet() {
+        return expCreationPanelSet.isShown();
+    }
+
+
     public void showChangePanelSet() {
         changePanelSet.show();
     }

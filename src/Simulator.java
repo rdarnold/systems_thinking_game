@@ -40,7 +40,15 @@ public class Simulator {
     public ArrayList<Raindrop> getDrops() { return rainDrops; }
     public ArrayList<Spike> getSpikes() { return spikes; }
     public ArrayList<Earthpatch> getPatches() { return patches; }
-    public ArrayList<GravityWell> getGravityWell() { return wells; }
+    public ArrayList<GravityWell> getGravityWells() { return wells; }
+
+    // Right now we only use one gravity well, in the future if we used
+    // more we'd have to save them differently as it only saves this one now
+    public GravityWell getGravityWell() { 
+        if (wells == null)
+            return null;
+        return wells.get(0); 
+    }
 
     public ArrayList<SystemSnapshot> snapshots;
     public SystemSnapshot currentSnapshot;
@@ -755,6 +763,7 @@ public class Simulator {
         patches.clear();
         rainDrops.clear();
         spikes.clear();
+        wells.clear();
 
         //environment = values.environment;
 

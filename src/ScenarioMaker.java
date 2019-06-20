@@ -65,7 +65,8 @@ public class ScenarioMaker {
     // The generic stuff that's common for all systems in the game
     public void prePrepareSystem() {
         GravityWell item = new GravityWell(sim);
-        item.centerInSim();
+        //item.centerInSim();
+        item.setPosToDefaults();
         //item.moveTo(10, 10);
         sim.addGravityWell(item);
     }

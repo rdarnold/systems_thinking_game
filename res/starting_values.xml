@@ -17,6 +17,8 @@
     <growthRules>0</growthRules>
     <noGiveSize>false</noGiveSize>
     <noTakeSize>false</noTakeSize>
+    <gravityWellCenterX>295</gravityWellCenterX>
+    <gravityWellCenterY>262</gravityWellCenterY>
     <cultureTraits>
         <cultureTrait>Aggressive</cultureTrait>
         <cultureTrait>Dynamic</cultureTrait>

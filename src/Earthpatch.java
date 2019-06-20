@@ -59,6 +59,7 @@ public class Earthpatch extends MovableCircle {
         }
         prepareNewSpawn();
 
+        //setOnMouseClicked(t -> Utils.log("EARTHPATCH"));
         //setFill(pattern);
     }
     

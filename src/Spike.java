@@ -39,6 +39,8 @@ public class Spike extends MovablePolygon {
         }
         setAngleDegrees(Utils.number(0, 359));
         setSize(5);
+
+        //setOnMouseClicked(t -> Utils.log("SPIKE"));
     }
 
     // Make everything equal

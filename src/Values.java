@@ -48,6 +48,9 @@ public class Values {
     public Integer armorRules = 0;
     public Integer paradigm = 0;
     public Integer growthRules = 0;
+
+    public Integer gravityWellCenterX = 0;
+    public Integer gravityWellCenterY = 0;
     // These are actually all loaded through XML so
     // maybe I shouldn't even default these.  If we don't
     // have the values it should probably just fail.
@@ -114,6 +117,9 @@ public class Values {
         paradigm = from.paradigm;
         gravityRules = from.gravityRules;
         growthRules = from.growthRules;
+
+        gravityWellCenterX = from.gravityWellCenterX;
+        gravityWellCenterY = from.gravityWellCenterY;
     }
 
     // Compare values from this one to from,
@@ -138,6 +144,8 @@ public class Values {
         if (paradigm.equals(from.paradigm))                      paradigm = null;
         if (gravityRules.equals(from.gravityRules))              gravityRules = null;
         if (growthRules.equals(from.growthRules))                growthRules = null;
+        if (gravityWellCenterX.equals(from.gravityWellCenterX))  gravityWellCenterX = null;
+        if (gravityWellCenterY.equals(from.gravityWellCenterY))  gravityWellCenterY = null;
     }
 
     public String toString() {
@@ -164,6 +172,8 @@ public class Values {
         if (armorRules != null)          sb.append(" O" + armorRules);
         if (paradigm != null)            sb.append(" P" + paradigm);
         if (growthRules != null)         sb.append(" Q" + growthRules);
+        if (gravityWellCenterX != null)  sb.append(" R" + gravityWellCenterX);
+        if (gravityWellCenterY != null)  sb.append(" S" + gravityWellCenterY);
 
         return sb.toString();
     }

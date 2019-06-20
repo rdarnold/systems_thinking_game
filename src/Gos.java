@@ -315,6 +315,15 @@ public class Gos extends Application {
         selectShape(newShape);
     }
 
+    // Is the system in a state that allows the player to make changes?
+    public static boolean playerCanChangeSystem() {
+        if (mainScene.isShowingChangePanelSet() == false &&
+            mainScene.isShowingExpCreationPanelSet() == false) {
+            return false;
+        }
+        return true;
+    }
+
     // This is not being used but I'm leaving it here in case I need it
     public void showModalWindow() {
         Stage dialog = new Stage();

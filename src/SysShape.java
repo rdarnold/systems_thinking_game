@@ -6,9 +6,8 @@ import javafx.scene.shape.*;
 import java.util.List;
 import javafx.geometry.Point2D;
 import java.util.ArrayList;
-import javafx.scene.input.MouseEvent;
+
 import javafx.scene.input.MouseButton;
-import javafx.event.EventHandler;
 
 public class SysShape extends MovablePolygon {
 
@@ -19,16 +18,19 @@ public class SysShape extends MovablePolygon {
     public static int DEFAULT_MAX_SIZE = 75;
 
     protected boolean m_bDrawRange = false;
-    public boolean getDrawRangeIsOn() { return m_bDrawRange; }
+
+    public boolean getDrawRangeIsOn() {
+        return m_bDrawRange;
+    }
 
     private final double giveTakeRangeBaseRadius = 50;
-    //private final double takeRangeBaseRadius = 50;
-    //private final double giveRangeBaseRadius = 50;
+    // private final double takeRangeBaseRadius = 50;
+    // private final double giveRangeBaseRadius = 50;
     private final double shareRangeBaseRadius = 100;
 
     public double giveTakeRange = 0;
-    //public double takeRange = 0;
-    //public double giveRange = 0;
+    // public double takeRange = 0;
+    // public double giveRange = 0;
     public double shareRange = 0;
 
     ///////////////////////
@@ -46,13 +48,13 @@ public class SysShape extends MovablePolygon {
     double growArmorDesire = 0;
 
     // Increased this to make it more significant
-    double spikeDamageMultiplier = 1.5; //1.0; //0.2;
+    double spikeDamageMultiplier = 1.5; // 1.0; //0.2;
     double armorGrowthRate = 2.0;
 
     // How much of spinSpeed per frame?
     double giveRate = 0.02;
     double takeRate = 0.02;
-    double deteriorationRate = 0; //0.02;
+    double deteriorationRate = 0; // 0.02;
 
     // Track some numbers
     double sizeStolen = 0;
@@ -64,114 +66,188 @@ public class SysShape extends MovablePolygon {
     ///////////////////////
 
     Circle giveTakeRangeCircle;
-    //Circle takeRangeCircle;
-    //Circle giveRangeCircle;
+    // Circle takeRangeCircle;
+    // Circle giveRangeCircle;
     Circle shareRangeCircle; // For cooperative mode
 
-    public Circle getGiveTakeRangeCircle() { return giveTakeRangeCircle; }
-    //public Circle getTakeRangeCircle() { return takeRangeCircle; }
-    //public Circle getGiveRangeCircle() { return giveRangeCircle; }
-    public Circle getShareRangeCircle() { return shareRangeCircle; }
+    public Circle getGiveTakeRangeCircle() {
+        return giveTakeRangeCircle;
+    }
 
-    public double getSizeStolen()      { return sizeStolen; }
-    public double getSizeStolenFrom()  { return sizeStolenFrom; }
-    public double getSizeGiven()       { return sizeGiven; }
-    public double getSizeGivenTo()     { return sizeGivenTo; }
-    public void addSizeStolen(double amt)      { sizeStolen += amt; }
-    public void addSizeStolenFrom(double amt)  { sizeStolenFrom += amt; }
-    public void addSizeGiven(double amt)       { sizeGiven += amt; }
-    public void addSizeGivenTo(double amt)     { sizeGivenTo += amt; }
+    // public Circle getTakeRangeCircle() { return takeRangeCircle; }
+    // public Circle getGiveRangeCircle() { return giveRangeCircle; }
+    public Circle getShareRangeCircle() {
+        return shareRangeCircle;
+    }
+
+    public double getSizeStolen() {
+        return sizeStolen;
+    }
+
+    public double getSizeStolenFrom() {
+        return sizeStolenFrom;
+    }
+
+    public double getSizeGiven() {
+        return sizeGiven;
+    }
+
+    public double getSizeGivenTo() {
+        return sizeGivenTo;
+    }
+
+    public void addSizeStolen(double amt) {
+        sizeStolen += amt;
+    }
+
+    public void addSizeStolenFrom(double amt) {
+        sizeStolenFrom += amt;
+    }
+
+    public void addSizeGiven(double amt) {
+        sizeGiven += amt;
+    }
+
+    public void addSizeGivenTo(double amt) {
+        sizeGivenTo += amt;
+    }
 
     // These four variables all depend on the number of corners; they
     // can be viewed almost like "cultural traits"
     // But these have all been minimized to have less effect
     // 2019-06-16: Removed the effects entirely to simplify the game
     public double getStealRate() {
-        /*if (getNumCorners() == 3) {
-            return 1.2;
-        }*/
+        /*
+         * if (getNumCorners() == 3) { return 1.2; }
+         */
         return 1.0;
     }
+
     // This only affects earth patches and rain.
     public double getGrowthRate() {
-        /*if (getNumCorners() == 4) {
-            return 1.2;
-        }*/
+        /*
+         * if (getNumCorners() == 4) { return 1.2; }
+         */
         return 1.0;
     }
+
     public double getMoveRate() {
-        /*if (getNumCorners() == 5) {
-            return 1.2;
-        }*/
+        /*
+         * if (getNumCorners() == 5) { return 1.2; }
+         */
         return 1.0;
     }
+
     public double getSpikeDefense() {
-        /*if (getNumCorners() == 6) {
-            return 1.2;
-        }*/
+        /*
+         * if (getNumCorners() == 6) { return 1.2; }
+         */
         return 1.0;
     }
 
     // If we are dead, how long until we reduce to zero.
     private double destructionGrowthRate = 10;
 
-    public void setSpinSpeed(double newSpeed) { 
-        spinSpeed = Utils.clamp(newSpeed, minSpinSpeed, maxSpinSpeed); 
+    public void setSpinSpeed(double newSpeed) {
+        spinSpeed = Utils.clamp(newSpeed, minSpinSpeed, maxSpinSpeed);
     }
+
     // Takes a percentage from 0 to 100
     public void setSpinSpeedPercent(double perc) {
         double range = maxSpinSpeed - minSpinSpeed;
         setSpinSpeed(minSpinSpeed + (range * (perc / 100f)));
     }
-    public void setSpinRight() { spinRight = true; }
-    public void setSpinLeft()  { spinRight = false; }
-    public void setSpin(boolean spin) { spinRight = spin; }
-    public void flipSpin() { spinRight = !spinRight; }
+
+    public void setSpinRight() {
+        spinRight = true;
+    }
+
+    public void setSpinLeft() {
+        spinRight = false;
+    }
+
+    public void setSpin(boolean spin) {
+        spinRight = spin;
+    }
+
+    public void flipSpin() {
+        spinRight = !spinRight;
+    }
 
     public void setRandomSpinSpeed() {
-        setSpinSpeedPercent((double)Utils.number(0, 100)); //Utils.random(0.0, 100.0));
+        setSpinSpeedPercent((double) Utils.number(0, 100)); // Utils.random(0.0, 100.0));
     }
+
     public void setRandomSize() {
-        setSize(Utils.number((int)getMinSize(), (int)getMaxSize()));
+        setSize(Utils.number((int) getMinSize(), (int) getMaxSize()));
     }
+
     public double getSpinSpeedPercent() {
         double range = maxSpinSpeed - minSpinSpeed;
         double speed = spinSpeed - minSpinSpeed;
         return ((speed / range) * 100f);
     }
+
     public void setSizePercent(double perc) {
         double range = getMaxSize() - getMinSize();
         setSize(getMinSize() + (range * (perc / 100f)));
     }
+
     public double getSizePercent() {
         double range = getMaxSize() - getMinSize();
         double sz = getSize() - getMinSize();
         return ((sz / range) * 100f);
     }
-    
-    public double getSpinSpeed() { return spinSpeed; }
-    public boolean getSpin() { return spinRight; }
-    public boolean getSpinRight() { return spinRight; }
-    public boolean getSpinLeft()  { return (!spinRight); }
 
-    public boolean isDead() { return dead; }
+    public double getSpinSpeed() {
+        return spinSpeed;
+    }
 
-    public double getArmor() { return armor; }
-    public void setArmor(double val) { armor = val; }
+    public boolean getSpin() {
+        return spinRight;
+    }
 
-    public int getSuccess() { return success; }
-    public void setSuccess(int val) { 
-        success = val; 
+    public boolean getSpinRight() {
+        return spinRight;
+    }
+
+    public boolean getSpinLeft() {
+        return (!spinRight);
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public double getArmor() {
+        return armor;
+    }
+
+    public void setArmor(double val) {
+        armor = val;
+    }
+
+    public int getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(int val) {
+        success = val;
         if (success <= 0) {
             success = 0;
             super.setShapeText("");
-        }
-        else {
+        } else {
             super.setShapeText("" + success);
         }
     }
-    public void addSuccess() { setSuccess(success+1); }
-    public void subSuccess() { setSuccess(success-1); }
+
+    public void addSuccess() {
+        setSuccess(success + 1);
+    }
+
+    public void subSuccess() {
+        setSuccess(success - 1);
+    }
 
     public SysShape(Simulator s) {
         super(s);
@@ -190,13 +266,11 @@ public class SysShape extends MovablePolygon {
         setUseShapeText();
         setUseSelectedCircle();
 
-        setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent t) {
-                Gos.gos.onClickShape((SysShape)t.getSource());
-            }
+        setOnMouseClicked(t -> {
+            //Utils.log("SHAPE"); 
+            Gos.gos.onClickShape((SysShape) t.getSource());
         });
-
+ 
         maxSize = SysShape.DEFAULT_MAX_SIZE;
 
         polyType = MovablePolygon.PolyType.Shape;

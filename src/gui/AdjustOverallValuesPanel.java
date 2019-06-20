@@ -348,6 +348,11 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
             Data.startingValues.movingDotSpeedRate, Data.currentValues.movingDotSpeedRate));
         dotSize.setValue(getSliderPositionForValue(
             Data.startingValues.movingDotSize, Data.currentValues.movingDotSize));
+        
+        GravityWell well = Gos.sim.getGravityWell();
+        if (well != null) {
+            well.moveTo(Data.currentValues.gravityWellCenterX, Data.currentValues.gravityWellCenterY);
+        }
     }
     
     // When we change anything, there are times when we only allow one change
@@ -566,5 +571,13 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
 
         values.noTakeSize = chkSteal.isSelected();
         values.noGiveSize = chkGive.isSelected();
+
+        values.gravityWellCenterX = 0;
+        values.gravityWellCenterY = 0;
+        GravityWell well = Gos.sim.getGravityWell();
+        if (well != null){
+            values.gravityWellCenterX = (int)well.getCenterX();
+            values.gravityWellCenterY = (int)well.getCenterY();
+        }
     }
 }
