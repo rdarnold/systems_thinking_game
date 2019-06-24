@@ -157,8 +157,73 @@ public class SystemSnapshot {
         // BUT REMEMGBER when we set the values, we also need to update the GravityWell
         // position.  Although theoretically it's already in the correct position just from
         // being saved out in its regular array.  
-        GravityWell well = sim.wells.get(0);
-        well.moveTo(values.gravityWellCenterX, values.gravityWellCenterY);
+        if (sim.wells.size() > 0) {
+            GravityWell well = sim.wells.get(0);
+            well.moveTo(values.gravityWellCenterX, values.gravityWellCenterY);
+        }
+    }
+
+    // Write out everything to a string
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        // Sandwich the state in these strings so we can embed it in other data and easily find it.
+        sb.append("!START_SNAPSHOT\r\n"); // System state starter
+
+        // First the system
+        for (int i = 0; i < shapes.size(); i++) {
+            sb.append(shapes.get(i).toString());
+            sb.append("\r\n");
+        }
+        
+        //for (Raindrop item : drops) {
+        for (int i = 0; i < drops.size(); i++) {
+            sb.append(drops.get(i).toString());
+            sb.append("\r\n");
+        }
+
+        //for (Spike item : spikes) {
+        for (int i = 0; i < spikes.size(); i++) {
+            sb.append(spikes.get(i).toString());
+            sb.append("\r\n");
+        }
+
+        for (int i = 0; i < patches.size(); i++) {
+            sb.append(patches.get(i).toString());
+            sb.append("\r\n");
+        }
+
+        for (int i = 0; i < wells.size(); i++) {
+            sb.append(wells.get(i).toString());
+            sb.append("\r\n");
+        }
+
+        // Then the values (you might think we save this anyway in the playerdata but not really; we do,
+        // but only the values that have changed since the last turn.  This requires us to actually know
+        // what came "before."  For this method, we want this sytem state to be able to be restored from
+        // the string in a context-free environment using JUST this one string.  So we save all the values here.
+        sb.append(values.toString() + "\r\n"); 
+
+        // And we're done
+        sb.append("!END_SNAPSHOT\r\n"); // System state ender
+        return sb.toString();
+    }
+
+    // Read in a string and restore a snap from that string
+    public void restoreFromString(Simulator sim, String str) {
+        clear();
+
+        // So we first load up the string as this snap's string
+        // TODO
+
+        //String curLine = // get the SysShape string from the str
+        //if (curLine == isSysShape whatever) {
+        //  SysShape newItem = new SysShape(sim, curLine);
+        //  shapes.add(newItem);
+        //}
+
+        // Then we restore it to the sim
+        restore(sim);
     }
 
     // How much "stuff" is in this snapshot?

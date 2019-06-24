@@ -42,6 +42,12 @@ public class Earthpatch extends MovableCircle {
         init(from);
     }
 
+    public Earthpatch(Simulator s, String strFrom) {
+        super(s);
+        init(null);
+        setFromString(strFrom);
+    }
+
     public void init(Earthpatch from) {
         // setRandomColor();
         Color color = Color.rgb(
@@ -88,6 +94,54 @@ public class Earthpatch extends MovableCircle {
         hit = from.hit;
         turningToSpike = from.turningToSpike;
         spawnTimer = from.spawnTimer;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("@E");
+        sb.append(" x:" + (int)getCenterX());
+        sb.append(" y:" + (int)getCenterY());
+        sb.append(" vx:" + (int)getXSpeed());
+        sb.append(" vy:" + (int)getYSpeed());
+        sb.append(" s:" + (int)getSize());
+        sb.append(" i:" + spawnTimer);
+        sb.append(" h:" + (hit ? 1 : 0));
+        sb.append(" t:" + (turningToSpike  ? 1 : 0));
+        
+        return sb.toString();
+    }
+
+    // The parallel to the above toString
+    public boolean setFromString(String str) {
+        String strVar;
+        int var = 0;
+
+        int x = Utils.getIntFromKey(str, "x:");
+        int y = Utils.getIntFromKey(str, "y:");
+        moveTo(x, y);
+
+        int vx = Utils.getIntFromKey(str, "vx:");
+        int vy = Utils.getIntFromKey(str, "vy:");
+        if (vx >= 0 && vy >= 0) {
+            setSpeed(vx, vy);
+        }
+
+        var = Utils.getIntFromKey(str, "s:");
+        if (var >= 0) { 
+            setSize(var); 
+        }
+        
+        var = Utils.getIntFromKey(str, "i:");
+        spawnTimer = (var > 0 ? var : 0);
+
+        var = Utils.getIntFromKey(str, "h:");
+        hit = (var == 1); 
+
+        var = Utils.getIntFromKey(str, "t:");
+        turningToSpike = (var == 1); 
+
+        return true;
     }
 
     public void prepareNewSpawn() {

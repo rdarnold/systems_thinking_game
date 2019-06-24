@@ -87,6 +87,7 @@ public class ChangeSet {
                 sb.append(" D" + newShape.getSpin());
             if (oldShape.getFill() != newShape.getFill())
                 sb.append(" E" + newShape.getFill());
+            sb.append("\r\n");
         }
 
         return sb.toString();

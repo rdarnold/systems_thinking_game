@@ -132,7 +132,7 @@ public class Gos extends Application {
         //createExperimentScreen = new CreateExperimentScreen(this, new BorderPane(), wid, hgt);
 
         welcomeWindow = new WelcomeWindow(500, 350);
-        contactConsentWindow = new ContactConsentWindow(500, 350);
+        contactConsentWindow = new ContactConsentWindow(500, 450);
         playedBeforeWindow = new PlayedBeforeWindow(500, 350);
         startSurveyWindow = new StartSurveyWindow(500, 350);
         betaWindow = new BetaWindow(400, 530);

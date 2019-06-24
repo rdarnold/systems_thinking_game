@@ -118,6 +118,8 @@ public class MovablePolygon extends Polygon {
     protected double m_fPrevCenterY = 0;
     protected double m_fCenterX = 0;
     protected double m_fCenterY = 0;
+    public double getPrevCenterX() { return m_fPrevCenterX; }
+    public double getPrevCenterY() { return m_fPrevCenterY; }
     public double getCenterX() { return m_fCenterX; }
     public double getCenterY() { return m_fCenterY; }
 

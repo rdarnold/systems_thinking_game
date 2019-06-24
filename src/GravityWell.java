@@ -26,7 +26,7 @@ public class GravityWell extends MovableCircle {
         return (getSize() == maxSize);
     }
 
-    public static int DEFAULT_SIZE = 30;
+    public static int DEFAULT_SIZE = 25;
     public static int DEFAULT_GRAVITY_PULL = 50;
 
     private int dragDeltaX;
@@ -42,15 +42,23 @@ public class GravityWell extends MovableCircle {
         init(from);
     }
 
+    public GravityWell(Simulator s, String strFrom) {
+        super(s);
+        init(null);
+        setFromString(strFrom);
+    }
+
     public void init(GravityWell from) {
         // setRandomColor();
         /*
          * Color color = Color.BEIGE; //Color.rgb(0, 0, 0); setColor(color);
          * setStroke(Color.BLACK); setStrokeWidth(8);
          */
-        // setEffect(Utils.createBorderGlow(color));
+       setEffect(Utils.createBorderGlow(Color.BLUE));
 
         setColor(Color.BLACK);
+        //setStroke(Color.BLACK); 
+        //setStrokeWidth(6);
 
         /*
          * Stop[] stops = new Stop[] { new Stop(0.0, Color.WHITE), new Stop(0.3,
@@ -75,7 +83,24 @@ public class GravityWell extends MovableCircle {
             if (Gos.playerCanChangeSystem() == false) {
                 return;
             }
-            moveTo(event.getScreenX() + dragDeltaX, event.getScreenY() + dragDeltaY);
+            // But, remember, we can't go out of the bounds of the SysPane!
+            double x = event.getScreenX() + dragDeltaX;
+            double y = event.getScreenY() + dragDeltaY;
+
+            if (x - getSize()/2 < 0) {
+                x = getSize()/2;
+            }
+            else if (x + getSize()/2 > sim.width) {
+                x = sim.width - getSize()/2;
+            }
+            if (y - getSize()/2 < 0) {
+                y = getSize()/2;
+            }
+            else if (y + getSize()/2 > sim.height) {
+                y = sim.height - getSize()/2;
+            }
+
+            moveTo(x, y);
         });
 
         //setOnDragDetected(event -> { });
@@ -113,6 +138,24 @@ public class GravityWell extends MovableCircle {
     public void deepCopy(GravityWell from) {
         super.deepCopy(from);
         // Nothing specific for the GravityWell 
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("@G");
+        sb.append(" x:" + (int)getCenterX());
+        sb.append(" y:" + (int)getCenterY());
+
+        return sb.toString();
+    }
+
+    // The parallel to the above toString
+    public boolean setFromString(String str) {
+        int x = Utils.getIntFromKey(str, "x:");
+        int y = Utils.getIntFromKey(str, "y:");
+        moveTo(x, y);
+        return true;
     }
 
     public void update() {

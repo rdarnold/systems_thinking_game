@@ -1,1 +1,1 @@
-java -Dfile.encoding=UTF8 -Xmx256m -cp "bin;../ext/*;../ext/drive/*;../ext/drive/libs/*;." gos.Gos
+java -Dfile.encoding=UTF8 -Xmx512m -cp "bin;../ext/*;../ext/drive/*;../ext/drive/libs/*;." gos.Gos

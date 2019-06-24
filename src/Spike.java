@@ -21,6 +21,12 @@ public class Spike extends MovablePolygon {
         init(from);
     }
 
+    public Spike(Simulator s, String strFrom) {
+        super(s);
+        init(null);
+        setFromString(strFrom);
+    }
+
     public void init(Spike from) {
         maxSize = 150;
         targetSize = 25;
@@ -47,6 +53,43 @@ public class Spike extends MovablePolygon {
     public void deepCopy(Spike from) {
         super.deepCopy(from);
         hit = from.hit;
+    }
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("@K");
+        sb.append(" x:" + (int)getCenterX());
+        sb.append(" y:" + (int)getCenterY());
+        sb.append(" vx:" + (int)getXSpeed());
+        sb.append(" vy:" + (int)getYSpeed());
+        sb.append(" s:" + (int)getSize());
+        sb.append(" h:" + (hit ? 1 : 0));
+        
+        return sb.toString();
+    }
+
+    // The parallel to the above toString
+    public boolean setFromString(String str) {
+        int var = 0;
+
+        int x = Utils.getIntFromKey(str, "x:");
+        int y = Utils.getIntFromKey(str, "y:");
+        moveTo(x, y);
+
+        int vx = Utils.getIntFromKey(str, "vx:");
+        int vy = Utils.getIntFromKey(str, "vy:");
+        if (vx >= 0 && vy >= 0) {
+            setSpeed(vx, vy);
+        }
+
+        var = Utils.getIntFromKey(str, "s:");
+        if (var > 0) { 
+            setSize(var); 
+        }
+        var = Utils.getIntFromKey(str, "h:");
+        hit = (var == 1); 
+        return true;
     }
 
     double sizeIncrement = 4;

@@ -149,7 +149,7 @@ public class SysShape extends MovablePolygon {
     private double destructionGrowthRate = 10;
 
     public void setSpinSpeed(double newSpeed) {
-        spinSpeed = Utils.clamp(newSpeed, minSpinSpeed, maxSpinSpeed);
+        spinSpeed = Utils.round(Utils.clamp(newSpeed, minSpinSpeed, maxSpinSpeed), 1);
     }
 
     // Takes a percentage from 0 to 100
@@ -259,6 +259,12 @@ public class SysShape extends MovablePolygon {
         init(from);
     }
 
+    public SysShape(Simulator s, String strFrom) {
+        super(s);
+        init(null);
+        setFromString(strFrom);
+    }
+
     public void init(SysShape from) {
         // We need to get this up front so that we can add the
         // Text object to the scene graph even though we may not be using
@@ -320,6 +326,85 @@ public class SysShape extends MovablePolygon {
         sizeStolenFrom = from.sizeStolenFrom;
         sizeGiven = from.sizeGiven;
         sizeGivenTo = from.sizeGivenTo;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("@S");
+        sb.append(" x:" + (int)getCenterX());
+        sb.append(" y:" + (int)getCenterY());
+        sb.append(" vx:" + (int)getXSpeed());
+        sb.append(" vy:" + (int)getYSpeed());
+        sb.append(" s:" + (int)getSize());
+        sb.append(" vs:" + (int)spinSpeed);
+        sb.append(" c:" + (int)success);
+        sb.append(" d:" + (dead ? 1 : 0));
+        sb.append(" p:" + (spinRight ? 1 : 0));
+
+        /*sb.append(" t:" + (int)totalSpikeHits);
+        sb.append(" st:" + (int)sizeStolen);
+        sb.append(" sf:" + (int)sizeStolenFrom);
+        sb.append(" sg:" + (int)sizeGiven);
+        sb.append(" to:" + (int)sizeGivenTo);*/
+
+        // Only bother to write these if they are nonzero, otherwise
+        // just let them default
+        sb.append(Utils.toStringNotZero(" t:", (int)totalSpikeHits));
+        sb.append(Utils.toStringNotZero(" st:", (int)sizeStolen));
+        sb.append(Utils.toStringNotZero(" sf:", (int)sizeStolenFrom));
+        sb.append(Utils.toStringNotZero(" sg:", (int)sizeGiven));
+        sb.append(Utils.toStringNotZero(" to:", (int)sizeGivenTo));
+
+        return sb.toString();
+    }
+    
+    // The parallel to the above toString
+    public boolean setFromString(String str) {
+        int var = 0;
+
+        int x = Utils.getIntFromKey(str, "x:");
+        int y = Utils.getIntFromKey(str, "y:");
+        moveTo(x, y);
+
+        int vx = Utils.getIntFromKey(str, "vx:");
+        int vy = Utils.getIntFromKey(str, "vy:");
+        if (vx >= 0 && vy >= 0) {
+            setSpeed(vx, vy);
+        }
+
+        var = Utils.getIntFromKey(str, "s:");
+        if (var > 0) { 
+            setSize(var);
+        }
+
+        var = Utils.getIntFromKey(str, "vs:");
+        spinSpeed = (var > 0 ? var : 0);
+
+        var = Utils.getIntFromKey(str, "c:");
+        success = (var > 0 ? var : 0);
+        
+        var = Utils.getIntFromKey(str, "d:");
+        dead = (var == 1); 
+
+        var = Utils.getIntFromKey(str, "p:");
+        spinRight = (var == 1); 
+
+        var = Utils.getIntFromKey(str, "t:");
+        totalSpikeHits = (var > 0 ? var : 0);
+
+        var = Utils.getIntFromKey(str, "st:");
+        sizeStolen = (var > 0 ? var : 0);
+        
+        var = Utils.getIntFromKey(str, "sf:");
+        sizeStolenFrom = (var > 0 ? var : 0);
+        
+        var = Utils.getIntFromKey(str, "sg:");
+        sizeGiven = (var > 0 ? var : 0);
+        
+        var = Utils.getIntFromKey(str, "to:");
+        sizeGivenTo = (var > 0 ? var : 0);
+        return true;
     }
     
     public void prepareNewSpawn() {
@@ -432,6 +517,9 @@ public class SysShape extends MovablePolygon {
 
         // Move
         moveOneFrame();
+
+        // See if we're colliding and if so, push shapes out of the way
+        checkCollisionsPushShapes();
 
         // Arms race
         tryMatchArmor();
@@ -594,30 +682,55 @@ public class SysShape extends MovablePolygon {
         return false;
     }
 
+    public boolean checkGravityWellCollisions() {
+        GravityWell well = sim.getGravityWell();
+        if (intersects(well) == true) {
+            return true;
+        }
+        return false;
+    }
+
     public void moveOneFrame() {
         if (move() == true) {
             // Attempt to move along velocity path,
             // determined by gravity pull
-            /*if (checkShapeCollisions(sim.shapes) == true) {
+            if (checkShapeCollisions(sim.shapes) == true) {
                 moveBack();
-            }*/
+            }
+
+            if (checkGravityWellCollisions() == true) {
+                moveBack();
+            }
 
             // If it hit a wall we don't move through it even though that is
             // kinda cool as it goes "outside the bounds" of a normal system.
             // Maybe it demonstrates out of the box thinking.  Which I think
             // would be great, but maybe that's better served for a different
             // type of app so I can just get my damned PhD.
+
+            // But only move back if we are actually moving further outside
+            // rather than trying to move closer inside.  So don't just check
+            // if we're out of bounds, also check if our new position is closer in
+            // bounds than before.
             if (getCenterX() - getSize()/2 < 0) {
-                moveBackX();
+                // We are to the left of the screen
+                if (getCenterX() < getPrevCenterX())
+                    moveBackX();
             }
             else if (getCenterX() + getSize()/2 > sim.width) {
-                moveBackX();
+                // We are to the right of the screen
+                if (getCenterX() > getPrevCenterX())
+                    moveBackX();
             }
             if (getCenterY() - getSize()/2 < 0) {
-                moveBackY();
+                // We are above the screen
+                if (getCenterY() < getPrevCenterY())
+                    moveBackY();
             }
             else if (getCenterY() + getSize()/2 > sim.height) {
-                moveBackY();
+                // We are below the screen
+                if (getCenterY() > getPrevCenterY())
+                    moveBackY();
             }
         }
 
@@ -723,13 +836,106 @@ public class SysShape extends MovablePolygon {
         return amt;
     }
 
-    public void grow(double amount) {
-        grow(amount, false);
+    // Here's a better way to do it.  If ever we are found to be colliding,
+    // just attempt to push all other shapes away from you by one pixel.
+    // If this continues enough iterations eventually the outside shapes will be
+    // moved enough that they will be "free" and all shapes will eventually become
+    // consistent.
+    public void checkCollisionsPushShapes() {
+        for (SysShape otherShape : sim.shapes) {
+
+            // Don't push ourselves
+            if (this.equals(otherShape) == true) {
+                continue;
+            }
+
+            // We found a collision, push
+            if (intersects(otherShape) == true) {
+                // Move it directly away by a little bit
+                double diffX = this.getCenterX() - otherShape.getCenterX();
+                double diffY = this.getCenterY() - otherShape.getCenterY();
+                
+                // Absolute values for comparison of relative position
+                double absDiffX = Math.abs(diffX);
+                double absDiffY = Math.abs(diffY);
+                
+                // 0 is left/right, 1 is above/below, 2 is both
+                // The meaning depends on which quandrant the other shape falls in
+                // relative to this one
+                int AXIS_X = 0;
+                int AXIS_Y = 1;
+                int AXIS_BOTH = 2; 
+                
+                int axis = AXIS_X;
+                // We can figure this out already; it depends on the slope basically
+                // If the slope is 0-29 degrees it's X, if it's 30-60 it's both, and 61-90 is Y
+                
+                // So like if X is 30 and Y is 10, we want X axis.  If X is 20 and Y is 20, we want both.  If Y ix 30 and X is 10, we want Y.
+                if (absDiffX > absDiffY) {
+                    // It's now either X or both
+                    // X is 2/3 of it and both is 1/3
+                    double val = absDiffX / absDiffY;
+                    if (val < 0.66) {
+                        axis = AXIS_BOTH;
+                    }
+                } else {
+                    // It's now Y or both
+                    axis = AXIS_Y;
+                    // Y is 2/3 of it and both is 1/3
+                    double val = absDiffY / absDiffX;
+                    if (val < 0.66) {
+                        axis = AXIS_BOTH;
+                    }
+                }
+
+                // Basically whichever quadrant it's in, just move it a little
+                // further by 1,1 x and y. Will be interesting to see what happens
+                // when the shapes are on the edges, do they get "stuck" outside
+                // or do they move themselves back towards the well?
+                int moveX = 0;
+                int moveY = 0;
+
+                if (diffX > 0) {
+                    // Other shape is to the left of this one
+                    if (diffY > 0) {
+                        // Other shape is above and left of this one
+                        // So it can go three ways - left, up/left, or up depending on where it is
+                        if (axis == AXIS_X) moveX = -1;
+                        else if (axis == AXIS_Y) moveY= -1;
+                        else { moveX = -1; moveY = -1; }
+                    } else {
+                        // Other shape is below and left of this one
+                        if (axis == AXIS_X) moveX = -1;
+                        else if (axis == AXIS_Y) moveY = 1;
+                        else { moveX = -1; moveY = 1; }
+                    }
+                } else {
+                    // Other shape is to the right of this one
+                    if (diffY > 0) {
+                        // Other shape is above and right of this one
+                        if (axis == AXIS_X) moveX = 1;
+                        else if (axis == AXIS_Y) moveY = -1;
+                        else { moveX = 1; moveY = -1; }
+                    } else {
+                        // Other shape is below and right of this one
+                        if (axis == AXIS_X) moveX = 1;
+                        else if (axis == AXIS_Y) moveY = 1;
+                        else { moveX = 1; moveY = 1; }
+                    }
+                }
+
+                otherShape.moveTo(otherShape.getCenterX() + moveX, otherShape.getCenterY() + moveY);
+            }
+        }
+    }
+
+    public boolean grow(double amount) {
+        return grow(amount, false);
     }
 
     // Shared means we got this from a distribution from a cooperative nearby
     // shape, which means we don't want to continue to redistribute.
-    public void grow(double amount, boolean shared) {
+    public boolean grow(double amount, boolean shared) {
         double amt = amount;
 
         // If we want armor, grow that instead.
@@ -740,7 +946,7 @@ public class SysShape extends MovablePolygon {
             // Actually though, armor doesnt grow as fast as our size,
             // its kind of hard to grow.
             improveArmor(amt);
-            return;
+            return true;
         }
 
         setPrevSize();
@@ -761,9 +967,18 @@ public class SysShape extends MovablePolygon {
         // We could do a transition graphic here to make this look better.
         setSize(getSize() + amt);
 
+        // The issue is, if we make them stop when they collide, but then they can grow,
+        // they can get "stuck" on each other when they grow and can't move.  So how to handle
+        // the growth and sticking to each other?  Do they "push" each other out when they 
+        // grow, perhaps?  And they just recursively push?  That sounds cool but might be really
+        // CPU-intensive if it's recursively going through all impacted shapes...
+        // UPDATE decided to handle this in the update() function so if shapes are colliding
+        // they to push other shapes away
         /*if (checkShapeCollisions(sim.shapes) == true) {
             setSizeBack();
+            return false;
         }*/
+
         // Even though we really should be doing this, for performance reasons
         // I'm going to remove it.  It should be generally fine, as when the spikes
         // and patches update, they'll see these collisions.  These updates get
@@ -789,6 +1004,7 @@ public class SysShape extends MovablePolygon {
                 split();
             }
         }
+        return true;
     }
     
     public double shrink(double amount) {

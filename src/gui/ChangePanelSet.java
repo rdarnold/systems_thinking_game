@@ -3,6 +3,7 @@ package gos.gui;
 import java.io.*;
 import java.util.*;
 import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -141,7 +142,18 @@ public class ChangePanelSet extends PanelSetBase {
 
         // Now these things have changed so update the changeset with the new values.
         changeSet.setNew(Data.currentValues, Player.getSelectedShape());
-        Player.recordAction(Action.Type.SubmitChange, changeSet.toString(), fromClassName);
+        String strSubmitDesc = changeSet.toString();
+
+        // Now take a snapshot of system as it is now and add to the string since we want to save that too
+        SystemSnapshot snapshot = new SystemSnapshot();
+        snapshot.snap(Gos.sim);
+        strSubmitDesc += snapshot.toString();
+
+        // Now record the action along with the entirety of the change set including the system snapshot
+        Player.recordAction(Action.Type.SubmitChange, strSubmitDesc, fromClassName);
+
+        // TODO remove this later
+        Utils.log(Player.getPlayerData());
 
         // Show default areas again.
  	    parent.showDefaultAreas();

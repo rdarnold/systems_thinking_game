@@ -403,6 +403,7 @@ public class Simulator {
         if (speed < 0) {
             speed = 0.1; // Minimum speed, they have to move a little at least.
         }
+        speed = Utils.round(speed, 1);
         switch (Data.currentValues.rainOrigin) {
             case 0: // Top
                 // Starting from top means we want to move down towards bottom.
@@ -680,6 +681,16 @@ public class Simulator {
 
     public double getGravity(MovableCircle item) {
         return item.getSize();
+    }
+
+    public int calcTotalSize() {
+        int num = 0;
+        //for (SysShape shape : shapes) {
+        for (int i = 0; i < shapes.size(); i++) {
+            SysShape shape = shapes.get(i); 
+            num += shape.getSize();
+        }
+        return num;
     }
 
     public int calcTotalSizeStolen() {

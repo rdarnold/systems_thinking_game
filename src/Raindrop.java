@@ -20,6 +20,12 @@ public class Raindrop extends MovableCircle {
         init(from);
     }
 
+    public Raindrop(Simulator s, String strFrom) {
+        super(s);
+        init(null);
+        setFromString(strFrom);
+    }
+
     public void init(Raindrop from) {
         // Create a sort of small polygon thing I guess.  Could just use
         // circles too.
@@ -98,6 +104,35 @@ public class Raindrop extends MovableCircle {
     public void deepCopy(Raindrop from) {
         super.deepCopy(from);
         setFall(from.getDir(), from.getFallingRate());
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("@R");
+        sb.append(" x:" + (int)getCenterX());
+        sb.append(" y:" + (int)getCenterY());
+        sb.append(" r:" + fallingRate);
+        sb.append(" d:" + fallingDirection);
+
+        return sb.toString();
+    }
+    
+    // The parallel to the above toString
+    public boolean setFromString(String str) {
+        String strVar;
+
+        int x = Utils.getIntFromKey(str, "x:");
+        int y = Utils.getIntFromKey(str, "y:");
+        moveTo(x, y);
+
+        fallingRate = Utils.getDoubleFromKey(str, "r:");
+
+        strVar = Utils.getSubstringFromKey(str, "d:");
+        fallingDirection = (strVar != null ? Constants.Dir.valueOf(strVar) : Constants.Dir.Bottom);
+
+        setFall(fallingDirection, fallingRate);
+        return true;
     }
 
     public void reachEnd() {

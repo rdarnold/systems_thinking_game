@@ -50,6 +50,8 @@ public class MovableCircle extends Circle {
     protected double xSpeed = 0;
     protected double ySpeed = 0;
 
+    public double getPrevCenterX() { return m_fPrevCenterX; }
+    public double getPrevCenterY() { return m_fPrevCenterY; }
     public double getXSpeed() { return xSpeed; }
     public double getYSpeed() { return ySpeed; }
 

@@ -72,7 +72,7 @@ public class InquirePanelLeft extends SelectableShapePanel {
 
     RevealButton rvShapeSpinSpeed;
     RevealButton rvShapeSize;
-    RevealButton rvShapeGravityPull;
+    //RevealButton rvShapeGravityPull;
     RevealButton rvShapeArmor;
     RevealButton rvShapeSizeStolen;
     RevealButton rvShapeSizeGiven;
@@ -114,9 +114,9 @@ public class InquirePanelLeft extends SelectableShapePanel {
         rvShapeSize.addToolTip("The size of the shape.");
         addRevealButton(rvShapeSize);
 
-        rvShapeGravityPull = new RevealButton("Gravity Pull");
+        /*rvShapeGravityPull = new RevealButton("Gravity Pull");
         rvShapeGravityPull.addToolTip("The percentage that this shape contributes to the total gravity.");
-        addRevealButton(rvShapeGravityPull);
+        addRevealButton(rvShapeGravityPull);*/
 
         rvShapeArmor = new RevealButton("Armor");
         rvShapeArmor.addToolTip("The specific armor value of the shape.");
@@ -176,10 +176,9 @@ public class InquirePanelLeft extends SelectableShapePanel {
         rvShapeSize.setValue(selected.getSize());
         rvShapeArmor.setValue(selected.getArmor());
 
-        double totalGravity = Gos.sim.calculateTotalGravity();
-        double grav = Gos.sim.getGravity(selected);
-        rvShapeGravityPull.setText(String.format("%.1f%%", ((grav / totalGravity) * 100)));
-        //rvShapeGravityPull.setText("" + grav + " / " + totalGravity);
+        //double totalGravity = Gos.sim.calculateTotalGravity();
+        //double grav = Gos.sim.getGravity(selected);
+        //rvShapeGravityPull.setText(String.format("%.1f%%", ((grav / totalGravity) * 100)));
 
         rvShapeSizeStolen.setValue(selected.getSizeStolen());
         rvShapeSizeGiven.setValue(selected.getSizeGiven());

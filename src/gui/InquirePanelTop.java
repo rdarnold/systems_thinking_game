@@ -77,15 +77,16 @@ public class InquirePanelTop extends PanelTopBase {
 
     RevealButton rvRainSpeed;
     RevealButton rvRainValue;
-    RevealButton rvGravity;
+    RevealButton rvRainPerSecond;
 
     RevealButton rvDotSize;
     RevealButton rvDotSpeed;
     RevealButton rvDotValue;
 
-    RevealButton rvRainPerSecond;
     RevealButton rvGivenSize;
     RevealButton rvStolenSize;
+    //RevealButton rvGravity;
+    RevealButton rvTotalSize;
 
     InquirePanelSet m_ParentPanelSet;
 
@@ -195,9 +196,9 @@ public class InquirePanelTop extends PanelTopBase {
 
         row = 0;
         col = 2;
-        rvGravity = new RevealButton("Total Gravity");
-        rvGravity.addToolTip("The sum of gravity across everything in the scenario.");
-        node = addRevealButton(rvGravity);
+        rvTotalSize = new RevealButton("Total Size");
+        rvTotalSize.addToolTip("The sum of sizes across all shapes in the scenario.");
+        node = addRevealButton(rvTotalSize);
         setupOneItem(node, row++, col);
 
         rvStolenSize = new RevealButton("Total Size Stolen");
@@ -226,7 +227,7 @@ public class InquirePanelTop extends PanelTopBase {
         str = ((Data.currentValues.rainSpeedVar * 2F) + " - " + (Data.currentValues.rainSpeedVar * 4F));
         rvRainSpeed.setText(str);
         rvRainValue.setValue(SysShape.getAmountPerRain());
-        rvGravity.setValue(Gos.sim.calculateTotalGravity());
+        rvTotalSize.setValue(Gos.sim.calcTotalSize());
 
         rvDotSize.setValue(Data.currentValues.movingDotSize);
         str = ((Data.currentValues.movingDotSpeedRate * 1F) + " - " + 

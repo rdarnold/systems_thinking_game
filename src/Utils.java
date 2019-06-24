@@ -230,6 +230,57 @@ public final class Utils {
         panel.getChildren().add(space);
     }
 
+    public static String toStringNotZero(String str, int i) {
+        if (i != 0) {
+            return (str + i);
+        }
+        return "";
+    }
+
+    public static double round(double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
+    }
+
+    public static String getSubstringFromKey(String line, String key) {
+        int index = line.indexOf(key);
+        if (index == -1) {
+            return null;
+        }
+        index += key.length();
+
+        // Get the end of the int
+        int end = line.indexOf(" ", index);
+        if (end == -1) {
+            end = line.length();
+        }
+        if (index == end) {
+            return null;
+        }
+
+        return line.substring(index, end);
+    }
+
+    public static int getIntFromKey(String line, String key) {
+        // Find the int as a substr within line first, then parse it
+        String keyString = getSubstringFromKey(line, key);
+        if (keyString == null) {
+            return -1;
+        }
+
+        return tryParseInt(keyString);
+    }
+
+    public static double getDoubleFromKey(String line, String key) {
+        // Find the int as a substr within line first, then parse it
+        String keyString = getSubstringFromKey(line, key);
+        if (keyString == null) {
+            return -1;
+        }
+
+        return tryParseDouble(keyString);
+    }
+
     // Methods that help us parse ints and doubles and allow them to interchange.
     public static int tryParseInt(String value) {  
         return tryParseInt(value, true);

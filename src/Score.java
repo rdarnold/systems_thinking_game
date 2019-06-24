@@ -89,7 +89,7 @@ public class Score {
                 // The more shapes you can make (or preserve), the better.
                 int num = sim.getNumberLiveShapes();
                 if (num == 50) {
-                    strScore = "You finished with all " + num + " shapes.";
+                    strScore = "Wow, nice job!\r\nYou finished with all " + num + " shapes.";
                 }
                 else {
                     strScore = "You finished with " + num + " shapes.";
@@ -157,13 +157,14 @@ public class Score {
         }
     }*/
 
+    // Maybe this should also only go up to 50
     private void createExerciseScore2() {
         switch (taskId) {
             case 0: 
             case 1: {
                 // Your own success level.
                 int num = Player.getSelectedShape().getSuccess();
-                strScore = "You achieved level " + num + ".";
+                strScore = "You achieved level " + num + "!";
                 break;
             }
         }

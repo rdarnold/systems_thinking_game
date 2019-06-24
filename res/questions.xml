@@ -269,18 +269,18 @@
   <question>
     <exercise>0</exercise>
     <name>Learning Style</name>
-    <text>Please select your preferred learning styles, if any.</text>
+    <text>Please select your preferred learning styles, if any.  You may select more than one.</text>
     <answerType>Check</answerType>
     <answerOptions>
       <answerOption>Do not know</answerOption>
       <answerOption>No preference</answerOption>
-      <answerOption>Visual</answerOption>
-      <answerOption>Aural</answerOption>
-      <answerOption>Verbal</answerOption>
-      <answerOption>Physical</answerOption>
-      <answerOption>Logical</answerOption>
-      <answerOption>Social</answerOption>
-      <answerOption>Solitary</answerOption>
+      <answerOption>Visual (spatial): You prefer using pictures, images, and spatial understanding</answerOption>
+      <answerOption>Aural (auditory / musical): You prefer using sound and music</answerOption>
+      <answerOption>Verbal (linguistic): You prefer using words, both in speech and writing</answerOption>
+      <answerOption>Physical (kinesthetic): You prefer using your body, hands and sense of touch</answerOption>
+      <answerOption>Logical (mathematical): You prefer using logic and reasoning</answerOption>
+      <answerOption>Social (interpersonal): You prefer to learn in groups or with other people</answerOption>
+      <answerOption>Solitary (intrapersonal): You prefer to work alone and use self-study</answerOption>
       <answerOption>Prefer not to say</answerOption>
     </answerOptions>
   </question>
@@ -372,15 +372,17 @@
   <question>
     <exercise>3</exercise>
     <name>Four Shapes</name>
-    <text>What are the key things that make the spinning shapes move?</text>
+    <text>What are the things that make the spinning shapes INCREASE in size?  Check all that apply.</text>
     <answerType>Check</answerType>
     <answerOptions>
-        <answerOption>Random</answerOption>
-        <answerOption>Other spinning shapes</answerOption>
-        <answerOption>The shape's own size</answerOption>
-        <answerOption>The stars</answerOption>
-        <answerOption>The falling rain</answerOption>
-        <answerOption>The moving balls</answerOption>
+        <answerOption>Impacting rain</answerOption>
+        <answerOption>Impacting red balls</answerOption>
+        <answerOption>Impacting spikes</answerOption>
+        <answerOption>They automatically increase in size over time</answerOption>
+        <answerOption>They automatically increase in size while moving</answerOption>
+        <answerOption>Impacting the gravity well</answerOption>
+        <answerOption>Stealing or "pulling" size from other nearby shapes</answerOption>
+        <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
@@ -475,7 +477,7 @@
   <question>
     <exercise>4</exercise>
     <name>Chaos</name>
-    <text>Did you feel like any of the 8 variables did not do what you expectedCR
+    <text>Did you feel like any of the variables did not do what you expectedCR
     them to do when you changed them?  If yes, please explain which one(s) and whyCR
     you felt this way.</text>
     <answerType>MultilineInput</answerType>
