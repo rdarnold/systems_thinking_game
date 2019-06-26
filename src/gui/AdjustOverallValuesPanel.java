@@ -546,7 +546,7 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         values.rainOrigin = cbRain.getSelectionModel().getSelectedIndex();
 
         values.rainRate = 
-            Data.startingValues.rainRate * getMultiplierForSlider(rainRateSlider);
+            Utils.round(Data.startingValues.rainRate * getMultiplierForSlider(rainRateSlider), 3);
 
         //values.rainSpeedVar = 
           //  Data.startingValues.rainSpeedVar * getMultiplierForSlider(rainSpeedSlider);

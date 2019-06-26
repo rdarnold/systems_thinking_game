@@ -77,6 +77,7 @@ public class Gos extends Application {
     public static boolean testing = false;
     public static boolean skipSurveys = false;
     public static boolean showSkipWindow = true;
+    public static boolean assessmentMode = true;
     ////////////////////////////////////////////
     ////////////////////////////////////////////
     ////////////////////////////////////////////
@@ -106,6 +107,7 @@ public class Gos extends Application {
     public static OKWindow noDiscoveryPointsWindow;
     public static ScratchPadWindow scratchPadWindow;
     public static SkipToWindow skipToWindow;
+    public static AssessmentWindow assessmentWindow;
 
     @Override
     public void start(Stage primaryStage) {
@@ -139,9 +141,10 @@ public class Gos extends Application {
         exercisePopupWindow = new ExercisePopupWindow(400, 400);
         startSimulationWindow = new StartSimulationWindow(600, 500);
         startRealGameWindow = new StartRealGameWindow(600, 700);
-        variableWindow = new VariableWindow(400, 600);
+        variableWindow = new VariableWindow(400, 650);
         scratchPadWindow = new ScratchPadWindow(600, 600);
         skipToWindow = new SkipToWindow(400, 600);
+        assessmentWindow = new AssessmentWindow(600, 600);
 
         String str = "Sorry, you don't have enough Discovery Points to do that.  You will " +
         "get another one next turn.";
@@ -207,6 +210,10 @@ public class Gos extends Application {
 
         Player.startTime = System.currentTimeMillis();
         welcomeWindow.showAndWait();
+        
+        if (assessmentMode == true) {
+            showAssessmentWindow();
+        }
 
         // Now let them skip to whereever they want
         if (showSkipWindow == true) {
@@ -278,6 +285,10 @@ public class Gos extends Application {
 
     public static void showScratchPad() {
         scratchPadWindow.show();
+    }
+
+    public static void showAssessmentWindow() {
+        assessmentWindow.show();
     }
 
     public static boolean checkDiscoveryPoints() {

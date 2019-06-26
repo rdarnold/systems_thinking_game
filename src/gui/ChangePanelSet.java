@@ -134,6 +134,13 @@ public class ChangePanelSet extends PanelSetBase {
     }
 
     public void onSubmitButton(String fromClassName) {
+        String strSubmitDesc = "";
+
+        // First, let's put the current values on the desc so we have the "before" and don't have to
+        // hunt it down
+        strSubmitDesc += "BEFORE_VALUES " + Data.currentValues.toString() + "\r\n";
+        strSubmitDesc += "BEFORE_SHAPE " + Player.getSelectedShape().toString() + "\r\n";
+
         ChangeSet changeSet = new ChangeSet(Data.currentValues, Player.getSelectedShape());
 
         // Apply our changes
@@ -142,7 +149,13 @@ public class ChangePanelSet extends PanelSetBase {
 
         // Now these things have changed so update the changeset with the new values.
         changeSet.setNew(Data.currentValues, Player.getSelectedShape());
-        String strSubmitDesc = changeSet.toString();
+        //String strSubmitDesc = changeSet.toString();
+        strSubmitDesc += "CHANGED_VALUES " + changeSet.toString();
+
+        // And record the "after" values too
+        // This is all just for convenience as it's really not much data 
+        strSubmitDesc += "AFTER_VALUES " + Data.currentValues.toString() + "\r\n";
+        strSubmitDesc += "AFTER_SHAPE " + Player.getSelectedShape().toString() + "\r\n";
 
         // Now take a snapshot of system as it is now and add to the string since we want to save that too
         SystemSnapshot snapshot = new SystemSnapshot();

@@ -340,7 +340,7 @@ public final class FileTransfer {
      * @return The inserted permission if successful, {@code null} otherwise.
      */
     private static Permission setPermission(Drive service, String fileId) {
-        return setPermission(service, fileId, "systemsthinkingtest@gmail.com", "user", "writer", 0);
+        return setPermission(service, fileId, "systemsthinkingtest@gmail.com", "user", "owner", 0);
     }
 
     private static Permission setPermission(Drive service, String fileId,

@@ -43,6 +43,7 @@ src/gui/AdjustShapeValuesPanel.java
 src/gui/AdjustValuesInterface.java
 src/gui/AltDataCollectionWindow.java
 src/gui/AnswerScreen.java
+src/gui/AssessmentWindow.java
 src/gui/BetaWindow.java
 src/gui/ChangePanelBottom.java
 src/gui/ChangePanelLeft.java
