@@ -36,14 +36,4 @@
     Levels are gained by growing bigger.
     </text>
   </task>
-  <task>
-    <exercise>4</exercise>
-    <turns>10</turns>
-    <name>Chaos Round 2</name>
-    <text>
-    Think you could have done better? 
-    Use what you learned last time to try to do better this time by
-    raising your shape's level as high as possible.
-    </text>
-  </task>
 </tasks>

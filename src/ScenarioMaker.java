@@ -279,9 +279,9 @@ public class ScenarioMaker {
                 otherShape.moveTo(Utils.number(50, 550), Utils.number(50, 500));
             }
         }
-
-        // Actually let's take the last one so that we are on top.
+        
         Gos.selectShape(playerShape);
+
 
         // You are now blue, make sure we indicate which shape the player IS though,
         // we need some other special way to determine this.

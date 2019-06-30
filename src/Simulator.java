@@ -343,6 +343,7 @@ public class Simulator {
         // Make sure we always have something selected if there
         // is something to select.
         if (shapes != null && shapes.size() > 0 && Player.getSelectedShape() == null) {
+            Utils.log("BOOBS 5");
             Gos.selectShape(shapes.get(0));
         }
     }
@@ -438,6 +439,18 @@ public class Simulator {
         }*/
     }
 
+    // Check to see if this shape is actually in the array
+    public boolean isShapeInShapesArray(SysShape shape) {
+        if (shape == null)
+            return false;
+        for (int i = 0; i < shapes.size(); i++) {
+            if (shape.equals(shapes.get(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // See where this shape is in our shapes array
     public int getShapeIndex(SysShape shape) {
         if (shape == null)
@@ -452,7 +465,7 @@ public class Simulator {
 
     public void removeShape(SysShape shape) {
         shapes.remove(shape);
-        if (Player.getSelectedShape() == shape) {
+        if (Player.getSelectedShape().equals(shape) == true) {
             // What if we have no shapes left?
             if (shapes.size() > 0) {
                 Gos.selectShape(shapes.get(0));

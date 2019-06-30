@@ -185,10 +185,10 @@ public class PlayedBeforeWindow extends DialogWindow {
             m_tfId.setText("" + Player.getId());
         }
         else {
-            // I'll just use whatever they type.  Even if it isn't
-            // the "right number of numbers" who cares, it just needs
-            // to have a very high probability of being unique.
+            // I should have a check here to see if they actually input a
+            // valid ID
             Player.setId(Utils.tryParseInt(strId));
+            Player.setSubmittedId(Player.getId());
         }
 
         Player.setTimesPlayed(Utils.tryParseInt(m_tfTimes.getText()));

@@ -68,6 +68,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
     
 import gos.*;
 
@@ -81,7 +85,12 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
     private HTMLEditor m_htmlEditor;
     private TextArea m_textArea;
 
+    private TableView table = new TableView();
+
     private AssessmentWindow thisScreen;
+
+    public static ArrayList<Action> loaded_actions = new ArrayList<Action>();
+    //public static ArrayList<Answer> loaded_answers = new ArrayList<Answer>();
 
     public AssessmentWindow(int wid, int hgt) {
         //super(wid, hgt);
@@ -163,6 +172,28 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
             }
         });
         m_MainVBox.getChildren().add(btn);*/
+        table.setEditable(false);
+        table.prefHeightProperty().bind(m_Scene.heightProperty());
+ 
+        TableColumn col1 = new TableColumn("Action");
+        col1.setCellValueFactory(new PropertyValueFactory<>("strAction"));
+        col1.prefWidthProperty().bind(table.widthProperty().multiply(0.2));
+
+        TableColumn col2 = new TableColumn("Time");
+        col2.setCellValueFactory(new PropertyValueFactory<>("strTime"));
+        col2.prefWidthProperty().bind(table.widthProperty().multiply(0.1));
+
+        TableColumn col3 = new TableColumn("Screen");
+        col3.setCellValueFactory(new PropertyValueFactory<>("fromScreen"));
+        col3.prefWidthProperty().bind(table.widthProperty().multiply(0.2));
+
+        TableColumn col4 = new TableColumn("Desc");
+        col4.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        col4.prefWidthProperty().bind(table.widthProperty().multiply(0.5));
+        
+        table.getColumns().addAll(col1, col2, col3, col4);
+        
+        m_MainVBox.getChildren().add(table);
     }
 
     private MenuBar createMenuBar() {
@@ -186,7 +217,9 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
     private void onClickLoadPlayerData() {
         List<String> lines = null;
 
-        FileChooser fileChooser = new FileChooser();    
+        FileChooser fileChooser = new FileChooser(); 
+        //String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
+        fileChooser.setInitialDirectory(new File("C://Ross//Work//Japan//Drones//Code//systems_thinking_game_evolved//data"));   
         fileChooser.setTitle("Open Player Data File");      
         fileChooser.getExtensionFilters().addAll(
          new ExtensionFilter("Text Files", "*.txt"));                              
@@ -200,14 +233,90 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
             Utils.log("Error loading player data");
         }
 
-        for (String line : lines) {
+        /*for (String line : lines) {
             Utils.log(line);
-        }
+        }*/
 
         processLoadedData(lines);
+
+        // Now present it in some viewable fashion
+        showLoadedData();
     } 
 
-    private void processLoadedData(List<String> lines) {
+    private void showLoadedData() {
+        table.getItems().clear();
 
+        // We have all the actions loaded up in loaded_actions
+        for (Action a : loaded_actions) {
+            table.getItems().add(a);
+        }
+    }
+
+    // We found an ACT: which is start of an action so now load the action
+    // and return the index of the last line of the action whatever that was
+    private int loadActionFromString(List<String> lines, int start) {
+        int i = start;
+
+        List<String> loadLines = new ArrayList<String>();
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+
+        // Now we just keep going until we hit another ACT: (or something else that terminates) as the rest are parts of AD
+        String line = lines.get(i);
+        while (line != null) {
+            if (i >= lines.size()) {
+                break;
+            }
+            line = lines.get(i);
+
+            // Only more actions and the scratchpad come after actions right now.  that's just the way the file is set up.
+            // It would be nice to future-proof this file and format such that it doesn't depend on the order of the contents.
+            // But right now that would involve sending more data and I'm trying to keep it lean.
+            if (line.length() >= ("ACT:").length() && line.substring(0, ("ACT:").length()).equals("ACT:") == true) {
+                break;
+            }
+            if (line.length() >= ("ScratchPad:").length() && line.substring(0, ("ScratchPad:").length()).equals("ScratchPad:") == true) {
+                break;
+            }
+            loadLines.add(line);
+            i++;
+        }
+
+        Action act = new Action(loadLines);
+        if (act != null) {
+            // We just do this to accomodate my initial data set which had absolute instead of relative
+            // timestamps
+            act.timestamp -= 1561517543573L;
+            loaded_actions.add(act);
+        }
+        loadLines.clear();
+        return i;
+    }
+
+    private void processLoadedData(List<String> lines) {
+        // So now we process it into some kind of action and answer lists that parallel
+        // the ones the player usually has.  That's all the processing we do for now; we can
+        // process more advanced stuff within the actions later after we load them up.
+
+        int i = 0;
+        for (i = 0; i < lines.size(); i++) {
+            String line = lines.get(i);
+            if (line == null || line.length() < 4) {
+                continue;
+            }
+            if (line.substring(0, 4).equals("ACT:")) {
+                i = loadActionFromString(lines, i);
+                i--; // Because we're gonna add to it in a second
+            }
+
+        }
+        //loaded_actions
+        //loaded_answers
     }
 }

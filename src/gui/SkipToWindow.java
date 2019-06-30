@@ -191,6 +191,10 @@ public class SkipToWindow extends DialogWindow {
                 Gos.simRunner.skipToExercise(4);
                 break;
             // mastery 2
+            case 6:
+                Gos.simRunner.skipToExercise(4);
+                Player.nextTask();
+                break;
             case 8:
                 Gos.simRunner.skipToExercise(4);
                 Player.nextTask();

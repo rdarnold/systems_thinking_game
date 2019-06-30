@@ -153,6 +153,7 @@ public class StartSurveyWindow extends DialogWindow {
             GridPane.setHalignment(skipButton, HPos.CENTER);
             tempAdd(skipButton);
         }*/
+        
         skipButton = new MovableButton("Skip");
         skipButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -191,6 +192,14 @@ public class StartSurveyWindow extends DialogWindow {
 
     @Override
     public void showAndWait() {
+        
+        // If the player played before and input an ID and it's formatted correctly,
+        // we let them skip the surveys, otherwise hide the skip button
+        if (Player.getSubmittedId() <= 0 || Player.getPlayedBefore() == false) {
+            Utils.log("WTF " + Player.getSubmittedId() + Player.getPlayedBefore());
+            skipButton.setVisible(false);
+        }
+
         if (Gos.testing == true) {
             return;
         }

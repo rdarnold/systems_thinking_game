@@ -21,7 +21,7 @@ public class Answer {
     }
 
     public void setTimeToNow() {
-        timestamp = System.currentTimeMillis();
+        timestamp = System.currentTimeMillis() - Player.startTime;
     }
 
     public String toString() {

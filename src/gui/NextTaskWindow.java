@@ -94,8 +94,7 @@ public class NextTaskWindow extends DialogWindow {
             Exercise e = Player.getCurrentExercise();
             str = "You've completed the entire " + e.getName() + " scenario! " +
             "You'll now be given a set of " +
-            "questions that relate to the scenario.  After that, the next " +
-            "scenario will begin.";
+            "questions that relate to the scenario.";
             addCenteredLabel(str);
             Utils.addVerticalSpace(box, space);
         }

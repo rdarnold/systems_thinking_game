@@ -292,7 +292,11 @@ public class MainScreen extends GosSceneBase {
         //updateTaskText();
         update();
         if (sim.shapes != null && sim.shapes.size() > 0) {
-            Gos.selectShape(sim.shapes.get(0));
+            // Check to see if we already have a shape selected; i.e. we set it up already
+            // when we generated the system.  If not, select something inside the current array.
+            if (Player.getSelectedShape() == null || sim.isShapeInShapesArray(Player.getSelectedShape()) == false) {
+                Gos.selectShape(sim.shapes.get(0));
+            }
         }
     }
 

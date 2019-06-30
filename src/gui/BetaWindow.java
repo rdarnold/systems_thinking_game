@@ -125,10 +125,12 @@ public class BetaWindow extends DialogWindow {
 
         str = "Congratulations, you have reached the end of the game.  Thank you for playing!\r\n\r\n" +
         "If you play the game again, please input your ID on the welcome screen.  This will help us " +
-        "track your research data, such as trends and differences in gameplay decisions.";
+        "track your research data, such as trends and differences in gameplay decisions.  Also, this " +
+        "will allow you to skip all the survey questions.";
         textLabel = addCenteredLabel(str);
        // Utils.addVerticalSpace(box, space);
 
+        // Add the "ID" next to the copyable part
         TextField copyable = new TextField("ID: " + Player.getId());
         copyable.setEditable(false);
         copyable.getStyleClass().add("copyable-label");

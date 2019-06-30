@@ -221,9 +221,9 @@ public class SimRunner implements SimulatorEventListener {
 
             // If we are exercise 4, select the last shape.  Should there
             // be a post-processing for exercise setup?
-            if (Player.getCurrentExercise().getId() == 4) {
+            /*if (Player.getCurrentExercise().getId() == 4) {
                 Gos.selectShape(sim.shapes.get(sim.shapes.size()-1));
-            }
+            }*/
         }
     }
 
@@ -309,6 +309,12 @@ public class SimRunner implements SimulatorEventListener {
             // This is before we've shown the main panel set
             if (Player.getCurrentExercise().getId() == 2) {
                 // Ok now we are starting the actual sim.
+                
+                // If we've completed the surveys, we should immediately upload the data because now
+                // the player receives an ID and can use that to skip the surveys later.
+                if (Gos.skipSurveys == false) {
+                    uploadData();
+                }
                 Gos.showStartSimulation();
             }
 

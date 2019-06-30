@@ -298,6 +298,22 @@ public final class Utils {
         }  
     }
 
+    public static long tryParseLong(String value) {  
+        return tryParseLong(value, true);
+    }
+
+    private static long tryParseLong(String value, boolean tryDoubleToo) {  
+        try {  
+            long i = Long.parseLong(value);  
+            return i;  
+        } catch (NumberFormatException e) {  
+            if (tryDoubleToo == true) {
+                return (int)tryParseDouble(value, false);
+            }
+            return 0;  
+        }  
+    }
+
     public static double tryParseDouble(String value) {  
         return tryParseDouble(value, true);
     }
