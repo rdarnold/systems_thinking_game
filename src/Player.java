@@ -60,6 +60,7 @@ public final class Player {
     // Info if the player wants to provide it.
     private static int id = 0;
     private static int submittedId = 0; // If they tried to submit their own ID we record that too
+    private static int saveNum = 1; // How many times have we saved the data?  Increment each time so it's easy to see
     private static String name = "Anon";
     private static String email = "";
     private static int timesPlayed = 0;
@@ -76,6 +77,7 @@ public final class Player {
     public static boolean getPlayedBefore() { return playedBefore; }
     public static String getMacAddress() { return macAddress; }
 
+    public static void incSaveNum() { saveNum++; }
     public static void setId(int num) { id = num; }
     public static void setSubmittedId(int num) { submittedId = num; }
     public static void setName(String str) { 
@@ -235,7 +237,7 @@ public final class Player {
                               .format(Instant.now());
         // Based on the date/time, ID, name, etc., generate us a filename
         // for the data file.
-        String name = "STTData_ID" + Player.id + "_";
+        String name = "STT_" + Player.getName() + "_" + Player.saveNum + "_ID" + Player.id + "_";
         name += thisMoment;
         name += ".txt";
         return name;

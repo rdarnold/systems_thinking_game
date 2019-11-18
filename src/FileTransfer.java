@@ -241,6 +241,7 @@ public final class FileTransfer {
                     "Simulation Results", "text/plain", Player.lastSavedData) != null) {
                 setUploadProgress(1);
                 setUploadSuccess(1);
+                Player.incSaveNum(); // Increment the number of saves we've done during the game
                 return true;
             } 
             //createFileFromFile(service, "Test File Zoids.txt", "Simulation Results", "text/plain", "TestFileZoids.txt");
