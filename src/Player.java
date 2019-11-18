@@ -3,6 +3,7 @@ package gos;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.EnumSet;
 import java.time.ZoneOffset;
 import java.time.Instant;
@@ -42,6 +43,9 @@ public final class Player {
     private static SysShape selectedShape = null;
     public static long startTime = 0;
     public static long endTime = 0;
+    public static long lastTimeLogged = 0;
+    public static String nowLocal = "";
+    public static String nowZulu = "";
 
     // Start out in prac mode, if you're in prac mode, certain buttons
     // and controls aren't available.
@@ -61,6 +65,7 @@ public final class Player {
     private static int timesPlayed = 0;
     private static boolean contactConsent = false;
     private static boolean playedBefore = false;
+    private static String macAddress = "";
     
     public static int getId() { return id; }
     public static int getSubmittedId() { return submittedId; }
@@ -69,6 +74,7 @@ public final class Player {
     public static int getTimesPlayed() { return timesPlayed; }
     public static boolean getContactConsent() { return contactConsent; }
     public static boolean getPlayedBefore() { return playedBefore; }
+    public static String getMacAddress() { return macAddress; }
 
     public static void setId(int num) { id = num; }
     public static void setSubmittedId(int num) { submittedId = num; }
@@ -320,15 +326,48 @@ public final class Player {
         //String nowLocal = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssX")
           //                    .format(Instant.now());
         DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z");
+        nowLocal = ZonedDateTime.now().format(FORMATTER);
+
+        nowZulu = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss X")
+                              .withZone(ZoneOffset.UTC)
+                              .format(Instant.now());
+
+        lastTimeLogged = System.currentTimeMillis();
+        macAddress = Utils.getMacAddress();
+
+        // Start with the meta-data like the id, name, email, etc.
+        // Get some timestamps on there, might even help us figure out where people
+        // are taking the test from without being intrusive.
+        appendLine(result, "MS: " + lastTimeLogged);
+        appendLine(result, "LT: " + nowLocal);
+        appendLine(result, "ZT: " + nowZulu);
+        appendLine(result, "ID: " + id);
+        appendLine(result, "SubID: " + submittedId);
+        appendLine(result, "Consent: " + contactConsent);
+        appendLine(result, "Name: " + name);
+        appendLine(result, "Email: " + email);
+        appendLine(result, "PB: " + playedBefore);
+        appendLine(result, "Times: " + timesPlayed);
+        appendLine(result, "MAC: " + macAddress); // Add in the MAC if we are allowed.
+        appendLine(result, "Start: " + startTime);
+        appendLine(result, "End: " + endTime);
+
+        result.append(getAnswerData());
+        result.append(getActionData());
+        result.append(getScratchPadData());
+
+        return result.toString(); 
+    }
+
+    public static boolean loadPlayerData(List<String> lines) {
+        int i = 0;
+        /*DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z");
         String nowLocal = ZonedDateTime.now().format(FORMATTER);
 
         String nowZulu = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss X")
                               .withZone(ZoneOffset.UTC)
                               .format(Instant.now());
 
-        // Start with the meta-data like the id, name, email, etc.
-        // Get some timestamps on there, might even help us figure out where people
-        // are taking the test from without being intrusive.
         appendLine(result, "MS: " + System.currentTimeMillis());
         appendLine(result, "LT: " + nowLocal);
         appendLine(result, "ZT: " + nowZulu);
@@ -345,9 +384,267 @@ public final class Player {
 
         result.append(getAnswerData());
         result.append(getActionData());
-        result.append(getScratchPadData());
+        result.append(getScratchPadData());*/
 
-        return result.toString(); 
+        // Load general data
+        i = loadGeneralData(lines, i);
+
+        // Load answer data
+        i = loadAnswerData(lines, i);
+
+        // Load actions
+        i = loadActionData(lines, i);
+
+        // Now load the scratch pad
+        i = loadScratchPadData(lines, i);
+
+        Utils.log(Player.getPlayerData());
+        return true;
+    }
+
+    
+    // We found an ACT: which is start of an action so now load the action
+    // and return the index of the last line of the action whatever that was
+    private static int loadAnswerFromString(List<String> lines, int start) {
+        int i = start;
+
+        List<String> loadLines = new ArrayList<String>();
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+
+        // Now we just keep going until we hit @ETX: (or something else that terminates)
+        String line = lines.get(i);
+        while (line != null) {
+            if (i >= lines.size()) {
+                break;
+            }
+            line = lines.get(i);
+
+            // Only more actions and the scratchpad come after actions right now.  that's just the way the file is set up.
+            // It would be nice to future-proof this file and format such that it doesn't depend on the order of the contents.
+            // But right now that would involve sending more data and I'm trying to keep it lean.
+            if (line.length() >= ("@ETX").length() && line.substring(0, ("@ETX").length()).equals("@ETX") == true) {
+                break;
+            }
+            // This shouldn't happen because if we hit an ANS: that means we just went past an @ETX
+            if (line.length() >= ("ANS:").length() && line.substring(0, ("ANS:").length()).equals("ANS:") == true) {
+                break;
+            }
+            loadLines.add(line);
+            i++;
+        }
+
+        Answer ans = new Answer(loadLines);
+        if (ans != null) {
+            // We just do this to accomodate my initial data set which had absolute instead of relative
+            // timestamps
+            ans.timestamp -= 1561517543573L;
+            Player.answers.add(ans);
+        }
+        loadLines.clear();
+        return i;
+    }
+    
+    // We found an ACT: which is start of an action so now load the action
+    // and return the index of the last line of the action whatever that was
+    private static int loadActionFromString(List<String> lines, int start) {
+        int i = start;
+
+        List<String> loadLines = new ArrayList<String>();
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+        loadLines.add(lines.get(i));
+        i++;
+
+        // Now we just keep going until we hit another ACT: (or something else that terminates) as the rest are parts of AD
+        String line = lines.get(i);
+        while (line != null) {
+            if (i >= lines.size()) {
+                break;
+            }
+            line = lines.get(i);
+
+            // Only more actions and the scratchpad come after actions right now.  that's just the way the file is set up.
+            // It would be nice to future-proof this file and format such that it doesn't depend on the order of the contents.
+            // But right now that would involve sending more data and I'm trying to keep it lean.
+            if (line.length() >= ("ACT:").length() && line.substring(0, ("ACT:").length()).equals("ACT:") == true) {
+                break;
+            }
+            if (line.length() >= ("ScratchPad:").length() && line.substring(0, ("ScratchPad:").length()).equals("ScratchPad:") == true) {
+                break;
+            }
+            loadLines.add(line);
+            i++;
+        }
+
+        Action act = new Action(loadLines);
+        if (act != null) {
+            // We just do this to accomodate my initial data set which had absolute instead of relative
+            // timestamps
+            act.timestamp -= 1561517543573L;
+            Player.actions.add(act);
+        }
+        loadLines.clear();
+        return i;
+    }
+
+    private static int loadGeneralData(List<String> lines, int start_index) {
+        String str;
+        int i = start_index;
+        
+        // So right now it's just quick and dirty since we know the order
+        str = lines.get(i);
+        lastTimeLogged = Utils.tryParseLong(str.substring(("MS: ").length(), str.length()));
+        //appendLine(result, "MS: " + lastTimeLogged);
+        i++;  
+        str = lines.get(i);
+        nowLocal = str.substring(("LT: ").length(), str.length());
+        //appendLine(result, "LT: " + nowLocal);
+        i++;  
+        str = lines.get(i);
+        nowZulu = str.substring(("ZT: ").length(), str.length());
+        //appendLine(result, "ZT: " + nowZulu);
+        i++;  
+        str = lines.get(i);
+        Player.setId(Utils.tryParseInt(str.substring(("ID: ").length(), str.length())));
+        //appendLine(result, "ID: " + id);
+        i++;
+        str = lines.get(i);
+        submittedId = Utils.tryParseInt(str.substring(("SubID: ").length(), str.length()));
+        //appendLine(result, "SubID: " + submittedId);
+        i++;
+        str = lines.get(i);
+        contactConsent = Boolean.parseBoolean(str.substring(("Consent: ").length(), str.length()));
+        //appendLine(result, "Consent: " + contactConsent);
+        i++;
+        str = lines.get(i);
+        name = str.substring(("Name: ").length(), str.length());
+        //appendLine(result, "Name: " + name);
+        i++;
+        str = lines.get(i);
+        email = str.substring(("Email: ").length(), str.length());
+        //appendLine(result, "Email: " + email);
+        i++;
+        str = lines.get(i);
+        playedBefore = Boolean.parseBoolean(str.substring(("PB: ").length(), str.length()));
+        //appendLine(result, "PB: " + playedBefore);
+        i++;
+        str = lines.get(i);
+        timesPlayed = Utils.tryParseInt(str.substring(("Times: ").length(), str.length()));
+        //appendLine(result, "Times: " + timesPlayed);
+        i++;
+        str = lines.get(i);
+        macAddress = str.substring(("MAC: ").length(), str.length());
+        //appendLine(result, "MAC: " + Utils.getMacAddress()); // Add in the MAC if we are allowed.
+        i++;
+        str = lines.get(i);
+        startTime = Utils.tryParseLong(str.substring(("Start: ").length(), str.length()));
+        //appendLine(result, "Start: " + startTime);
+        i++;
+        str = lines.get(i);
+        endTime = Utils.tryParseLong(str.substring(("End: ").length(), str.length()));
+        //appendLine(result, "End: " + endTime);
+        i++;
+        
+        return i;
+    }
+
+    private static int loadAnswerData(List<String> lines, int start_index) {
+        Player.answers = new ArrayList<Answer>();
+        int i = 0;
+        for (i = start_index; i < lines.size(); i++) {
+            String line = lines.get(i);
+            if (line == null || line.length() < 4) {
+                continue;
+            }
+
+            if (line.substring(0, 4).equals("ANS:")) {
+                i = loadAnswerFromString(lines, i);
+                i--; // Because we're gonna add to it in a second
+            }
+            if (line.length() >= ("ACT:").length() && line.substring(0, ("ACT:").length()).equals("ACT:") == true) {
+                return i;
+            }
+        }
+        return i;
+    }
+
+    private static int loadActionData(List<String> lines, int start_index) {
+        Player.actions = new ArrayList<Action>();
+        int i = 0;
+        for (i = start_index; i < lines.size(); i++) {
+            String line = lines.get(i);
+            if (line == null || line.length() < 4) {
+                continue;
+            }
+
+            if (line.substring(0, 4).equals("ACT:")) {
+                i = loadActionFromString(lines, i);
+                i--; // Because we're gonna add to it in a second
+            }
+            if (line.length() >= ("ScratchPad:").length() && line.substring(0, ("ScratchPad:").length()).equals("ScratchPad:") == true) {
+                return i;
+            }
+        }
+        return i;
+    }
+
+    private static int loadScratchPadData(List<String> lines, int start_index) {
+        int i = 0;
+        for (i = start_index; i < lines.size(); i++) {
+            String line = lines.get(i);
+            if (line == null) {
+                continue;
+            }
+
+            if (line.length() >= ("ScratchPad:").length() && line.substring(0, ("ScratchPad:").length()).equals("ScratchPad:")) {
+                i = loadScratchPadFromString(lines, i);
+                i--; // Because we're gonna add to it when the loop continues
+            }
+        }
+        return i;
+    }
+
+    private static int loadScratchPadFromString(List<String> lines, int start) {
+        int i = start + 1;
+
+        List<String> loadLines = new ArrayList<String>();
+
+        // Now we just keep going until we hit the end
+        String line = lines.get(i);
+        while (line != null) {
+            if (i >= lines.size()) {
+                break;
+            }
+            line = lines.get(i);
+            loadLines.add(line);
+            i++;
+        }
+
+        // Now we have loadLines which is what we want to load
+        int n = 0;
+        String strSP = "";
+        while (n < loadLines.size()) {
+            strSP += loadLines.get(n) + "\r\n";
+            n++;
+        }
+        Gos.scratchPadWindow.setText(strSP);
+        loadLines.clear();
+        return i;
     }
 
     //public static void setCurrentExercise(Exercise e) { currentExercise = e; }

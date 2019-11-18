@@ -113,11 +113,18 @@ public class ChangePanelBottom extends PanelBottomBase {
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                boolean cancelled = false;
                 if (Player.inPracticeMode() == false) {
                     Gos.variableWindow.showAndWait();
+                    // We need to record that we cancelled somehow so that we don't
+                    // proceed with the submit below; this is how we do it with a private
+                    // variable on the variableWindow object
+                    cancelled = Gos.variableWindow.getCancelled();
                 }
                 Player.recordButtonAction(event, thisScreen.className());
-                m_ParentPanelSet.onSubmitButton(thisScreen.className());
+                if (cancelled == false) {
+                    m_ParentPanelSet.onSubmitButton(thisScreen.className());
+                }
                 //FileTransfer.runUploadThread();
             }
         });

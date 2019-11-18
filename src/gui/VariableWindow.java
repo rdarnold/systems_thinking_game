@@ -76,6 +76,7 @@ public class VariableWindow extends DialogWindow {
     private VBox m_LeftBox;
     private VBox m_RightBox;
     private MovableButton submitBtn;
+    private MovableButton cancelBtn;
     private ArrayList<ChoiceBox> cbList;
     private ArrayList<ChoiceBox> cbOrderedList; // Same but ordered by rank
     private ArrayList<Label> labList;
@@ -92,6 +93,7 @@ public class VariableWindow extends DialogWindow {
     private Label m_labParadigm;*/
     
     private TextArea m_taRationale;
+    private boolean m_bCancelled = false;
     
     private VariableWindow thisScreen;
 
@@ -123,6 +125,8 @@ public class VariableWindow extends DialogWindow {
 
         String str;
         VBox box = m_MainVBox;
+
+        m_bCancelled = false;
 
         /*str = "Please rate the variables by how important you think they are right now. " +
               "1 is most important, 7 is least important.";*/
@@ -173,6 +177,16 @@ public class VariableWindow extends DialogWindow {
             }
         });
         addTempControl(submitBtn);
+
+        cancelBtn = new MovableButton("Cancel");
+        cancelBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Player.recordButtonAction(event, thisScreen.className());
+                onCancel();
+            }
+        });
+        addTempControl(cancelBtn);
 
         getScene().setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
@@ -512,7 +526,17 @@ public class VariableWindow extends DialogWindow {
         }
         Player.recordAction(Action.Type.SubmitVarRating, str, thisScreen.className());
 
+        m_bCancelled = false;
         close();
+    }
+
+    private void onCancel() {
+        m_bCancelled = true;
+        close();
+    }
+
+    public boolean getCancelled() {
+        return m_bCancelled;
     }
 
     @Override
@@ -524,6 +548,7 @@ public class VariableWindow extends DialogWindow {
         }*/
 
         m_taRationale.setText("");
+        m_bCancelled = false;
 
         super.showAndWait();
     }

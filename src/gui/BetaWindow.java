@@ -229,7 +229,8 @@ public class BetaWindow extends DialogWindow {
         okBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Player.recordButtonAction(event, thisScreen.className());
+                // We're done here; we've already uploaded the final stuff
+                //Player.recordButtonAction(event, thisScreen.className());
                 if (failures == 1) {
                     pb.setProgress(-1);
                     FileTransfer.runUploadThread();

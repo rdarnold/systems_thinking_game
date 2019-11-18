@@ -1,5 +1,6 @@
 package gos;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.EnumSet;
 
@@ -38,5 +39,53 @@ public class Answer {
         sb.append(strAnswerText); // We could have a multi-line answer
         sb.append("@ETX\r\n");
         return sb.toString();
+    }
+    
+    // The fromLines array should have all of the action info it in already, ordered
+    // correctly
+    public Answer(List<String> fromLines) {
+        fromStringArray(fromLines);
+    }
+
+    public boolean fromStringArray(List<String> fromLines) {
+        boolean success = true;
+        String line = null;
+
+        // First line should be ANS (type)
+        line = fromLines.get(0);
+        line = line.substring(5, line.length());
+        answerType = Question.AnswerType.fromInt(Utils.tryParseInt(line));
+
+        // Now AT (time)
+        line = fromLines.get(1);
+        line = line.substring(4, line.length());
+        timestamp = Utils.tryParseLong(line);
+
+        // Now QI 
+        line = fromLines.get(2);
+        line = line.substring(4, line.length());
+        questionId = Utils.tryParseInt(line);
+
+        // Now EI
+        line = fromLines.get(3);
+        line = line.substring(4, line.length());
+        exerciseId = Utils.tryParseInt(line);
+
+        // Now @STX which is nothing
+
+        // Now we just keep going until the end or we hit @ETX, we should be able to handle either one
+        int i = 5;
+        strAnswerText = "";
+        while (i < fromLines.size()) {
+            line = fromLines.get(i);
+            if (line.length() >= ("@ETX").length() && line.equals("@ETX")) {
+                break;
+            }
+            strAnswerText += line;
+            strAnswerText += "\r\n";
+            i++;
+        }
+
+        return success;
     }
 }

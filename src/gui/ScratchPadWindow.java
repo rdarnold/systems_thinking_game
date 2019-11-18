@@ -151,10 +151,13 @@ public class ScratchPadWindow extends Stage implements ClassInfo  {
         return m_textArea.getText();
     }
 
+    public void setText(String str) {
+        m_textArea.setText(str);
+    }
+
     private void onClose() {
         // Save out the main text or whatever.
         // actually does not appear to be necessary
-            
         close();
     }
 }

@@ -26,7 +26,7 @@ public final class Constants {
     public static final int SIM_CENTER_X = SIM_WIDTH/2;
     public static final int SIM_CENTER_Y = SIM_HEIGHT/2;
 
-    public static final String VERSION_NUMBER_STRING = "0.60";
+    public static final String VERSION_NUMBER_STRING = "0.62";
 
     public static enum ResourceType {
         Matter, Energy;

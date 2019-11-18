@@ -76,7 +76,7 @@ public class ContactConsentWindow extends DialogWindow {
     private TextField m_tfName;
     private TextField m_tfEmail;
 
-    private CheckBox m_cbConsent;
+    //private CheckBox m_cbConsent;
 
     private ContactConsentWindow thisScreen;
 
@@ -129,8 +129,8 @@ public class ContactConsentWindow extends DialogWindow {
         textLabel = addLeftLabel(str);
         Utils.addVerticalSpace(box, space);
 
-        m_cbConsent = new CheckBox("Check this box if you consent to being contacted.");
-        m_MainVBox.getChildren().add(m_cbConsent);
+        //m_cbConsent = new CheckBox("Check this box if you consent to being contacted.");
+        //m_MainVBox.getChildren().add(m_cbConsent);
 
         m_tfName = addNewLabelTextField("Name (Optional): ");
         m_tfEmail = addNewLabelTextField("Email (Optional): ");
@@ -148,11 +148,11 @@ public class ContactConsentWindow extends DialogWindow {
         });
         m_MainVBox.getChildren().add(okBtn);
     }
-
+ 
 
     @Override
     public void showAndWait() {
-        if (Gos.testing == true) {
+        if (Gos.testing == true) { 
             return;
         }
 
@@ -162,7 +162,11 @@ public class ContactConsentWindow extends DialogWindow {
     private void onOK() {
         Player.setName(m_tfName.getText());
         Player.setEmail(m_tfEmail.getText());
-        Player.setContactConsent(m_cbConsent.isSelected());
+        //Player.setContactConsent(m_cbConsent.isSelected());
+
+        if (m_tfEmail.getText() != null && m_tfEmail.getText() != "") { 
+            Player.setContactConsent(true);
+        }
             
         close();
 

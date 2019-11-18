@@ -21,7 +21,7 @@
   <task>
     <exercise>3</exercise>
     <turns>5</turns>
-    <name>Four Shapes Round 2</name>
+    <name>Four Shapes: Round 2</name>
     <text>
     Could you have done better?  Try again!  Make more spinning shapes as quickly as possible.
     </text>
@@ -34,6 +34,14 @@
     Your shape is the circled shape in the middle of the screen.  
     Your goal is to raise your shape's level as high as possible.  
     Levels are gained by growing bigger.
+    </text>
+  </task>
+  <task>
+    <exercise>4</exercise>
+    <turns>10</turns>
+    <name>Chaos: Round 2</name>
+    <text>
+    Could you have done better?  Try again!  Raise your shape's level as high as possible.
     </text>
   </task>
 </tasks>

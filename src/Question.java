@@ -20,15 +20,35 @@ import javafx.beans.property.ObjectProperty;
 public class Question extends GameDataItem {
     
     public static enum AnswerType {
-        Input(0), MultilineInput(1), Choice(2), Check(3);
+        Input(0, "Input"), 
+        MultilineInput(1, "MultilineInput"), 
+        Choice(2, "Choice"), 
+        Check(3, "Check");
 
         private final int value;
-        private AnswerType(int value) {
+        private final String string;
+        private AnswerType(int value, String name) {
             this.value = value;
+            string = name;
         }
 
+        // If we want the int value of the enum
         public int getValue() {
             return value;
+        }
+
+        // the toString just returns the given name
+        public String toString() {
+            return string;
+        }
+
+        // If we want to get the enum value by passing an int
+        private static AnswerType[] values = null;
+        public static AnswerType fromInt(int i) {
+            if (AnswerType.values == null) {
+                AnswerType.values = AnswerType.values();
+            }
+            return AnswerType.values[i];
         }
     }
 

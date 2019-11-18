@@ -55,9 +55,19 @@ public class Action {
     public long timestamp; // Every acion has a timestamp so we know when it occurred in relation to start of game
     public String desc; // Description, like what button was clicked for a button type
     public String fromScreen; // What screen was this done on?
+    public int exNum; // What exercise number?
+    public int taskNum; // What task number?
+    public int turnNum; // Which turn number?
 
     // These support the tableView
     public String getDesc() {
+        // If I'm a "submit change" then for the table view, I don't want to show the change set
+        // because it's not really human-readable so instead I will show a clickable link that will
+        // put the system in the state that the desc dictates
+        /*if (actionType == Type.SubmitChange) {
+
+            return
+        }*/
         return desc;
     }
 
@@ -79,12 +89,30 @@ public class Action {
 
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
-    
+
+    public String getExTaskTurn() {
+        return exNum + "/" + taskNum + "/" + turnNum;
+    }
+
+    public Action(Action.Type aType, String strDescription, String strScreen, int nEx, int nTask, int nTurn) {
+        init(aType, strDescription, strScreen, nEx, nTask, nTurn);
+    }
 
     public Action(Action.Type aType, String strDescription, String strScreen) {
+        Exercise ex = Player.getCurrentExercise();
+        int nEx = ex.getId();
+        int nTask = ex.currentTaskNumber;
+        int nTurn = Player.getCurrentTurnNumber();
+        init(aType, strDescription, strScreen, nEx, nTask, nTurn);
+    }
+
+    private void init(Action.Type aType, String strDescription, String strScreen, int nEx, int nTask, int nTurn) {
         actionType = aType;
         desc = strDescription;
         fromScreen = strScreen;
+        exNum = nEx; // What exercise number?
+        taskNum = nTask; // What task number?
+        turnNum = nTurn; // Which turn number?
         setTimeToNow(); // Restamp it later if needs be if we pre-created this.
     }
 
@@ -93,13 +121,13 @@ public class Action {
         timestamp = System.currentTimeMillis() - Player.startTime;
     }
 
-    // The loadFrom string should have all of the action info it in already, ordered
+    // The fromLines array should have all of the action info it in already, ordered
     // correctly
     public Action(List<String> fromLines) {
-        fromString(fromLines);
+        fromStringArray(fromLines);
     }
 
-    public boolean fromString(List<String> fromLines) {
+    public boolean fromStringArray(List<String> fromLines) {
         boolean success = true;
         String line = null;
 
@@ -113,26 +141,41 @@ public class Action {
         line = line.substring(4, line.length());
         timestamp = Utils.tryParseLong(line);
 
-        // Now AS (screen)
+        // Now AX (ex / task / turn)
         line = fromLines.get(2);
+        line = line.substring(4, line.length());
+        // Looks like: 3 4 1
+        String[] split = line.split(" ");
+        if (split.length >= 0) {
+            exNum = Utils.tryParseInt(split[0]);
+        }
+        if (split.length >= 1) {
+            taskNum = Utils.tryParseInt(split[1]);
+        }
+        if (split.length >= 2) {
+            turnNum = Utils.tryParseInt(split[2]);
+        }
+
+        // Now AS (screen)
+        line = fromLines.get(3);
         line = line.substring(4, line.length());
         fromScreen = line;
 
         // Now AD (Desc)
-        line = fromLines.get(3);
+        line = fromLines.get(4);
         line = line.substring(4, line.length());
 
         // Now we just keep going until the end to load the rest of desc
         desc = line;
 
-        int i = 4;
+        int i = 5;
         while (i < fromLines.size()) {
             desc += "\r\n";
             desc += fromLines.get(i);
             i++;
         }
 
-        Utils.log(toString());
+        //Utils.log(toString());
 
         return success;
     }
@@ -142,6 +185,8 @@ public class Action {
         sb.append("ACT: " + actionType.getValue());
         sb.append("\r\n");
         sb.append("AT: " + timestamp);
+        sb.append("\r\n");
+        sb.append("AX: " + exNum + " " + taskNum + " " + turnNum);
         sb.append("\r\n");
         sb.append("AS: " + fromScreen);
         sb.append("\r\n");

@@ -359,20 +359,34 @@
   <question>
     <exercise>3</exercise>
     <name>Four Shapes</name>
-    <text>What would most likely happen if the rain rate were increasedCR by a large amount?</text>
+    <text>What does the rain do when the Growth variable is set to "Growth" (the default setting)?</text>
     <answerType>Choice</answerType>
     <answerOptions>
-        <answerOption>The system would be stable</answerOption>
-        <answerOption>Shapes would grow and multiply</answerOption>
-        <answerOption>Shapes would shrink and possibly disappear</answerOption>
-        <answerOption>Not enough information to say</answerOption>
+        <answerOption>It increases the size of shapes, turns into red balls, and turns red balls into spikes</answerOption>
+        <answerOption>It increases the size of shapes only</answerOption>
+        <answerOption>It creates red balls only</answerOption>
+        <answerOption>It has other interrelated effects not stated here</answerOption>
+        <answerOption>Not enough information to answer</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
     <exercise>3</exercise>
     <name>Four Shapes</name>
-    <text>What are the things that make the spinning shapes INCREASE in size?  Check all that apply.</text>
+    <text>What would most likely happen if the rain rate were increasedCR by a large amount?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>The system would be stable</answerOption>
+        <answerOption>Shapes would grow and multiply</answerOption>
+        <answerOption>Shapes would shrink and possibly disappear</answerOption>
+        <answerOption>It depends on when the rain rate is increased</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>What are the things that make the spinning shapes increase in size?  Check all that apply.</text>
     <answerType>Check</answerType>
     <answerOptions>
         <answerOption>Impacting rain</answerOption>
@@ -389,7 +403,7 @@
     <exercise>3</exercise>
     <name>Four Shapes</name>
     <text>Does this system remind you of any real life system?</text>
-    <answerType>Input</answerType>
+    <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>3</exercise>
@@ -449,7 +463,19 @@
   <question>
     <exercise>4</exercise>
     <name>Chaos</name>
-    <text>What does the color of a spinning shape mean?</text>
+    <text>Does the color of a spinning shape matter?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Yes, it matters</answerOption>
+        <answerOption>No, it doesn't matter</answerOption>
+        <answerOption>Not enough information</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>4</exercise>
+    <name>Chaos</name>
+    <text>If it does matter, what does the color of a spinning shape mean?</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>It determines how fast a shape grows</answerOption>
