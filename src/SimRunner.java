@@ -247,6 +247,11 @@ public class SimRunner implements SimulatorEventListener {
         Player.resetForNewTask();
         Player.setMaxTurns(task.getTurns());
         Gos.mainScene.onNewTask();
+        // If we are doing the tutorial, we use some special processing to display the goal
+        if (task.getName().equals("Tutorial")) {
+            Player.updateTaskTrackers();
+            //Tutorial.setTextForTutorialTurn(Player.getCurrentTurnNumber());
+        }
         sim.start(); // If we haven't started yet, start now.
     }
 
@@ -434,6 +439,12 @@ public class SimRunner implements SimulatorEventListener {
 
         if (m_bActualRun == true) {
             Player.addCurrentTurnNumber();
+            // If it's the tutorial we need some special processing
+            Task task = Player.getCurrentTask();
+            if (task != null && task.getName().equals("Tutorial")) {
+                Player.updateTaskTrackers();
+                //Tutorial.setTextForTutorialTurn(Player.getCurrentTurnNumber());
+            }
             m_bActualRun = false;
         }
 

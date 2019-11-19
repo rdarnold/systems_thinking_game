@@ -707,7 +707,7 @@ public final class Player {
     }
 
     // Update the various trackers for task
-    private static void updateTaskTrackers() {
+    public static void updateTaskTrackers() {
         if (currentExercise != null) {
             // Set the bound value on the Player structure, so that
             // all of our bindings update on the screens.

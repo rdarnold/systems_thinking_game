@@ -32,6 +32,7 @@ src/Task.java
 src/TaskListWrapper.java
 src/Turn.java
 src/TurnSet.java
+src/Tutorial.java
 src/Uploader.java
 src/Utils.java
 src/Values.java

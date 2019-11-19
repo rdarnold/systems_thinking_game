@@ -3,10 +3,9 @@
   <task>
     <exercise>2</exercise>
     <turns>5</turns>
-    <name>Practice</name>
+    <name>Tutorial</name>
     <text>
-    There is no goal in the practice exercise!  Just play around with the game and get familiar 
-    with how it works.
+    Please click the Change System button at the bottom to proceed with the tutorial.
     </text>
   </task>
   <task>
@@ -21,7 +20,7 @@
   <task>
     <exercise>3</exercise>
     <turns>5</turns>
-    <name>Four Shapes: Round 2</name>
+    <name>Four Shapes: Second Try</name>
     <text>
     Could you have done better?  Try again!  Make more spinning shapes as quickly as possible.
     </text>
@@ -39,7 +38,7 @@
   <task>
     <exercise>4</exercise>
     <turns>10</turns>
-    <name>Chaos: Round 2</name>
+    <name>Chaos: Second Try</name>
     <text>
     Could you have done better?  Try again!  Raise your shape's level as high as possible.
     </text>

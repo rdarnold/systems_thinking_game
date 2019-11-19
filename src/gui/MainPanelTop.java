@@ -71,7 +71,7 @@ public class MainPanelTop extends PanelTopBase {
 
     private Label scenarioTitle;
     private Label instructionText;
-    private Label taskTask;
+    private Label taskText;
     
     private MainPanelTop thisScreen;
 
@@ -113,11 +113,11 @@ public class MainPanelTop extends PanelTopBase {
             Player.currentExerciseTextTrackerProperty()
         ));
 
-        taskTask = new Label();
-        taskTask.setWrapText(true);
-        taskTask.setPrefWidth(instructionTextWidth);
-        taskTask.setStyle("-fx-font-weight: bold; ");
-        taskTask.textProperty().bind(Bindings.createStringBinding(() -> 
+        taskText = new Label();
+        taskText.setWrapText(true);
+        taskText.setPrefWidth(instructionTextWidth);
+        taskText.setStyle("-fx-font-weight: bold; ");
+        taskText.textProperty().bind(Bindings.createStringBinding(() -> 
             /*"Task " + (Player.getCurrentTaskNumberTracker() + 1) +
             ", " + Player.getCurrentTaskNameTracker() +
             ": " + Player.getCurrentTaskTextTracker(),
@@ -133,7 +133,7 @@ public class MainPanelTop extends PanelTopBase {
         super.addToRightSide(instructionText);
         Utils.addVerticalSpace(m_MainVBox, 10);
 
-        super.addToRightSide(taskTask);
+        super.addToRightSide(taskText);
     }
 
     public void enableDefaultButtons() {

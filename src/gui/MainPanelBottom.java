@@ -196,6 +196,7 @@ public class MainPanelBottom extends PanelBottomBase {
                     Gos.sim.setTurn(turn);
                     updateSlider(turn);  // This pauses it so unpause it after
                 }
+
                 // If we were paused for any reason, let's unpause now so players can
                 // see the shapes spinning.
                 Gos.sim.unpause();
@@ -205,9 +206,18 @@ public class MainPanelBottom extends PanelBottomBase {
                     Gos.mainScene.showNextTaskWindow();
                 }
                 else {
+                    // Show the correct controls
                     Gos.mainScene.showChangePanelSet(); 
                     //Player.setSelectedShape(sim.shapes.get(0));
                     //onSelectedShapeUpdated();
+                    
+                    // If we are in Tutorial mode we need to update the text to show our current
+                    // tutorial goal
+                    Task task = Player.getCurrentTask();
+                    if (task != null && task.getName().equals("Tutorial")) {
+                        Tutorial.setTextForTutorialTurn(Player.getCurrentTurnNumber());
+                        Gos.showNextTutorialWindow();
+                    }
                 }
             }
         });

@@ -283,6 +283,12 @@ public class Gos extends Application {
         wind.showAndWait(true);
     }
 
+    public static void showNextTutorialWindow() {
+        OKWindow wind = new OKWindow(250, 250, 
+            "New Tutorial Goal: ", Player.getCurrentTaskTextTracker());
+        wind.showAndWait(true);
+    }
+
     public static void showScratchPad() {
         scratchPadWindow.show();
     }

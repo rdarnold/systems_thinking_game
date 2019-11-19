@@ -119,8 +119,8 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         
         cbSpin = new ChoiceBox();
         avbSpin = addChoiceBox(cbSpin, "Spin Direction");
-        cbSpin.getItems().add("Normal");
-        cbSpin.getItems().add("Reverse");
+        cbSpin.getItems().add("Clockwise");
+        cbSpin.getItems().add("Counter-clockwise");
         cbSpin.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, 

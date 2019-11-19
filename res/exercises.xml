@@ -23,11 +23,10 @@
   <exercise>
     <id>2</id>
     <displayId>1</displayId>
-    <name>Practice</name>
-    <text>This is the first exercise and introduces you to the platform. It's just a practice 
-    exercise so that you can become familiar with the game. Use the 
+    <name>Tutorial</name>
+    <text>This is the tutorial exercise and introduces you to the game. Use the 
     'Observe' button on the left of the screen to watch the system without moving 
-    forward by a turn.  You have 5 turns to practice.
+    forward by a turn.
     CRCRClick the 'Change System' button at the bottom of the screen when you are ready to
     advance the system forward and move on to the next turn.</text>
   </exercise>
