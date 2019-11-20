@@ -59,7 +59,7 @@ public class Score {
                 // These are all surveys and questionairres and practice
                 break;
             case 2:
-                strScore = "There is no score for the practice scenario.";
+                strScore = "There is no score for the tutorial.";
                 break;
             case 3:
                 createExerciseScore1();

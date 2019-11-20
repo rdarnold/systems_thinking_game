@@ -86,7 +86,7 @@ public class StartRealGameWindow extends DialogWindow {
         titleLabel = addCenteredLabel();
         Utils.addVerticalSpace(m_MainVBox, space);
 
-        String str = "Now that the practice mode is over, the real game begins!";
+        String str = "Now that the tutorial is over, the real game begins!";
         Label lbl = addLeftLabel(str);
         Utils.addVerticalSpace(m_MainVBox, space);
 

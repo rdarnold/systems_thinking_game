@@ -70,6 +70,11 @@ public class ChangePanelSet extends PanelSetBase {
 
     public static OKWindow changePanelWindow;
 
+    // Allow us to grab a copy of the top and left panels so that we can check
+    // the valus for the Tutorial mode
+    public ChangePanelLeft getPanelLeft() { return panelLeft; }
+    public ChangePanelTop getPanelTop() { return panelTop; }
+
     public ChangePanelSet(MainScreen main) {
         super(main);
 
@@ -135,6 +140,12 @@ public class ChangePanelSet extends PanelSetBase {
 
     public void onSubmitButton(String fromClassName) {
         String strSubmitDesc = "";
+
+        // First record any tutorial data
+        Task task = Player.getCurrentTask();
+        if (task != null && task.getName().equals("Tutorial")) {
+            Player.appendTutorialData(Tutorial.getTutorialCorrectForTurn(Player.getCurrentTurnNumber()));
+        }
 
         // First, let's put the current values on the desc so we have the "before" and don't have to
         // hunt it down

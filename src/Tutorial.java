@@ -2,6 +2,9 @@ package gos;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
+import javafx.scene.control.*;
+
+import gos.gui.*;
 
 // Holder of static information for the Tutorial part of the game
 public final class Tutorial {
@@ -50,6 +53,7 @@ public final class Tutorial {
         // not without a ton of analysis
         switch (turnNum) {
             case 0:
+            {
                 // Check position of the gravity well based off of where it starts; it should be lower and to the right
                 int x1 = Data.startingValues.gravityWellCenterX;
                 int y1 = Data.startingValues.gravityWellCenterY;
@@ -75,22 +79,76 @@ public final class Tutorial {
                 // now just include the coordinates regardless
                 str += " (X:" + x2 + ",Y:" + y2 +")";
                 break;
+            }
             case 1:
+            {
                 // Check shape spin direction
+                ChangePanelLeft panel = Gos.mainScene.getChangePanelSet().getPanelLeft();
                 break;
+            }
             case 2:
+            {
+                ChangePanelTop panel = Gos.mainScene.getChangePanelSet().getPanelTop();
+                double val = panel.getRainSlider().getValue();
+                // Value is 0-100
+
                 // Check rain slider to make sure it's low
+                if (val == 50) {
+                    str += "BAD, rain rate has not been changed";
+                }
+                else if (val > 50) {
+                    str += "BAD, rain rate has been made higher";
+                }
+                else if (val < 5) {
+                    str += "GOOD, rain rate was reduced to the lowest";
+                }
+                else if (val < 30) {
+                    str += "OK, rain rate was reduced but not low enough";
+                }
+                else if (val < 50) {
+                    str += "BAD, rain rate was reduced but only a little";
+                }
+                str += " (" + val + ")";
                 break;
+            }
             case 3:
+            {
                 // Check Paradigm for Cooperative
+                ChangePanelTop panel = Gos.mainScene.getChangePanelSet().getPanelTop();
+                ChoiceBox<Constants.Paradigms> cb = panel.getParadigmChoiceBox();
+                Constants.Paradigms val = Constants.Paradigms.fromInt(cb.getSelectionModel().getSelectedIndex());
+                if (val == Constants.Paradigms.Cooperative) {
+                    str += "GOOD, paradigm is Cooperative";
+                }
+                else if (val == Constants.Paradigms.Competitive) {
+                    str += "BAD, paradigm was not changed and is still Competitive";
+                }
+                else {
+                    str += "BAD, paradigm was changed to Independent";
+                }
                 break;
+            }
             case 4:
+            {
                 // Check Growth for No Growth
+                ChangePanelTop panel = Gos.mainScene.getChangePanelSet().getPanelTop();
+                ChoiceBox<Constants.GrowthRules> cb = panel.getGrowthChoiceBox();
+                Constants.GrowthRules val = Constants.GrowthRules.fromInt(cb.getSelectionModel().getSelectedIndex());
+                if (val == Constants.GrowthRules.NoGrowth) {
+                    str += "GOOD, growth was changed to NoGrowth";
+                }
+                else {
+                    str += "BAD, growth was not changed";
+                }
                 break;
+            }
             default:
+            {
                 str += "NO CORRECTNESS FOUND";
                 break;
+            }
         }
+        Utils.log("^^^^^^^^^^^^^^^^^^^^^^: " + str);
         return str;
     }
 }

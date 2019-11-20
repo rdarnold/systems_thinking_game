@@ -96,6 +96,12 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
     ActionPanelVBox avbParadigm;
     ActionPanelVBox avbGrowth;
 
+    
+    // We need some controls to check in the Tutorial
+    public Slider getRainSlider() { return rainRateSlider; }
+    public ChoiceBox<Constants.Paradigms> getParadigmChoiceBox() { return cbParadigm; }
+    public ChoiceBox<Constants.GrowthRules> getGrowthChoiceBox() { return cbGrowth; }
+
     // Which config of panel?  If the config is the same we don't need to remove and re-add
     // everything.  Start with no config because we want to set up at least once.
     private Configs config = Configs.None; 

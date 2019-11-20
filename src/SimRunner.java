@@ -327,7 +327,7 @@ public class SimRunner implements SimulatorEventListener {
 
             // This is after we've shown the main panel set
             if (Player.getCurrentExercise().getId() == 3) {
-                // Ok now we are starting the real game after practice mode
+                // Ok now we are starting the real game after tutorial mode
                 Gos.showStartRealGame();
             }
 

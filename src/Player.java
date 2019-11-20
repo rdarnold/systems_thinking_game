@@ -67,6 +67,7 @@ public final class Player {
     private static boolean contactConsent = false;
     private static boolean playedBefore = false;
     private static String macAddress = "";
+    private static String tutorialData = "";
     
     public static int getId() { return id; }
     public static int getSubmittedId() { return submittedId; }
@@ -76,6 +77,10 @@ public final class Player {
     public static boolean getContactConsent() { return contactConsent; }
     public static boolean getPlayedBefore() { return playedBefore; }
     public static String getMacAddress() { return macAddress; }
+    public static String getTutorialData() { return tutorialData; }
+    public static void appendTutorialData(String str) {
+        tutorialData += str + "\r\n";
+    }
 
     public static void incSaveNum() { saveNum++; }
     public static void setId(int num) { id = num; }
@@ -353,6 +358,7 @@ public final class Player {
         appendLine(result, "MAC: " + macAddress); // Add in the MAC if we are allowed.
         appendLine(result, "Start: " + startTime);
         appendLine(result, "End: " + endTime);
+        appendLine(result, "Tutorial: \r\n" + tutorialData + "EndTutorial");
 
         result.append(getAnswerData());
         result.append(getActionData());
@@ -561,6 +567,20 @@ public final class Player {
         endTime = Utils.tryParseLong(str.substring(("End: ").length(), str.length()));
         //appendLine(result, "End: " + endTime);
         i++;
+
+        // Now parse tutorial data if we have any
+        str = lines.get(i);
+        if (str.substring(0, "Tutorial".length()) == "Tutorial") {
+            i++;
+            str = lines.get(i);
+            while (str.substring(0, "EndTutorial".length()) != "EndTutorial") {
+                // Now load in the tutorial data
+                tutorialData += str + "\r\n";
+                i++;
+                str = lines.get(i);
+            }
+            i++;
+        }
         
         return i;
     }
