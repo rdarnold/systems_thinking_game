@@ -89,12 +89,7 @@ public class ExperimentPanelSet extends PanelSetBase {
         String strTitle = "Experiment with the System";
         String strText = 
         "On this screen, you can create different experiments to play around " +
-        "with the system without actually advancing the game forward.  It costs " +
-        "1 Discovery Point to create each experiment, so it is important to create " +
-        "your experiments wisely.  When you create a new experiment, it starts from " +
-        "the current state of the system on this screen.  This allows you to chain " +
-        "experiments together to create a series of turns that you can watch all at once " +
-        "using the 'Run All Experiments' button.\r\n\r\n" +
+        "with the system without actually advancing the game forward. \r\n\r\n" +
         "Note that when you re-run experiments, you may not always see exactly the same " +
         "result.  The game includes elements of randomness.  However, the results " +
         "will be similar enough that you can still learn a great deal about the system using " +

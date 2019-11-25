@@ -113,10 +113,8 @@ public class ExperimentPanelBottom extends PanelBottomBase {
         GridPane.setColumnIndex(btn, 0);
         GridPane.setHalignment(btn, HPos.CENTER);
 
-        btn = new MovableButton("Run All Experiments");
-        String str = "Run all experiments back to back in order.  Note that the order used is " +
-        "the order in which the experiments were created.  It is not a time-based order " +
-        "and the experiments do not necessarily flow from each other.";
+        btn = new MovableButton("Re-Run Experiment");
+        String str = "Re-run the experiment you last created.";
         Utils.addToolTip(btn, str);
         btn.setPrefWidth(Constants.BUTTON_WIDTH * 2);
         //btn.setDisable(true);

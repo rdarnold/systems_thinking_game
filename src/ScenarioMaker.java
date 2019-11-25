@@ -51,6 +51,10 @@ public class ScenarioMaker {
             // Post-assessment survey
             return;
         }
+        else if (exercise.getId() == 6) {
+            // Self-assessment
+            return;
+        }
         else {
             prepareRandomSystem();
         }

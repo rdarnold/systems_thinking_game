@@ -99,10 +99,9 @@ public class StartRealGameWindow extends DialogWindow {
             textLabel.setText(info.getText());
         }
 
-        str =  "Your Discovery Points are visible on the top left of the screen. " +
-        "You'll notice two new buttons " +
-        "on the left side of the main screen - Ask and Experiment.  Along with Observe, these three " +
-        "buttons are the ways that you can spend Discovery Points.\r\n\r\n" +
+        str =  "You'll notice a new button " +
+        "on the left side of the main screen - Experiment.  Along with Observe, you can use Experiment " +
+        "to learn more about the system without advancing the state of the game.\r\n\r\n" +
         "Between turns, you'll also now be asked to rate the importance of the variables you can " +
         "change in the Change System screen.\r\n\r\nNew info is below. " +
         "You can always access all of this information using the Info button from the main screen.";
@@ -113,12 +112,12 @@ public class StartRealGameWindow extends DialogWindow {
 
         //info = Data.getInfoByName("System Description");
         //addOneInfoItem(accordion, info);
-        info = Data.getInfoByName("Discovery Points");
-        addOneInfoItem(accordion, info);
+        //info = Data.getInfoByName("Discovery Points");
+        //addOneInfoItem(accordion, info);
         info = Data.getInfoByName("Observe");
         addOneInfoItem(accordion, info);
-        info = Data.getInfoByName("Ask");
-        addOneInfoItem(accordion, info);
+        //info = Data.getInfoByName("Ask");
+        //addOneInfoItem(accordion, info);
         info = Data.getInfoByName("Experiment");
         addOneInfoItem(accordion, info);
         addTempControl(accordion);

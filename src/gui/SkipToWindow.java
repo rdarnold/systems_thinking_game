@@ -135,6 +135,7 @@ public class SkipToWindow extends DialogWindow {
         addSkipButton("3-1: Chaos (1)", num++);
         addSkipButton("3-2: Chaos (2)", num++);
         addSkipButton("Feedback Questions", num++);
+        addSkipButton("Self-Assessment", num++);
 
         btn = new MovableButton("Cancel");
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -195,13 +196,14 @@ public class SkipToWindow extends DialogWindow {
                 Gos.simRunner.skipToExercise(4);
                 Player.nextTask();
                 break;
-            case 8:
-                Gos.simRunner.skipToExercise(4);
+            // feedback questions
+            case 7:
+                Gos.simRunner.skipToExercise(5);
                 Player.nextTask();
                 break;
-            // final questions
-            case 9:
-                Gos.simRunner.skipToExercise(4);
+            // self-assessment questions
+            case 8:
+                Gos.simRunner.skipToExercise(6);
                 Player.nextTask();
                 Gos.simRunner.finishExercise();
                 break;

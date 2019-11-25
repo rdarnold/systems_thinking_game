@@ -298,10 +298,10 @@ public class Gos extends Application {
     }
 
     public static boolean checkDiscoveryPoints() {
-        if (Player.getDiscoveryPoints() <= 0) {
+        /*if (Player.getDiscoveryPoints() <= 0) {
             noDiscoveryPointsWindow.showAndWait(true);
             return false;
-        }
+        }*/
         return true;
     }
 

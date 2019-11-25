@@ -86,13 +86,10 @@ public class ExperimentPanelTop extends PanelTopBase {
         instructionText.setPrefWidth(instructionTextWidth);
         instructionText.setText("Using an experiment, you can make changes to " + 
         "your current system and see how these changes affect the system for 1 turn. " + 
-        "The changes will be applied at the current turn of your system as shown on the " +
-        "screen.  This means you can either chain experiments to each other, or base them " +
-        "off of the current turn in the exercise. \r\n\r\n" +
-        "Once you create an experiment, you cannot apply it to earlier or later " +
-        "turns.  However, you can re-watch it as many times as you want using the corresponding " +
-        "Re-Run Exp (1-5) button.\r\n\r\nUse the 'Restore' button to restore the system to " +
-        "its current non-experimented state.");
+        "\r\n\r\n" +
+        "Once you create an experiment, you can re-watch it as many times as you want using the " +
+        "Re-Run Experiment button.\r\n\r\nUse the 'Restore' button to restore the system to " +
+        "its original non-experimented state.");
 
         super.addToRightSide(instructionText);
     }

@@ -103,12 +103,12 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         getChildren().add(lblScenario);
         
         lblDiscoveryPoints = new Label();
-        lblDiscoveryPoints.setAlignment(Pos.CENTER);
+        /*lblDiscoveryPoints.setAlignment(Pos.CENTER);
         lblDiscoveryPoints.setTextAlignment(TextAlignment.CENTER);
         lblDiscoveryPoints.textProperty().bind(Player.discoveryPointsProperty().asString(
             "Discovery Points: %d"
         ));
-        getChildren().add(lblDiscoveryPoints);
+        getChildren().add(lblDiscoveryPoints);*/
 
 
         VBox buttonVBox = new VBox();

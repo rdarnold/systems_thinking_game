@@ -110,21 +110,13 @@ public class ObservePanelLeft extends PanelLeftBase {
         // user experience.  It should be like,
         // - Name of screen (better yet - this goes at the top of the screen)
         // - Help button
-        // - Discovery points
         // - Any other points / turns
         //  < various buttons >
         // - Main Screen
-        /*Utils.addVerticalSpace(this, 60);
 
-        discoveryPointText = new Label();
-        //discoveryPointText.setPadding(new Insets(5));
-        getChildren().add(discoveryPointText);
-        discoveryPointText.textProperty().bind(Player.discoveryPointsProperty().asString(
-            "Discovery Points: %d"
-        ));*/
 
         maxTurnText = new Label();
-        getChildren().add(maxTurnText);
+        //getChildren().add(maxTurnText);
         // TODO This doesnt work, it has to be a property.
         maxTurnText.textProperty().bind(Player.getObservation().maxTurnsProperty().asString(
             "Observation Turns: %d"
@@ -152,7 +144,7 @@ public class ObservePanelLeft extends PanelLeftBase {
                 //showChooseExperimentTypeWindow();
             }
         });
-        getChildren().add(btn);
+        //getChildren().add(btn);
     }
 
     public void reset() {
@@ -168,12 +160,5 @@ public class ObservePanelLeft extends PanelLeftBase {
             addTurnBtn.setVisible(true);
             maxTurnText.setVisible(true);
         }
-
-        /*if (discoveryPointText != null) {
-            discoveryPointText.setText("Discovery Points: " + Player.getDiscoveryPoints());
-        }
-        if (maxTurnText != null) {
-            maxTurnText.setText("Observation Turns: " + Player.maxObservationTurns);
-        }*/
     }
 }

@@ -34,10 +34,8 @@
     <id>3</id>
     <displayId>2</displayId>
     <name>Four Shapes</name>
-    <text>This is the first real exercise of the game.  Use the Ask,
-    Observe, and Experiment buttons on the left of the screen to figure out how the system works. 
-    Keep in mind that you have a limited number of
-    Discovery Points to use.  They can all be used on the first turn, or some saved for later turns.
+    <text>This is the first real exercise of the game.  Use the 
+    Observe and Experiment buttons on the left of the screen to figure out how the system works. 
     CRCRClick the 'Change System' button at the bottom of the screen when you are ready to
     advance the system forward and move on to the next turn.</text>
   </exercise>
@@ -59,10 +57,20 @@
   <exercise>
     <id>5</id>
     <displayId>0</displayId>
-    <name>Post-Assessment Feedback Questionnaire</name>
-    <popupText>Thank you for playing the game! Your input is extremely valuable. As the final step,
-    we would like you to provide some feedback on your experience.
+    <name>Feedback Questionnaire</name>
+    <popupText>Thank you for playing the game! Your input is extremely valuable. Now that you have finished
+    the simulation, there are two more steps.  First, we would like you to provide some feedback on your experience.
+    After the feedback, you will be presented with a 16-question Systems Thinking self-assessment. This assessment
+    will be used to correlate your simulation results and is key to the research.
     CRCRYour feedback will be used to help improve the computer simulation experience and achieve 
     more accurate results in future research activities.</popupText>
+  </exercise>
+  <exercise>
+    <id>6</id>
+    <displayId>0</displayId>
+    <name>Systems Thinking Self-Assessment</name>
+    <popupText>Thank you for providing your feedback!  As the final step, you will be given a 16-question
+    Systems Thinking self-assessment.  Please answer the questions as honestly as possible.  
+    CRCRYour results will be correlated with your performance in the simulation and is key to the research.</popupText>
   </exercise>
 </exercises>

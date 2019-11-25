@@ -21,7 +21,7 @@
         CRCREach turn is an interval of several seconds during which the system moves forward 
         in time.  Before each turn of the task, you’ll be able to make changes to the system.  
         You’ll also be able to discover information 
-        about the system through inquiry, observation, and experimentation. 
+        about the system through observation, and experimentation. 
         CRCRThe bottom line is, learn about the system, and use that knowledge to change it 
         to do what you want.  CRCRThere are no wrong answers. Just do what you think makes the 
         most sense!  CRCRPlease enjoy!
@@ -56,26 +56,6 @@
         limited, so take care how you use them.  You won't be able to learn everything about every
         system so you'll have to carefully choose what you want to learn about.  
         </text> 
-    </info>
-    <info name="Discovery Points">
-        <name>Discovery Points</name>
-        <text>
-        Discovery Points can be used to ask about the system, observe the system in action,
-        and experiment with the system.  Your Discovery Points are
-        limited, so take care how you use them.  You won't be able to learn everything about every
-        system so you'll have to carefully choose what you want to learn about.  CRCRDuring each
-        task, you start with a certain number of Discovery Points.  You then gain one
-        new Discovery Point each turn.  You do not
-        need to spend all of your Discovery Points on the first turn.  You may want to save some to
-        use later in the task.  Discovery Points do not carry over between tasks or scenarios.
-        </text>
-    </info>
-    <info name="Ask">
-        <name>Ask</name>
-        <text>
-        Seek textual and numerical facts about the system.  These facts tend to be very precise but
-        also very specific.
-        </text>
     </info>
     <info name="Observe">
         <name>Observe</name>

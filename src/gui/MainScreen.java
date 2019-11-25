@@ -205,6 +205,7 @@ public class MainScreen extends GosSceneBase {
 
     public void showExperimentPanelSet() {
         Gos.sim.snapCurrent();
+        Gos.sim.restoreBaseSnap();
         experimentPanelSet.show();
     }
 

@@ -100,16 +100,6 @@ public class MainPanelLeft extends PanelLeftBase {
         // - Any other points / turns
         //  < various buttons >
         // - Main Screen
-        /*Utils.addVerticalSpace(this, 60);
-
-        discoveryPointText = new Label();
-        //discoveryPointText.setPadding(new Insets(5));
-        getChildren().add(discoveryPointText);
-        discoveryPointText.textProperty().bind(Player.discoveryPointsProperty().asString(
-            "Discovery Points: %d"
-        ));*/
-
-        //Utils.addVerticalSpace(this, 60);
  
         observeBtn = new MovableButton("Observe");
         btn = observeBtn;
@@ -130,7 +120,7 @@ public class MainPanelLeft extends PanelLeftBase {
 
         //These tooltips should just be part of the help menu.
         askBtn = new MovableButton("Ask");
-        btn = askBtn;
+        /*btn = askBtn;
         str = "Ask questions about the nature of the scenario and its elements.  This " +
         "is an alternative way to discover information about the system, rather than observing or " +
         "experimenting.";
@@ -147,7 +137,7 @@ public class MainPanelLeft extends PanelLeftBase {
             }
         });
         buttonList.add(btn);
-        getChildren().add(btn);
+        getChildren().add(btn);*/
 
         expBtn = new MovableButton("Experiment");
         btn = expBtn;

@@ -127,7 +127,7 @@
   <question>
     <exercise>0</exercise>
     <name>Systems Thinking Experience</name>
-    <text>Do you have any prior experience in systems thinking?  If yes,CR
+    <text>Do you have any experience in Systems Thinking?  If yes,CR
     where does this experience come from (classes, books, conferences, workCR
     experience, etc.)?</text>
     <answerType>MultilineInput</answerType>
@@ -294,28 +294,15 @@
   </question>
   <question>
     <exercise>1</exercise>
-    <name>Current Position</name>
+    <name>Job Titles</name>
     <text> Please provide your most relevant current and past position title(s)CR
-    (Ex: Researcher, System Architect, Technical Lead, Distinguished Professor,CR
-    Director of Technology, Competency Manager, etc.)</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>1</exercise>
-    <name>Current Job Duties</name>
-    <text>Please briefly provide your current job duties.</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>1</exercise>
-    <name>Career Background</name>
-    <text> Please provide the kinds of jobs you've held leading up to yourCR
-    current position; e.g. your career progression up to the present.</text>
+    (Ex: Researcher, System Architect, Chief Engineer, Technical Lead, Distinguished Professor,CR
+    Director of Technology, etc.)</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>2</exercise>
-    <name>Practice</name>
+    <name>Tutorial</name>
     <text>After the introduction and tutorial, do you feel likeCR
     you understand how to play the game?</text>
     <answerType>Choice</answerType>
@@ -330,7 +317,7 @@
     <exercise>3</exercise>
     <name>Four Shapes</name>
     <text> After observing all turns, you may have noticed that most of theCR
-    shapes are sometimes gone.  Why?</text>
+    shapes are often gone.  Why?</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Actually this did not happen</answerOption>
@@ -426,24 +413,6 @@
     <answerType>MultilineInput</answerType>
   </question>
   <question>
-    <exercise>3</exercise>
-    <name>Four Shapes</name>
-    <text>Are there any variables you wish you could have changed, but weren't available?</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>3</exercise>
-    <name>Four Shapes</name>
-    <text>If you could play this scenario over again, is there anything you would do differently?</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>3</exercise>
-    <name>Four Shapes</name>
-    <text>Is there anything that prevented you from doing your best?</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
     <exercise>4</exercise>
     <name>Chaos</name>
     <text> If a large shape, rapidly spinning left (counter-clockwise), wereCR 
@@ -504,14 +473,7 @@
     <exercise>4</exercise>
     <name>Chaos</name>
     <text>Did you feel like any of the variables did not do what you expectedCR
-    them to do when you changed them?  If yes, please explain which one(s) and whyCR
-    you felt this way.</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>4</exercise>
-    <name>Chaos</name>
-    <text>If you could do this scenario over, is there anything you would do differently?</text>
+    them to do when you changed them?  If yes, please explain.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
@@ -523,54 +485,265 @@
   </question>
   <question>
     <exercise>5</exercise>
-    <name>Post-Assessment Feedback</name>
+    <name>Feedback</name>
     <text>What are the things you found most difficult about this simulation?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>5</exercise>
-    <name>Post-Assessment Feedback</name>
+    <name>Feedback</name>
     <text>What are the things you found easiest about this simulation?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>5</exercise>
-    <name>Post-Assessment Feedback</name>
-    <text>Is there anything about the simulation that you feel hindered your ability 
-    to perform well?</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>5</exercise>
-    <name>Post-Assessment Feedback</name>
+    <name>Feedback</name>
     <text>Did any external factors affect your ability to perform well (disruptions,CR
     noisy environment, need for coffee, etc.)?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>5</exercise>
-    <name>Post-Assessment Feedback</name>
+    <name>Feedback</name>
     <text>Do you feel that your performance in the game reflected your abilityCR 
     to think systemically? Why or why not?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>5</exercise>
-    <name>Post-Assessment Feedback</name>
-    <text>Was any part of the simulation itself confusing?  If yes, please explain.</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>5</exercise>
-    <name>Post-Assessment Feedback</name>
-    <text>Did you fully understand the simulation tasks, and your objectives as a player?  
+    <name>Feedback</name>
+    <text>Did you understand the simulation tasks and your objectives as a player?  
     If not, please explain.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>5</exercise>
-    <name>Post-Assessment Feedback</name>
+    <name>Feedback</name>
     <text>If there are any other comments you would like to make, please enter them here.</text>
     <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Explore Multiple Perspectives</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Approaches a system from only one perspective</answerOption>
+        <answerOption>Explores other familiar perspectives when approaching a systems</answerOption>
+        <answerOption>Begins to explore unfamiliar or contentious perspectives</answerOption>
+        <answerOption>Actively explores unfamiliar perspectives, but still tends to miss some non-obvious perspectives</answerOption>
+        <answerOption>Actively explores multiple, non-obvious perspectives, some of which might conflict with the thinker’s view</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Consider the Wholes and Parts</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Does not consider a system holistically</answerOption>
+        <answerOption>Considers some holistic aspects of systems but misses others; tends to spend too much time in particular areas</answerOption>
+        <answerOption>Considers the system holistically but tends to miss the importance of the parts; occasionally gets stuck in an event</answerOption>
+        <answerOption>Tends to consider the system holistically and considers the importance of the parts in most cases</answerOption>
+        <answerOption>Considers both the “forest” and the “trees” keeping “one eye on each” consistently while approaching systems</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Effectively Respond to Uncertainty and Ambiguity</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Stops when faced with uncertainty or ambiguity</answerOption>
+        <answerOption>Difficulty making decisions during uncertain times or in ambiguous circumstances</answerOption>
+        <answerOption>Decisions made when faced with uncertainty are as often flawed as are appropriate </answerOption>
+        <answerOption>Decisions made when faced with uncertainty are often appropriate</answerOption>
+        <answerOption>Able to make sustainable system decisions despite uncertainties in their outcomes</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Consider Issues Appropriately</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Takes a reactionary approach to issues</answerOption>
+        <answerOption>Takes a reactionary approach to issues, but tends to realize that this approach has flaws</answerOption>
+        <answerOption>Sometimes takes appropriate time to allow issues and complexities to emerge; still reacts to issues / jumps to conclusions sometimes</answerOption>
+        <answerOption>Rarely jumps to conclusions when issues occur; often spends appropriate time to absorb complexity</answerOption>
+        <answerOption>Allows time for the complexity of a situation to sink in; rarely, if ever, jumps to conclusions; almost always considers issues appropriately</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Use Mental Modeling and Abstraction</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Does not recognize the value of mental modeling; intuitive models are highly inaccurate, overly simple, or overly complex</answerOption>
+        <answerOption>Recognizes the benefit of simplification through mental modeling; mental models may be inaccurate, overly simple, or overly complex</answerOption>
+        <answerOption>Recognizes that different mental models can influence perspectives and actions differently; able to simplify the problem through mental modeling with some accuracy and simplicity</answerOption>
+        <answerOption>Able to simplify the problem through mental modeling with increasingly accurate results using increasingly simpler models; recognizes that all models are flawed but some are useful</answerOption>
+        <answerOption>Devises the simplest mental model that  accurately describes the system for a given purpose; recognizes that all models are flawed but some are useful</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Recognize Systems</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Does not recognize that a problem is systemic</answerOption>
+        <answerOption>Recognizes that the problem is systemic but cannot identify it</answerOption>
+        <answerOption>Recognizes that the problem is systemic and is able to identify associated behavior or system of interest in general terms</answerOption>
+        <answerOption>Recognizes that the problem is systemic and is able to identify associated behaviors or systems of interest increasingly more concrete terms</answerOption>
+        <answerOption>Recognizes that the problem is systemic and is  able to identify associated behaviors or systems in concrete terms</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Maintain Boundaries</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Unable to define the boundary of a system</answerOption>
+        <answerOption>Able to create an initial mental model of the system that contains some relevant elements.  May contain extraneous elements or miss key elements</answerOption>
+        <answerOption>Able to maintain a system boundary that, over time and context, contains most of the relevant elements and minimizes extraneous elements</answerOption>
+        <answerOption>Able to maintain a system boundary of the system over time with increasing accuracy</answerOption>
+        <answerOption>Able to maintain an accurate boundary of the system that correctly changes over time and context with a high degree of quantitative accuracy</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Differentiate and Quantify Elements</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Unable to recognize that elements are different</answerOption>
+        <answerOption>Able to identify and differentiate between stocks and flows, as well as other types of variables and elements</answerOption>
+        <answerOption>Able to estimate properties of elements, such as the maximum quantity of a stock or the rate of a flow</answerOption>
+        <answerOption>Able to quantify properties of elements, such as the maximum quantity of a stock or the rate of a flow with increasing accuracy</answerOption>
+        <answerOption>Able to describe the properties of elements with a high degree of accuracy</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Identify Relationships</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Unable to recognize even those relationships that would be considered obvious by novice systems thinkers</answerOption>
+        <answerOption>Able to recognize relationships that are direct, linear, or close in space and time</answerOption>
+        <answerOption>Able to recognize some relationships even though they are indirect or distant in space or time</answerOption>
+        <answerOption>Able to recognize many relationships even though they are indirect or distant in space or time</answerOption>
+        <answerOption>Able to recognize the vast majority of relevant relationships, even obscure, meta-physical, non-obvious, or complex ones</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Characterize Relationships </name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Unable to characterize the strength of a relationship</answerOption>
+        <answerOption>Unable to characterize the strength of a relationship with accuracy or consistency</answerOption>
+        <answerOption>Able to estimate the strength of a relationship with some consistency</answerOption>
+        <answerOption>Able to characterize relationships with increasing accuracy</answerOption>
+        <answerOption>Able to create highly accurate characterizations of relationships </answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Identify Feedback Loops</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Unable to recognize feedback loops</answerOption>
+        <answerOption>Able to recognize feedback loops that are linear, obvious, or close in space and/or time</answerOption>
+        <answerOption>Able to recognize some feedback loops  even though they are indirect, non-obvious, or distant in space or time</answerOption>
+        <answerOption>Able to recognize many feedback loops even though they are indirect, non-obvious, or distant in space or time</answerOption>
+        <answerOption>Able to recognize the vast majority of relevant feedback loops</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Characterize Feedback Loops</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Unable to characterize the strength and properties of a feedback loops</answerOption>
+        <answerOption>Unable to characterize feedback loops with accuracy or consistency</answerOption>
+        <answerOption>Able to estimate the strength and properties of  feedback loops with some consistency</answerOption>
+        <answerOption>Able to characterize feedback loops with increasing accuracy</answerOption>
+        <answerOption>Able to create highly accurate characterizations of feedback loops </answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Describe Past System Behavior</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Unable to describe past behavior</answerOption>
+        <answerOption>Able to describe past system behavior in general, conceptual terms</answerOption>
+        <answerOption>Able to describe past system behavior through estimation</answerOption>
+        <answerOption>Able to describe past system behavior with increasing levels of accuracy</answerOption>
+        <answerOption>Able to describe past system behavior with a high degree of accuracy </answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Predict Future System Behavior</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Unable to predict future behavior</answerOption>
+        <answerOption>Able to predict future system behavior in general, conceptual terms over short timescales</answerOption>
+        <answerOption>Able to predict future system behavior in estimated terms over short timescales</answerOption>
+        <answerOption>Able to predict future system behavior with increasing levels of accuracy over longer timescales</answerOption>
+        <answerOption>Able to predict future behavior with a high degree of accuracy over a long timescale</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Respond to Changes over Time</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Does not respond differently to changes in the system over time</answerOption>
+        <answerOption>Recognizes the need to respond differently over time</answerOption>
+        <answerOption>Responds to changes over time in ways that are occasionally effective</answerOption>
+        <answerOption>Responds to changes over time in increasingly effective ways</answerOption>
+        <answerOption>Consistently responds to changes over time in highly effective ways </answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>6</exercise>
+    <name>Use Leverage Points to Product Effects</name>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Does not recognize leverage points in a system</answerOption>
+        <answerOption>Recognizes obvious or lower strength leverage points, but often pushes them in the wrong direction</answerOption>
+        <answerOption>Recognizes some high strength leverage points, and usually pushes them in the right direction</answerOption>
+        <answerOption>Recognizes most low and high strength leverage points, understands their differences, and uses them effectively most of the time</answerOption>
+        <answerOption>Recognizes points of high leverage in a system.  Consistently uses those leverage points to influence system behavior in desired ways</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
   </question>
 </questions>

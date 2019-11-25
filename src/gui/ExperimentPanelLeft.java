@@ -130,14 +130,16 @@ public class ExperimentPanelLeft extends PanelLeftBase {
             "Discovery Points: %d"
         ));*/
 
-        btn = new MovableButton("Create");
-        str = "Spend 1 Discovery Point to create a new experiment.";
+        btn = new MovableButton("Create New");
+        str = "Create a new experiment.";
         Utils.addToolTip(btn, str);
         //btn.moveTo(0, 200);
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Player.recordButtonAction(event, thisScreen.className());
+                //Gos.sim.restoreCurrentSnap();
+                Gos.sim.restoreBaseSnap();
                 //Gos.gos.showExperimentScreen();
                 if (Gos.checkDiscoveryPoints() == false)
                     return;
@@ -158,8 +160,8 @@ public class ExperimentPanelLeft extends PanelLeftBase {
         hbox.setSpacing(5);
         hbox.setAlignment(Pos.CENTER);
 
-        exp1 = new MovableButton("Re-Run Exp. 1");
-        str = "Run experiment 1.";
+        exp1 = new MovableButton("Re-Run"); //Exp. 1");
+        str = "Run the experiment again.";
         Utils.addToolTip(exp1, str);
         exp1.setDisable(true);
         exp1.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -171,7 +173,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 exp.play(Gos.sim);
             }
         });
-        hbox.getChildren().add(exp1);
+        //hbox.getChildren().add(exp1);
 
         del1 = new MovableButton("X");
         str = "Delete experiment 1.";
@@ -185,7 +187,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 showAlert(exp1, del1);
             }
         });
-        hbox.getChildren().add(del1);
+        //hbox.getChildren().add(del1);
 
         hbox = new HBox();
         getChildren().add(hbox);
@@ -204,7 +206,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 exp.play(Gos.sim);
             }
         });
-        hbox.getChildren().add(exp2);
+        //hbox.getChildren().add(exp2);
         
         del2 = new MovableButton("X");
         str = "Delete experiment 2.";
@@ -218,7 +220,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 showAlert(exp2, del2);
             }
         });
-        hbox.getChildren().add(del2);
+        //hbox.getChildren().add(del2);
 
         hbox = new HBox();
         getChildren().add(hbox);
@@ -237,7 +239,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 exp.play(Gos.sim);
             }
         });
-        hbox.getChildren().add(exp3);
+        //hbox.getChildren().add(exp3);
 
         del3 = new MovableButton("X");
         str = "Delete experiment 3.";
@@ -251,10 +253,10 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 showAlert(exp3, del3);
             }
         });
-        hbox.getChildren().add(del3);
+        //hbox.getChildren().add(del3);
 
         hbox = new HBox();
-        getChildren().add(hbox);
+        //getChildren().add(hbox);
         hbox.setSpacing(5);
         hbox.setAlignment(Pos.CENTER);
 
@@ -270,7 +272,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 exp.play(Gos.sim);
             }
         });
-        hbox.getChildren().add(exp4);
+        //hbox.getChildren().add(exp4);
         
         del4 = new MovableButton("X");
         str = "Delete experiment 4.";
@@ -287,7 +289,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
         hbox.getChildren().add(del4);
 
         hbox = new HBox();
-        getChildren().add(hbox);
+        //getChildren().add(hbox);
         hbox.setSpacing(5);
         hbox.setAlignment(Pos.CENTER);
 
@@ -303,7 +305,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 exp.play(Gos.sim);
             }
         });
-        hbox.getChildren().add(exp5);
+        //hbox.getChildren().add(exp5);
         
         del5 = new MovableButton("X");
         str = "Delete experiment 5.";
@@ -317,7 +319,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 showAlert(exp5, del5);
             }
         });
-        hbox.getChildren().add(del5);
+        //hbox.getChildren().add(del5);
 
         Utils.addVerticalSpace(this, 30);
 
@@ -376,6 +378,10 @@ public class ExperimentPanelLeft extends PanelLeftBase {
     }
 
     public MovableButton getNextFreeExpButton() {
+        // Updated for just one experiment
+        return exp1;
+
+        /*
         if (exp1.getUserData() == null) {
             return exp1;
         } 
@@ -391,7 +397,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
         else if (exp5.getUserData() == null) {
             return exp5;
         }
-        return null;
+        return null;*/
     }
 
     private MovableButton getDelBtnForExpButton(MovableButton expButton) {

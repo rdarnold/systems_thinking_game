@@ -162,11 +162,9 @@ public class ObservePanelSet extends PanelSetBase {
             String strText = 
             "On this screen, you can observe the system in action using the controls " +
             "at the bottom of the screen." +
-            "\r\n\r\nAt first, you may only observe the system for " + Player.getObservation().getMaxTurns() + 
-            " turns.  You may increase the number " +
-            "of turns by using Discovery Points.  Just remember that you only have a limited number of " +
-            "Discovery Points, and you may want to save some to create experiments in the Experiment screen, or " +
-            "to discover other information about the system through the Ask screen.\r\n\r\n" +
+            "\r\n\r\nYou may only observe the system for " + Player.getObservation().getMaxTurns() + 
+            " turns. " +
+            "\r\n\r\n" +
             "Note that when you observe a turn several times over, you may not always see the same " +
             "exact result.  Elements of randomness in the game can cause differences in outcomes.";
             observePanelWindow.setText(strText);

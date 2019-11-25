@@ -237,7 +237,7 @@ public class SimRunner implements SimulatorEventListener {
         // If it's the last exercise, we change the helper text a little bit.
         // A better way to do this is to just notify the GUI when we
         // update the exercise and then let it do whatever it wants.
-        if (Player.getCurrentExercise().getId() == 5) {
+        if (Player.getCurrentExercise().getId() == 4) {
             Gos.mainScene.getChangePanelSet().changeShapeHelperText("You can only change your own shape.  It is the shape with the circle around it.");
         }
     }
@@ -245,6 +245,9 @@ public class SimRunner implements SimulatorEventListener {
     public void startTask(Task task) {
         resetSim();
         Player.resetForNewTask();
+        if (task == null) {
+            return;
+        }
         Player.setMaxTurns(task.getTurns());
         Gos.mainScene.onNewTask();
         // If we are doing the tutorial, we use some special processing to display the goal
