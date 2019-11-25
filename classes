@@ -90,6 +90,7 @@ src/gui/ScratchPadWindow.java
 src/gui/ScreenInfoArea.java
 src/gui/SelectableShapePanel.java
 src/gui/SkipToWindow.java
+src/gui/StartFeedbackWindow.java
 src/gui/StartRealGameWindow.java
 src/gui/StartSimulationWindow.java
 src/gui/StartSurveyWindow.java

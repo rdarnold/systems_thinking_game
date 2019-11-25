@@ -88,13 +88,13 @@ public class ChangePanelSet extends PanelSetBase {
         // the stuff that isn't in the info area
         String strTitle = "Change the System";
         String strText = 
-        "Before you move on to the next turn, you have the opportunity to " +
+        "Before you proceed to the next turn, you have the opportunity to " +
         "make changes to the system.  You can do that on this screen.  On the left " +
         "side, you'll notice some changes that you can make to the currently selected " +
         "shape.  Click a different shape to select it.  On the top are some general, " +
-        "overall settings that you can adjust.  Please make whatever changes you feel " +
-        "will help to achieve your objective for the current task, then click the 'Submit' button at the " + 
-        "bottom of the screen.";
+        "overall settings that you can adjust.  During the game, please make whatever changes you feel " +
+        "will help to achieve your objective for the current task, then click Submit at the " + 
+        "bottom of the screen.  For now, during the Tutorial mode, you will be asked to make just one change per turn.";
         changePanelWindow = new OKWindow(400, 500, strTitle, strText);
 
         // And set the helper text for the info area

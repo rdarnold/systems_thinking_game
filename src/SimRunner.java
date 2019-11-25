@@ -178,9 +178,10 @@ public class SimRunner implements SimulatorEventListener {
 
     public void skipToExercise(int num) {
         sim.start();
-        //Advance the exercise twice past the surveys.
-        Player.goToExercise(num);
-        startSimulation();
+        //Advance the exercise to wherever it needs to go
+        Player.goToExercise(num-1);
+        finishExercise();
+        //startSimulation();
     }
 
     public void skipSurveys() {
@@ -311,7 +312,16 @@ public class SimRunner implements SimulatorEventListener {
         }
         else if (Player.getCurrentTask() == null) {
             // No tasks, that means we just have questions.
-            Gos.gos.showAnswerScreen();
+
+            // Check if they've already done the feedback questions and self-assessment
+            if (Player.getCurrentExercise().getId() == 5) {
+                if (Player.getPlayedBefore() == true) {
+                    Gos.showStartFeedbackWindow();
+                    return;
+                }
+            }
+
+            Gos.showAnswerScreen();
         }
         else {
             // This is before we've shown the main panel set

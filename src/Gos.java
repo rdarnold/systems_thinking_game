@@ -99,6 +99,7 @@ public class Gos extends Application {
     public static PlayedBeforeWindow playedBeforeWindow;
     public static ContactConsentWindow contactConsentWindow;
     public static StartSurveyWindow startSurveyWindow;
+    public static StartFeedbackWindow startFeedbackWindow;
     public static ExercisePopupWindow exercisePopupWindow;
     public static StartSimulationWindow startSimulationWindow;
     public static StartRealGameWindow startRealGameWindow;
@@ -137,6 +138,7 @@ public class Gos extends Application {
         contactConsentWindow = new ContactConsentWindow(500, 450);
         playedBeforeWindow = new PlayedBeforeWindow(500, 350);
         startSurveyWindow = new StartSurveyWindow(500, 350);
+        startFeedbackWindow = new StartFeedbackWindow(500, 350);
         betaWindow = new BetaWindow(400, 530);
         exercisePopupWindow = new ExercisePopupWindow(400, 400);
         startSimulationWindow = new StartSimulationWindow(600, 600);
@@ -274,6 +276,10 @@ public class Gos extends Application {
 
     public static void showStartRealGame() {
         startRealGameWindow.showAndWait();
+    }
+
+    public static void showStartFeedbackWindow() {
+        startFeedbackWindow.showAndWait();
     }
 
     public static void showTaskWindow() {

@@ -66,7 +66,7 @@ import javafx.beans.property.ReadOnlyIntegerProperty;
     
 import gos.*;
 
-public class StartSurveyWindow extends DialogWindow {
+public class StartFeedbackWindow extends DialogWindow {
 
     private Label titleLabel;
     private Label textLabel;
@@ -83,9 +83,9 @@ public class StartSurveyWindow extends DialogWindow {
     private CheckBox m_cbPlayed;
     //private CheckBox m_cbConsent;
 
-    private StartSurveyWindow thisScreen;
+    private StartFeedbackWindow thisScreen;
 
-    public StartSurveyWindow(int wid, int hgt) {
+    public StartFeedbackWindow(int wid, int hgt) {
         super(wid, hgt);
         thisScreen = this;
         setup();
@@ -121,69 +121,44 @@ public class StartSurveyWindow extends DialogWindow {
         VBox box = m_MainVBox;
         
         // We haven't started yet so when we show this screen, we're on the survey exercise.
-        Exercise exercise = Player.getCurrentExercise();
-        str = exercise.getName(); //"Change the System";
-        titleLabel = addCenteredLabel(str);
+        titleLabel = addCenteredLabel("Option to End Simulation");
         Utils.addVerticalSpace(box, space);
 
         // Should maybe have a helper.xml file where all the helper text is,
         // the stuff that isn't in the info area
-        str = exercise.getPopupText();
+        str = "You have indicated that you have played the simulation before.  If you previously " +
+        "filled out all the feedback questions, completed the Systems Thinking self-assessment " +
+        "after the simulation, AND you used the same ID and/or the same name to play this time, you may end the game here.  However, if you have not " +
+        "completed those sections during a previous play-through, or you have used a different name and ID, please click the Continue button to proceed " +
+        "to the feedback and self-assessment sections.  Thank you!";
         textLabel = addLeftLabel(str);
         Utils.addVerticalSpace(box, space);
 
-        okBtn = new MovableButton("OK");
+        okBtn = new MovableButton("Continue");
         okBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                //Gos.gos.showMainScreen();
                 Player.recordButtonAction(event, thisScreen.className());
                 onOK();
             }
         });
         m_MainVBox.getChildren().add(okBtn);
 
-        // Only if we can skip this screen
-        // We can do that if this is demographic / career survey and the person
-        // has said they've already played and they've provided an ID previously
-        // Otherwise maybe we offer the option but strongly discourage it
-        /*if (Player.inDemographicSurvey() == true || Player.inCareerSurvey() == true) {
-            GridPane.setRowIndex(skipButton, row + 1);
-            GridPane.setColumnIndex(skipButton, 3);
-            GridPane.setHalignment(skipButton, HPos.CENTER);
-            tempAdd(skipButton);
-        }*/
-        
-        skipButton = new MovableButton("Skip");
+        skipButton = new MovableButton("End Game");
         skipButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Player.recordButtonAction(event, thisScreen.className());
-                onSkipButton();
+                onEndButton();
             }
         });
         m_MainVBox.getChildren().add(skipButton);
     }
 
-    private boolean onSkipButton() {
-        // Can only skip the initial survey screens but that's the only time we should
-        // be seeing this screen anyway
-        /*if (Player.inDemographicSurvey() == false && Player.inCareerSurvey() == false) {
-            return false;
-        }*/
-
-        // If they've submitted an ID and said they played already, we are
-        // good to go.
-        if (Player.getSubmittedId() > 0 && Player.getPlayedBefore() == true) {
-            // No problem, skip
-            Gos.skipSurveys = true;
-            close();
-            return true;
-        }
-
-        // Otherwise strongly discourage it
-        // TODO warning screen
-        Gos.skipSurveys = true;
+    private boolean onEndButton() {
+        Gos.simRunner.finishSim();
+        //Player.setCurrentExercise(null); 
+        //Gos.simRunner.finishExercise();
 
         // Close the window
         close();
@@ -192,18 +167,6 @@ public class StartSurveyWindow extends DialogWindow {
 
     @Override
     public void showAndWait() {
-        
-        // If the player played before and input an ID and it's formatted correctly,
-        // we let them skip the surveys, otherwise hide the skip button
-        if (Player.getSubmittedId() <= 0 || Player.getPlayedBefore() == false) {
-            //Utils.log("NOSKIP " + Player.getSubmittedId() + " " + Player.getPlayedBefore());
-            skipButton.setVisible(false);
-        }
-
-        if (Gos.testing == true) {
-            return;
-        }
-
         super.showAndWait();
     }
 

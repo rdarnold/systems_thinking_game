@@ -2,7 +2,7 @@
 <values>
     <globalMoveRate>1.0</globalMoveRate>
     <rainOrigin>0</rainOrigin>
-    <rainRate>1.0</rainRate>
+    <rainRate>0.063</rainRate>
     <rainSpeedVar>1.0</rainSpeedVar>
     <movingDotSpeedRate>1.0</movingDotSpeedRate>
     <movingDotR>120</movingDotR>
@@ -15,8 +15,8 @@
     <noTakeSize>false</noTakeSize>
     <gravityRules>0</gravityRules>
     <armorRules>0</armorRules>
-    <paradigm>0</paradigm>
-    <growthRules>0</growthRules>
-    <gravityWellCenterX>295</gravityWellCenterX>
-    <gravityWellCenterY>262</gravityWellCenterY>
+    <paradigm>1</paradigm>
+    <growthRules>1</growthRules>
+    <gravityWellCenterX>547</gravityWellCenterX>
+    <gravityWellCenterY>491</gravityWellCenterY>
 </values>

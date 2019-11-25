@@ -21,7 +21,7 @@
         CRCREach turn is an interval of several seconds during which the system moves forward 
         in time.  Before each turn of the task, you’ll be able to make changes to the system.  
         You’ll also be able to discover information 
-        about the system through observation, and experimentation. 
+        about the system through observation and experimentation. 
         CRCRThe bottom line is, learn about the system, and use that knowledge to change it 
         to do what you want.  CRCRThere are no wrong answers. Just do what you think makes the 
         most sense!  CRCRPlease enjoy!
@@ -40,7 +40,7 @@
         <name>Turns</name>
         <text>
         Each turn in the game represents several seconds of time.  Between each turn
-        you will have the opportunity to make changes to the system and spend Discovery Points to
+        you will have the opportunity to make changes to the system and observe and experiment to 
         learn more about the system.
         </text>
     </info>
@@ -52,9 +52,6 @@
         1: Some things about how the system works.CR
         2: What things you should change.CR
         3: How much to change them (or in which direction).CRCR
-        You find out about the system by spending Discovery Points.  Your Discovery Points are
-        limited, so take care how you use them.  You won't be able to learn everything about every
-        system so you'll have to carefully choose what you want to learn about.  
         </text> 
     </info>
     <info name="Observe">
@@ -70,16 +67,10 @@
         <name>Experiment</name>
         <text>
         Devise experiments to test and learn about the system.  You can design an experiment that shows
-        how a particular set of changes will affect the system over the course of one turn.  The experiment
-        must begin from a known system state; this is to say, either the system in its current state,
-        or the system resulting from an experiment.  So it is possible to chain experiments together to
-        create interesting sets of behaviors.  
-        CRCRWhen creating an experiment, you will be presented with a set of dials, sliders, and selections
-        that allow you to tweak the system to your needs.  The options presented during experimentation
-        are not necessarily the same as those presented when proceeding to the next turn.
-        CRCRNote that you may only have a limited number of experiments in existence
-        at any one time.  Once you create an experiment, you can watch and re-watch it as many times as you
-        want.  Or, you can delete it to make room for a different experiment.
+        how a particular set of changes will affect the system over the course of one turn.  All experiments
+        start from the original state of the system, and can only run for a single turn.
+        CRCROnce you create an experiment, you can watch and re-watch it as many times as you
+        want.  Or, you can create a new experiment, which will replace the old one.
         </text>
     </info>
     <info name="Change System">
