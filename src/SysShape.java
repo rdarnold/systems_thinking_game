@@ -308,7 +308,8 @@ public class SysShape extends MovablePolygon {
     // Make everything equal
     public void deepCopy(SysShape from) {
         super.deepCopy(from);
-        success = from.success;
+        //success = from.success;
+        setSuccess(from.success); // This updates the graphics correctly too
         dead = from.dead;
         spinSpeed = from.spinSpeed;
         spinRight = from.spinRight;

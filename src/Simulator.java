@@ -507,7 +507,21 @@ public class Simulator {
     }
 
     public double calcRainDropsPerSecond() {
-        return Data.currentValues.rainRate * 60;
+        double rate = Data.currentValues.rainRate * 100;
+        double min = 0.1;
+        double max = 5;
+
+        // The range is 0-100, so the midpoint is 50.  At
+        // the min, which is 0, the multiplier is 0.1.  At the max,
+        // which is 100, multiplier is 5.  So we need a range from
+        // 0.1 to 5, over the course of 100 units.
+        double total = max - min;
+        double oneUnitVal = total / 100.0;
+
+        //Utils.log("RAINRATE: " + (min + (rate * oneUnitVal)));
+        double finalRate = min + (rate * oneUnitVal);
+        
+        return finalRate * 60;
     }
 
     public void updateRain() {
@@ -529,7 +543,6 @@ public class Simulator {
         // Create new rain randomly; but not every frame
         // Max rate is one a frame.
         // Min rate is one a second.
-        //double var = Data.currentValues.rainRate * 60;
         double var = calcRainDropsPerSecond();
         if (Utils.number(0, 60) > (int)var) {
             return;

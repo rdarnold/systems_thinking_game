@@ -525,7 +525,7 @@
   <question>
     <exercise>6</exercise>
     <name>Explore Multiple Perspectives</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Approaches a system from only one perspective</answerOption>
@@ -539,7 +539,7 @@
   <question>
     <exercise>6</exercise>
     <name>Consider the Wholes and Parts</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Does not consider a system holistically</answerOption>
@@ -553,7 +553,7 @@
   <question>
     <exercise>6</exercise>
     <name>Effectively Respond to Uncertainty and Ambiguity</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Stops when faced with uncertainty or ambiguity</answerOption>
@@ -567,12 +567,12 @@
   <question>
     <exercise>6</exercise>
     <name>Consider Issues Appropriately</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Takes a reactionary approach to issues</answerOption>
         <answerOption>Takes a reactionary approach to issues, but tends to realize that this approach has flaws</answerOption>
-        <answerOption>Sometimes takes appropriate time to allow issues and complexities to emerge; still reacts to issues / jumps to conclusions sometimes</answerOption>
+        <answerOption>Sometimes takes appropriate time to allow issues and complexities to emerge; still reacts to issues and/or jumps to conclusions sometimes</answerOption>
         <answerOption>Rarely jumps to conclusions when issues occur; often spends appropriate time to absorb complexity</answerOption>
         <answerOption>Allows time for the complexity of a situation to sink in; rarely, if ever, jumps to conclusions; almost always considers issues appropriately</answerOption>
         <answerOption>I don't know</answerOption>
@@ -581,41 +581,41 @@
   <question>
     <exercise>6</exercise>
     <name>Use Mental Modeling and Abstraction</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Does not recognize the value of mental modeling; intuitive models are highly inaccurate, overly simple, or overly complex</answerOption>
         <answerOption>Recognizes the benefit of simplification through mental modeling; mental models may be inaccurate, overly simple, or overly complex</answerOption>
         <answerOption>Recognizes that different mental models can influence perspectives and actions differently; able to simplify the problem through mental modeling with some accuracy and simplicity</answerOption>
         <answerOption>Able to simplify the problem through mental modeling with increasingly accurate results using increasingly simpler models; recognizes that all models are flawed but some are useful</answerOption>
-        <answerOption>Devises the simplest mental model that  accurately describes the system for a given purpose; recognizes that all models are flawed but some are useful</answerOption>
+        <answerOption>Devises the simplest mental model that accurately describes the system for a given purpose; recognizes that all models are flawed but some are useful</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
     <exercise>6</exercise>
     <name>Recognize Systems</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Does not recognize that a problem is systemic</answerOption>
         <answerOption>Recognizes that the problem is systemic but cannot identify it</answerOption>
         <answerOption>Recognizes that the problem is systemic and is able to identify associated behavior or system of interest in general terms</answerOption>
-        <answerOption>Recognizes that the problem is systemic and is able to identify associated behaviors or systems of interest increasingly more concrete terms</answerOption>
-        <answerOption>Recognizes that the problem is systemic and is  able to identify associated behaviors or systems in concrete terms</answerOption>
+        <answerOption>Recognizes that the problem is systemic and is able to identify associated behaviors or systems in concrete terms more than half of the time</answerOption>
+        <answerOption>Recognizes that the problem is systemic and is able to identify associated behaviors or systems in concrete terms almost always</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
     <exercise>6</exercise>
     <name>Maintain Boundaries</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to define the boundary of a system</answerOption>
         <answerOption>Able to create an initial mental model of the system that contains some relevant elements.  May contain extraneous elements or miss key elements</answerOption>
+        <answerOption>Able to maintain a system boundary that evolves over time and context, and contains some relevant elements.  May contain extraneous elements or miss key elements</answerOption>
         <answerOption>Able to maintain a system boundary that, over time and context, contains most of the relevant elements and minimizes extraneous elements</answerOption>
-        <answerOption>Able to maintain a system boundary of the system over time with increasing accuracy</answerOption>
         <answerOption>Able to maintain an accurate boundary of the system that correctly changes over time and context with a high degree of quantitative accuracy</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
@@ -623,13 +623,13 @@
   <question>
     <exercise>6</exercise>
     <name>Differentiate and Quantify Elements</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to recognize that elements are different</answerOption>
         <answerOption>Able to identify and differentiate between stocks and flows, as well as other types of variables and elements</answerOption>
         <answerOption>Able to estimate properties of elements, such as the maximum quantity of a stock or the rate of a flow</answerOption>
-        <answerOption>Able to quantify properties of elements, such as the maximum quantity of a stock or the rate of a flow with increasing accuracy</answerOption>
+        <answerOption>Able to quantify properties of elements, such as the maximum quantity of a stock or the rate of a flow, accurately more than half of the time</answerOption>
         <answerOption>Able to describe the properties of elements with a high degree of accuracy</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
@@ -637,7 +637,7 @@
   <question>
     <exercise>6</exercise>
     <name>Identify Relationships</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to recognize even those relationships that would be considered obvious by novice systems thinkers</answerOption>
@@ -651,26 +651,26 @@
   <question>
     <exercise>6</exercise>
     <name>Characterize Relationships </name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to characterize the strength of a relationship</answerOption>
         <answerOption>Unable to characterize the strength of a relationship with accuracy or consistency</answerOption>
         <answerOption>Able to estimate the strength of a relationship with some consistency</answerOption>
         <answerOption>Able to characterize relationships with increasing accuracy</answerOption>
-        <answerOption>Able to create highly accurate characterizations of relationships </answerOption>
+        <answerOption>Able to create highly accurate characterizations of relationships</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
     <exercise>6</exercise>
     <name>Identify Feedback Loops</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to recognize feedback loops</answerOption>
         <answerOption>Able to recognize feedback loops that are linear, obvious, or close in space and/or time</answerOption>
-        <answerOption>Able to recognize some feedback loops  even though they are indirect, non-obvious, or distant in space or time</answerOption>
+        <answerOption>Able to recognize some feedback loops even though they are indirect, non-obvious, or distant in space or time</answerOption>
         <answerOption>Able to recognize many feedback loops even though they are indirect, non-obvious, or distant in space or time</answerOption>
         <answerOption>Able to recognize the vast majority of relevant feedback loops</answerOption>
         <answerOption>I don't know</answerOption>
@@ -679,35 +679,35 @@
   <question>
     <exercise>6</exercise>
     <name>Characterize Feedback Loops</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to characterize the strength and properties of a feedback loops</answerOption>
         <answerOption>Unable to characterize feedback loops with accuracy or consistency</answerOption>
-        <answerOption>Able to estimate the strength and properties of  feedback loops with some consistency</answerOption>
-        <answerOption>Able to characterize feedback loops with increasing accuracy</answerOption>
-        <answerOption>Able to create highly accurate characterizations of feedback loops </answerOption>
+        <answerOption>Able to estimate the strength and properties of feedback loops with some consistency</answerOption>
+        <answerOption>Able to characterize feedback loops with accuracy more than half of the time</answerOption>
+        <answerOption>Able to create highly accurate characterizations of feedback loops</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
     <exercise>6</exercise>
     <name>Describe Past System Behavior</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
-        <answerOption>Unable to describe past behavior</answerOption>
+        <answerOption>Unable to describe past behavior</answerOption> 
         <answerOption>Able to describe past system behavior in general, conceptual terms</answerOption>
         <answerOption>Able to describe past system behavior through estimation</answerOption>
-        <answerOption>Able to describe past system behavior with increasing levels of accuracy</answerOption>
-        <answerOption>Able to describe past system behavior with a high degree of accuracy </answerOption>
+        <answerOption>Able to describe past system behavior quantitatively with some accuracy</answerOption>
+        <answerOption>Able to describe past system behavior with a high degree of accuracy</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
     <exercise>6</exercise>
     <name>Predict Future System Behavior</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to predict future behavior</answerOption>
@@ -721,24 +721,24 @@
   <question>
     <exercise>6</exercise>
     <name>Respond to Changes over Time</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Does not respond differently to changes in the system over time</answerOption>
         <answerOption>Recognizes the need to respond differently over time</answerOption>
         <answerOption>Responds to changes over time in ways that are occasionally effective</answerOption>
-        <answerOption>Responds to changes over time in increasingly effective ways</answerOption>
-        <answerOption>Consistently responds to changes over time in highly effective ways </answerOption>
+        <answerOption>Responds to changes over time in ways that are more often effective than not</answerOption>
+        <answerOption>Consistently responds to changes over time in highly effective ways</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
     <exercise>6</exercise>
     <name>Use Leverage Points to Product Effects</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
     <answerOptions>
-        <answerOption>Does not recognize leverage points in a system</answerOption>
+        <answerOption>Does not recognize leverage points that allow for significant changes to be made in a system</answerOption>
         <answerOption>Recognizes obvious or lower strength leverage points, but often pushes them in the wrong direction</answerOption>
         <answerOption>Recognizes some high strength leverage points, and usually pushes them in the right direction</answerOption>
         <answerOption>Recognizes most low and high strength leverage points, understands their differences, and uses them effectively most of the time</answerOption>

@@ -55,6 +55,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
 
 import gos.*;
 
@@ -251,6 +252,8 @@ public class AnswerScreen extends GosSceneBase {
                     RadioButton btn = new RadioButton(opt);
                     btn.setToggleGroup(group);
                     btn.setUserData(num);
+                    btn.wrapTextProperty().setValue(true);
+                    btn.setTextAlignment(TextAlignment.RIGHT);
                     num++;
                     tempAdd(btn);
                     GridPane.setRowIndex(btn, row);
@@ -272,7 +275,7 @@ public class AnswerScreen extends GosSceneBase {
                     tempAdd(btn);
                     GridPane.setRowIndex(btn, row);
                     GridPane.setColumnIndex(btn, 2);
-                    GridPane.setHalignment(btn, HPos.LEFT);
+                    GridPane.setHalignment(btn, HPos.LEFT); 
                     row++;
                 }
                 break;

@@ -482,11 +482,57 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
             Data.currentValues.movingDotB));
     }
 
+    private double getSliderPositionForValue(double start_val, double val) {
+
+        return (val * 100);
+        /*Utils.log("BOBS: " + start_val + ": " + val);
+        double pos = 0;
+        if (start_val == val)
+            pos = 50;
+        else if (val > start_val) {
+            pos = 50;
+            // so we want to take 0 - 1 and convert it
+            // to 0-50, so just multiply by 50.
+            // But first we need to get the ratios from the values themselves
+            // to operate on.
+            double mult = val / start_val;
+            // Multiplier is from 1.0 to 2.0 so normalize it by subtracting the lower.
+            pos += (mult - 1) * 50;
+        }
+        else {
+            double mult = val / start_val;
+            pos = (mult - 0.5) * 100;
+        }
+        return (pos);*/
+    }
+
+    private double getMultiplierForSlider(Slider slider) {
+        return Utils.round(slider.getValue() / 100, 3);
+        
+        /*double mult = 1;
+        double val = slider.getValue();
+        double min = 0.25;
+        double max = 4;
+        double mid = 50;
+
+        // The range is 0-100, so the midpoint is 50.  At
+        // the min, which is 0, the multiplier is 0.25.  At the max,
+        // which is 100, multiplier is 4.  So we need a range from
+        // 0.25 to 4.00, over  the course of 100 units.
+        double total = max - min;
+        double oneUnitVal = total / 100.0;
+
+        Utils.log("UBERBOBS: " + (min + (val * oneUnitVal)));
+        return min + (val * oneUnitVal);*/
+    }
+
     // Based on the standard formula, get the correct position this slider should
     // be in based on the starting and current values, with the median as 50,
     // top as 100 and bottom as zero.  We just reverse the getMultiplier formula.
     // So 2.0x should be 100,  1.0x should be 50, 0.5x should be 0, according to current formula.
-    private double getSliderPositionForValue(double start_val, double val) {
+    // No, it's updated, now 4.0x is 100 and 0.25x is 0
+    /*private double getSliderPositionForValue(double start_val, double val) {
+        Utils.log("BOBS: " + start_val + ": " + val);
         double pos = 0;
         if (start_val == val)
             pos = 50;
@@ -523,7 +569,8 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         double total = max - min;
         double oneUnitVal = total / 100.0;
 
-        return min + (val * oneUnitVal);
+        Utils.log("UBERBOBS: " + (min + (val * oneUnitVal)));
+        return min + (val * oneUnitVal);*/
 
         /*if (val == 50)
             mult = 1;
@@ -539,7 +586,7 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
             mult = (0.5 + (val / 100F));
         }*/
         //return mult;
-    }
+    //}
 
     public void submit(Values values) {
         // Apply changes.
@@ -551,8 +598,10 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
 
         values.rainOrigin = cbRain.getSelectionModel().getSelectedIndex();
 
-        values.rainRate = 
-            Utils.round(Data.startingValues.rainRate * getMultiplierForSlider(rainRateSlider), 3);
+        values.rainRate = Utils.round(getMultiplierForSlider(rainRateSlider), 3);
+            
+        //values.rainRate = 
+            //Utils.round(Data.startingValues.rainRate * getMultiplierForSlider(rainRateSlider), 3);
 
         //values.rainSpeedVar = 
           //  Data.startingValues.rainSpeedVar * getMultiplierForSlider(rainSpeedSlider);

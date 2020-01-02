@@ -303,7 +303,7 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
             return cell;
         });
         
-        table.getColumns().addAll(col1, col2, col3, col4, col5);
+        table.getColumns().addAll(col1, col2, col3, col4, col5); 
         
         m_MainVBox.getChildren().add(table);
     }
