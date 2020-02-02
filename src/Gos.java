@@ -62,6 +62,7 @@ import javafx.stage.Modality;
 import javafx.stage.StageStyle;
 
 import gos.gui.*;
+import gos.analyzer.*;
 
 // Gos - Game of Systems
 //public class Gos extends Application implements SimulatorEventListener {
@@ -75,9 +76,9 @@ public class Gos extends Application {
     // All should be false for deployment //////
     ////////////////////////////////////////////
     public static boolean testing = false;
-    public static boolean skipSurveys = false;
-    public static boolean showSkipWindow = true;
-    public static boolean assessmentMode = false;
+    public static boolean skipSurveys = true;
+    public static boolean showSkipWindow = false;
+    public static boolean assessmentMode = true;
     ////////////////////////////////////////////
     ////////////////////////////////////////////
     ////////////////////////////////////////////

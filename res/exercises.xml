@@ -41,7 +41,7 @@
   </exercise>
   <exercise>
     <id>4</id>
-    <displayId>3</displayId>
+    <displayId>3</displayId>  
     <usesLevels>true</usesLevels>
     <noSelect>true</noSelect>
     <noDeath>true</noDeath>

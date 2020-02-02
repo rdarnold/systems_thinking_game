@@ -1,5 +1,5 @@
 
-package gos.gui;
+package gos.analyzer;
 
 import java.io.*;
 import java.util.*;
@@ -74,6 +74,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
     
 import gos.*;
+import gos.gui.*;
 
 public class AssessmentWindow extends Stage implements ClassInfo  {
 
