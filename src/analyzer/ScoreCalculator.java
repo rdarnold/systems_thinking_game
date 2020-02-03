@@ -28,16 +28,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 
-// Graphics stuff that could be moved into a GraphicsUtils file
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
-
 import gos.gui.*;
 import gos.*;
 
 // This is essentially like a static class in C#
-public final class ScoreCalculator {
+public final class SkillCalculator {
 
-    private ScoreCalculator() { // private constructor
+    private SkillCalculator() { // private constructor
+    }
+
+    public static int calc(int min, int max) {
+        return (min + rand.nextInt(((max + 1) - min)));
     }
 }
