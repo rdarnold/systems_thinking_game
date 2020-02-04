@@ -147,7 +147,7 @@ public class Gos extends Application {
         variableWindow = new VariableWindow(400, 650);
         scratchPadWindow = new ScratchPadWindow(600, 600);
         skipToWindow = new SkipToWindow(400, 600);
-        assessmentWindow = new AssessmentWindow(800, 700);
+        assessmentWindow = new AssessmentWindow(1000, 800);
 
         String str = "Sorry, you don't have enough Discovery Points to do that.  You will " +
         "get another one next turn.";

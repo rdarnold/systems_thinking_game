@@ -411,8 +411,8 @@ public final class Player {
     }
 
     
-    // We found an ACT: which is start of an action so now load the action
-    // and return the index of the last line of the action whatever that was
+    // We found an ANS: which is start of an answer so now load the answer
+    // and return the index of the last line of the answer whatever that was
     private static int loadAnswerFromString(List<String> lines, int start) {
         int i = start;
 
@@ -454,7 +454,7 @@ public final class Player {
         if (ans != null) {
             // We just do this to accomodate my initial data set which had absolute instead of relative
             // timestamps
-            ans.timestamp -= 1561517543573L;
+            //ans.timestamp -= 1561517543573L;
             Player.answers.add(ans);
         }
         loadLines.clear();
@@ -503,7 +503,7 @@ public final class Player {
         if (act != null) {
             // We just do this to accomodate my initial data set which had absolute instead of relative
             // timestamps
-            act.timestamp -= 1561517543573L;
+            //act.timestamp -= 1561517543573L;
             Player.actions.add(act);
         }
         loadLines.clear();
@@ -570,10 +570,10 @@ public final class Player {
 
         // Now parse tutorial data if we have any
         str = lines.get(i);
-        if (str.substring(0, "Tutorial".length()) == "Tutorial") {
+        if (str.substring(0, "Tutorial".length()).equals("Tutorial")) {
             i++;
             str = lines.get(i);
-            while (str.substring(0, "EndTutorial".length()) != "EndTutorial") {
+            while (str.substring(0, "EndTutorial".length()).equals("EndTutorial") == false) {
                 // Now load in the tutorial data
                 tutorialData += str + "\r\n";
                 i++;

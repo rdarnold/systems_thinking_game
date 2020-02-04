@@ -37,7 +37,9 @@ src/Uploader.java
 src/Utils.java
 src/Values.java
 src/XmlProcessor.java
+src/analyzer/AssessmentData.java
 src/analyzer/AssessmentWindow.java
+src/analyzer/STUtils.java
 src/gui/ActionPanelBase.java
 src/gui/ActionPanelVBox.java
 src/gui/AdjustOverallValuesPanel.java

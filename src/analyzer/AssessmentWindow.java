@@ -74,6 +74,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
     
 import gos.*;
+import gos.analyzer.STUtils;
 import gos.gui.*;
 
 public class AssessmentWindow extends Stage implements ClassInfo  {
@@ -86,9 +87,51 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
     private HTMLEditor m_htmlEditor;
     private TextArea m_textArea;
 
-    private TableView table = new TableView();
+    private TableView actionListTable;
 
     private AssessmentWindow thisScreen;
+
+    // The controls so we can populate them later
+
+    // For the General data area
+    TextField tfId = new TextField();
+    TextField tfName = new TextField();
+    TextField tfEmail = new TextField();
+    TextField tfScore1 = new TextField();
+    TextField tfScore2 = new TextField();
+    TextField tfScore3 = new TextField();
+    TextField tfScore4 = new TextField();
+    TextField tfPracticeResults = new TextField();
+    TextField tfPlayedTimes = new TextField();
+
+    TextField tfTimeStart = new TextField();
+    TextField tfTimeEnd = new TextField();
+    TextField tfTotalTime = new TextField();
+    TextField tfTotalTimeExp = new TextField();
+    TextField tfTotalTimeObs = new TextField();
+    TextField tfNumExp = new TextField();
+
+    TextField tfSTScore  = new TextField();
+    TextField tfDomain1  = new TextField();
+    TextField tfDomain2  = new TextField();
+    TextField tfDomain3  = new TextField();
+    TextField tfDomain4  = new TextField();
+    TextField tfSkill11  = new TextField();
+    TextField tfSkill12  = new TextField();
+    TextField tfSkill13  = new TextField();
+    TextField tfSkill14  = new TextField();
+    TextField tfSkill15  = new TextField();
+    TextField tfSkill21  = new TextField();
+    TextField tfSkill22  = new TextField();
+    TextField tfSkill23  = new TextField();
+    TextField tfSkill31  = new TextField();
+    TextField tfSkill32  = new TextField();
+    TextField tfSkill33  = new TextField();
+    TextField tfSkill34  = new TextField();
+    TextField tfSkill41  = new TextField();
+    TextField tfSkill42  = new TextField();
+    TextField tfSkill43  = new TextField();
+    TextField tfSkill44  = new TextField();
 
     public AssessmentWindow(int wid, int hgt) {
         //super(wid, hgt);
@@ -170,6 +213,148 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
             }
         });
         m_MainVBox.getChildren().add(btn);*/
+
+        // Let's make 4 rows:
+        // 1: General
+        // 2: Demographics list
+        // 3: Exercise summary
+        // 4: Answer list
+        // 5: Action list
+        HBox generalRow = new HBox();
+        HBox demographicsRow = new HBox();
+        HBox exerciseSummaryRow = new HBox();
+        HBox answerListRow = new HBox();
+        HBox actionListRow = new HBox();
+
+        createGeneralData(generalRow);
+
+        // First add all the meta data, who the person is, email address, time started, time taken to do
+        // various things, and general scores for each of the scenarios
+
+        // Now add the list of actions
+        actionListTable = createActionList();
+        //m_MainVBox.getChildren().add(actionListTable);
+        actionListRow.getChildren().add(actionListTable);
+
+        m_MainVBox.getChildren().add(generalRow);
+        m_MainVBox.getChildren().add(demographicsRow);
+        m_MainVBox.getChildren().add(exerciseSummaryRow);
+        m_MainVBox.getChildren().add(answerListRow);
+        m_MainVBox.getChildren().add(actionListRow);
+    }
+
+    private void createGeneralData(HBox generalRow) {
+        // Within General, we want 3 columns
+        VBox col1 = new VBox();
+        VBox col2 = new VBox();
+        VBox col3 = new VBox();
+        VBox col4 = new VBox();
+        generalRow.getChildren().add(col1);
+        generalRow.getChildren().add(col2);
+        generalRow.getChildren().add(col3);
+        generalRow.getChildren().add(col4);
+
+        tfId.setEditable(false);
+        tfName.setEditable(false);
+        tfEmail.setEditable(false);
+        tfScore1.setEditable(false);
+        tfScore2.setEditable(false);
+        tfScore3.setEditable(false);
+        tfScore4.setEditable(false);
+        tfPracticeResults.setEditable(false);
+        tfPlayedTimes.setEditable(false);
+    
+        tfTimeStart.setEditable(false);
+        tfTimeEnd.setEditable(false);
+        tfTotalTime.setEditable(false);
+        tfTotalTimeExp.setEditable(false);
+        tfTotalTimeObs.setEditable(false);
+        tfNumExp.setEditable(false);
+
+        tfSTScore.setEditable(false);
+        tfDomain1.setEditable(false);
+        tfDomain2.setEditable(false);
+        tfDomain3.setEditable(false);
+        tfDomain4.setEditable(false);
+
+        tfSkill11.setEditable(false);
+        tfSkill12.setEditable(false);
+        tfSkill13.setEditable(false);
+        tfSkill14.setEditable(false);
+        tfSkill15.setEditable(false);
+        tfSkill21.setEditable(false);
+        tfSkill22.setEditable(false);
+        tfSkill23.setEditable(false);
+        tfSkill31.setEditable(false);
+        tfSkill32.setEditable(false);
+        tfSkill33.setEditable(false);
+        tfSkill34.setEditable(false);
+        tfSkill41.setEditable(false);
+        tfSkill42.setEditable(false);
+        tfSkill43.setEditable(false);
+        tfSkill44.setEditable(false);
+        
+        col1.getChildren().add(tfId);
+        col1.getChildren().add(tfName);
+        col1.getChildren().add(tfEmail);
+        col1.getChildren().add(tfPracticeResults);
+        col1.getChildren().add(tfPlayedTimes);
+        col1.getChildren().add(tfScore1);
+        col1.getChildren().add(tfScore2);
+        col1.getChildren().add(tfScore3);
+        col1.getChildren().add(tfScore4);
+
+        col2.getChildren().add(tfTimeStart);
+        col2.getChildren().add(tfTimeEnd);
+        col2.getChildren().add(tfTotalTime);
+        col2.getChildren().add(tfTotalTimeExp);
+        col2.getChildren().add(tfTotalTimeObs);
+        col2.getChildren().add(tfNumExp);
+
+        col3.getChildren().add(tfSTScore);
+        col3.getChildren().add(tfDomain1);
+        col3.getChildren().add(tfDomain2);
+        col3.getChildren().add(tfDomain3);
+        col3.getChildren().add(tfDomain4);
+        
+        col4.getChildren().add(tfSkill11);
+        col4.getChildren().add(tfSkill12);
+        col4.getChildren().add(tfSkill13);
+        col4.getChildren().add(tfSkill14);
+        col4.getChildren().add(tfSkill15);
+        col4.getChildren().add(tfSkill21);
+        col4.getChildren().add(tfSkill22);
+        col4.getChildren().add(tfSkill23);
+        col4.getChildren().add(tfSkill31);
+        col4.getChildren().add(tfSkill32);
+        col4.getChildren().add(tfSkill33);
+        col4.getChildren().add(tfSkill34);
+        col4.getChildren().add(tfSkill41);
+        col4.getChildren().add(tfSkill42);
+        col4.getChildren().add(tfSkill43);
+        col4.getChildren().add(tfSkill44);
+
+        int wid = 350;
+        tfSkill11.setPrefWidth(wid);
+        tfSkill12.setPrefWidth(wid);
+        tfSkill13.setPrefWidth(wid);
+        tfSkill14.setPrefWidth(wid);
+        tfSkill15.setPrefWidth(wid);
+        tfSkill21.setPrefWidth(wid);
+        tfSkill22.setPrefWidth(wid);
+        tfSkill23.setPrefWidth(wid);
+        tfSkill31.setPrefWidth(wid);
+        tfSkill32.setPrefWidth(wid);
+        tfSkill33.setPrefWidth(wid);
+        tfSkill34.setPrefWidth(wid);
+        tfSkill41.setPrefWidth(wid);
+        tfSkill42.setPrefWidth(wid);
+        tfSkill43.setPrefWidth(wid);
+        tfSkill44.setPrefWidth(wid);
+    }
+
+    private TableView createActionList() {
+        TableView table = new TableView();
         table.setEditable(false);
         table.prefHeightProperty().bind(m_Scene.heightProperty());
         table.prefWidthProperty().bind(m_Scene.widthProperty());
@@ -305,8 +490,7 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         });
         
         table.getColumns().addAll(col1, col2, col3, col4, col5); 
-        
-        m_MainVBox.getChildren().add(table);
+        return table;
     }
 
     private MenuBar createMenuBar() {
@@ -371,12 +555,76 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         showLoadedData();
     } 
 
+    private String printTutorialDataString() {
+        String ret = "";
+
+        // Figure out how to display tutorial data
+        String tdata = Player.getTutorialData();
+
+        Utils.log(tdata);
+
+        if (tdata.indexOf("TURN 1: GOOD") != -1) { ret += "Y, "; } else { ret += "N, "; }
+        if (tdata.indexOf("TURN 2: GOOD") != -1) { ret += "Y, "; } else { ret += "N, "; }
+        if (tdata.indexOf("TURN 3: GOOD") != -1) { ret += "Y, "; } else { ret += "N, "; }
+        if (tdata.indexOf("TURN 4: GOOD") != -1) { ret += "Y, "; } else { ret += "N, "; }
+        if (tdata.indexOf("TURN 5: GOOD") != -1) { ret += "Y"; } else { ret += "N"; }
+
+        return ret;
+    }
+
+    private void showLoadedGeneralData() {
+        tfId.setText("ID: " + Player.getId());
+        tfName.setText("Name: " + Player.getName());
+        tfEmail.setText("Email: " + Player.getEmail());
+        tfPracticeResults.setText("Tutorial: " + printTutorialDataString());        
+        tfPlayedTimes.setText("Played Times: " + Player.getTimesPlayed());
+        tfScore1.setText("Four Shapes R1: ");
+        tfScore2.setText("Four Shapes R2: ");
+        tfScore3.setText("Chaos R1: ");
+        tfScore4.setText("Chaos R2: ");
+
+        // Now we want, total time spent experimenting, total experiments done, total time spent observing
+        tfTimeStart.setText("Start Time: ");
+        tfTimeEnd.setText("End Time: ");
+        tfTotalTime.setText("Total Time: ");
+        tfTotalTimeExp.setText("Total Time Exp: ");
+        tfTotalTimeObs.setText("Total Time Obs: ");
+        tfNumExp.setText("Num Experiments: ");
+
+        tfSTScore.setText("Systems Thinking Score: ");
+        tfDomain1.setText("Mindset: ");
+        tfDomain2.setText("Structure: ");
+        tfDomain3.setText("Content: ");
+        tfDomain4.setText("Behavior: ");
+
+        tfSkill11.setText("1.1 Explore Multiple Perspectives: " + STUtils.calc(STUtils.STSkills.ExploreMultiplePerspectives));
+        tfSkill12.setText("1.2 Consider Wholes and Parts: " + STUtils.calc(STUtils.STSkills.ConsiderWholesAndParts));
+        tfSkill13.setText("1.3 Effectively Resp to Unc and Amb: " + STUtils.calc(STUtils.STSkills.EffectivelyRespondToUncertaintyAndAmbiguity));
+        tfSkill14.setText("1.4 Consider Issues Appropriately: " + STUtils.calc(STUtils.STSkills.ConsiderIssuesAppropriately));
+        tfSkill15.setText("1.5 Use Mental Modeling and Abstraction: " + STUtils.calc(STUtils.STSkills.UseMentalModelingAndAbstraction));
+        tfSkill21.setText("2.1 Recognize Systems: " + STUtils.calc(STUtils.STSkills.RecognizeSystems));
+        tfSkill22.setText("2.2 Maintain Boundaries: " + STUtils.calc(STUtils.STSkills.MaintainBoundaries));
+        tfSkill23.setText("2.3 Differentiate and Quantify Elements: " + STUtils.calc(STUtils.STSkills.DifferentiateAndQuantifyElements));
+        tfSkill31.setText("3.1 Identify Relationships: " + STUtils.calc(STUtils.STSkills.IdentifyRelationships));
+        tfSkill32.setText("3.2 Characterize Relationships: " + STUtils.calc(STUtils.STSkills.CharacterizeRelationships));
+        tfSkill33.setText("3.3 Identify Feedback Loops: " + STUtils.calc(STUtils.STSkills.IdentifyFeedbackLoops));
+        tfSkill34.setText("3.4 Characterize Feedback Loops: " + STUtils.calc(STUtils.STSkills.CharacterizeFeedbackLoops));
+        tfSkill41.setText("4.1 Describe Past System Behavior: " + STUtils.calc(STUtils.STSkills.DescribePastSystemBehavior));
+        tfSkill42.setText("4.2 Predict Future System Behavior: " + STUtils.calc(STUtils.STSkills.PredictFutureSystemBehavior));
+        tfSkill43.setText("4.3 Respond to Changes over Time: " + STUtils.calc(STUtils.STSkills.RespondToChangesOverTime));
+        tfSkill44.setText("4.4 Use Leverage Points: " + STUtils.calc(STUtils.STSkills.UseLeveragePoints));
+    }
+
     private void showLoadedData() {
-        table.getItems().clear();
+        // Load it into the various controls
+        showLoadedGeneralData();
+
+        // Now show it in the table
+        actionListTable.getItems().clear();
 
         // We have all the actions loaded up
         for (Action a : Player.actions) {
-            table.getItems().add(a);
+            actionListTable.getItems().add(a);
         }
     }
 }
