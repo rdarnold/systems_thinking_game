@@ -136,6 +136,14 @@ public final class Utils {
         return num;
     }
 
+    public static String printHoursMinsSecsFromMS(long ms) {
+        int seconds = (int) (ms / 1000) % 60 ;
+        int minutes = (int) ((ms / (1000*60)) % 60);
+       // int hours   = (int) ((ms / (1000*60*60)) % 24);
+        int hours = (int) (ms / (1000*60*60));
+        return String.format("%01d:%02d:%02d", hours, minutes, seconds);
+    }
+
     public static double getAngleDegrees(double x1, double y1, double x2, double y2) {
         return (Utils.normalizeAngle(Math.toDegrees(getAngleRadians(x1, y1, x2, y2))));
     }

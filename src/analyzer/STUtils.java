@@ -48,75 +48,6 @@ public final class STUtils {
     private STUtils() { // private constructor
     }
 
-    // The various systems thinking skills
-    public static enum STSkills {
-
-        // Mindset
-        ExploreMultiplePerspectives(0, 1, 1, "Explore Multiple Perspectives"), 
-        ConsiderWholesAndParts (1, 1, 2, "Consider Wholes and Parts "),
-        EffectivelyRespondToUncertaintyAndAmbiguity (2, 1, 3, "Effectively Respond to Uncertainty and Ambiguity"),
-        ConsiderIssuesAppropriately(3, 1, 4, "Consider Issues Appropriately"),
-        UseMentalModelingAndAbstraction(4, 1, 5, "Use Mental Modeling and Abstraction"),
-
-        // Structure
-        RecognizeSystems(5, 2, 1, "Recognize Systems"),
-        MaintainBoundaries (6, 2, 2, "Maintain Boundaries "),
-        DifferentiateAndQuantifyElements(7, 2, 3, "Differentiate and Quantify Elements"),
-
-        // Content
-        IdentifyRelationships(8, 3, 1, "Identify Relationships"),
-        CharacterizeRelationships(9, 3, 2, "Characterize Relationships"),
-        IdentifyFeedbackLoops(10, 3, 3, "Identify Feedback Loops"),
-        CharacterizeFeedbackLoops(11, 3, 4, "Characterize Feedback Loops"),
-
-        // Behavior
-        DescribePastSystemBehavior(12, 4, 1, "Describe Past System Behavior"),
-        PredictFutureSystemBehavior(13, 4, 2, "Predict Future System Behavior"),
-        RespondToChangesOverTime(14, 4, 3, "Response to Changes over Time"),
-        UseLeveragePoints(15, 4, 4, "Use Leverage Points");
-
-        private int _value;
-        private int _domain;
-        private int _num_in_domain;
-        private String _label;
-
-        STSkills(int value, int domain, int num_in_domain, String label) {
-            this._value = value;
-            this._domain = domain;
-            this._num_in_domain = num_in_domain;
-            this._label = label;
-        }
-
-        public int getValue() {
-                return _value;
-        }
-        public int getDomain() {
-            return _domain;
-        }
-        public int getNumInDomain() {
-            return _num_in_domain;
-        }
-
-        public String toStringAsNum() {
-            return "" + _domain + "." + _num_in_domain;
-        }
-
-        public String toString() {
-                return _label;
-        }
-        public String getLabel() {
-                return _label;
-        }
-
-        private static STSkills[] cachedValues = null;
-        public static STSkills fromInt(int i) {
-            if (STSkills.cachedValues == null) {
-                STSkills.cachedValues = STSkills.values();
-            }
-            return STSkills.cachedValues[i];
-        }
-    }
-
     public static int calc(STSkills skill) {
         switch (skill) {
             case ExploreMultiplePerspectives:
@@ -219,6 +150,12 @@ public final class STUtils {
     Actually many people did not even have the "grit" to complete it, which I would argue is shitty systems
     thinking
 
+    Sara - "I didn't need to observe because the scenarios played out quite slowly. And because the visuals 
+    were so basic, it was quite easy to see what was happening" (spent only 3 minutes observing)
+
+    "Well, I can tell you now (spoiler alert) that the first half I was very careful and I was trying to figure 
+    out what each of the options did. And in the second half (chaos) I threw in the towel and just went for it"
+
     */
 
     ////////////////////////
@@ -240,6 +177,14 @@ public final class STUtils {
         // when playing the game like, how would it affect the researchers, the world at large,
         // is it too much time and would affect their family, personal like what stake did they
         // have in getting a good score. 
+
+        // UPDATE 
+        // Actually the idea is to examine a problem from a lot of different angles.  these angles
+        // will depend on the system.  So they could be different people, or different domains, or
+        // in the case of some Systems Thinking definitions, things like "Operational Thinking" 
+        // and "Blah Blah Thinking" are potentially different perspectives; it just depends on the kind
+        // of problem and I'm not proscribing what those are but only to look FOR them and be aware they
+        // exist.
 
         return 0;
     }

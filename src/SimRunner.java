@@ -249,6 +249,7 @@ public class SimRunner implements SimulatorEventListener {
         if (task == null) {
             return;
         }
+        Player.recordAction(Action.Type.PhaseChange, "Started " + task.getName(), "SimRunner");
         Player.setMaxTurns(task.getTurns());
         Gos.mainScene.onNewTask();
         // If we are doing the tutorial, we use some special processing to display the goal

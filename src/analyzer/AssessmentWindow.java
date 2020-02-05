@@ -72,6 +72,14 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.time.ZoneOffset;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.text.DecimalFormat;
+import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
     
 import gos.*;
 import gos.analyzer.STUtils;
@@ -87,7 +95,22 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
     private HTMLEditor m_htmlEditor;
     private TextArea m_textArea;
 
+    // The various time slices
+    private GameTimeSlice demographicSlice = new GameTimeSlice();
+    private ArrayList<GameTimeSlice> tutorialSlices = new ArrayList<GameTimeSlice>();
+    private ArrayList<GameTimeSlice> fourShapesSlices = new ArrayList<GameTimeSlice>();
+    private ArrayList<GameTimeSlice> fourShapesReplaySlices = new ArrayList<GameTimeSlice>();
+    private ArrayList<GameTimeSlice> chaosSlices = new ArrayList<GameTimeSlice>();
+    private ArrayList<GameTimeSlice> chaosReplaySlices = new ArrayList<GameTimeSlice>();
+    private GameTimeSlice selfAssessSlice = new GameTimeSlice();
+
+    private ArrayList<GameTimeSlice> observeSlices = new ArrayList<GameTimeSlice>();
+    private ArrayList<GameTimeSlice> expSlices = new ArrayList<GameTimeSlice>();
+    private ArrayList<GameTimeSlice> playSlices = new ArrayList<GameTimeSlice>();
+    private ArrayList<GameTimeSlice> quesSlices = new ArrayList<GameTimeSlice>();
+
     private TableView actionListTable;
+    private TableView answerListTable;
 
     private AssessmentWindow thisScreen;
 
@@ -109,6 +132,7 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
     TextField tfTotalTime = new TextField();
     TextField tfTotalTimeExp = new TextField();
     TextField tfTotalTimeObs = new TextField();
+    TextField tfTotalTimeSA = new TextField();
     TextField tfNumExp = new TextField();
 
     TextField tfSTScore  = new TextField();
@@ -226,10 +250,14 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         HBox answerListRow = new HBox();
         HBox actionListRow = new HBox();
 
-        createGeneralData(generalRow);
-
         // First add all the meta data, who the person is, email address, time started, time taken to do
         // various things, and general scores for each of the scenarios
+        createGeneralData(generalRow);
+        
+        // Now add the list of answers
+        answerListTable = createAnswerList();
+        //m_MainVBox.getChildren().add(actionListTable);
+        answerListRow.getChildren().add(answerListTable);
 
         // Now add the list of actions
         actionListTable = createActionList();
@@ -269,6 +297,7 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         tfTotalTime.setEditable(false);
         tfTotalTimeExp.setEditable(false);
         tfTotalTimeObs.setEditable(false);
+        tfTotalTimeSA.setEditable(false);
         tfNumExp.setEditable(false);
 
         tfSTScore.setEditable(false);
@@ -310,6 +339,7 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         col2.getChildren().add(tfTotalTimeExp);
         col2.getChildren().add(tfTotalTimeObs);
         col2.getChildren().add(tfNumExp);
+        col2.getChildren().add(tfTotalTimeSA);
 
         col3.getChildren().add(tfSTScore);
         col3.getChildren().add(tfDomain1);
@@ -334,7 +364,32 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         col4.getChildren().add(tfSkill43);
         col4.getChildren().add(tfSkill44);
 
-        int wid = 350;
+        int wid = 250;
+        tfId.setPrefWidth(wid);
+        tfName.setPrefWidth(wid);
+        tfEmail.setPrefWidth(wid);
+        tfScore1.setPrefWidth(wid);
+        tfScore2.setPrefWidth(wid);
+        tfScore3.setPrefWidth(wid);
+        tfScore4.setPrefWidth(wid);
+        tfPracticeResults.setPrefWidth(wid);
+        tfPlayedTimes.setPrefWidth(wid);
+    
+        tfTimeStart.setPrefWidth(wid);
+        tfTimeEnd.setPrefWidth(wid);
+        tfTotalTime.setPrefWidth(wid);
+        tfTotalTimeExp.setPrefWidth(wid);
+        tfTotalTimeObs.setPrefWidth(wid);
+        tfNumExp.setPrefWidth(wid);
+        tfTotalTimeSA.setPrefWidth(wid);
+
+        tfSTScore.setPrefWidth(wid);
+        tfDomain1.setPrefWidth(wid);
+        tfDomain2.setPrefWidth(wid);
+        tfDomain3.setPrefWidth(wid);
+        tfDomain4.setPrefWidth(wid);
+
+        wid = 350;
         tfSkill11.setPrefWidth(wid);
         tfSkill12.setPrefWidth(wid);
         tfSkill13.setPrefWidth(wid);
@@ -555,6 +610,180 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         showLoadedData();
     } 
 
+    private void buildAllObserveSlices() {
+        GameTimeSlice slice;
+        //observeSlices
+        // Keep in mind we START in observe mode so we need to start from the very beginning
+        Action startAction = findNextButtonPress(0, "OK", "StartSimulationWindow");
+        long start = startAction.timestamp;
+
+        slice = new GameTimeSlice();
+        slice.sliceType = GameTimeSlice.Type.Obs;
+        slice.startTimeMS = startAction.timestamp;
+
+        Action endAction = findNextButtonPress(0, "Main Screen", "ObservePanelBottom");
+        slice.endTimeMS = endAction.timestamp;
+        
+        observeSlices.add(slice);
+
+        start = slice.endTimeMS + 1;
+        // Now just iterate through the rest of the game looking for observe button presses
+        while (startAction != null) {
+            startAction = findNextButtonPress(start, "Observe", "MainPanelLeft");
+            endAction = findNextButtonPress(start, "Main Screen", "ObservePanelBottom");
+
+            if (startAction != null && endAction != null) {slice = new GameTimeSlice();
+                slice.sliceType = GameTimeSlice.Type.Obs;
+                slice.startTimeMS = startAction.timestamp;
+                slice.endTimeMS = endAction.timestamp;
+                observeSlices.add(slice);
+                
+                start = slice.endTimeMS + 1;
+            }
+        }
+    }
+
+    private void buildAllExpSlices() {
+        long start = 0;
+        GameTimeSlice slice;
+        Action startAction = findNextButtonPress(0, "Experiment", "MainPanelLeft");;
+        Action endAction;
+
+        // Now just iterate through the rest of the game looking for observe button presses
+        while (startAction != null) {
+            startAction = findNextButtonPress(start, "Experiment", "MainPanelLeft");
+            endAction = findNextButtonPress(start, "Main Screen", "ExperimentPanelBottom");
+
+            if (startAction != null && endAction != null) {slice = new GameTimeSlice();
+                slice.sliceType = GameTimeSlice.Type.Exp;
+                slice.startTimeMS = startAction.timestamp;
+                slice.endTimeMS = endAction.timestamp;
+                expSlices.add(slice);
+                
+                start = slice.endTimeMS + 1;
+            }
+        }
+    }
+
+    private void buildAllPlaySlices() {
+        //playSlices
+    }
+
+    private void buildAllQuesSlices() {
+        //quesSlices
+    }
+
+    private void buildTutorialTimeSlices() {
+        GameTimeSlice.Segment seg = GameTimeSlice.Segment.Tutorial;
+        // Exp, Obs, Play, Ques, Scen;
+        // So, find when the tutorial began
+        //Action firstAction = findNextButtonPress(0, "OK", "StartSimulationWindow");
+        Action fa = findFirstActionForExercise(2, 0);  // ex 2 is Tutorial
+        long startTimeMS = fa.timestamp;
+
+        //Action la = findNextButtonPress(0, "OK", "StartRealGameWindow");
+        Action la = findFirstActionForExercise(3, 0);  // ex 3 is Four Shapes
+        long endTimeMS = la.timestamp-1;
+
+        // So we have the start and end time, so now we want to look at how much time
+        // the person spent observing vs. playing vs. questions at the end
+
+        // So what we could do is a generate "build segments" functions that essentially
+        // build out all of your observe, experiment, play, question, etc., slices,
+        // then we just pick the ones out that are inside this timeframe and shove them
+        // in here, then organize by time.
+
+        GameTimeSlice slice = new GameTimeSlice(seg);
+        tutorialSlices.add(slice);
+    }
+
+    private void buildFourShapesTimeSlices() {
+        GameTimeSlice.Segment seg = GameTimeSlice.Segment.FourShapes;
+        // Exp, Obs, Play, Ques, Scen;
+        //Action firstAction = findNextButtonPress(0, "OK", "StartRealGameWindow");
+        Action fa = findFirstActionForExercise(3, 0);  // ex 3.0 is Four Shapes
+        long startTimeMS = fa.timestamp;
+
+        //Action lastAction = findNextButtonPress(startTimeMS, "OK", "StartRealGameWindow");
+        Action la = findFirstActionForExercise(3, 1);  // ex 3.1 is four shapes round 2
+        long endTimeMS = la.timestamp-1;
+
+        GameTimeSlice slice = new GameTimeSlice(seg);
+        fourShapesSlices.add(slice);
+    }
+
+    private void buildFourShapesReplayTimeSlices() {
+        GameTimeSlice.Segment seg = GameTimeSlice.Segment.FourShapesReplay;
+
+        Action fa = findFirstActionForExercise(3, 1);  // four shapes r2
+        long startTimeMS = fa.timestamp;
+
+        Action la = findFirstActionForExercise(4, 0);  // chaos
+        long endTimeMS = la.timestamp-1;
+
+        // Exp, Obs, Play, Ques, Scen;
+        GameTimeSlice slice = new GameTimeSlice(seg);
+        fourShapesReplaySlices.add(slice);
+    }
+
+    private void buildChaosTimeSlices() {
+        GameTimeSlice.Segment seg = GameTimeSlice.Segment.Chaos;
+
+        Action fa = findFirstActionForExercise(4, 0);  // chaos
+        long startTimeMS = fa.timestamp;
+
+        Action la = findFirstActionForExercise(4, 1);  // chaos r2
+        long endTimeMS = la.timestamp-1;
+
+        // Exp, Obs, Play, Ques, Scen;
+        GameTimeSlice slice = new GameTimeSlice(seg);
+        chaosSlices.add(slice);
+    }
+
+    private void buildChaosReplayTimeSlices() {
+        GameTimeSlice.Segment seg = GameTimeSlice.Segment.ChaosReplay;
+
+        Action fa = findFirstActionForExercise(4, 1);  // chaos r2
+        long startTimeMS = fa.timestamp;
+
+        Action la = findFirstActionForExercise(5, 0);  // assessment
+        long endTimeMS = la.timestamp-1;
+
+        // Exp, Obs, Play, Ques, Scen;
+        GameTimeSlice slice = new GameTimeSlice(seg);
+        chaosReplaySlices.add(slice);
+    }
+
+    private void buildTimeSlices() {
+        buildAllObserveSlices();
+        buildAllExpSlices();
+        buildAllPlaySlices();
+        buildAllQuesSlices();
+
+        // Build demographics slice
+        demographicSlice.sliceType = GameTimeSlice.Type.Ques;
+        demographicSlice.sliceSeg = GameTimeSlice.Segment.Demographic;
+
+        // Build tutorial slices
+        buildTutorialTimeSlices();
+
+        // Build four shapes slices
+        buildFourShapesTimeSlices();
+        
+        // Build four shapes replay slices
+        buildFourShapesReplayTimeSlices();
+
+        // Build chaos slices
+        buildChaosTimeSlices();
+
+        // Build chaos replay slices
+        buildChaosReplayTimeSlices();
+
+        // Build self-assess slice
+        selfAssessSlice.sliceType = GameTimeSlice.Type.Ques;
+        selfAssessSlice.sliceSeg = GameTimeSlice.Segment.SelfAssess;
+    }
+
     private String printTutorialDataString() {
         String ret = "";
 
@@ -572,54 +801,224 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         return ret;
     }
 
+    public int countButtonPresses(String strBtnName, String strScreenName) {
+        int num = 0;
+        // Go through action list for any corresponding actions and count them
+        for (Action action : Player.actions) {
+            if (action.actionType != Action.Type.Button)
+                continue;
+            if (action.fromScreen.equals(strScreenName) == false)
+                continue;
+            if (action.getDesc().equals(strBtnName) == false)
+                continue;
+            num++;
+        }
+        return num;
+    }
+
+    public Action findFirstActionForExercise(int exnum, int tasknum) {
+        // Go through action list and find the first action of the specified exercise/task
+        for (Action action : Player.actions) {
+            if (action.exNum == exnum && action.taskNum == tasknum)
+                return action;
+        }
+        return null;
+    }
+
+    public Action findNextButtonPress(long fromTimeMS, String strBtnName, String strScreenName) {
+        return findNextButtonPress(fromTimeMS, 0, strBtnName, strScreenName);    
+    }
+
+    // If maxTimeMS is 0 then it means we have no max, we look through all the actions
+    public Action findNextButtonPress(long fromTimeMS, long maxTimeMS, String strBtnName, String strScreenName) {
+        // Go through action list and find the next action of the specified button
+        for (Action action : Player.actions) {
+            if (action.actionType != Action.Type.Button)
+                continue;
+            if (action.fromScreen.equals(strScreenName) == false)
+                continue;
+            if (action.getDesc().equals(strBtnName) == false)
+                continue;
+            if (action.timestamp <= fromTimeMS)
+                continue;
+            if ((maxTimeMS > 0) && (action.timestamp > maxTimeMS))
+                continue;
+            return action;
+        }
+        return null;
+    }
+
+    // I could make this automatically tell what the next_ex is in the future
+    public int calcTimeForTask(int ex, int tnum, int next_ex, int next_tnum) {
+        Action fa = findFirstActionForExercise(ex, tnum); 
+        long startTimeMS = fa.timestamp;
+
+        Action la = findFirstActionForExercise(next_ex, next_tnum);
+        long endTimeMS = 0;
+        if (la == null) {
+            endTimeMS = Player.getEndTime();
+        }
+        else {
+            endTimeMS = la.timestamp-1;
+        } 
+        return (int)(endTimeMS - startTimeMS);
+    }
+
+    public int calcSelfAssessmentTime() {
+        Action fa = findFirstActionForExercise(6, 0);  // self-assessment
+        return (int)(Player.getEndTime() - fa.timestamp);
+    }
+
+    public int calcTotalTimeExp() {
+        return calcTotalTimeExp(-1);
+    }
+
+    // scen is not using the normal scheme, it's an intuitive 0 for Tutorial, 1 & 2 for Four Shapes, and 3 & 4 for Chaos
+    public int calcTotalTimeExp(int scen) {
+        // We'll calculate total experiment time by how much time a player spent from clicking the
+        // Experiment button to then clicking the Main Screen button again. So we find a timestamp for
+        // an Experiment press on main screen, and then find the next timestamp after that for a Main Screen press from
+        // Experiment screen.
+
+        // -1 as scenario means just calculate the total of all scenarios
+        if (scen == -1) {
+            long time = 0;
+            for (GameTimeSlice slice : expSlices) {
+                time += slice.getTotalTimeMS();
+            }
+            return (int)time;
+            //return calcTotalTimeExp(1) + calcTotalTimeExp(2) + calcTotalTimeExp(3) + calcTotalTimeExp(4);
+        }
+
+        // So we need to time-block each scenario, so depending on which one we want, we'll find
+        // the start and end time of that scenario, and then only grab button presses from within that time
+        long startTimeMS = 0;
+        long endTimeMS = 0;
+
+        switch (scen) {
+            case 0:
+                // There is no experiment option in the Tutorial
+                break;
+            case 1:
+                // So StartRealGameWindow we can clock the start of the game in general after the Tutorial
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+        }
+
+        return 0;
+    }
+    
+    public int calcTotalTimeObs() {
+        return calcTotalTimeObs(-1);
+    }
+
+    public int calcTotalTimeObs(int scen) {
+        // We'll calculate total observation time by how much time a player spent from clicking the
+        // Observe button to then clicking the Main Screen button again.  So we find a timestamp for
+        // an Observe press, and then find the next timestamp after that for a Main Screen press.
+        // -1 as scenario means just calculate the total of all scenarios
+        if (scen == -1) {
+            long time = 0;
+            for (GameTimeSlice slice : observeSlices) {
+                time += slice.getTotalTimeMS();
+            }
+            return (int)time;
+        }
+        return 0;
+    }
+
+    public int countNumNewExps() {
+        return countButtonPresses("Create", "ExpCreationPanelBottom");
+    }
+
+    public int countNumRerunExps() {
+        return countButtonPresses("Re-Run Experiment", "ExperimentPanelBottom");
+    }
+
+    // It's both experiments and reruns
+    private String printNumExps() {
+        // We'll calculate number of total experiments by saying how many times have we pressed 
+        // the Create button on the Exp Creation screen.  Or we could just count the number of times
+        // a SubmitExpChange event has occurred.
+        // We have NEW experiments (Create New -> Create button)
+        // And then RE-RUN experiments (Re-Run Experiment button)
+        return ("" + countNumNewExps() + ", Re-Runs: " + countNumRerunExps());
+    }
+
     private void showLoadedGeneralData() {
+        // First build the time slice arrays and such so we have everything organized by time
+        buildTimeSlices();
+
+        // Now the general data
         tfId.setText("ID: " + Player.getId());
         tfName.setText("Name: " + Player.getName());
         tfEmail.setText("Email: " + Player.getEmail());
         tfPracticeResults.setText("Tutorial: " + printTutorialDataString());        
         tfPlayedTimes.setText("Played Times: " + Player.getTimesPlayed());
-        tfScore1.setText("Four Shapes R1: ");
-        tfScore2.setText("Four Shapes R2: ");
-        tfScore3.setText("Chaos R1: ");
-        tfScore4.setText("Chaos R2: ");
+        tfScore1.setText("Four Shapes R1: " + ", " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(3, 0, 3, 1)));
+        tfScore2.setText("Four Shapes R2: " + ", " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(3, 1, 4, 0)));
+        tfScore3.setText("Chaos R1: " + ", " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(4, 0, 4, 1)));
+        tfScore4.setText("Chaos R2: " + ", " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(4, 1, 5, 0)));
 
-        // Now we want, total time spent experimenting, total experiments done, total time spent observing
-        tfTimeStart.setText("Start Time: ");
-        tfTimeEnd.setText("End Time: ");
-        tfTotalTime.setText("Total Time: ");
-        tfTotalTimeExp.setText("Total Time Exp: ");
-        tfTotalTimeObs.setText("Total Time Obs: ");
-        tfNumExp.setText("Num Experiments: ");
+        // Now we want, total time spent experimenting, total experiments done, total time spent observing'
+        ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(Player.getStartTime()), ZoneId.systemDefault());
+        String strTime = DateTimeFormatter.ofPattern("yyyy-MM-dd: HH:mm:ss X").format(date);
+        tfTimeStart.setText("Start: " + strTime);
+        
+        date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(Player.getEndTime()), ZoneId.systemDefault());
+        strTime = DateTimeFormatter.ofPattern("yyyy-MM-dd: HH:mm:ss X").format(date);
+        tfTimeEnd.setText("End: " + strTime);
 
-        tfSTScore.setText("Systems Thinking Score: ");
+        tfTotalTime.setText("Total Time: " + Utils.printHoursMinsSecsFromMS(Player.getEndTime() - Player.getStartTime()));
+
+        tfTotalTimeExp.setText("Total Time Exp: " + Utils.printHoursMinsSecsFromMS(calcTotalTimeExp()));
+        tfTotalTimeObs.setText("Total Time Obs: " + Utils.printHoursMinsSecsFromMS(calcTotalTimeObs()));
+        tfNumExp.setText("Num Experiments: " + printNumExps());
+
+        tfTotalTimeSA.setText("Total Time Self-Assess: " + Utils.printHoursMinsSecsFromMS(calcSelfAssessmentTime()));
+
+        tfSTScore.setText("Overall STM: ");
         tfDomain1.setText("Mindset: ");
         tfDomain2.setText("Structure: ");
         tfDomain3.setText("Content: ");
         tfDomain4.setText("Behavior: ");
 
-        tfSkill11.setText("1.1 Explore Multiple Perspectives: " + STUtils.calc(STUtils.STSkills.ExploreMultiplePerspectives));
-        tfSkill12.setText("1.2 Consider Wholes and Parts: " + STUtils.calc(STUtils.STSkills.ConsiderWholesAndParts));
-        tfSkill13.setText("1.3 Effectively Resp to Unc and Amb: " + STUtils.calc(STUtils.STSkills.EffectivelyRespondToUncertaintyAndAmbiguity));
-        tfSkill14.setText("1.4 Consider Issues Appropriately: " + STUtils.calc(STUtils.STSkills.ConsiderIssuesAppropriately));
-        tfSkill15.setText("1.5 Use Mental Modeling and Abstraction: " + STUtils.calc(STUtils.STSkills.UseMentalModelingAndAbstraction));
-        tfSkill21.setText("2.1 Recognize Systems: " + STUtils.calc(STUtils.STSkills.RecognizeSystems));
-        tfSkill22.setText("2.2 Maintain Boundaries: " + STUtils.calc(STUtils.STSkills.MaintainBoundaries));
-        tfSkill23.setText("2.3 Differentiate and Quantify Elements: " + STUtils.calc(STUtils.STSkills.DifferentiateAndQuantifyElements));
-        tfSkill31.setText("3.1 Identify Relationships: " + STUtils.calc(STUtils.STSkills.IdentifyRelationships));
-        tfSkill32.setText("3.2 Characterize Relationships: " + STUtils.calc(STUtils.STSkills.CharacterizeRelationships));
-        tfSkill33.setText("3.3 Identify Feedback Loops: " + STUtils.calc(STUtils.STSkills.IdentifyFeedbackLoops));
-        tfSkill34.setText("3.4 Characterize Feedback Loops: " + STUtils.calc(STUtils.STSkills.CharacterizeFeedbackLoops));
-        tfSkill41.setText("4.1 Describe Past System Behavior: " + STUtils.calc(STUtils.STSkills.DescribePastSystemBehavior));
-        tfSkill42.setText("4.2 Predict Future System Behavior: " + STUtils.calc(STUtils.STSkills.PredictFutureSystemBehavior));
-        tfSkill43.setText("4.3 Respond to Changes over Time: " + STUtils.calc(STUtils.STSkills.RespondToChangesOverTime));
-        tfSkill44.setText("4.4 Use Leverage Points: " + STUtils.calc(STUtils.STSkills.UseLeveragePoints));
+        tfSkill11.setText("1.1 Explore Multiple Perspectives: " + STUtils.calc(STSkills.ExploreMultiplePerspectives));
+        tfSkill12.setText("1.2 Consider Wholes and Parts: " + STUtils.calc(STSkills.ConsiderWholesAndParts));
+        tfSkill13.setText("1.3 Effectively Resp to Unc and Amb: " + STUtils.calc(STSkills.EffectivelyRespondToUncertaintyAndAmbiguity));
+        tfSkill14.setText("1.4 Consider Issues Appropriately: " + STUtils.calc(STSkills.ConsiderIssuesAppropriately));
+        tfSkill15.setText("1.5 Use Mental Modeling and Abstraction: " + STUtils.calc(STSkills.UseMentalModelingAndAbstraction));
+        tfSkill21.setText("2.1 Recognize Systems: " + STUtils.calc(STSkills.RecognizeSystems));
+        tfSkill22.setText("2.2 Maintain Boundaries: " + STUtils.calc(STSkills.MaintainBoundaries));
+        tfSkill23.setText("2.3 Differentiate and Quantify Elements: " + STUtils.calc(STSkills.DifferentiateAndQuantifyElements));
+        tfSkill31.setText("3.1 Identify Relationships: " + STUtils.calc(STSkills.IdentifyRelationships));
+        tfSkill32.setText("3.2 Characterize Relationships: " + STUtils.calc(STSkills.CharacterizeRelationships));
+        tfSkill33.setText("3.3 Identify Feedback Loops: " + STUtils.calc(STSkills.IdentifyFeedbackLoops));
+        tfSkill34.setText("3.4 Characterize Feedback Loops: " + STUtils.calc(STSkills.CharacterizeFeedbackLoops));
+        tfSkill41.setText("4.1 Describe Past System Behavior: " + STUtils.calc(STSkills.DescribePastSystemBehavior));
+        tfSkill42.setText("4.2 Predict Future System Behavior: " + STUtils.calc(STSkills.PredictFutureSystemBehavior));
+        tfSkill43.setText("4.3 Respond to Changes over Time: " + STUtils.calc(STSkills.RespondToChangesOverTime));
+        tfSkill44.setText("4.4 Use Leverage Points: " + STUtils.calc(STSkills.UseLeveragePoints));
     }
 
     private void showLoadedData() {
         // Load it into the various controls
         showLoadedGeneralData();
 
-        // Now show it in the table
+        // Answer table
+        answerListTable.getItems().clear();
+
+        // We have all the answers loaded up
+        for (Answer ans : Player.answers) {
+            answerListTable.getItems().add(ans);
+        }
+
+        // Action table
         actionListTable.getItems().clear();
 
         // We have all the actions loaded up

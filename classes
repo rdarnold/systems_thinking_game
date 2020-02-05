@@ -39,6 +39,8 @@ src/Values.java
 src/XmlProcessor.java
 src/analyzer/AssessmentData.java
 src/analyzer/AssessmentWindow.java
+src/analyzer/GameTimeSlice.java
+src/analyzer/STSkills.java
 src/analyzer/STUtils.java
 src/gui/ActionPanelBase.java
 src/gui/ActionPanelVBox.java

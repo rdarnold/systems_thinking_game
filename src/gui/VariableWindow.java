@@ -131,14 +131,14 @@ public class VariableWindow extends DialogWindow {
         /*str = "Please rate the variables by how important you think they are right now. " +
               "1 is most important, 7 is least important.";*/
         str = "Please rate the variables by how important you think they are right now. " +
-            "5 is extremely important, 1 is not important.  You may rate two or more variables " + 
+            "8 is extremely important, 1 is not important.  You may rate two or more variables " + 
             "at the same importance level.  You do not have to rate all variables.";
         titleLabel = addCenteredLabel(str);
         Utils.addVerticalSpace(box, space);
 
         // Set up one hbox in the middle that has two vboxes side by side
         // in it so that one can have a list of the labels and the
-        // other can have a list of the inputs 1-7
+        // other can have a list of the inputs 1-8
         HBox middleBox = new HBox();
         m_MainVBox.getChildren().add(middleBox);
 
@@ -226,6 +226,15 @@ public class VariableWindow extends DialogWindow {
             case DIGIT5:
                 rank = 5;
                 break;
+            case DIGIT6:
+                rank = 6;
+                break;
+            case DIGIT7:
+                rank = 7;
+                break;
+            case DIGIT8:
+                rank = 8;
+                break;
         }
 
         int index = getChoiceBoxIndexForRank(rank);
@@ -278,6 +287,9 @@ public class VariableWindow extends DialogWindow {
         cb.setUserData(0);
 
         cb.getItems().add("-");
+        cb.getItems().add("8");
+        cb.getItems().add("7");
+        cb.getItems().add("6");
         cb.getItems().add("5");
         cb.getItems().add("4");
         cb.getItems().add("3");
@@ -337,11 +349,14 @@ public class VariableWindow extends DialogWindow {
     private int getRankForChoiceBoxIndex(int index) {
         switch (index) {
             case 0: return 0;
-            case 1: return 5;
-            case 2: return 4;
-            case 3: return 3;
-            case 4: return 2;
-            case 5: return 1;
+            case 1: return 8;
+            case 2: return 7;
+            case 3: return 8;
+            case 4: return 5;
+            case 5: return 4;
+            case 6: return 3;
+            case 7: return 2;
+            case 8: return 1;
         }
         return 0;
     }
@@ -370,6 +385,8 @@ public class VariableWindow extends DialogWindow {
         } else if (str.equals("6")) {
             return 6;
         } else if (str.equals("7")) {
+            return 7;
+        } else if (str.equals("8")) {
             return 7;
         }
         return 0;
@@ -412,7 +429,7 @@ public class VariableWindow extends DialogWindow {
 
     // Check if we have any dupes with the one passed in, if so, bump
     // rank
-    private void checkRanks(ChoiceBox box) {
+    /*private void checkRanks(ChoiceBox box) {
         if (checkForDupe(box) == false)
             return;
 
@@ -436,7 +453,7 @@ public class VariableWindow extends DialogWindow {
             // changed.
             checkRanks(changed);
         }
-    }
+    }*/
 
     private void reorderLists(ChoiceBox changedBox) {
         // Clear out the ordered one so we can add from scratch
@@ -480,7 +497,7 @@ public class VariableWindow extends DialogWindow {
         labList.addAll(labOrderedList);  
     }
 
-    private boolean checkDupe(ChoiceBox box) {
+    /*private boolean checkDupe(ChoiceBox box) {
         int rank = getRankForChoiceBox(box);
         for (ChoiceBox cb : cbList) {
             if (box.equals(cb) == true) {
@@ -491,7 +508,7 @@ public class VariableWindow extends DialogWindow {
             }
         }
         return false;
-    }
+    }*/
 
     private boolean checkAnswers() {
         // Check to see that everything has a number

@@ -41,8 +41,13 @@ public final class Player {
     public static TurnSet getPlayedTurns() { return playedTurns; }
 
     private static SysShape selectedShape = null;
+    
     public static long startTime = 0;
+    public static long getStartTime() { return startTime; }
+
     public static long endTime = 0;
+    public static long getEndTime() { return endTime; }
+
     public static long lastTimeLogged = 0;
     public static String nowLocal = "";
     public static String nowZulu = "";

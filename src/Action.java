@@ -11,11 +11,12 @@ import java.util.List;
 public class Action {
 
     public static enum Type {
-        Button(0, "Button"),              // Any button press
+        Button(0, "Button"),                    // Any button press
         SubmitExpChange(1, "SubmitExpChange"),  // Change set for an experiment
-        SubmitChange(2, "SubmitChange"),       // Change set for actually changing the system
+        SubmitChange(2, "SubmitChange"),        // Change set for actually changing the system
         SubmitVarRating(3, "SubmitVarRating"),  // Submit the ratings for the different variables
-        TitledPane(4, "TitledPane");            // Titled pane was hit, like help/info buttons in the help screen
+        TitledPane(4, "TitledPane"),            // Titled pane was hit, like help/info buttons in the help screen
+        PhaseChange(5, "PhaseChange");          // Changed phase in the game like moved to the next scenario
 
         private final int value;
         private final String string;

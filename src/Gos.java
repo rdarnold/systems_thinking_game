@@ -144,10 +144,10 @@ public class Gos extends Application {
         exercisePopupWindow = new ExercisePopupWindow(400, 400);
         startSimulationWindow = new StartSimulationWindow(600, 600);
         startRealGameWindow = new StartRealGameWindow(600, 700);
-        variableWindow = new VariableWindow(400, 650);
+        variableWindow = new VariableWindow(400, 700);
         scratchPadWindow = new ScratchPadWindow(600, 600);
         skipToWindow = new SkipToWindow(400, 600);
-        assessmentWindow = new AssessmentWindow(1000, 800);
+        assessmentWindow = new AssessmentWindow(1100, 800);
 
         String str = "Sorry, you don't have enough Discovery Points to do that.  You will " +
         "get another one next turn.";
