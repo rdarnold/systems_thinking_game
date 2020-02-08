@@ -12,6 +12,7 @@ public class Answer {
     public int exerciseId = -1;
     public long timestamp; // Every acion has a timestamp so we know when it occurred.
     public String strAnswerText;
+    public String strQuestionText;  // Only used in the analyzer program, not the actual game
 
     public Answer(Question question, String text) {
         setTimeToNow(); // Restamp it later if needs be if we pre-created this.
@@ -20,6 +21,29 @@ public class Answer {
         exerciseId = question.getExercise(); // This is stored as an int on the question
         strAnswerText = text;
     }
+
+    // START tableView support
+    // These support the tableView
+    public String getStrTime() {
+        // So diff is in ms.  We want to print basically the
+        // hours/seconds/minutes 00:00:00 since this person started
+        // the game.
+        int seconds = (int) (timestamp / 1000) % 60 ;
+        int minutes = (int) ((timestamp / (1000*60)) % 60);
+        int hours   = (int) ((timestamp / (1000*60*60)) % 24);
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
+
+    public String getStrQuestion() {
+        return strQuestionText;
+    }
+
+    public String getStrAnswer() {
+        return strAnswerText;
+    }
+    // END tableView support
+
 
     public void setTimeToNow() {
         timestamp = System.currentTimeMillis() - Player.startTime;
@@ -45,6 +69,16 @@ public class Answer {
     // correctly
     public Answer(List<String> fromLines) {
         fromStringArray(fromLines);
+
+        // And now set the question text from the ID
+        setQuestionText();
+    }
+    
+    private void setQuestionText() {
+        Question question = Data.getQuestion(questionId, exerciseId);
+        if (question != null) {
+            strQuestionText = question.getText();
+        }
     }
 
     public boolean fromStringArray(List<String> fromLines) {

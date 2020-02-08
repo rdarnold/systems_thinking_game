@@ -408,6 +408,77 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         tfSkill44.setPrefWidth(wid);
     }
 
+    
+    private TableView createAnswerList() {
+        TableView table = new TableView();
+        table.setEditable(false);
+        table.prefHeightProperty().bind(m_Scene.heightProperty());
+        table.prefWidthProperty().bind(m_Scene.widthProperty());
+ 
+        TableColumn col1 = new TableColumn("Time");
+        col1.setCellValueFactory(new PropertyValueFactory<>("strTime"));
+        col1.prefWidthProperty().bind(table.widthProperty().multiply(0.1));
+        col1.setCellFactory(tc -> {
+            TableCell<Object, String> cell = new TableCell<Object, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setText(item);
+                }
+            };
+
+            cell.setOnMouseClicked(event -> {
+                if (!cell.isEmpty()) {
+                    Utils.log("Click on answer column 1, row " + cell.getIndex());
+                }
+            });
+            return cell;
+        });
+
+        TableColumn col2 = new TableColumn("Question");
+        col2.setCellValueFactory(new PropertyValueFactory<>("strQuestion"));
+        col2.prefWidthProperty().bind(table.widthProperty().multiply(0.3));
+        col2.setCellFactory(tc -> {
+            TableCell<Object, String> cell = new TableCell<Object, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setText(item);
+                }
+            };
+
+            cell.setOnMouseClicked(event -> {
+                if (!cell.isEmpty()) {
+                    Utils.log("Click on answer column 2, row " + cell.getIndex());
+                }
+            });
+            return cell;
+        });
+
+        TableColumn col3 = new TableColumn("Answer");
+        col3.setCellValueFactory(new PropertyValueFactory<>("strAnswer"));
+        col3.prefWidthProperty().bind(table.widthProperty().multiply(0.6));
+        col3.setCellFactory(tc -> {
+            TableCell<Object, String> cell = new TableCell<Object, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setText(item);
+                }
+            };
+
+            cell.setOnMouseClicked(event -> {
+                if (!cell.isEmpty()) {
+                    Utils.log("Click on answer column 3, row " + cell.getIndex());
+                }
+            });
+            return cell;
+        });
+        
+        table.getColumns().addAll(col1, col2, col3); 
+        return table;
+    }
+
     private TableView createActionList() {
         TableView table = new TableView();
         table.setEditable(false);

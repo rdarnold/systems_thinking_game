@@ -99,6 +99,15 @@ public final class Data {
         }
     }
 
+    public static Question getQuestion(int id, int exNum) {
+        for (Question q : questionList) {
+            if (q.getId() == id && exNum == q.getExercise()) {
+                return q;
+            }
+        }
+        return null;
+    }
+
     public static Info getInfoByName(String strName) {
         for (Info item : infoList) {
             if (item.getName().equals(strName)) {
