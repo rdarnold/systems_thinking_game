@@ -118,7 +118,7 @@ public final class STUtils {
     Honestly I'm just not convinced that a little sim like this can give you a comprehensive score 
     on your systems thinking ability.  It is good for complex problem solving though.  Well I guess we can
     see how it relates to the scores that everyone self-evaluated, and if it isn't accurate, I can determine
-    where the issues are and what could be improved upon in a future iteration / what was lacking, or where
+    where the issues are and what could be improved upon in a future iteration / what was lacking, or where 
     people "went wrong" in the sim.
 
     BOTTOM LINE:
@@ -155,6 +155,29 @@ public final class STUtils {
 
     "Well, I can tell you now (spoiler alert) that the first half I was very careful and I was trying to figure 
     out what each of the options did. And in the second half (chaos) I threw in the towel and just went for it"
+
+    Sara also said about teh self-assessment:
+    Also, another note. Those last 16 questions are phrased in such a way, that I didn't know how to assess my own skills. I felt they lacked context.
+    Because how would I know how to assess my own performance when learning a new system? Generally people don't think about that, 
+    they don't question their thought process, they just do it. So even that data might not reflect a person's abilities accurately
+    I think it definitely made me think about my approach towards a system
+    But I felt, because of how the questions were phrased, that I actually marked myself down
+    Because I wasn't aware of whether I would actually do what said options suggested, because I don't ever reflect on how I interact with a system
+    (Is she thinking of systems as ALL things connected?)
+    And I also think that, because it was so vague, it was difficult for me to pin point a definition. 🤔 And this is where my lack of systems thinking kicks in. 
+    I just didn't know how to rate myself. How my practical skills equated to what option.
+
+    People without an introduction to Systems Thinking tended to say that they thought it didn't assess their
+    ability to think systemitcally, while those familiar with Systems Thinking who did better on the test said
+    that it did. (percentages)  There could be a number of reasons for this.  For starting, people who did poorly
+    out of self-pride may rail on the test itself saying it's invalid - a very human response.  Secondly they 
+    may not necessarily undersatnd the meaning of thinking systemically, third and perhaps most likely, they
+    didn't do well on the test so they may not have grasped the systemic intentions or nature of the test itself,
+    thus thinking it didn't assess their skills to think systemically.  Finally, it's possible the test is just
+    invalid and actually doesn't systemically assess skills.  However based on the feedback from the known systems
+    thinking experts, the latter does not appear to be the case.  
+    I could have given examples of systems and said when you're thinking about this particular thing, what do you do?
+    But that would have extended the test to being too long for the identifed window of 1 hour.
 
     */
 
