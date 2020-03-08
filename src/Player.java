@@ -73,6 +73,7 @@ public final class Player {
     private static boolean playedBefore = false;
     private static String macAddress = "";
     private static String tutorialData = "";
+    private static String scoreText = ""; // Only used for the data analyzer right now just so I can see what the score is
     
     public static int getId() { return id; }
     public static int getSubmittedId() { return submittedId; }
@@ -86,6 +87,7 @@ public final class Player {
     public static void appendTutorialData(String str) {
         tutorialData += str + "\r\n";
     }
+    public static String getScoreText() { return scoreText; }
 
     public static void incSaveNum() { saveNum++; }
     public static void setId(int num) { id = num; }
@@ -318,8 +320,19 @@ public final class Player {
         return result.toString(); 
     }
 
+    public static String getScoreData() {
+        StringBuilder result = new StringBuilder();
+        for (Score score : Data.scores) {
+            result.append(score.getExTaskString());
+            result.append(": ");
+            result.append(score.getScoreString());
+            result.append("\r\n");
+        }
+        return "\r\nSCORE:\r\n" + result.toString(); 
+    }
+
     public static String getScratchPadData() {
-        return "\r\nScratchPad:\r\n" + Gos.scratchPadWindow.getText();
+        return "\r\nScratchPad:\r\n" + Gos.scratchPadWindow.getText() + "\r\n";
     }
 
     public static void copyDataToClipboard() {
@@ -368,6 +381,7 @@ public final class Player {
         result.append(getAnswerData());
         result.append(getActionData());
         result.append(getScratchPadData());
+        result.append(getScoreData());
 
         return result.toString(); 
     }
@@ -410,6 +424,9 @@ public final class Player {
 
         // Now load the scratch pad
         i = loadScratchPadData(lines, i);
+
+        // Load scores
+        i = loadScoreData(lines, i);
 
         Utils.log(Player.getPlayerData());
         return true;
@@ -642,7 +659,54 @@ public final class Player {
                 i = loadScratchPadFromString(lines, i);
                 i--; // Because we're gonna add to it when the loop continues
             }
+            if (line.length() >= ("SCORE:").length() && line.substring(0, ("SCORE:").length()).equals("SCORE:") == true) {
+                return i;
+            }
         }
+        return i;
+    }
+
+    private static int loadScoreData(List<String> lines, int start_index) {
+        int i = 0;
+        for (i = start_index; i < lines.size(); i++) {
+            String line = lines.get(i);
+            if (line == null) {
+                continue;
+            }
+
+            if (line.length() >= ("SCORE:").length() && line.substring(0, ("SCORE:").length()).equals("SCORE:")) {
+                i = loadScoreFromString(lines, i);
+                i--; // Because we're gonna add to it when the loop continues
+            }
+        }
+        return i;
+    }
+
+    private static int loadScoreFromString(List<String> lines, int start) {
+        int i = start + 1;
+
+        List<String> loadLines = new ArrayList<String>();
+
+        // Now we just keep going until we hit the end
+        String line = lines.get(i);
+        while (line != null) {
+            if (i >= lines.size()) {
+                break;
+            }
+            line = lines.get(i);
+            loadLines.add(line);
+            i++;
+        }
+
+        // Now we have loadLines which is what we want to load
+        int n = 0;
+        String str = "";
+        while (n < loadLines.size()) {
+            str += loadLines.get(n) + "\r\n";
+            n++;
+        }
+        Player.scoreText = str;
+        loadLines.clear();
         return i;
     }
 

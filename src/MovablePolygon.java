@@ -128,6 +128,47 @@ public class MovablePolygon extends Polygon {
     public double getXSpeed() { return xSpeed; }
     public double getYSpeed() { return ySpeed; }
 
+    // For the canvas, the graphicscontext requires xpoints and ypoints and doesn't
+    // just take an array of points like the actual Polygon class, it's so ridiculous
+    // that javafx types don't support each other
+    // Only create these if we need them, and only recreate them if the size is not
+    // correct
+    private double[] xPoints = null;
+    private double[] yPoints = null;
+    public double[] getXPoints() {
+        if (xPoints == null || getNumPoints() != xPoints.length) {
+            xPoints = new double[getNumPoints()];
+        }
+        int num = 0;
+        int index = 0;
+        while (num < xPoints.length) {
+            xPoints[num] = getPoints().get(index);
+            num++;
+            index += 2;
+        }
+        return xPoints;
+    }
+    public double[] getYPoints() {
+        if (yPoints == null || getNumPoints() != yPoints.length) {
+            yPoints = new double[getNumPoints()];
+        }
+        int num = 0;
+        int index = 1;
+        while (num < yPoints.length) {
+            yPoints[num] = getPoints().get(index);
+            num++;
+            index += 2;
+        }
+        return yPoints;
+    }
+    public int getNumPoints() {
+        if (getPoints() == null) {
+            return 0;
+        }
+        // Because getPoints organizes them like x, y, x1, y1, so 2 numbers is 1 point
+        return getPoints().size()/2;
+    }
+
     // For more efficient collision checking
     //private Circle boundingCircle;
     private Circle selectedCircle = null;
@@ -261,7 +302,13 @@ public class MovablePolygon extends Polygon {
 
     private void updatePointsForShape() {
         int numCorners = getNumCorners();
-        List<Double> points = getPoints();
+        // We can get here when the shape isn't "ready" yet
+        // It should be OK; it'll be processed/called again later
+        if (numCorners <= 0) {
+            Utils.log("ERROR: ZERO CORNERS found for shape, something is effed up!!!");
+            return;
+        }
+        //List<Double> points = getPoints();
         double anglePerCorner = 360 / numCorners;
         double cornerAngle = m_fAngleInDegrees;
         double x = 0;
@@ -280,7 +327,7 @@ public class MovablePolygon extends Polygon {
     private void updatePointsForSpike() {
         // This is a little more interesting.  It looks like a star.
         int numSpikes = 6;
-        List<Double> points = getPoints();
+        //List<Double> points = getPoints();
         double anglePerSpike = 360 / numSpikes;
         double angle = m_fAngleInDegrees;
         double x = 0;

@@ -16,6 +16,10 @@ import gos.*;
 
 // Calculates how good a player is in the various systems thinking skills
 
+// Phrase it as follows (rather than saying YOUR score, it's the score of your WORK 
+//   which may not be reflective of your real ability but it's what you SHOWED here): 
+// The set of actions taken during the simulation are assessed at the following levels:
+
 // The systems thinking skill enum copy list:
 /*
 ExploreMultiplePerspectives

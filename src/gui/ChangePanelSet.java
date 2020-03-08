@@ -89,7 +89,7 @@ public class ChangePanelSet extends PanelSetBase {
         String strTitle = "Change the System";
         String strText = 
         "Before you proceed to the next turn, you have the opportunity to " +
-        "make changes to the system.  You can do that on this screen.  On the left " +
+        "make changes to the system.  On the left " +
         "side, you'll notice some changes that you can make to the currently selected " +
         "shape.  Click a different shape to select it.  On the top are some general, " +
         "overall settings that you can adjust.  During the game, please make whatever changes you feel " +
@@ -166,7 +166,7 @@ public class ChangePanelSet extends PanelSetBase {
         //String strSubmitDesc = changeSet.toString();
         strSubmitDesc += "CHANGED_VALUES " + changeSet.toString();
 
-        // And record the "after" values too
+        // And record the "after" values too; i.e. the new values after the changeset has been applied
         // This is all just for convenience as it's really not much data 
         strSubmitDesc += "AFTER_VALUES " + Data.currentValues.toString() + "\r\n";
         

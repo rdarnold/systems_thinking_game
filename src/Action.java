@@ -16,7 +16,8 @@ public class Action {
         SubmitChange(2, "SubmitChange"),        // Change set for actually changing the system
         SubmitVarRating(3, "SubmitVarRating"),  // Submit the ratings for the different variables
         TitledPane(4, "TitledPane"),            // Titled pane was hit, like help/info buttons in the help screen
-        PhaseChange(5, "PhaseChange");          // Changed phase in the game like moved to the next scenario
+        TaskStart(5, "TaskStart"),              // Started a new task in the game
+        TurnEnd(6, "TurnEnd");                  // When one turn in a scenario ends
 
         private final int value;
         private final String string;

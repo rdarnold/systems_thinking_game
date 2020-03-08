@@ -127,7 +127,7 @@ public class SkipToWindow extends DialogWindow {
         int num = 0;
         addSkipButton("Demographic Survey", num++);
         addSkipButton("Career Survey", num++);
-        addSkipButton("1-1: Practice", num++);
+        addSkipButton("1-1: Tutorial", num++);
         addSkipButton("2-1: Four Shapes (1)", num++);
         addSkipButton("2-2: Four Shapes (2)", num++);
         //addSkipButton("3-1: Eight Shapes (1)", num++);
@@ -165,7 +165,7 @@ public class SkipToWindow extends DialogWindow {
                 //Gos.simRunner.skipToExercise(1);
                 Gos.simRunner.finishExercise();
                 break;
-            // exercise 2, play;
+            // exercise 2, tutorial;
             case 2:
                 Gos.simRunner.skipToExercise(2);
                 break;

@@ -166,23 +166,15 @@ public class StartSurveyWindow extends DialogWindow {
     }
 
     private boolean onSkipButton() {
-        // Can only skip the initial survey screens but that's the only time we should
-        // be seeing this screen anyway
-        /*if (Player.inDemographicSurvey() == false && Player.inCareerSurvey() == false) {
-            return false;
-        }*/
-
         // If they've submitted an ID and said they played already, we are
         // good to go.
-        if (Player.getSubmittedId() > 0 && Player.getPlayedBefore() == true) {
+        /*if (Player.getSubmittedId() > 0 && Player.getPlayedBefore() == true) {
             // No problem, skip
             Gos.skipSurveys = true;
             close();
             return true;
-        }
+        }*/
 
-        // Otherwise strongly discourage it
-        // TODO warning screen
         Gos.skipSurveys = true;
 
         // Close the window

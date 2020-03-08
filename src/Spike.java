@@ -58,7 +58,7 @@ public class Spike extends MovablePolygon {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("@K");
+        sb.append(Constants.SPIKE_KEY_STRING); // @K
         sb.append(" x:" + (int)getCenterX());
         sb.append(" y:" + (int)getCenterY());
         sb.append(" vx:" + (int)getXSpeed());

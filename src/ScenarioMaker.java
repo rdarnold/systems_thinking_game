@@ -237,7 +237,7 @@ public class ScenarioMaker {
     }*/
 
     
-    // The insanity exercise.  We just scatter random
+    // The chaos exercise.  We just scatter random
     // shit all over and see what the player does to
     // handle it.  This is where we may start to see systemic
     // approaches emerging.  Despite the totally random system
@@ -247,7 +247,7 @@ public class ScenarioMaker {
         sim.reset();
         prePrepareSystem();
 
-        // System 3 is 100 different types.
+        // System 3 is many different types.
         SysShape shape;
         for (int i = 0; i < 25; i++) {
             shape = sim.addShape(Utils.number(50, 550), Utils.number(50, 500), Utils.number(3, 6));

@@ -70,15 +70,17 @@ public class Gos extends Application {
     int wid = 1000;
     int hgt = 800;
 
+    // If the player chooses to skip the surveys
+    public static boolean skipSurveys = false;
+
     ////////////////////////////////////////////
     ///// Testing and debugging variables //////
     ////////////////////////////////////////////
     // All should be false for deployment //////
     ////////////////////////////////////////////
     public static boolean testing = false;
-    public static boolean skipSurveys = true;
-    public static boolean showSkipWindow = false;
-    public static boolean assessmentMode = true;
+    public static boolean showSkipWindow = true;
+    public static boolean assessmentMode = false;
     ////////////////////////////////////////////
     ////////////////////////////////////////////
     ////////////////////////////////////////////
@@ -135,7 +137,7 @@ public class Gos extends Application {
         //inquireScene = new InquireScreen(this, new BorderPane(), wid, hgt);
         //createExperimentScreen = new CreateExperimentScreen(this, new BorderPane(), wid, hgt);
 
-        welcomeWindow = new WelcomeWindow(500, 350);
+        welcomeWindow = new WelcomeWindow(500, 500);
         contactConsentWindow = new ContactConsentWindow(500, 450);
         playedBeforeWindow = new PlayedBeforeWindow(500, 350);
         startSurveyWindow = new StartSurveyWindow(500, 350);
@@ -147,7 +149,7 @@ public class Gos extends Application {
         variableWindow = new VariableWindow(400, 700);
         scratchPadWindow = new ScratchPadWindow(600, 600);
         skipToWindow = new SkipToWindow(400, 600);
-        assessmentWindow = new AssessmentWindow(1100, 800);
+        assessmentWindow = new AssessmentWindow(1100, 1000);
 
         String str = "Sorry, you don't have enough Discovery Points to do that.  You will " +
         "get another one next turn.";

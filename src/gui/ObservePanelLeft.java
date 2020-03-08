@@ -71,8 +71,8 @@ public class ObservePanelLeft extends PanelLeftBase {
     
     ObservePanelSet m_ParentPanelSet;
 
-    private Label maxTurnText;
-    private MovableButton addTurnBtn;
+    //private Label maxTurnText;
+    //private MovableButton addTurnBtn;
     
     private ObservePanelLeft thisScreen;
 
@@ -115,9 +115,8 @@ public class ObservePanelLeft extends PanelLeftBase {
         // - Main Screen
 
 
-        maxTurnText = new Label();
+        /*maxTurnText = new Label();
         //getChildren().add(maxTurnText);
-        // TODO This doesnt work, it has to be a property.
         maxTurnText.textProperty().bind(Player.getObservation().maxTurnsProperty().asString(
             "Observation Turns: %d"
         ));
@@ -143,7 +142,7 @@ public class ObservePanelLeft extends PanelLeftBase {
                 //}
                 //showChooseExperimentTypeWindow();
             }
-        });
+        });*/
         //getChildren().add(btn);
     }
 
@@ -152,13 +151,13 @@ public class ObservePanelLeft extends PanelLeftBase {
     }
 
     public void update() {
-        if (Player.inPracticeMode() == true) {
-            addTurnBtn.setVisible(false);
-            maxTurnText.setVisible(false);
+        /*if (Player.inPracticeMode() == true) {
+            //addTurnBtn.setVisible(false);
+            //maxTurnText.setVisible(false);
         }
         else {
-            addTurnBtn.setVisible(true);
-            maxTurnText.setVisible(true);
-        }
+            //addTurnBtn.setVisible(true);
+            //maxTurnText.setVisible(true);
+        }*/
     }
 }

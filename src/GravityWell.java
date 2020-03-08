@@ -7,6 +7,7 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.RadialGradient;  
 import javafx.scene.paint.Stop;
 import javafx.scene.input.MouseButton;
+import javafx.scene.effect.DropShadow;
 
 // All this stuff just to make our personal color for our selected shape
 /*import javafx.scene.paint.Color;
@@ -32,6 +33,9 @@ public class GravityWell extends MovableCircle {
     private int dragDeltaX;
     private int dragDeltaY;
 
+    private DropShadow shadow = null;
+    public DropShadow getDropShadow() { return shadow; }
+
     public GravityWell(Simulator s) {
         super(s);
         init(null);
@@ -54,7 +58,8 @@ public class GravityWell extends MovableCircle {
          * Color color = Color.BEIGE; //Color.rgb(0, 0, 0); setColor(color);
          * setStroke(Color.BLACK); setStrokeWidth(8);
          */
-       setEffect(Utils.createBorderGlow(Color.BLUE));
+        shadow = Utils.createBorderGlow(Color.BLUE);
+        setEffect(shadow);
 
         setColor(Color.BLACK);
         //setStroke(Color.BLACK); 
@@ -70,17 +75,19 @@ public class GravityWell extends MovableCircle {
         // Add mouse event handlers for the source
         setOnMousePressed(event -> {
             //Utils.log("GRAVITY");
-            GravityWell well = (GravityWell) event.getSource();
+            //GravityWell well = (GravityWell)event.getSource();
+            onMouseDragged((int)event.getScreenX(), (int)event.getScreenY());
             // event.setDragDetect(true);
-            dragDeltaX = (int) well.getCenterX() - (int) event.getScreenX();
-            dragDeltaY = (int) well.getCenterY() - (int) event.getScreenY();
+            //dragDeltaX = (int) well.getCenterX() - (int) event.getScreenX();
+            //dragDeltaY = (int) well.getCenterY() - (int) event.getScreenY();
             // setCursor(Cursor.MOVE);
         });
 
         //setOnMouseReleased(event -> { });
 
         setOnMouseDragged(event -> {
-            if (Gos.playerCanChangeSystem() == false) {
+            onMouseDragged(event.getScreenX(), event.getScreenY());
+            /*if (Gos.playerCanChangeSystem() == false) {
                 return;
             }
             // But, remember, we can't go out of the bounds of the SysPane!
@@ -100,7 +107,7 @@ public class GravityWell extends MovableCircle {
                 y = sim.height - getSize()/2;
             }
 
-            moveTo(x, y);
+            moveTo(x, y);*/
         });
 
         //setOnDragDetected(event -> { });
@@ -113,6 +120,35 @@ public class GravityWell extends MovableCircle {
         // This is arbitrary
         maxSize = 300;
         setSize(GravityWell.DEFAULT_SIZE);
+    }
+
+    public void onMousePressed(int screenX, int screenY) {
+        dragDeltaX = (int)getCenterX() - screenX;
+        dragDeltaY = (int)getCenterY() - screenY;
+    }
+
+    public void onMouseDragged(double screenX, double screenY) {
+        if (Gos.playerCanChangeSystem() == false) {
+            return;
+        }
+        // But, remember, we can't go out of the bounds of the SysPane!
+        double x = screenX + dragDeltaX;
+        double y = screenY + dragDeltaY;
+
+        if (x - getSize()/2 < 0) {
+            x = getSize()/2;
+        }
+        else if (x + getSize()/2 > sim.width) {
+            x = sim.width - getSize()/2;
+        }
+        if (y - getSize()/2 < 0) {
+            y = getSize()/2;
+        }
+        else if (y + getSize()/2 > sim.height) {
+            y = sim.height - getSize()/2;
+        }
+
+        moveTo(x, y);
     }
 
     public int getGravityPull() {
@@ -143,7 +179,7 @@ public class GravityWell extends MovableCircle {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("@G");
+        sb.append(Constants.WELL_KEY_STRING); // @G
         sb.append(" x:" + (int)getCenterX());
         sb.append(" y:" + (int)getCenterY());
 

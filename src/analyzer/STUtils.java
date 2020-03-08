@@ -225,9 +225,10 @@ public final class STUtils {
 
     public static int calcConsiderIssuesAppropriately() {
         // Time spent doing experiments and observations and number of them prior to jumping in
+        // Does not get frustrated and just "give up" during play; continues to try hard
         return 0;
     }
-
+ 
     public static int calcUseMentalModelingAndAbstraction() {
         // Describes the strategy after the exercise, and the rationale for variable choices
         return 0;

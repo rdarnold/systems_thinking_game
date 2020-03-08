@@ -92,7 +92,7 @@ public class NextTaskWindow extends DialogWindow {
             Utils.addVerticalSpace(box, space);
         } else {
             Exercise e = Player.getCurrentExercise();
-            str = "You've completed the entire " + e.getName() + " scenario! " +
+            str = //"You've completed the entire " + e.getName() + " scenario! " +
             "You'll now be given a set of " +
             "questions that relate to the scenario.";
             addCenteredLabel(str);

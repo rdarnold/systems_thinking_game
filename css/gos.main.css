@@ -173,6 +173,12 @@
     -fx-background-color: derive(rgb(194, 216, 250), -60%),rgb(194, 216, 250);
 }
 
+.gos-frame-slider .thumb {
+  /* the first color is the border, the second is the middle part */
+    -fx-background-color: derive(rgb(194, 216, 250), -60%),rgb(194, 216, 250);
+}
+
+
 .radio-button { -fx-rotate:180; }
 .radio-button > .text { -fx-rotate: 180; }
 /*

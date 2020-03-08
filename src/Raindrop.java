@@ -109,7 +109,7 @@ public class Raindrop extends MovableCircle {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("@R");
+        sb.append(Constants.DROP_KEY_STRING); // @R
         sb.append(" x:" + (int)getCenterX());
         sb.append(" y:" + (int)getCenterY());
         sb.append(" r:" + fallingRate);

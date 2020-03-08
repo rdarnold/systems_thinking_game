@@ -30,11 +30,11 @@ public class Simulator {
     private boolean usingSuccess = false;
     //private int numFramesPassed = 0;
 
-    public ArrayList<SysShape> shapes;
-    public ArrayList<Raindrop> rainDrops;
-    public ArrayList<Spike> spikes;
-    public ArrayList<Earthpatch> patches;
-    public ArrayList<GravityWell> wells;
+    public ArrayList<SysShape> shapes = null;
+    public ArrayList<Raindrop> rainDrops = null;
+    public ArrayList<Spike> spikes = null;
+    public ArrayList<Earthpatch> patches = null;
+    public ArrayList<GravityWell> wells = null;
 
     public ArrayList<SysShape> getShapes() { return shapes; }
     public ArrayList<Raindrop> getDrops() { return rainDrops; }
@@ -90,9 +90,6 @@ public class Simulator {
             return false;
         return Player.getCurrentExercise().getNoDeath(); 
     }
-    //public boolean isUsingSuccess() { return usingSuccess; }
-    //public void useSuccess() { usingSuccess = true; }
-    //public void stopUsingSuccess() { usingSuccess = false; }
 
     public Simulator() {
         simulatorListeners = new ArrayList<SimulatorEventListener>();

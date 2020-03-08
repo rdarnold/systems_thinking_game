@@ -408,7 +408,76 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         tfSkill44.setPrefWidth(wid);
     }
 
-    
+    private TableView createExerciseList() {
+        TableView table = new TableView();
+        table.setEditable(false);
+        table.prefHeightProperty().bind(m_Scene.heightProperty());
+        table.prefWidthProperty().bind(m_Scene.widthProperty());
+ 
+        TableColumn col1 = new TableColumn("Turn");
+        col1.setCellValueFactory(new PropertyValueFactory<>("strTurn"));
+        col1.prefWidthProperty().bind(table.widthProperty().multiply(0.1));
+        col1.setCellFactory(tc -> {
+            TableCell<Object, String> cell = new TableCell<Object, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setText(item);
+                }
+            };
+  
+            cell.setOnMouseClicked(event -> {
+                if (!cell.isEmpty()) {
+                    Utils.log("Click on answer column 1, row " + cell.getIndex());
+                }
+            });
+            return cell;
+        });
+
+        TableColumn col2 = new TableColumn("Score");
+        col2.setCellValueFactory(new PropertyValueFactory<>("strScore"));
+        col2.prefWidthProperty().bind(table.widthProperty().multiply(0.3));
+        col2.setCellFactory(tc -> {
+            TableCell<Object, String> cell = new TableCell<Object, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setText(item);
+                }
+            };
+
+            cell.setOnMouseClicked(event -> {
+                if (!cell.isEmpty()) {
+                    Utils.log("Click on answer column 2, row " + cell.getIndex());
+                }
+            });
+            return cell;  
+        });
+
+        TableColumn col3 = new TableColumn("Answer");
+        col3.setCellValueFactory(new PropertyValueFactory<>("strAnswer"));
+        col3.prefWidthProperty().bind(table.widthProperty().multiply(0.6));
+        col3.setCellFactory(tc -> {
+            TableCell<Object, String> cell = new TableCell<Object, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setText(item);
+                }
+            };
+
+            cell.setOnMouseClicked(event -> {
+                if (!cell.isEmpty()) {
+                    Utils.log("Click on answer column 3, row " + cell.getIndex());
+                }
+            });
+            return cell;
+        });
+        
+        table.getColumns().addAll(col1, col2, col3); 
+        return table;
+    }
+
     private TableView createAnswerList() {
         TableView table = new TableView();
         table.setEditable(false);
@@ -637,16 +706,60 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         return bar;
     }
 
+    public String findBeforeValuesWithinString(String str) {
+        int start = str.indexOf("BEFORE_VALUES");
+        int end = str.substring(start).indexOf('\n') + start;
+        return str.substring(start, end);
+    }
+
+    public String findAfterValuesWithinString(String str) {
+        int start = str.indexOf("AFTER_VALUES");
+        int end = str.substring(start).indexOf('\n') + start;
+        return str.substring(start, end);
+    }
+
     private void onClickBefore(Action action) {
         Utils.log("Timestamp is: " + action.getStrTime());
 
+        // We load it up from the existing string using a snapshot construct which
+        // has the capability to load from string
+        SystemSnapshot snap = new SystemSnapshot(Gos.sim);
+
+        // First find the values string to use
+        String valStr = findBeforeValuesWithinString(action.getDesc());
+        Values values = new Values(valStr);
+        snap.setValuesTo(values);
+
+        // Now find the string to load...
+        String snapStr = findSnapshotWithinString(action.getDesc()); 
+        snap.restoreFromString(Gos.sim, snapStr);
         // Show the system as we loaded in desc
         Gos.mainScene.showChangePanelSet(); 
     }
 
+    public String findSnapshotWithinString(String str) {
+        // Find !START_SNAPSHOT
+        int start = str.indexOf("!START_SNAPSHOT");
+        int end = str.indexOf("!END_SNAPSHOT");
+        return str.substring(start, end);
+    }
+
     private void onClickAfter(Action action) {
         Utils.log("Timestamp is: " + action.getStrTime());
-        
+
+        // We load it up from the existing string using a snapshot construct which
+        // has the capability to load from string
+        SystemSnapshot snap = new SystemSnapshot(Gos.sim);
+
+        // First find the values string to use
+        String valStr = findAfterValuesWithinString(action.getDesc());
+        Values values = new Values(valStr);
+        snap.setValuesTo(values);
+
+        // Now find the string to load...
+        String snapStr = findSnapshotWithinString(action.getDesc()); 
+        snap.restoreFromString(Gos.sim, snapStr);
+
         // Show the system as we loaded in desc
         Gos.mainScene.showChangePanelSet(); 
     }
@@ -773,10 +886,14 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         // Exp, Obs, Play, Ques, Scen;
         //Action firstAction = findNextButtonPress(0, "OK", "StartRealGameWindow");
         Action fa = findFirstActionForExercise(3, 0);  // ex 3.0 is Four Shapes
+        if (fa == null)
+            return;
         long startTimeMS = fa.timestamp;
 
         //Action lastAction = findNextButtonPress(startTimeMS, "OK", "StartRealGameWindow");
         Action la = findFirstActionForExercise(3, 1);  // ex 3.1 is four shapes round 2
+        if (la == null)
+            return;
         long endTimeMS = la.timestamp-1;
 
         GameTimeSlice slice = new GameTimeSlice(seg);
@@ -787,9 +904,13 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         GameTimeSlice.Segment seg = GameTimeSlice.Segment.FourShapesReplay;
 
         Action fa = findFirstActionForExercise(3, 1);  // four shapes r2
+        if (fa == null)
+            return;
         long startTimeMS = fa.timestamp;
 
         Action la = findFirstActionForExercise(4, 0);  // chaos
+        if (la == null)
+            return;
         long endTimeMS = la.timestamp-1;
 
         // Exp, Obs, Play, Ques, Scen;
@@ -801,9 +922,13 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         GameTimeSlice.Segment seg = GameTimeSlice.Segment.Chaos;
 
         Action fa = findFirstActionForExercise(4, 0);  // chaos
+        if (fa == null)
+            return;
         long startTimeMS = fa.timestamp;
 
         Action la = findFirstActionForExercise(4, 1);  // chaos r2
+        if (la == null)
+            return;
         long endTimeMS = la.timestamp-1;
 
         // Exp, Obs, Play, Ques, Scen;
@@ -815,9 +940,13 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         GameTimeSlice.Segment seg = GameTimeSlice.Segment.ChaosReplay;
 
         Action fa = findFirstActionForExercise(4, 1);  // chaos r2
+        if (fa == null)
+            return;
         long startTimeMS = fa.timestamp;
 
         Action la = findFirstActionForExercise(5, 0);  // assessment
+        if (la == null)
+            return;
         long endTimeMS = la.timestamp-1;
 
         // Exp, Obs, Play, Ques, Scen;
@@ -922,9 +1051,15 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
     // I could make this automatically tell what the next_ex is in the future
     public int calcTimeForTask(int ex, int tnum, int next_ex, int next_tnum) {
         Action fa = findFirstActionForExercise(ex, tnum); 
+        if (fa == null) {
+            return 0;
+        }
         long startTimeMS = fa.timestamp;
 
         Action la = findFirstActionForExercise(next_ex, next_tnum);
+        if (la == null) {
+            return 0;
+        }
         long endTimeMS = 0;
         if (la == null) {
             endTimeMS = Player.getEndTime();
@@ -937,6 +1072,9 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
 
     public int calcSelfAssessmentTime() {
         Action fa = findFirstActionForExercise(6, 0);  // self-assessment
+        if (fa == null) {
+            return 0;
+        }
         return (int)(Player.getEndTime() - fa.timestamp);
     }
 
@@ -1031,10 +1169,10 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         tfEmail.setText("Email: " + Player.getEmail());
         tfPracticeResults.setText("Tutorial: " + printTutorialDataString());        
         tfPlayedTimes.setText("Played Times: " + Player.getTimesPlayed());
-        tfScore1.setText("Four Shapes R1: " + ", " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(3, 0, 3, 1)));
-        tfScore2.setText("Four Shapes R2: " + ", " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(3, 1, 4, 0)));
-        tfScore3.setText("Chaos R1: " + ", " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(4, 0, 4, 1)));
-        tfScore4.setText("Chaos R2: " + ", " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(4, 1, 5, 0)));
+        tfScore1.setText("Four Shapes R1: " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(3, 0, 3, 1)));
+        tfScore2.setText("Four Shapes R2: " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(3, 1, 4, 0)));
+        tfScore3.setText("Chaos R1: " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(4, 0, 4, 1)));
+        tfScore4.setText("Chaos R2: " + Utils.printHoursMinsSecsFromMS(calcTimeForTask(4, 1, 5, 0)));
 
         // Now we want, total time spent experimenting, total experiments done, total time spent observing'
         ZonedDateTime date = ZonedDateTime.ofInstant(Instant.ofEpochMilli(Player.getStartTime()), ZoneId.systemDefault());

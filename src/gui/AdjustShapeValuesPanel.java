@@ -98,7 +98,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         title.setStyle("-fx-font-weight: bold; ");
         m_MainVBox.getChildren().add(title);
 
-        // TODO - this "one shape per turn" should be stated somewhere so that people realize - it's not obvious enough
+        // TODO - this "one shape per turn" should be stated somewhere else so that people realize - it's not obvious enough
         helperText = new Label("You can only change one shape per turn.  Click on a different shape to select it.");
         helperText.setAlignment(Pos.CENTER);
         helperText.setWrapText(true);

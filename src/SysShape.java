@@ -61,9 +61,14 @@ public class SysShape extends MovablePolygon {
     double sizeStolenFrom = 0;
     double sizeGiven = 0;
     double sizeGivenTo = 0;
+    
+    // ONLY for the data analyzer - was I selected when I was saved out?
+    boolean wasSelected = false;
+    public boolean getWasSelected() { return wasSelected; }
     ///////////////////////
     // End deep copy vars
     ///////////////////////
+
 
     Circle giveTakeRangeCircle;
     // Circle takeRangeCircle;
@@ -227,6 +232,17 @@ public class SysShape extends MovablePolygon {
         armor = val;
     }
 
+    // The only thing we change really is the success level,
+    // everything else doesn't change
+    public void updateDisplay() {
+        if (sim.isUsingSuccess()) {
+            super.setShapeText("" + success);
+        }
+        else {
+            super.setShapeText("");
+        }
+    }
+
     public int getSuccess() {
         return success;
     }
@@ -235,10 +251,12 @@ public class SysShape extends MovablePolygon {
         success = val;
         if (success <= 0) {
             success = 0;
-            super.setShapeText("");
+            //super.setShapeText("");
         } else {
-            super.setShapeText("" + success);
+            //super.setShapeText("" + success);
         }
+
+        updateDisplay();
     }
 
     public void addSuccess() {
@@ -297,6 +315,10 @@ public class SysShape extends MovablePolygon {
         setStroke(Color.BLACK);
         setStrokeWidth(1);
 
+        // Do this here so that the graphics update properly from when the 
+        // shape is first created
+        updateDisplay();
+
         if (from != null) {
             // Deep copy everything.
             deepCopy(from);
@@ -327,12 +349,14 @@ public class SysShape extends MovablePolygon {
         sizeStolenFrom = from.sizeStolenFrom;
         sizeGiven = from.sizeGiven;
         sizeGivenTo = from.sizeGivenTo;
+        wasSelected = from.wasSelected;
     }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("@S");
+        sb.append(Constants.SHAPE_KEY_STRING); // @S
+        sb.append(" n:" + getNumCorners());
         sb.append(" x:" + (int)getCenterX());
         sb.append(" y:" + (int)getCenterY());
         sb.append(" vx:" + (int)getXSpeed());
@@ -342,6 +366,7 @@ public class SysShape extends MovablePolygon {
         sb.append(" c:" + (int)success);
         sb.append(" d:" + (dead ? 1 : 0));
         sb.append(" p:" + (spinRight ? 1 : 0));
+        sb.append(" l:" + (Player.getSelectedShape() == this ? 1 : 0));  // Were we selected or not?
 
         /*sb.append(" t:" + (int)totalSpikeHits);
         sb.append(" st:" + (int)sizeStolen);
@@ -363,6 +388,11 @@ public class SysShape extends MovablePolygon {
     // The parallel to the above toString
     public boolean setFromString(String str) {
         int var = 0;
+
+        // It has to "make itself" first so we know what type of
+        // shape it even is
+        int numCorners = Utils.getIntFromKey(str, "n:");
+        makeShape(numCorners);
 
         int x = Utils.getIntFromKey(str, "x:");
         int y = Utils.getIntFromKey(str, "y:");
@@ -390,6 +420,9 @@ public class SysShape extends MovablePolygon {
 
         var = Utils.getIntFromKey(str, "p:");
         spinRight = (var == 1); 
+
+        var = Utils.getIntFromKey(str, "l:");
+        wasSelected = (var == 1); 
 
         var = Utils.getIntFromKey(str, "t:");
         totalSpikeHits = (var > 0 ? var : 0);
@@ -791,11 +824,15 @@ public class SysShape extends MovablePolygon {
         double x = getCenterX();
         double y = getCenterY();
 
-        x -= (getSize() / 3);
+        // Actually they can be extremely close because they'll automatically
+        // push away from each other now
+        //x -= (getSize() / 3);
+        x--;
         spawn(x, y);
 
         x = getCenterX();
-        x += (getSize() / 3);
+        //x += (getSize() / 3);
+        x++;
         spawn(x, y);
     }
 

@@ -8,6 +8,14 @@
         and interact with a system of shapes and other things that move around the 
         screen and interact with each other.  Your gameplay data will be periodically 
         uploaded to a research server as you play the game.
+        CRCRThe game consists of the following sections:
+        CR- Demographic Survey (~10 minutes)
+        CR- In-Game Tutorial (~5 minutes)
+        CR- Gameplay: Four Shapes exercise (~20 minutes)
+        CR- Gameplay: Chaos exercise (~20 minutes)
+        CR- Feedback (~5 minutes)
+        CR- Self-assessment (~15 minutes)
+        CRCRThe entire experience will probably take at least an hour of concentrated time.
         </text>
     </info>
     <info name="Introduction">
@@ -17,7 +25,7 @@
         types of complex problems. During the game, you will be presented with a 
         set of scenarios.  In each scenario, there is a system which has a
         set of spinning shapes of various types, colors, sizes, and properties.  The scenario will 
-        provide tasks for you to complete, each within a certain number of turns.  
+        provide an objective for you to achieve within a certain number of turns.  
         CRCREach turn is an interval of several seconds during which the system moves forward 
         in time.  Before each turn of the task, you’ll be able to make changes to the system.  
         You’ll also be able to discover information 
@@ -93,10 +101,9 @@
     <info name="Size">
         <name>Size</name>
         <text>
-        A shape's size can be roughly equated to its health or success.  Shapes, in general, 
-        try to grow larger, with varying degrees of success.  If a shape becomes too 
-        small it is destroyed permanently.  If it becomes too large, a shape either splits into
-        two smaller shapes, or gains a level, depending on the scenario.
+        Shapes, in general, try to grow larger, with varying degrees of success.  If a shape 
+        becomes too small it is destroyed permanently.  Try to pay attention to what happens
+        when a shape becomes too large.
         </text>
     </info>
     <info name="Rain">
@@ -118,9 +125,8 @@
     <info name="Circles">
         <name>Circles</name>
         <text>
-        Circles are created when rain reaches the bottom of the screen.  Each drop of rain
-        creates a pair of circles.  Notice how, when two circles collide with each other, 
-        they actually create a third circle?  Can this phenomenon be exploited to your advantage?
+        Try to pay attention to when and why circles, or "red balls" are created at the bottom
+        of the screen, and why they multiply.  Can this phenomenon be exploited to your advantage?
         </text>
     </info>
     <info name="Paradigm">

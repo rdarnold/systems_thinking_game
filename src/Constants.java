@@ -26,7 +26,14 @@ public final class Constants {
     public static final int SIM_CENTER_X = SIM_WIDTH/2;
     public static final int SIM_CENTER_Y = SIM_HEIGHT/2;
 
-    public static final String VERSION_NUMBER_STRING = "0.62";
+    public static final String VERSION_NUMBER_STRING = "0.65";
+
+    // Some key strings for the system
+    public static final String SHAPE_KEY_STRING = "@S";
+    public static final String DROP_KEY_STRING = "@R";
+    public static final String SPIKE_KEY_STRING = "@K";
+    public static final String PATCH_KEY_STRING = "@E";
+    public static final String WELL_KEY_STRING = "@G";
 
     public static enum ResourceType {
         Matter, Energy;

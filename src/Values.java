@@ -22,6 +22,9 @@ public class Values {
     public Values(Values fromVals) { 
         setTo(fromVals);
     }
+    public Values(String str) {
+        setFromString(str);
+    }
 
     // These all use the wrapper (capitalized) versions so that
     // I can set them to null to record which ones have changed.
@@ -176,6 +179,39 @@ public class Values {
         if (gravityWellCenterY != null)  sb.append(" S" + gravityWellCenterY);
 
         return sb.toString();
+    }
+
+    public void setFromString(String fromStr) {
+        String str = fromStr;
+        // Get to the beginning of the values themselves (after the V)
+        if (fromStr.indexOf("V ") > 0) {
+            str = fromStr.substring(fromStr.indexOf("V ") + "V ".length());
+        }
+
+        globalMoveRate = Utils.getDoubleFromKey(str, "A");
+        rainOrigin = Utils.getIntFromKey(str, "B");
+    	rainRate = Utils.getDoubleFromKey(str, "C");
+    	rainSpeedVar = Utils.getDoubleFromKey(str, "D");
+
+    	movingDotSpeedRate = Utils.getDoubleFromKey(str, "E");
+    	movingDotR = Utils.getIntFromKey(str, "F");
+    	movingDotG = Utils.getIntFromKey(str, "G");
+    	movingDotB = Utils.getIntFromKey(str, "H");
+    	movingDotSize = Utils.getDoubleFromKey(str, "I");
+
+    	turnSeconds = Utils.getIntFromKey(str, "J");
+
+        gravityRate = Utils.getDoubleFromKey(str, "K");
+        //gravityReversed = from.gravityReversed;
+        noGiveSize = Utils.getBooleanFromKey(str, "L");
+        noTakeSize = Utils.getBooleanFromKey(str, "M");
+        armorRules = Utils.getIntFromKey(str, "N");
+        paradigm = Utils.getIntFromKey(str, "O");
+        gravityRules = Utils.getIntFromKey(str, "P");
+        growthRules = Utils.getIntFromKey(str, "Q");
+
+        gravityWellCenterX = Utils.getIntFromKey(str, "R");
+        gravityWellCenterY = Utils.getIntFromKey(str, "S");
     }
 
     // Just makes it a little easier to get a color this way.

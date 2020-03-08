@@ -23,7 +23,7 @@ public class Earthpatch extends MovableCircle {
 
     // If we have just spawned, we have to wait a few frames
     // before spawning again just to prevent craziness.
-    static int defaultSpawnTimer = 20;
+    static int defaultSpawnTimer = 30;
     int spawnTimer = defaultSpawnTimer;
 
     public void setTurningToSpike() { turningToSpike = true; hit = true; }
@@ -99,7 +99,7 @@ public class Earthpatch extends MovableCircle {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("@E");
+        sb.append(Constants.PATCH_KEY_STRING); // @E
         sb.append(" x:" + (int)getCenterX());
         sb.append(" y:" + (int)getCenterY());
         sb.append(" vx:" + (int)getXSpeed());
@@ -114,7 +114,6 @@ public class Earthpatch extends MovableCircle {
 
     // The parallel to the above toString
     public boolean setFromString(String str) {
-        String strVar;
         int var = 0;
 
         int x = Utils.getIntFromKey(str, "x:");
@@ -179,7 +178,7 @@ public class Earthpatch extends MovableCircle {
         blue = Utils.clampColor(blue);
         Color color = Color.rgb(red, green, blue);*/
     
-        int space = 15;
+        int space = 10;
         Earthpatch newPatch;
 
         newPatch = new Earthpatch(this);

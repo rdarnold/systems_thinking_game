@@ -67,7 +67,8 @@ import gos.*;
 // Gos - Game of Systems
 public class MainScreen extends GosSceneBase {
     private StackPane centerArea;
-    private SysPane sysPane;
+    //private SysPane sysPane;
+    private SysCanvas sysCanvas;
 
     private ChangePanelSet changePanelSet;
     private ObservePanelSet observePanelSet;
@@ -134,9 +135,11 @@ public class MainScreen extends GosSceneBase {
     public void createMainScene() {
 
         // button and pane are created
-        sysPane = new SysPane();
+        //sysPane = new SysPane();
         //sysPane.setStyle("-fx-border-color: lightgray;");
-        sysPane.create();
+        //sysPane.create();
+
+        sysCanvas = new SysCanvas(sim, Constants.SIM_WIDTH, Constants.SIM_HEIGHT);
         
         createCenterArea();
         overallRoot.setCenter(centerArea);
@@ -151,8 +154,8 @@ public class MainScreen extends GosSceneBase {
         // Transient because this is just a container for the top
         // and bottom parts of the system area
         VBox centerBox = new VBox();
-        //centerBox.getChildren().addAll(taskTextVBox, sysPane);
-        centerBox.getChildren().add(sysPane);
+        //centerBox.getChildren().add(sysPane);
+        centerBox.getChildren().add(sysCanvas);
         centerArea.getChildren().addAll(centerBox);
         centerBox.setStyle("-fx-border-color: darkgray;");
     }
@@ -325,7 +328,7 @@ public class MainScreen extends GosSceneBase {
         // This is called every time the sim resets, which happens
         // every time it restores a snap, so ALL the time, every time
         // we switch screens, etc. It's not like an on-turn reset thing
-        sysPane.reset();
+        //sysPane.reset();
         update();
     }
 
@@ -357,61 +360,61 @@ public class MainScreen extends GosSceneBase {
     @Override
     public void onShapeAdded(SysShape shape) {
         // Update our shapes.
-        sysPane.addShape(shape);
+        //sysPane.addShape(shape);
     }
 
     @Override
     public void onShapeRemoved(SysShape shape) {
         // Update our shapes.
-        sysPane.removeShape(shape);
+        //sysPane.removeShape(shape);
     }
 
     @Override
     public void onRaindropAdded(Raindrop drop) {
         // Update our shapes.
-        sysPane.addRaindrop(drop);
+        //sysPane.addRaindrop(drop);
     }
 
     @Override
     public void onRaindropRemoved(Raindrop drop) {
         // Update our shapes.
-        sysPane.removeRaindrop(drop);
+        //sysPane.removeRaindrop(drop);
     }
 
     @Override
     public void onSpikeAdded(Spike spike) {
         // Update our shapes.
-        sysPane.addSpike(spike);
+        //sysPane.addSpike(spike);
     }
 
     @Override
     public void onSpikeRemoved(Spike spike) {
         // Update our shapes.
-        sysPane.removeSpike(spike);
+        //sysPane.removeSpike(spike);
     }
 
     @Override
     public void onEarthpatchAdded(Earthpatch patch) {
         // Update our shapes.
-        sysPane.addEarthpatch(patch);
+        //sysPane.addEarthpatch(patch);
     }
 
     @Override
     public void onEarthpatchRemoved(Earthpatch patch) {
         // Update our shapes.
-        sysPane.removeEarthpatch(patch);
+        //sysPane.removeEarthpatch(patch);
     }
 
     @Override
     public void onGravityWellAdded(GravityWell item) {
         // Update our shapes.
-        sysPane.addGravityWell(item);
+        //sysPane.addGravityWell(item);
     }
 
     @Override
     public void onGravityWellRemoved(GravityWell item) {
         // Update our shapes.
-        sysPane.removeGravityWell(item);
+        //sysPane.removeGravityWell(item);
     }
 
     @Override
@@ -428,6 +431,9 @@ public class MainScreen extends GosSceneBase {
 
         // Gave all these their own event listeners and hooked them up to the
         // main simulaton event listener instead of going through here.
+
+        // But now I need it because I added the canvas
+        sysCanvas.updateOneFrame(running, currentTurn);
     }
 
     @Override

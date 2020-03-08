@@ -213,9 +213,9 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         Gos.gos.showScratchPad();
     }
 
-    protected void onClickScore() {
-        // Establish a string that lists all of our
-        // scores for each scenario and task
+    // Establish a string that lists all of our
+    // scores for each scenario and task
+    public String printScoreString() {
         String str = "";
         // This num allows us to put an extra carriage return between
         // scores from different scenarios.
@@ -233,6 +233,12 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
             str += score.getScoreString();
             str += "\r\n";
         }
+
+        return str;
+    }
+
+    protected void onClickScore() {
+        String str = printScoreString();
         
         // Update the label
         if (str.equals("") == false) {

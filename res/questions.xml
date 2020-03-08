@@ -14,6 +14,13 @@
   </question>
   <question>
     <exercise>0</exercise>
+    <name>Residence</name>
+    <text>Please provide your state (if in USA) or country (if outside USA)CR
+    of residence.</text>
+    <answerType>Input</answerType>
+  </question>
+  <question>
+    <exercise>0</exercise>
     <name>Ethnicity</name>
     <text>Please select all ethnicities that apply.</text>
     <answerType>Check</answerType>
@@ -61,44 +68,6 @@
   </question>
   <question>
     <exercise>0</exercise>
-    <name>Computer Skill</name>
-    <text>Please estimate your level of computer skill.</text>
-    <answerType>Choice</answerType>
-    <answerOptions>
-        <answerOption>Very high</answerOption>
-        <answerOption>High</answerOption>
-        <answerOption>Medium</answerOption>
-        <answerOption>Low</answerOption>
-        <answerOption>Very low</answerOption>
-        <answerOption>Prefer not to say</answerOption>
-    </answerOptions>
-  </question>
-  <question>
-    <exercise>0</exercise>
-    <name>Residence</name>
-    <text>Please provide your state (if in USA) or country (if outside USA)CR
-    of residence.</text>
-    <answerType>Input</answerType>
-  </question>
-  <question>
-    <exercise>0</exercise>
-    <name>Household Income</name>
-    <text>Please estimate your total yearly househould incomeCRbefore taxes (in USD).</text>
-    <answerType>Choice</answerType>
-    <answerOptions>
-      <answerOption>Less than $25,000</answerOption>
-      <answerOption>$25,000 to $34,999</answerOption>
-      <answerOption>$35,000 to $49,999</answerOption>
-      <answerOption>$50,000 to $74,999</answerOption>
-      <answerOption>$75,000 to $99,999</answerOption>
-      <answerOption>$100,000 to $149,999</answerOption>
-      <answerOption>$150,000 to $199,999</answerOption>
-      <answerOption>$200,000 or more</answerOption>
-      <answerOption>Prefer not to say</answerOption>
-    </answerOptions>
-  </question>
-  <question>
-    <exercise>0</exercise>
     <name>Education Level</name>
     <text>Please select your education level.</text>
     <answerType>Choice</answerType>
@@ -110,10 +79,10 @@
       <answerOption>Bachelor's degree</answerOption>
       <answerOption>Completed some postgraduate</answerOption>
       <answerOption>Master's degree</answerOption>
+      <answerOption>Other advanced degree beyond master's</answerOption>
       <answerOption>Law degree</answerOption>
       <answerOption>Medical degree</answerOption>
       <answerOption>Ph.D.</answerOption>
-      <answerOption>Other advanced degree beyond master's</answerOption>
       <answerOption>Prefer not to say</answerOption>
     </answerOptions>
   </question>
@@ -132,7 +101,7 @@
     experience, etc.)?</text>
     <answerType>MultilineInput</answerType>
   </question>
-  <question>
+  <!--<question>
     <exercise>0</exercise>
     <name>Volunteer Activities</name>
     <text>Are you involved with any volunteer activities?</text>
@@ -143,6 +112,21 @@
       <answerOption>Do not volunteer</answerOption>
       <answerOption>Prefer not to say</answerOption>
     </answerOptions>
+  </question>-->
+  <question>
+    <exercise>0</exercise>
+    <name>Computer Skill</name>
+    <text>Please estimate your level of comfort using a personal computer or laptop.CR
+    5 is the most comfortable while 1 is the least.</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>I am very comfortable using computers and learning new software (5)</answerOption>
+        <answerOption>I am comfortable using advanced software features within the software I use often (4)</answerOption>
+        <answerOption>I am comfortable using basic software features (3)</answerOption>
+        <answerOption>I use computers often but find them difficult to use (2)</answerOption>
+        <answerOption>I am not comfortable with computers and do not use them often (1)</answerOption>
+        <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
   </question>
   <question>
     <exercise>0</exercise>
@@ -150,9 +134,10 @@
     <text>Please select your computer gaming background.</text>
     <answerType>Choice</answerType>
     <answerOptions>
-      <answerOption>Play computer games often</answerOption>
-      <answerOption>Play computer games rarely</answerOption>
-      <answerOption>Almost never play computer games</answerOption>
+      <answerOption>Play computer games more than 5 hours a week</answerOption>
+      <answerOption>Play computer games between 1 and 5 hours a week</answerOption>
+      <answerOption>Play computer games between 15 minutes and 1 hour a week</answerOption>
+      <answerOption>Play computer games sometimes, but less than 15 minutes a week</answerOption>
       <answerOption>Never play computer games</answerOption>
       <answerOption>Prefer not to say</answerOption>
     </answerOptions>
@@ -183,7 +168,7 @@
       <answerOption>Prefer not to say</answerOption>
     </answerOptions>
   </question>
-  <question>
+  <!--<question>
     <exercise>0</exercise>
     <name>Big 5 - Openness to Experience</name>
     <text>
@@ -265,7 +250,7 @@
       <answerOption>Low</answerOption>
       <answerOption>Prefer not to say</answerOption>
     </answerOptions>
-  </question>
+  </question>-->
   <question>
     <exercise>0</exercise>
     <name>Learning Style</name>
@@ -287,18 +272,41 @@
   <question>
     <exercise>1</exercise>
     <name>Occupational Area</name>
-    <text> Please provide your general area(s) of occupation (Ex: medicine,CR
+    <text> Please describe your area(s) of expertise in your career.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <!--<question>
+    <exercise>1</exercise>
+    <name>Occupational Area</name>
+    <text> Please provide your general area(s) of occupation over your career (Ex: medicine,CR
     computer software, biology, elementary education, school administration,CR
     business management).</text>
-    <answerType>Input</answerType>
-  </question>
+    <answerType>MultilineInput</answerType>
+  </question>-->
   <question>
     <exercise>1</exercise>
     <name>Job Titles</name>
-    <text> Please provide your most relevant current and past position title(s)CR
-    (Ex: Researcher, System Architect, Chief Engineer, Technical Lead, Distinguished Professor,CR
-    Director of Technology, etc.)</text>
+    <text> Please provide your current and past position title(s) in your career, if anyCR
+    (Ex: Elementary Teacher, Designer, Systems Engineer, Biologist, Operations Manager,CR
+    Researcher,System Architect, Associate Professor, etc.)</text>
     <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>1</exercise>
+    <name>Career Experience</name>
+    <text>How many years of professional work experience do you have, if any?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>None</answerOption>
+        <answerOption>0 to 1 year</answerOption>
+        <answerOption>2 to 3 years</answerOption>
+        <answerOption>4 to 7 years</answerOption>
+        <answerOption>8 to 12 years</answerOption>
+        <answerOption>13 to 20 years</answerOption>
+        <answerOption>21 to 30 years</answerOption>
+        <answerOption>More than 30 years</answerOption>
+        <answerOption>Prefer not to say</answerOption>
+    </answerOptions>
   </question>
   <question>
     <exercise>2</exercise>
@@ -316,12 +324,18 @@
   <question>
     <exercise>3</exercise>
     <name>Four Shapes</name>
-    <text> After observing all turns, you may have noticed that most of theCR
+    <text>Please describe how you approached this exercise and what your strategy was.</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>After observing all turns, you may have noticed that most of theCR
     shapes are often gone.  Why?</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Actually this did not happen</answerOption>
-        <answerOption>Stars destroy them all</answerOption>
+        <answerOption>Spikes destroy them all</answerOption>
         <answerOption>The shapes aren't large enough</answerOption>
         <answerOption>There is not enough rain</answerOption>
         <answerOption>The shapes did not move enough</answerOption>
@@ -360,7 +374,8 @@
   <question>
     <exercise>3</exercise>
     <name>Four Shapes</name>
-    <text>What would most likely happen if the rain rate were increasedCR by a large amount?</text>
+    <text>What would most likely happen to the overall system if the rain rate wereCR 
+    increased by a large amount but no other variables were changed?</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>The system would be stable</answerOption>
@@ -389,27 +404,43 @@
   <question>
     <exercise>3</exercise>
     <name>Four Shapes</name>
-    <text>Does this system remind you of any real life system?</text>
-    <answerType>MultilineInput</answerType>
-  </question>
-  <question>
-    <exercise>3</exercise>
-    <name>Four Shapes</name>
-    <text>If you had to give the small red balls a name, what would you call them?</text>
+    <text>What happens when 2 red balls collide?</text>
     <answerType>Choice</answerType>
     <answerOptions>
-        <answerOption>A resource</answerOption>
-        <answerOption>A subsystem</answerOption>
-        <answerOption>A bunch of floating dots</answerOption>
-        <answerOption>Balloons</answerOption>
-        <answerOption>I would not name them collectively</answerOption>
+        <answerOption>Nothing</answerOption>
+        <answerOption>It depends on the Paradigm</answerOption>
+        <answerOption>The 2 balls disappear but 3 new balls are created nearby</answerOption>
+        <answerOption>A spike is created</answerOption>
+        <answerOption>The red balls bounce off of each other</answerOption>
         <answerOption>Not enough information</answerOption>
+        <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
     <exercise>3</exercise>
     <name>Four Shapes</name>
-    <text>Please briefly describe your strategy for this scenario.</text>
+    <text>What is the key factor limiting growth in this system?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>There are not enough red balls</answerOption>
+        <answerOption>Gravity is not strong enough</answerOption>
+        <answerOption>The system starts with too few spinning shapes</answerOption>
+        <answerOption>The spikes</answerOption>
+        <answerOption>The size of the play space</answerOption>
+        <answerOption>Not enough information</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>3</exercise>
+    <name>Four Shapes</name>
+    <text>Does this system remind you of any real life system?</text>
+    <answerType>MultilineInput</answerType>
+  </question>
+  <question>
+    <exercise>4</exercise>
+    <name>Chaos</name>
+    <text>Please describe how you approached this exercise and what your strategy was.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
@@ -435,8 +466,8 @@
     <text>Does the color of a spinning shape matter?</text>
     <answerType>Choice</answerType>
     <answerOptions>
-        <answerOption>Yes, it matters</answerOption>
-        <answerOption>No, it doesn't matter</answerOption>
+        <answerOption>Yes</answerOption>
+        <answerOption>No</answerOption>
         <answerOption>Not enough information</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
@@ -458,8 +489,70 @@
   <question>
     <exercise>4</exercise>
     <name>Chaos</name>
-    <text>Please briefly describe your strategy for this scenario.</text>
-    <answerType>MultilineInput</answerType>
+    <text>Which of the following sets of actions is most likely to gain your shapeCR
+    the most levels the fastest?</text>
+    <answerType>Choice</answerType>
+    <answerOptions>
+        <answerOption>Double its maximum spin speed and change Paradigm to Competitive</answerOption>
+        <answerOption>Place it alone in a group of emerging red balls and change Paradigm to Independent</answerOption>
+        <answerOption>Double the maximum rain rate and place your shape alone near the top of the screen</answerOption>
+        <answerOption>Not enough information</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>4</exercise>
+    <name>Chaos</name>
+    <text>Which of the following would you include as part of the total "system" thatCR
+    affects the game score?  Check all that apply.</text>
+    <answerType>Check</answerType>
+    <answerOptions>
+        <answerOption>The locations that the shapes start in</answerOption>
+        <answerOption>The number of corners the shapes have (triangle, square, etc.)</answerOption>
+        <answerOption>The strength of the "Gravity" parameter</answerOption>
+        <answerOption>The weather patterns above the Arctic Circle</answerOption>
+        <answerOption>The time of day that you did the simulation</answerOption>
+        <answerOption>The personal biases of the simulation's designer</answerOption>
+        <answerOption>Stock prices in South America</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>4</exercise>
+    <name>Chaos</name>
+    <text>Which would you say are the root causes of the fact that your shape will notCR
+    gain levels in the final exercise if you don't intervene?  Check all that apply.</text>
+    <answerType>Check</answerType>
+    <answerOptions>
+        <answerOption>There are too many shapes on the screen and they block your shape from rain and red balls</answerOption>
+        <answerOption>The game is poorly designed</answerOption>
+        <answerOption>The shape is spinning in the wrong direction</answerOption>
+        <answerOption>The game designer's desire to challenge the player</answerOption>
+        <answerOption>The limits of the Java programming language used to create the program</answerOption>
+        <answerOption>The researcher's goal to improve complex problem solving skills globally</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
+  </question>
+  <question>
+    <exercise>4</exercise>
+    <name>Chaos</name>
+    <text>What are the reasons you believe you did not do as well as you could have? Check all that apply.</text>
+    <answerType>Check</answerType>
+    <answerOptions>
+        <answerOption>Actually I'm happy with my performance</answerOption>
+        <answerOption>I wasn't trying my best</answerOption>
+        <answerOption>I need more education or experience in solving systemic problems</answerOption>
+        <answerOption>The game was too short and I did not have enough time to learn how the systems worked</answerOption>
+        <answerOption>The game was too long and I became bored or tired over time</answerOption>
+        <answerOption>I enjoyed the game but it took longer than I thought, and I did not allocate enough time</answerOption>
+        <answerOption>I was distracted often during gameplay</answerOption>
+        <answerOption>I did not understand how the game interface worked</answerOption>
+        <answerOption>I liked the gameplay but there were too many questions</answerOption>
+        <answerOption>I liked the questions but I did not like the gameplay</answerOption>
+        <answerOption>It was too hard to figure out how the systems worked</answerOption>
+        <answerOption>Other reasons not shown here</answerOption>
+        <answerOption>I don't know</answerOption>
+    </answerOptions>
   </question>
   <question>
     <exercise>4</exercise>
@@ -479,8 +572,7 @@
   <question>
     <exercise>4</exercise>
     <name>Chaos</name>
-    <text>Do you feel that your game play style has changed over the course of theCR
-    game?  If so, how?</text>
+    <text>How has your game play style changed over the course of the game?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
@@ -525,11 +617,11 @@
   <question>
     <exercise>6</exercise>
     <name>Explore Multiple Perspectives</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
-        <answerOption>Approaches a system from only one perspective</answerOption>
-        <answerOption>Explores other familiar perspectives when approaching a systems</answerOption>
+        <answerOption>Approaches a problem from only one perspective</answerOption>
+        <answerOption>Explores other familiar perspectives when approaching problems</answerOption>
         <answerOption>Begins to explore unfamiliar or contentious perspectives</answerOption>
         <answerOption>Actively explores unfamiliar perspectives, but still tends to miss some non-obvious perspectives</answerOption>
         <answerOption>Actively explores multiple, non-obvious perspectives, some of which might conflict with the thinker’s view</answerOption>
@@ -539,21 +631,21 @@
   <question>
     <exercise>6</exercise>
     <name>Consider the Wholes and Parts</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
-        <answerOption>Does not consider a system holistically</answerOption>
-        <answerOption>Considers some holistic aspects of systems but misses others; tends to spend too much time in particular areas</answerOption>
-        <answerOption>Considers the system holistically but tends to miss the importance of the parts; occasionally gets stuck in an event</answerOption>
-        <answerOption>Tends to consider the system holistically and considers the importance of the parts in most cases</answerOption>
-        <answerOption>Considers both the “forest” and the “trees” keeping “one eye on each” consistently while approaching systems</answerOption>
+        <answerOption>Does not consider a problem holistically</answerOption>
+        <answerOption>Considers some holistic aspects of problems but misses others; tends to spend too much time in particular areas</answerOption>
+        <answerOption>Considers the problem holistically but tends to miss the importance of the parts; occasionally gets stuck in an event</answerOption>
+        <answerOption>Tends to consider the problem holistically and considers the importance of the parts in most cases</answerOption>
+        <answerOption>Considers both the “forest” and the “trees” keeping “one eye on each” consistently while approaching complex problems</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
     <exercise>6</exercise>
     <name>Effectively Respond to Uncertainty and Ambiguity</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Stops when faced with uncertainty or ambiguity</answerOption>
@@ -567,7 +659,7 @@
   <question>
     <exercise>6</exercise>
     <name>Consider Issues Appropriately</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Takes a reactionary approach to issues</answerOption>
@@ -581,7 +673,7 @@
   <question>
     <exercise>6</exercise>
     <name>Use Mental Modeling and Abstraction</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Does not recognize the value of mental modeling; intuitive models are highly inaccurate, overly simple, or overly complex</answerOption>
@@ -595,7 +687,7 @@
   <question>
     <exercise>6</exercise>
     <name>Recognize Systems</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Does not recognize that a problem is systemic</answerOption>
@@ -609,21 +701,21 @@
   <question>
     <exercise>6</exercise>
     <name>Maintain Boundaries</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
-        <answerOption>Unable to define the boundary of a system</answerOption>
-        <answerOption>Able to create an initial mental model of the system that contains some relevant elements.  May contain extraneous elements or miss key elements</answerOption>
-        <answerOption>Able to maintain a system boundary that evolves over time and context, and contains some relevant elements.  May contain extraneous elements or miss key elements</answerOption>
-        <answerOption>Able to maintain a system boundary that, over time and context, contains most of the relevant elements and minimizes extraneous elements</answerOption>
-        <answerOption>Able to maintain an accurate boundary of the system that correctly changes over time and context with a high degree of quantitative accuracy</answerOption>
+        <answerOption>Unable to define the boundary of a problem</answerOption>
+        <answerOption>Able to create an initial mental model of the problem that contains some relevant elements.  May contain extraneous elements or miss key elements</answerOption>
+        <answerOption>Able to maintain a problem boundary that evolves over time and context, and contains some relevant elements.  May contain extraneous elements or miss key elements</answerOption>
+        <answerOption>Able to maintain a problem boundary that, over time and context, contains most of the relevant elements and minimizes extraneous elements</answerOption>
+        <answerOption>Able to maintain an accurate boundary of the problem that correctly changes over time and context with a high degree of quantitative accuracy</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>
   <question>
     <exercise>6</exercise>
     <name>Differentiate and Quantify Elements</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to recognize that elements are different</answerOption>
@@ -637,7 +729,7 @@
   <question>
     <exercise>6</exercise>
     <name>Identify Relationships</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to recognize even those relationships that would be considered obvious by novice systems thinkers</answerOption>
@@ -651,7 +743,7 @@
   <question>
     <exercise>6</exercise>
     <name>Characterize Relationships </name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to characterize the strength of a relationship</answerOption>
@@ -665,7 +757,7 @@
   <question>
     <exercise>6</exercise>
     <name>Identify Feedback Loops</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to recognize feedback loops</answerOption>
@@ -679,7 +771,7 @@
   <question>
     <exercise>6</exercise>
     <name>Characterize Feedback Loops</name>
-    <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
+    <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Unable to characterize the strength and properties of a feedback loops</answerOption>

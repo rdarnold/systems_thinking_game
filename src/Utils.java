@@ -269,6 +269,19 @@ public final class Utils {
         return line.substring(index, end);
     }
 
+    public static boolean getBooleanFromKey(String line, String key) {
+        // Find the int as a substr within line first, then parse it
+        String keyString = getSubstringFromKey(line, key);
+        if (keyString == null) {
+            return false;
+        }
+
+        if (keyString.equals("true")) {
+            return true;
+        }
+        return false;
+    }
+
     public static int getIntFromKey(String line, String key) {
         // Find the int as a substr within line first, then parse it
         String keyString = getSubstringFromKey(line, key);

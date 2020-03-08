@@ -298,11 +298,6 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         //setupOneItem(avbParadigm, 2, col);
         setupOneItem(avbParadigm, row++, col);
 
-        /*node = addTempText("(TODO - Rules, Goals, Paradigms, etc.)");
-        GridPane.setRowIndex(node, row + 1);
-        GridPane.setColumnIndex(node, col + 3);
-        GridPane.setHalignment(node, HPos.CENTER);*/
-
         // Actually a high leverage point would be how much the spinning
         // affects each other, like how fast each thing steals from each other.
         // All else aside that is the most significant feedback loop in the system.

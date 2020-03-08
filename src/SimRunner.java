@@ -198,12 +198,11 @@ public class SimRunner implements SimulatorEventListener {
 
         if (Gos.skipSurveys == true) {
             skipSurveys();
-            Gos.showStartSimulation();
-        }
-
-        // The player used the debugging Skip screen which shouldn't appear in the regular
-        // game version
-        if (Player.getSkipped() == true && Player.getCurrentExercise().getId() >= 2) {    
+            //Gos.showStartSimulation();
+        } 
+        else if (Player.getSkipped() == true && Player.getCurrentExercise().getId() > 2) {   
+            // The player used the debugging Skip screen which shouldn't appear in the regular
+            // game version 
             Gos.showStartSimulation();
         }
 
@@ -249,7 +248,7 @@ public class SimRunner implements SimulatorEventListener {
         if (task == null) {
             return;
         }
-        Player.recordAction(Action.Type.PhaseChange, "Started " + task.getName(), "SimRunner");
+        Player.recordAction(Action.Type.TaskStart, "Started " + task.getName(), "SimRunner");
         Player.setMaxTurns(task.getTurns());
         Gos.mainScene.onNewTask();
         // If we are doing the tutorial, we use some special processing to display the goal
@@ -452,9 +451,20 @@ public class SimRunner implements SimulatorEventListener {
         }
 
         if (m_bActualRun == true) {
+            // So the TurnEnd will look like this:
+            // TurnEnd 2:4:0 <TaskName> SimRunner
+            String turnEndActionDesc = "TurnEnd " + 
+                Player.getCurrentExerciseNumberTracker() + ":" + 
+                Player.getCurrentTaskNumberTracker() + ":" +
+                Player.getCurrentTurnNumber() + " ";
+
+            Task task = Player.getCurrentTask();
+            if (task != null) {
+                turnEndActionDesc += task.getName() + " ";
+            } 
+            Player.recordAction(Action.Type.TurnEnd, turnEndActionDesc, "SimRunner");
             Player.addCurrentTurnNumber();
             // If it's the tutorial we need some special processing
-            Task task = Player.getCurrentTask();
             if (task != null && task.getName().equals("Tutorial")) {
                 Player.updateTaskTrackers();
                 //Tutorial.setTextForTutorialTurn(Player.getCurrentTurnNumber());

@@ -131,8 +131,8 @@ public class VariableWindow extends DialogWindow {
         /*str = "Please rate the variables by how important you think they are right now. " +
               "1 is most important, 7 is least important.";*/
         str = "Please rate the variables by how important you think they are right now. " +
-            "8 is extremely important, 1 is not important.  You may rate two or more variables " + 
-            "at the same importance level.  You do not have to rate all variables.";
+              "10 is extremely important, 0 is not at all important.  You may rate " +
+              "variables at the same level.  You do not have to rate all variables.";
         titleLabel = addCenteredLabel(str);
         Utils.addVerticalSpace(box, space);
 
@@ -151,7 +151,8 @@ public class VariableWindow extends DialogWindow {
         m_RightBox.setPadding(new Insets(10));
         middleBox.getChildren().add(m_RightBox);
 
-        addLabel("Gravity");
+        addLabel("Gravity Direction");
+        addLabel("Gravity Well Location");
         addLabel("Rain Rate");
         addLabel("Growth"); //Circle Speed");
         addLabel("Paradigm");
@@ -211,6 +212,9 @@ public class VariableWindow extends DialogWindow {
 
         int rank = 0;
         switch (key) {
+            case DIGIT0:
+                rank = 0;
+                break;
             case DIGIT1:
                 rank = 1;
                 break;
@@ -235,6 +239,13 @@ public class VariableWindow extends DialogWindow {
             case DIGIT8:
                 rank = 8;
                 break;
+            case DIGIT9:
+                rank = 9;
+                break;
+            // Unfortunately no easy way to select '10' with just a button press
+            /*case DIGIT10:
+                rank = 10;
+                break;*/
         }
 
         int index = getChoiceBoxIndexForRank(rank);
@@ -283,10 +294,12 @@ public class VariableWindow extends DialogWindow {
         // Label user value is it's rank choicebox
         lab.setUserData(cb);
 
-        // User value is their rank
-        cb.setUserData(0);
+        // User value is their rank; default everything to the dash, which is -1
+        cb.setUserData(-1);
 
         cb.getItems().add("-");
+        cb.getItems().add("10");
+        cb.getItems().add("9");
         cb.getItems().add("8");
         cb.getItems().add("7");
         cb.getItems().add("6");
@@ -295,6 +308,7 @@ public class VariableWindow extends DialogWindow {
         cb.getItems().add("3");
         cb.getItems().add("2");
         cb.getItems().add("1");
+        cb.getItems().add("0");
         //cb.getItems().add("6");
         //cb.getItems().add("7");
         
@@ -348,23 +362,38 @@ public class VariableWindow extends DialogWindow {
     // Based on the order we added these numbers to the choicebox.
     private int getRankForChoiceBoxIndex(int index) {
         switch (index) {
-            case 0: return 0;
-            case 1: return 8;
-            case 2: return 7;
-            case 3: return 8;
-            case 4: return 5;
-            case 5: return 4;
-            case 6: return 3;
-            case 7: return 2;
-            case 8: return 1;
+            case 0:  return -1;
+            case 11: return 0;
+            case 10: return 1;
+            case 9:  return 2;
+            case 8:  return 3;
+            case 7:  return 4;
+            case 6:  return 5;
+            case 5:  return 6;
+            case 4:  return 7;
+            case 3:  return 8;
+            case 2:  return 9;
+            case 1:  return 10;
         }
         return 0;
     }
 
-    // Actually we can use exactly the same function for the reverse and it
-    // works the same since they are mirrored.
     private int getChoiceBoxIndexForRank(int rank) {
-        return getRankForChoiceBoxIndex(rank);
+        switch (rank) {
+            case -1: return 0;  // Because we show "-" first, we want the index as 0
+            case 0:  return 11;
+            case 1:  return 10;
+            case 2:  return 9;
+            case 3:  return 8;
+            case 4:  return 7;
+            case 5:  return 6;
+            case 6:  return 5;
+            case 7:  return 4;
+            case 8:  return 3;
+            case 9:  return 2;
+            case 10: return 1;  // Then second, we show 10.  
+        }
+        return 0;
     }
 
     private int getRankForChoiceBox(ChoiceBox cb) {
@@ -372,7 +401,11 @@ public class VariableWindow extends DialogWindow {
             return 0;
         }
         String str = cb.getValue().toString();
-        if (str.equals("1")) {
+        if (str.equals("-")) {
+            return -1;
+        } else if (str.equals("0")) {
+            return 0;
+        } else if (str.equals("1")) {
             return 1;
         } else if (str.equals("2")) {
             return 2;
@@ -387,9 +420,13 @@ public class VariableWindow extends DialogWindow {
         } else if (str.equals("7")) {
             return 7;
         } else if (str.equals("8")) {
-            return 7;
+            return 8;
+        } else if (str.equals("9")) {
+            return 9;
+        } else if (str.equals("10")) {
+            return 10;
         }
-        return 0;
+        return -1;
     }
 
     private ChoiceBox findHighestRanked(ArrayList<ChoiceBox> cbl) {
@@ -412,7 +449,7 @@ public class VariableWindow extends DialogWindow {
 
     // Check to see if we have duped a rank.  If so, bump all those
     // below it.
-    private boolean checkForDupe(ChoiceBox box) {
+    /*private boolean checkForDupe(ChoiceBox box) {
         boolean dupeExists = false;
         int rank = (int)box.getUserData();
         for (ChoiceBox cb : cbList) {
@@ -425,7 +462,7 @@ public class VariableWindow extends DialogWindow {
         }
 
         return false;
-    }
+    }*/
 
     // Check if we have any dupes with the one passed in, if so, bump
     // rank
@@ -510,7 +547,7 @@ public class VariableWindow extends DialogWindow {
         return false;
     }*/
 
-    private boolean checkAnswers() {
+    /*private boolean checkAnswers() {
         // Check to see that everything has a number
         // and that all numbers are different.
         String val;
@@ -518,12 +555,12 @@ public class VariableWindow extends DialogWindow {
             if (getRankForChoiceBox(cb) == 0) {
                 return false;
             }
-            /*if (checkDupe(cb) == true) {
-                return false;
-            }*/
+            //if (checkDupe(cb) == true) {
+              //  return false;
+            //}
         }
         return true;
-    }
+    }*/
 
     private void onSubmit() {
         // Some message that says hey hang on, you can't

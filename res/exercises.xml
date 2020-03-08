@@ -4,8 +4,9 @@
     <id>0</id>
     <displayId>0</displayId>
     <name>Demographic Survey</name>
-    <popupText>Before we get started, we just need to ask for some standard 
-    demographic information to help with the research. Your answers will be kept 
+    <popupText>This research begins with a demographic survey. Some of the information, 
+    such as your career and educational background, are key to the research as they may 
+    provide valuable insight into the actions you take during the simulation. Your answers will be kept 
     anonymous through use of a coded ID system. CRCRThank you very much for your participation!
     </popupText>
   </exercise>
@@ -13,11 +14,9 @@
     <id>1</id>
     <displayId>0</displayId>
     <name>Career Survey</name>
-    <popupText>Thank you for completing the demographic survey! The information is extremely
-    important to the research.CRCR
-    The following questions relate to your career progression. The goal of these questions 
-    is to determine whether a particular career progression path may lead to a 
-    higher level of systems thinking ability.
+    <popupText>The following questions relate to your career progression. The goal of these questions 
+    is to look for a correlation between career progression in particular fields and 
+    stronger performance within the game.
     </popupText>
   </exercise>
   <exercise>
@@ -58,19 +57,26 @@
     <id>5</id>
     <displayId>0</displayId>
     <name>Feedback Questionnaire</name>
-    <popupText>Thank you for playing the game! Your input is extremely valuable. Now that you have finished
+    <popupText>Thank you for playing the game! Your input is extremely valuable. Now we would like you to provide 
+    some feedback on your experience.
+    CRCRYour feedback will be used to help improve the computer simulation experience and achieve 
+    more accurate results in future research.</popupText>
+    <!--<popupText>Thank you for playing the game! Your input is extremely valuable. Now that you have finished
     the simulation, there are two more steps.  First, we would like you to provide some feedback on your experience.
     After the feedback, you will be presented with a 16-question Systems Thinking self-assessment. This assessment
     will be used to correlate your simulation results and is key to the research.
     CRCRYour feedback will be used to help improve the computer simulation experience and achieve 
-    more accurate results in future research activities.</popupText>
-  </exercise>
+    more accurate results in future research activities.</popupText>-->
+  </exercise> 
   <exercise>
     <id>6</id>
     <displayId>0</displayId>
     <name>Systems Thinking Self-Assessment</name>
     <popupText>Thank you for providing your feedback!  As the final step, you will be given a 16-question
     Systems Thinking self-assessment.  Please answer the questions as honestly as possible.  
-    CRCRYour results will be correlated with your performance in the simulation and is key to the research.</popupText>
+    CRCRYour results will be correlated with your performance in the simulation and is key to the research.
+    CRCRIf you would prefer to do the self-assessment at a later time and you provided your email address for follow-up, 
+    you can close the game now.
+    </popupText>
   </exercise>
 </exercises>

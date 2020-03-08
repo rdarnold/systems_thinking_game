@@ -204,7 +204,6 @@ public class AnswerScreen extends GosSceneBase {
 
         //exerciseText.setText(exercise.getAnswerScreenText());
 
-        // Task text, todo, use the actual number of questions.
         questionNameText.setText("Current Question: " + question.getName());
         questionNumText.setText("Question " + (question.getId() + 1) + " / " + exercise.getNumQuestions());
 

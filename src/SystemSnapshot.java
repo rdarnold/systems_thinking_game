@@ -31,6 +31,9 @@ public class SystemSnapshot {
     public ArrayList<GravityWell> getGravityWells() { return wells; }
     public Values getValues() { return values; }
 
+    // Only used in data analyzer when we're loading up textual data
+    public void setValuesTo(Values newValues) { values = newValues; } 
+
     public void clear() {
         shapes.clear();
         drops.clear();
@@ -116,6 +119,9 @@ public class SystemSnapshot {
         for (int i = 0; i < shapes.size(); i++) {
             SysShape newItem = new SysShape(shapes.get(i));
             sim.addShape(newItem);
+            if (newItem.getWasSelected() == true) {
+                Gos.selectShape(newItem);
+            }
         }
         
         //for (Raindrop item : drops) {
@@ -140,7 +146,10 @@ public class SystemSnapshot {
             sim.addGravityWell(newItem);
         }
 
-        if (selectedShapeIndex < sim.shapes.size()) {
+        if (selectedShapeIndex == -1) {
+            // Do nothing; we should have already selected
+        }
+        else if (selectedShapeIndex < sim.shapes.size()) {
             Gos.selectShape(sim.shapes.get(selectedShapeIndex));
         } 
         else {
@@ -154,7 +163,7 @@ public class SystemSnapshot {
 
         Data.currentValues.setTo(values);
         
-        // BUT REMEMGBER when we set the values, we also need to update the GravityWell
+        // BUT REMEMBER when we set the values, we also need to update the GravityWell
         // position.  Although theoretically it's already in the correct position just from
         // being saved out in its regular array.  
         if (sim.wells.size() > 0) {
@@ -209,13 +218,63 @@ public class SystemSnapshot {
         return sb.toString();
     }
 
+    // Easy enough; if a line is something that should be in the system,
+    // we parse it and created said obj, otherwise just ignore and move on
+    private void parseOneLine(Simulator sim, String line) {
+        // Shape, drop, spike, patch, well, or nothing?
+        String key = line.substring(0, 2);
+        switch (key) {
+            case Constants.SHAPE_KEY_STRING: {
+                SysShape newItem = new SysShape(sim, line);
+                shapes.add(newItem);
+                break;
+            }
+            case Constants.DROP_KEY_STRING: {
+                Raindrop newItem = new Raindrop(sim, line);
+                drops.add(newItem);
+                break;
+            }
+            case Constants.SPIKE_KEY_STRING: {
+                Spike newItem = new Spike(sim, line);
+                spikes.add(newItem);
+                break;
+            }
+            case Constants.PATCH_KEY_STRING: {
+                Earthpatch newItem = new Earthpatch(sim, line);
+                patches.add(newItem);
+                break;
+            }
+            case Constants.WELL_KEY_STRING: {
+                GravityWell newItem = new GravityWell(sim, line);
+                wells.add(newItem);
+                break;
+            }
+        }
+    }
+
     // Read in a string and restore a snap from that string
     public void restoreFromString(Simulator sim, String str) {
         clear();
 
-        // So we first load up the string as this snap's string
-        // TODO
+        // When we saved out, we saved the 'selected' state onto the shapes,
+        // so we can restore that here instead of using the index, which
+        // was not saved (just because maybe the array isn't in the same order now?)
+        selectedShapeIndex = -1;
 
+        // So we first load up the string as an array of lines
+        String lines[] = str.split("\\r?\\n");
+
+        // First find the beginning to make sure we're actually at the snapshot
+        int i = 0;
+        String line = lines[i];
+        while (line != null) {
+            if (i >= lines.length) {
+                break;
+            }
+            line = lines[i];
+            parseOneLine(sim, line);
+            i++;
+        }
         //String curLine = // get the SysShape string from the str
         //if (curLine == isSysShape whatever) {
         //  SysShape newItem = new SysShape(sim, curLine);

@@ -7,7 +7,7 @@
     <resources>
         <!-- Application Resources -->
         <j2se version="1.7+" 
-              max-heap-size="512M"
+              max-heap-size="1024M"
               href="http://java.sun.com/products/autodl/j2se"/>
         <jar href="http://www.knightlysoftware.com/systemsthinking/Gos.jar"
             main="true" />
