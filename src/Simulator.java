@@ -206,7 +206,7 @@ public class Simulator {
         //for (SimulatorEventListener simulatorListener : simulatorListeners) {
         int size = getNumberLiveShapes();
         for (int i = 0; i < simulatorListeners.size(); i++) {
-            simulatorListeners.get(i).onShapeAdded(shape);
+            //simulatorListeners.get(i).onShapeAdded(shape);
             simulatorListeners.get(i).onNumberOfShapesChanged(size);
         }
         // And we should indicate to the Gui that another shape was added
@@ -270,6 +270,12 @@ public class Simulator {
         Utils.log("Cleared...");
     }
 
+    public void signalUpdateOneFrame(boolean running, Turn currentTurn) {
+        for (int i = 0; i < simulatorListeners.size(); i++) {
+            simulatorListeners.get(i).updateOneFrame(running, currentTurn);
+        }
+    }
+
     public void updateOneFrame(boolean running) {
         // Ok in this case we are playing through a turn,
         // we've pre-generated everything already.
@@ -322,9 +328,7 @@ public class Simulator {
         }
 
         //for (SimulatorEventListener simulatorListener : simulatorListeners) {
-        for (int i = 0; i < simulatorListeners.size(); i++) {
-            simulatorListeners.get(i).updateOneFrame(running, currentTurn);
-        }
+        signalUpdateOneFrame(running, currentTurn);
 
         if (running == true) {
             signalGuiUpdateRequired();
@@ -390,9 +394,9 @@ public class Simulator {
     public void addRaindrop(Raindrop drop) {
         rainDrops.add(drop);
         // Signal that it was added
-        for (int i = 0; i < simulatorListeners.size(); i++) {
+        /*for (int i = 0; i < simulatorListeners.size(); i++) {
             simulatorListeners.get(i).onRaindropAdded(drop);
-        }
+        }*/
     }
 
     public void addRandomRaindrop() {
@@ -428,11 +432,8 @@ public class Simulator {
         rainDrops.remove(drop);
         // Signal that it was removed
         //for (SimulatorEventListener simulatorListener : simulatorListeners) {
-        for (int i = 0; i < simulatorListeners.size(); i++) {
+        /*for (int i = 0; i < simulatorListeners.size(); i++) {
             simulatorListeners.get(i).onRaindropRemoved(drop);
-        }
-        /*if (simulatorListener != null) {
-            simulatorListener.onRaindropRemoved(drop);
         }*/
     }
 
@@ -478,9 +479,10 @@ public class Simulator {
         //for (SimulatorEventListener simulatorListener : simulatorListeners) {
         int size = getNumberLiveShapes();
         for (int i = 0; i < simulatorListeners.size(); i++) {
-            simulatorListeners.get(i).onShapeRemoved(shape);
+            //simulatorListeners.get(i).onShapeRemoved(shape);
             simulatorListeners.get(i).onNumberOfShapesChanged(size);
         }
+        shape.clearAll();
     }
 
     public void removeSpike(Spike spike) {
@@ -490,9 +492,10 @@ public class Simulator {
             simulatorListener.onSpikeRemoved(spike);
         }*/
         //for (SimulatorEventListener simulatorListener : simulatorListeners) {
-        for (int i = 0; i < simulatorListeners.size(); i++) {
+        /*for (int i = 0; i < simulatorListeners.size(); i++) {
             simulatorListeners.get(i).onSpikeRemoved(spike);
-        }
+        }*/
+        spike.clearAll();
     }
 
     // Destroy a shape to destroy all spikes in the system
@@ -555,17 +558,17 @@ public class Simulator {
             simulatorListener.onEarthpatchRemoved(item);
         }*/
         //for (SimulatorEventListener simulatorListener : simulatorListeners) {
-        for (int i = 0; i < simulatorListeners.size(); i++) {
+        /*for (int i = 0; i < simulatorListeners.size(); i++) {
             simulatorListeners.get(i).onGravityWellRemoved(item);
-        }
+        }*/
     }
 
     public void addGravityWell(GravityWell item) {
         wells.add(item);
         // Signal that it was added
-        for (int i = 0; i < simulatorListeners.size(); i++) {
+        /*for (int i = 0; i < simulatorListeners.size(); i++) {
             simulatorListeners.get(i).onGravityWellAdded(item);
-        }
+        }*/
     }
 
     public void removeEarthpatch(Earthpatch item) {
@@ -575,9 +578,9 @@ public class Simulator {
             simulatorListener.onEarthpatchRemoved(item);
         }*/
         //for (SimulatorEventListener simulatorListener : simulatorListeners) {
-        for (int i = 0; i < simulatorListeners.size(); i++) {
+        /*for (int i = 0; i < simulatorListeners.size(); i++) {
             simulatorListeners.get(i).onEarthpatchRemoved(item);
-        }
+        }*/
     }
 
     public void addEarthpatch(Earthpatch patch) {
@@ -588,9 +591,9 @@ public class Simulator {
         }
         patches.add(patch);
         // Signal that it was added
-        for (int i = 0; i < simulatorListeners.size(); i++) {
+        /*for (int i = 0; i < simulatorListeners.size(); i++) {
             simulatorListeners.get(i).onEarthpatchAdded(patch);
-        }
+        }*/
     }
 
     public void updatePatches() {
@@ -623,9 +626,9 @@ public class Simulator {
             simulatorListener.onSpikeAdded(spike);
         }*/
         //for (SimulatorEventListener simulatorListener : simulatorListeners) {
-        for (int i = 0; i < simulatorListeners.size(); i++) {
+        /*for (int i = 0; i < simulatorListeners.size(); i++) {
             simulatorListeners.get(i).onSpikeAdded(spike);
-        }
+        }*/
     }
 
     public void addRandomSpike() {
@@ -906,6 +909,9 @@ public class Simulator {
             return;
         shot.restore(this);
         currentTurn.setCurrentFrameNumber(num);
+
+        // Redraw the canvas
+        signalUpdateOneFrame(false, currentTurn);
     }
 
     // Set to the passed in turn and go to wherever the current frame is

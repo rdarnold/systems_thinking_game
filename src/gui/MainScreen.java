@@ -357,7 +357,7 @@ public class MainScreen extends GosSceneBase {
         update();
     }
 
-    @Override
+    /*@Override
     public void onShapeAdded(SysShape shape) {
         // Update our shapes.
         //sysPane.addShape(shape);
@@ -415,7 +415,7 @@ public class MainScreen extends GosSceneBase {
     public void onGravityWellRemoved(GravityWell item) {
         // Update our shapes.
         //sysPane.removeGravityWell(item);
-    }
+    }*/
 
     @Override
     public void update() {

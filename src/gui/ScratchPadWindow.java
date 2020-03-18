@@ -87,7 +87,7 @@ public class ScratchPadWindow extends Stage implements ClassInfo  {
         super(StageStyle.DECORATED); 
         thisScreen = this;
 
-        setTitle("Scratch Pad");
+        setTitle("Notes");
 
         m_nWidth = wid;
         m_nHeight = hgt;
@@ -116,11 +116,11 @@ public class ScratchPadWindow extends Stage implements ClassInfo  {
         //box.setStyle("-fx-background-insets: 0 0 -1 0, 0, 1, 2;");
         //box.setStyle("-fx-background-radius: 3px, 3px, 2px, 1px;");
         setScene(m_Scene);
-
+ 
         // Using TextArea because HTMLEditor sucks and defaults to stupid
         // line spacing that can't be changed
         m_textArea = new TextArea();
-        m_textArea.setText("This is free space for you to take notes or write whatever you want.");
+        m_textArea.setText("This is free space for you to take notes and record observations.");
         m_textArea.setPrefHeight(2000);
         m_MainVBox.getChildren().add(m_textArea);
 

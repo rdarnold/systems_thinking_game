@@ -143,6 +143,7 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         buttonBox.getChildren().add(btn);
 
         btn = new MovableButton("Score");
+        Utils.addToolTip(btn, "Shows your scores for each stage.");
         btn.setPrefWidth(60);
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -155,6 +156,7 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         buttonBox.getChildren().add(btn);
 
         btn = new MovableButton("Info");
+        Utils.addToolTip(btn, "Access some text information about the system.");
         btn.setPrefWidth(60);
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -166,7 +168,9 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         buttonList.add(btn);
         buttonBox.getChildren().add(btn);
 
-        btn = new MovableButton("Scratch Pad");
+        btn = new MovableButton("Notes");
+        Utils.addToolTip(btn, "Notes is an area for you to record notes and observations about the system.  You can write " +
+          "anything in it, and it will stick around for the entire game.");
         btn.setPrefWidth(184);
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

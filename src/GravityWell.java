@@ -59,7 +59,7 @@ public class GravityWell extends MovableCircle {
          * setStroke(Color.BLACK); setStrokeWidth(8);
          */
         shadow = Utils.createBorderGlow(Color.BLUE);
-        setEffect(shadow);
+        //setEffect(shadow);
 
         setColor(Color.BLACK);
         //setStroke(Color.BLACK); 
@@ -73,7 +73,7 @@ public class GravityWell extends MovableCircle {
          */
 
         // Add mouse event handlers for the source
-        setOnMousePressed(event -> {
+        /*setOnMousePressed(event -> {
             //Utils.log("GRAVITY");
             //GravityWell well = (GravityWell)event.getSource();
             onMouseDragged((int)event.getScreenX(), (int)event.getScreenY());
@@ -81,12 +81,12 @@ public class GravityWell extends MovableCircle {
             //dragDeltaX = (int) well.getCenterX() - (int) event.getScreenX();
             //dragDeltaY = (int) well.getCenterY() - (int) event.getScreenY();
             // setCursor(Cursor.MOVE);
-        });
+        });*/
 
         //setOnMouseReleased(event -> { });
 
-        setOnMouseDragged(event -> {
-            onMouseDragged(event.getScreenX(), event.getScreenY());
+        //setOnMouseDragged(event -> {
+          //  onMouseDragged(event.getScreenX(), event.getScreenY());
             /*if (Gos.playerCanChangeSystem() == false) {
                 return;
             }
@@ -108,7 +108,7 @@ public class GravityWell extends MovableCircle {
             }
 
             moveTo(x, y);*/
-        });
+       // });
 
         //setOnDragDetected(event -> { });
 

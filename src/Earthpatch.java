@@ -23,7 +23,7 @@ public class Earthpatch extends MovableCircle {
 
     // If we have just spawned, we have to wait a few frames
     // before spawning again just to prevent craziness.
-    static int defaultSpawnTimer = 30;
+    static int defaultSpawnTimer = 20;
     int spawnTimer = defaultSpawnTimer;
 
     public void setTurningToSpike() { turningToSpike = true; hit = true; }

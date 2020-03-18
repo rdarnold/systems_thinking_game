@@ -36,9 +36,12 @@ public class MovablePolygon extends Polygon {
 
     // How fat should we be?
     // Make it a property so we can bind to it and do various things with it
-    private DoubleProperty size = new SimpleDoubleProperty(maxSize);
-    public DoubleProperty sizeProperty() { return size; }
-    public double getSize() { return size.get(); }
+    //private DoubleProperty size = new SimpleDoubleProperty(maxSize);
+    //public DoubleProperty sizeProperty() { return size; }
+    //public double getSize() { return size.get(); }
+    // No, the less memory I allocate from heap, the better
+    private double size = 0;
+    public double getSize() { return size; }
 
     // Keep track of radius for collision purposes; actually it's the same as
     // just size / 2, but since we use it so often, we track it separately 
@@ -64,11 +67,13 @@ public class MovablePolygon extends Polygon {
 
     public boolean setSize(double newSize) {
         if (newSize < minSize) {
-            size.set(minSize);
+            //size.set(minSize);
+            size = minSize;
             updatePoints();
             return false;
         }
-        size.set(newSize);
+        size = newSize;
+        //size.set(newSize);
         // Update the radius, we could just calculate
         // it on the fly but this works just as well and saves us
         // the calculation time
@@ -89,7 +94,7 @@ public class MovablePolygon extends Polygon {
         // Though we could potentially link to the scene graph from this
         // shape, along with the shape's index in the graph, and add the
         // circle now if it hadn't been added earlier. Too complicated...?
-        if (selectedCircle == null)
+        /*if (selectedCircle == null)
             return;
 
         if (selected == true && sim.isUsingSuccess() == true) {
@@ -102,7 +107,7 @@ public class MovablePolygon extends Polygon {
             selectedCircle.setVisible(false);
             //selectedCircle.setFill(Color.rgb(255, 255, 255, 0));
             //selectedCircle.setStroke(Color.rgb(255, 255, 255, 0));
-        }
+        }*/
     }
     
     //public void setSize(double newSize) { prevSize = size; size = newSize; updatePoints(); }
@@ -171,8 +176,8 @@ public class MovablePolygon extends Polygon {
 
     // For more efficient collision checking
     //private Circle boundingCircle;
-    private Circle selectedCircle = null;
-    protected Text shapeText = null;  // If we want to display any text...
+    //private Circle selectedCircle = null;
+    //protected Text shapeText = null;  // If we want to display any text...
 
     /*private double m_fTopX;
     private double m_fTopY;
@@ -199,6 +204,7 @@ public class MovablePolygon extends Polygon {
     public MovablePolygon(Simulator s) {    
         super();
         sim = s;
+        setStroke(Color.BLACK);
         //boundingCircle = new Circle(getSize());
         //boundingCircle.setFill(Color.rgb(100, 100, 100, 0.5));
 
@@ -216,6 +222,7 @@ public class MovablePolygon extends Polygon {
         setSize(from.getSize());
         //setColor((Color)from.getFill());
         setFill(from.getFill());
+        setStroke(from.getStroke());
         setAngleDegrees(from.getAngleDegrees());
         prevSize = from.getPrevSize();
         matchSpeed(from);
@@ -226,31 +233,41 @@ public class MovablePolygon extends Polygon {
         moveTo(from.getCenterX(), from.getCenterY());
     }
 
+    public void clearAll() {
+        getPoints().clear();
+        xPoints = null;
+        yPoints = null;
+    }
+
     //public Circle getBoundingCircle() { return boundingCircle; }
-    public Circle getSelectedCircle() { return selectedCircle; }
-    public Text getShapeText() { return shapeText; }
+    //public Circle getSelectedCircle() { return selectedCircle; }
+    
+    protected String shapeText = null;
+    //public Text getShapeText() { return shapeText; }
+    public String getShapeText() { return shapeText; }
     public void setShapeText(String str) {
-        if (shapeText == null) {
+        shapeText = str;
+        /*if (shapeText == null) {
             shapeText = new Text(str);
         }
         else {
             shapeText.setText(str);
-        }
+        }*/
     }
     // This just gets us on the map, so we can get the shape texts
     // on the scene graph up front even if we aren't using it for
     // anything yet.
-    public void setUseShapeText() {
+    /*public void setUseShapeText() {
         shapeText = new Text();
-    }
+    }*/
 
     // Call this if we want to use a selected circle to display selection
-    public void setUseSelectedCircle() {
+    /*public void setUseSelectedCircle() {
         selectedCircle = new Circle(getSize());
         selectedCircle.setFill(Color.rgb(255, 255, 255, 0));
         selectedCircle.setStroke(Color.rgb(255, 0, 0, 0.5));
         selectedCircle.setVisible(false);
-    }
+    }*/
 
     public void matchSpeed(MovablePolygon other) {
         setSpeed(other.getXSpeed(), other.getYSpeed());
@@ -300,6 +317,9 @@ public class MovablePolygon extends Polygon {
         updateMetaData();
     }
 
+    // This is a little "hack" to keep from continuously allocating a new variable
+    private static double updatePoint[] = new double[2];
+
     private void updatePointsForShape() {
         int numCorners = getNumCorners();
         // We can get here when the shape isn't "ready" yet
@@ -317,8 +337,10 @@ public class MovablePolygon extends Polygon {
             // Calc from straight line going up
             x = m_fCenterX;
             y = m_fCenterY - (getSize()/2);
-            Point2D point = Utils.calcRotatedPoint(m_fCenterX, m_fCenterY, x, y, cornerAngle);
-            updatePoint(i, point.getX(), point.getY());
+            //Point2D point = Utils.calcRotatedPoint(m_fCenterX, m_fCenterY, x, y, cornerAngle);
+            //updatePoint(i, point.getX(), point.getY());
+            Utils.calcRotatedPoint(MovablePolygon.updatePoint, m_fCenterX, m_fCenterY, x, y, cornerAngle);
+            updatePoint(i, updatePoint[0], updatePoint[1]);
             cornerAngle += anglePerCorner;
             cornerAngle = Utils.normalizeAngle(cornerAngle);
         }
@@ -338,24 +360,30 @@ public class MovablePolygon extends Polygon {
             // Point 1.
             x = m_fCenterX;
             y = m_fCenterY - (getSize()/8);
-            Point2D point = Utils.calcRotatedPoint(m_fCenterX, m_fCenterY, x, y, angle);
-            updatePoint((i*3), point.getX(), point.getY());
+            //Point2D point = Utils.calcRotatedPoint(m_fCenterX, m_fCenterY, x, y, angle);
+            //updatePoint((i*3), point.getX(), point.getY());
+            Utils.calcRotatedPoint(MovablePolygon.updatePoint, m_fCenterX, m_fCenterY, x, y, angle);
+            updatePoint((i*3), updatePoint[0], updatePoint[1]);
             angle += anglePerSpike / 3;
             angle = Utils.normalizeAngle(angle);
 
             // Point 2, the highest point.
             x = m_fCenterX;
             y = m_fCenterY - (getSize()/2);
-            point = Utils.calcRotatedPoint(m_fCenterX, m_fCenterY, x, y, angle);
-            updatePoint((i*3)+1, point.getX(), point.getY());
+            //point = Utils.calcRotatedPoint(m_fCenterX, m_fCenterY, x, y, angle);
+            //updatePoint((i*3)+1, point.getX(), point.getY());
+            Utils.calcRotatedPoint(MovablePolygon.updatePoint, m_fCenterX, m_fCenterY, x, y, angle);
+            updatePoint((i*3)+1, updatePoint[0], updatePoint[1]);
             angle += anglePerSpike / 3;
             angle = Utils.normalizeAngle(angle);
 
             // Point 3, back down.
             x = m_fCenterX;
             y = m_fCenterY - (getSize()/8);
-            point = Utils.calcRotatedPoint(m_fCenterX, m_fCenterY, x, y, angle);
-            updatePoint((i*3)+2, point.getX(), point.getY());
+            //point = Utils.calcRotatedPoint(m_fCenterX, m_fCenterY, x, y, angle);
+            //updatePoint((i*3)+2, point.getX(), point.getY());
+            Utils.calcRotatedPoint(MovablePolygon.updatePoint, m_fCenterX, m_fCenterY, x, y, angle);
+            updatePoint((i*3)+2, updatePoint[0], updatePoint[1]);
             angle += anglePerSpike / 3;
             angle = Utils.normalizeAngle(angle);
         }
@@ -418,28 +446,28 @@ public class MovablePolygon extends Polygon {
         boundingCircle.setRadius(getSize()/2);
     }*/
 
-    private void updateSelectedCircle() {
+    /*private void updateSelectedCircle() {
         // Actually we don't even need to bother unless we are selected.
         if (selected == true && selectedCircle != null) {
             selectedCircle.setCenterX(m_fCenterX);
             selectedCircle.setCenterY(m_fCenterY);
             selectedCircle.setRadius((getSize()/2) + 5);
         }
-    }
+    }*/
 
-    public void updateShapeText() {
+    /*public void updateShapeText() {
         if (shapeText != null) {
             shapeText.setX(m_fCenterX - (shapeText.getText().length() * 4));
             shapeText.setY(m_fCenterY + 6);
         }
-    }
+    }*/
 
     public void updateMetaData() {
         //updateLeftXY();
         //updateTopXY();
         //updateBoundingCircle();
-        updateSelectedCircle();
-        updateShapeText();
+        //updateSelectedCircle();
+        //updateShapeText();
     }
     
     public void moveBy(double mX, double mY) {
@@ -545,6 +573,10 @@ public class MovablePolygon extends Polygon {
     }
 
     public boolean intersects(Circle otherCircle) {
+        return intersects(otherCircle.getCenterX(), otherCircle.getCenterY(), otherCircle.getRadius());
+    }
+
+    public boolean intersects(MovableCircle otherCircle) {
         return intersects(otherCircle.getCenterX(), otherCircle.getCenterY(), otherCircle.getRadius());
     }
 

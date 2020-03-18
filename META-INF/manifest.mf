@@ -1,5 +1,6 @@
 Application-Name: The Systems Thinking Game
 Main-Class: gos.Gos
+Caller-Allowable-Codebase: *
 Permissions: all-permissions
 Class-Path: . ext/javax.json-1.0.4.jar
   ext/javax.json-api-1.0.jar

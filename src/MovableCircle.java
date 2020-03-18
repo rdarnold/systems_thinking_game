@@ -11,9 +11,12 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.DoubleProperty;
 
-public class MovableCircle extends Circle {
+// Basically I found Circle to be too slow so instead of extending, I just duplicated
+// a lot those method signatures in here and defined my own class.  Less convenient but
+// it seems to perform better.
+public class MovableCircle { //extends Circle {
     
-    // So we can referende various lists from the simulator.
+    // So we can reference various lists from the simulator.
     public Simulator sim;
 
     public void setSim(Simulator s) { sim = s; }
@@ -22,19 +25,43 @@ public class MovableCircle extends Circle {
     protected double targetSize = 30;
     protected double growthRate = 0.5;
 
+    protected double centerX = 0;
+    protected double centerY = 0;
+    protected double radius = 0;
+    public double getCenterX() { return centerX; }
+    public void setCenterX(double val) { centerX = val; }
+    public double getCenterY() { return centerY; }
+    public void setCenterY(double val) { centerY = val; }
+    public double getRadius() { return radius; }
+    public void setRadius(double val) { radius = val; }
+
+    // Just duplicated from "Circle" class but defined my own class to be more performant
+    // because I was having performance issues with memory allocation
+    protected Color fill = Color.BLACK;
+    public void setFill(Color c) { fill = c; }
+    public Color getFill() { return fill; }
+    protected Color stroke = Color.BLACK;
+    public void setStroke(Color c) { stroke = c; }
+    public Color getStroke() { return fill; }
+
     // How fat should we be?
     // Make it a property so we can bind to it and do various things with it
-    private DoubleProperty size = new SimpleDoubleProperty(50.0);
-    public DoubleProperty sizeProperty() { return size; }
-    public double getSize() {  return size.get();  }
+    //private DoubleProperty size = new SimpleDoubleProperty(50.0);
+    //public DoubleProperty sizeProperty() { return size; }
+    //public double getSize() {  return size.get();  }
+    // No, the less I allocate from Heap, the better
+    private double size = 0;
+    public double getSize() { return size; }
 
     public boolean setSize(double newSize) {
         if (newSize <= 0) {
-            size.set(0);
+            size = 0;
+            //size.set(0);
             setRadius(getSize()/2);
             return false;
         }
-        size.set(newSize);
+        size = newSize;
+        //size.set(newSize);
         setRadius(getSize()/2);
         return true;
     }
@@ -56,7 +83,7 @@ public class MovableCircle extends Circle {
     public double getYSpeed() { return ySpeed; }
 
     public MovableCircle(Simulator s) {    
-        super();
+        //super();
         sim = s;
     }
 
@@ -133,6 +160,10 @@ public class MovableCircle extends Circle {
         double distanceY = getCenterY() - otherCircle.getCenterY();
         double radiusSum = otherCircle.getRadius() + getRadius();
         return distanceX * distanceX + distanceY * distanceY <= radiusSum * radiusSum;*/
+    }
+
+    public boolean intersects(MovableCircle otherCircle) {
+        return intersects(otherCircle.getCenterX(), otherCircle.getCenterY(), otherCircle.getRadius());
     }
 
     public boolean intersects(double otherCenterX, double otherCenterY, double otherRadius) {

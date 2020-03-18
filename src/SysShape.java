@@ -33,6 +33,13 @@ public class SysShape extends MovablePolygon {
     // public double giveRange = 0;
     public double shareRange = 0;
 
+    // We keep a list of shape that we stole from
+    // Even if it dies, technically it's not going to be garbage collected yet
+    // because we'll still have a ref here, until we clear this, so even though
+    // the dead get "culled" it'll be fine
+    protected ArrayList<SysShape> stoleFrom = new ArrayList<SysShape>();
+    public ArrayList<SysShape> getStoleFrom() { return stoleFrom; }
+
     ///////////////////////
     // These vars must all be deep copied
     ///////////////////////
@@ -69,13 +76,12 @@ public class SysShape extends MovablePolygon {
     // End deep copy vars
     ///////////////////////
 
+    // These are only created if we are visualizing the ranges, so we don't
+    // need to remove them
+    Circle giveTakeRangeCircle = null;
+    Circle shareRangeCircle = null; // For cooperative mode
 
-    Circle giveTakeRangeCircle;
-    // Circle takeRangeCircle;
-    // Circle giveRangeCircle;
-    Circle shareRangeCircle; // For cooperative mode
-
-    public Circle getGiveTakeRangeCircle() {
+    /*public Circle getGiveTakeRangeCircle() {
         return giveTakeRangeCircle;
     }
 
@@ -83,7 +89,7 @@ public class SysShape extends MovablePolygon {
     // public Circle getGiveRangeCircle() { return giveRangeCircle; }
     public Circle getShareRangeCircle() {
         return shareRangeCircle;
-    }
+    }*/
 
     public double getSizeStolen() {
         return sizeStolen;
@@ -287,8 +293,8 @@ public class SysShape extends MovablePolygon {
         // We need to get this up front so that we can add the
         // Text object to the scene graph even though we may not be using
         // it right now.
-        setUseShapeText();
-        setUseSelectedCircle();
+        //setUseShapeText();
+        //setUseSelectedCircle();
 
         setOnMouseClicked(t -> {
             //Utils.log("SHAPE"); 
@@ -971,6 +977,18 @@ public class SysShape extends MovablePolygon {
         return grow(amount, false);
     }
 
+    @Override
+    public void clearAll() {
+        super.clearAll();
+        stoleFrom.clear();
+    }
+
+    public void die() {
+        dead = true;
+        setSpinSpeed(0);
+        setFill(Color.BLACK);
+    }
+
     // Shared means we got this from a distribution from a cooperative nearby
     // shape, which means we don't want to continue to redistribute.
     public boolean grow(double amount, boolean shared) {
@@ -1034,12 +1052,19 @@ public class SysShape extends MovablePolygon {
                 setSize(getMinSize()); // Go back to the smallest size but with more success
             }
             else {
-                // Actually we need to be dead first so that we can calculate the nubmer
+                setSize(maxSize);
+
+                // Actually we need to be dead first so that we can calculate the number
                 // of living shapes to transmit to whatever classes are listening.
                 // It's ok because the shapes set dead to false when they prepare new spawn
-                // anyway.
-                dead = true;
-                split();
+                // anyway.  NAH, we don't care about that, let the count include the dead
+                // shape, it's only used for "Score reaches 50" anyway and so what if someone
+                // has 49 shapes and it reaches 51 instead of 50 ....
+                // Can't try to split again if we're already dead
+                if (dead == false) {
+                    split();
+                    die();
+                }
             }
         }
         return true;
@@ -1056,7 +1081,7 @@ public class SysShape extends MovablePolygon {
                     setSize(getMinSize());
                 }
                 else {
-                    dead = true;
+                    die();
                 }
             }
             else {
@@ -1200,6 +1225,7 @@ public class SysShape extends MovablePolygon {
     }
 
     public void exchangeSize() {
+        stoleFrom.clear();
         if (dead == true) {
             return;
         }
@@ -1211,6 +1237,14 @@ public class SysShape extends MovablePolygon {
                 giveSize();
             }
         }
+    }
+
+    public double getTakeAmount() {
+        if (spinRight == true) {
+            return spinSpeed * takeRate * getStealRate();
+            //return Utils.round(spinSpeed * takeRate * getStealRate(), 5);
+        }
+        return 0;
     }
     
     public void takeSize() {
@@ -1243,12 +1277,22 @@ public class SysShape extends MovablePolygon {
             //if (rangeIntersects(takeRangeCircle, otherShape) == true) {
             if (rangeIntersects(RangeTypes.TakeRange, otherShape) == true) {
                 // Raaahhh take their shit
-                double amount = spinSpeed * takeRate;
-                amount *= getStealRate();
+                double amount = getTakeAmount();
+
+                // Ok but kinda negate the amounts, if they're taking from us
+                // and we're taking from them, just subtract their take amount
+                // from ours and that's what we take
+                double otherAmount = otherShape.getTakeAmount();
+                amount -= otherAmount;
+                if (amount <= 0) {
+                    continue;
+                }
                 otherShape.shrink(amount);
                 grow(amount);
                 otherShape.addSizeStolenFrom(amount);
                 addSizeStolen(amount);
+                // We clear this list every frame so we can just add from scratch
+                stoleFrom.add(otherShape);
             }
         }
     }

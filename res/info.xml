@@ -4,18 +4,18 @@
         <name>Welcome</name>
         <text>
         This game is part of a research project to help define and measure  
-        complex problem-solving skills.  In this game, you’ll be asked to observe 
+        complex problem-solving skills. In this game, you’ll be asked to observe 
         and interact with a system of shapes and other things that move around the 
-        screen and interact with each other.  Your gameplay data will be periodically 
+        screen and interact with each other. Your gameplay data will be periodically 
         uploaded to a research server as you play the game.
         CRCRThe game consists of the following sections:
         CR- Demographic Survey (~10 minutes)
         CR- In-Game Tutorial (~5 minutes)
-        CR- Gameplay: Four Shapes exercise (~20 minutes)
-        CR- Gameplay: Chaos exercise (~20 minutes)
+        CR- Gameplay: Four Shapes exercise (~20+ minutes)
+        CR- Gameplay: Chaos exercise (~20+ minutes)
         CR- Feedback (~5 minutes)
         CR- Self-assessment (~15 minutes)
-        CRCRThe entire experience will probably take at least an hour of concentrated time.
+        CRCRThe entire experience will probably take at least an hour of concentrated time. Feel free to explore the simulation at your own pace.
         </text>
     </info>
     <info name="Introduction">
@@ -109,9 +109,7 @@
     <info name="Rain">
         <name>Rain</name>
         <text>
-        Small objects that look something like rain can be seen falling from one side of the screen to
-        another (usually top to bottom).  Rain has variety of effects when impacting other 
-        objects such as spinning shapes, spikes, and circles.  Understanding how the rain affects
+        Rain has variety of effects when impacting other objects.  Understanding how the rain affects
         the other parts of the system is important.
         </text>
     </info>

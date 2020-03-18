@@ -109,54 +109,6 @@ public class Score {
         }
     }
 
-    /*private void createExerciseScore2() {
-        switch (taskId) {
-            case 0: 
-            case 1:{
-                // Maximize space between shapes.
-                if (sim.getNumberLiveShapes() <= 1) {
-                    strScore = "You need at least two shapes for them to be away from each other.";
-                    return;
-                }
-
-                // Ideally you only have two shapes and they're in the furthest corners at this point.
-                // Or four at the four corners.
-                int totalDistance = 0;
-                int num = 0;
-                for (SysShape shape : sim.getShapes()) {
-                    if (shape.isDead() == true) 
-                        continue;
-                    for (SysShape otherShape : sim.getShapes()) {
-                        if (otherShape.isDead() == true)
-                            continue;
-                        if (shape == otherShape || shape.equals(otherShape)) {
-                            continue;
-                        }
-                        num++;
-                        totalDistance += Utils.calcDistance(shape, otherShape);
-                    }
-                }
-                int avg = totalDistance / num;
-                strScore = "You finished with " + num + " average pixel distance between shapes.";
-                break;
-            }
-            case 2:
-            case 3: {
-                // Over 20 turns, try to make as many triangles as you can.
-                int num = 0;
-                for (SysShape shape : sim.getShapes()) {
-                    if (shape.isDead() == true) 
-                        continue;
-                    if (shape.getNumCorners() == 5) {
-                        num++;
-                    }
-                }
-                strScore = "You finished with " + num + " pentagons.";
-                break;
-            }
-        }
-    }*/
-
     // Maybe this should also only go up to 50
     private void createExerciseScore2() {
         switch (taskId) {

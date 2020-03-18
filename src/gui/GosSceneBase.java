@@ -43,7 +43,7 @@ public abstract class GosSceneBase extends Scene implements SimulatorEventListen
     public void onStartTurn() { }
     public void onEndTurn() { }
     public void onPause() { }
-    public void onShapeAdded(SysShape item) { }
+    /*public void onShapeAdded(SysShape item) { }
     public void onShapeRemoved(SysShape item) { }
     public void onRaindropAdded(Raindrop item) { }
     public void onRaindropRemoved(Raindrop item) { }
@@ -52,6 +52,6 @@ public abstract class GosSceneBase extends Scene implements SimulatorEventListen
     public void onEarthpatchAdded(Earthpatch item) { }
     public void onEarthpatchRemoved(Earthpatch item) { }
     public void onGravityWellAdded(GravityWell item) { }
-    public void onGravityWellRemoved(GravityWell item) { }
+    public void onGravityWellRemoved(GravityWell item) { }*/
     public void onNumberOfShapesChanged(int numberShapes) { }
 }

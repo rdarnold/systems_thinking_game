@@ -14,7 +14,8 @@
     <name>Four Shapes</name>
     <text>
     If left alone, all the spinning shapes in this system will probably be destroyed.  Your goal is to 
-    shift the state of the system so that the shapes multiply instead of being destroyed.
+    shift the state of the system so that the shapes multiply instead of being destroyed.  Create as many 
+    shapes as you can!
     </text>
   </task>
   <task>

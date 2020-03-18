@@ -460,7 +460,9 @@ public class SimRunner implements SimulatorEventListener {
 
             Task task = Player.getCurrentTask();
             if (task != null) {
-                turnEndActionDesc += task.getName() + " ";
+                turnEndActionDesc += task.getName() + ", SCORE: ";
+                Score score = new Score(Gos.sim);
+                turnEndActionDesc += score.getScoreString();
             } 
             Player.recordAction(Action.Type.TurnEnd, turnEndActionDesc, "SimRunner");
             Player.addCurrentTurnNumber();
@@ -516,7 +518,7 @@ public class SimRunner implements SimulatorEventListener {
     public void onSimReset() { }
     public void onStartTurn() { }
     public void onPause() { }
-    public void onShapeAdded(SysShape item) { }
+    /*public void onShapeAdded(SysShape item) { }
     public void onShapeRemoved(SysShape item) { }
     public void onRaindropAdded(Raindrop item) { }
     public void onRaindropRemoved(Raindrop item) { }
@@ -525,6 +527,6 @@ public class SimRunner implements SimulatorEventListener {
     public void onEarthpatchAdded(Earthpatch item) { }
     public void onEarthpatchRemoved(Earthpatch item) { }
     public void onGravityWellAdded(GravityWell item) { }
-    public void onGravityWellRemoved(GravityWell item) { }
+    public void onGravityWellRemoved(GravityWell item) { }*/
     public void onNumberOfShapesChanged(int numberShapes) { }
 }

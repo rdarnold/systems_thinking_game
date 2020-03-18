@@ -21,7 +21,7 @@
   </exercise>
   <exercise>
     <id>2</id>
-    <displayId>1</displayId>
+    <displayId>0</displayId>
     <name>Tutorial</name>
     <text>This is the tutorial exercise and introduces you to the game. Use the 
     'Observe' button on the left of the screen to watch the system without moving 
@@ -31,7 +31,7 @@
   </exercise>
   <exercise>
     <id>3</id>
-    <displayId>2</displayId>
+    <displayId>1</displayId>
     <name>Four Shapes</name>
     <text>This is the first real exercise of the game.  Use the 
     Observe and Experiment buttons on the left of the screen to figure out how the system works. 
@@ -40,7 +40,7 @@
   </exercise>
   <exercise>
     <id>4</id>
-    <displayId>3</displayId>  
+    <displayId>2</displayId>  
     <usesLevels>true</usesLevels>
     <noSelect>true</noSelect>
     <noDeath>true</noDeath>

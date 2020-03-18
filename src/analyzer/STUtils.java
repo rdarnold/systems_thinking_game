@@ -179,6 +179,11 @@ public final class STUtils {
     I could have given examples of systems and said when you're thinking about this particular thing, what do you do?
     But that would have extended the test to being too long for the identifed window of 1 hour.
 
+
+    GOOD THOUGHTS:
+    Self-assesment validation:  People doing the assessment had comments like:
+    which is why I found your questions at the end a bit like... why am I doing this again?
+    i.e. it captures the same skills as what was done during the sim
     */
 
     ////////////////////////

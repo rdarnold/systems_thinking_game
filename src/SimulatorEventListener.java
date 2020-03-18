@@ -7,7 +7,7 @@ public interface SimulatorEventListener {
     void onStartTurn();
     void onEndTurn();
     void onPause();
-    void onShapeAdded(SysShape shape);
+    /*void onShapeAdded(SysShape shape);
     void onRaindropAdded(Raindrop drop);
     void onShapeRemoved(SysShape shape);
     void onRaindropRemoved(Raindrop drop);
@@ -16,6 +16,6 @@ public interface SimulatorEventListener {
     void onEarthpatchAdded(Earthpatch patch);
     void onEarthpatchRemoved(Earthpatch patch);
     void onGravityWellAdded(GravityWell item);
-    void onGravityWellRemoved(GravityWell item);
+    void onGravityWellRemoved(GravityWell item);*/
     void onNumberOfShapesChanged(int numberShapes);
 }

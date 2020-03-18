@@ -98,7 +98,6 @@ src/gui/StartFeedbackWindow.java
 src/gui/StartRealGameWindow.java
 src/gui/StartSimulationWindow.java
 src/gui/StartSurveyWindow.java
-src/gui/SysPane.java
 src/gui/SysCanvas.java
 src/gui/VariableWindow.java
 src/gui/WelcomeWindow.java

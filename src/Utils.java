@@ -29,6 +29,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 
+// For the "hack" to change tooltip delay
+import java.lang.reflect.Field;
+import javafx.animation.Timeline;
+import javafx.animation.KeyFrame;
+import javafx.util.Duration;
+
 // Graphics stuff that could be moved into a GraphicsUtils file
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
@@ -362,7 +368,7 @@ public final class Utils {
     }
 
     // From x1, y1, as the origin point, rotate x2, y2
-    public static Point2D calcRotatedPoint(double originX, double originY, double x2, double y2, double angleDegrees) {
+    /*public static Point2D calcRotatedPoint(double originX, double originY, double x2, double y2, double angleDegrees) {
         double hyp = calcDistance(originX, originY, x2, y2);
         double angleRadians = Math.toRadians(angleDegrees);
 
@@ -371,6 +377,20 @@ public final class Utils {
 
         Point2D point = new Point2D(originX + rotX, originY + rotY);
         return point;
+    }*/
+
+    // A little hacky version that doesn't require memory allocation
+    public static void calcRotatedPoint(double[] retPoint, double originX, double originY, double x2, double y2, double angleDegrees) {
+        double hyp = calcDistance(originX, originY, x2, y2);
+        double angleRadians = Math.toRadians(angleDegrees);
+
+        double rotX = Math.cos(angleRadians) * hyp;
+        double rotY = Math.sin(angleRadians) * hyp;
+
+        retPoint[0] = originX + rotX;
+        retPoint[1] = originY + rotY;
+        //Point2D point = new Point2D(originX + rotX, originY + rotY);
+        //return point;
     }
 
     // And some graphic utils, maybe these should be in a separate file like I do with
@@ -386,13 +406,73 @@ public final class Utils {
         borderGlow.setHeight(depth);
         return borderGlow;
     }
-    
+
+    public static DropShadow createLineGlow(Color color) {
+        int depth = 5;
+        DropShadow glow = new DropShadow();
+        glow.setOffsetY(0f);
+        glow.setOffsetX(0f);
+        glow.setColor(color);
+        glow.setWidth(depth);
+        glow.setHeight(depth);
+        return glow;
+    }
+     
     public static Tooltip createTooltip(String str) {
         Tooltip toolTip = new Tooltip(str);
         toolTip.setMaxWidth(400);
         toolTip.setWrapText(true);
+        Utils.hackTooltipStartTiming(toolTip);
         return toolTip;
     }
+
+    public static void hackTooltipActivationTimer(Tooltip tooltip, int delay) {
+        hackTooltipTiming( tooltip, delay, "activationTimer");
+    }
+
+    public static void hackTooltipHideTimer(Tooltip tooltip, int delay) {
+        hackTooltipTiming( tooltip, delay, "hideTimer");
+    }
+
+    private static void hackTooltipTiming( Tooltip tooltip, int delay, String property ) {
+        try {
+            Field fieldBehavior = tooltip.getClass().getDeclaredField( "BEHAVIOR" );
+            fieldBehavior.setAccessible( true );
+            Object objBehavior = fieldBehavior.get( tooltip );
+
+            Field fieldTimer = objBehavior.getClass().getDeclaredField( property );
+            fieldTimer.setAccessible( true );
+            Timeline objTimer = (Timeline) fieldTimer.get( objBehavior );
+
+            objTimer.getKeyFrames().clear();
+            objTimer.getKeyFrames().add( new KeyFrame( new Duration( delay ) ) );
+        }
+        catch ( Exception e ) {  
+            e.printStackTrace();
+        }
+    }
+
+    public static void hackTooltipStartTiming(Tooltip tooltip) {
+        hackTooltipActivationTimer(tooltip, 250);
+        hackTooltipHideTimer(tooltip, 10000);
+    }
+
+    /*public static void hackTooltipStartTiming(Tooltip tooltip) {
+        try {
+            Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
+            fieldBehavior.setAccessible(true);
+            Object objBehavior = fieldBehavior.get(tooltip);
+    
+            Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
+            fieldTimer.setAccessible(true);
+            Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
+    
+            objTimer.getKeyFrames().clear();
+            objTimer.getKeyFrames().add(new KeyFrame(new Duration(250)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 
     /*public static void addToolTip(Button btn, String str) {
         Tooltip toolTip = createTooltip(str);

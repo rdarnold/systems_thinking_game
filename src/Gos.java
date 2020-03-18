@@ -52,8 +52,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Priority;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
-import javafx.scene.control.*;
+import javafx.scene.image.Image; 
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.geometry.Rectangle2D;
@@ -73,7 +72,7 @@ public class Gos extends Application {
     // If the player chooses to skip the surveys
     public static boolean skipSurveys = false;
 
-    ////////////////////////////////////////////
+    //////////////////////////////////////////// 
     ///// Testing and debugging variables //////
     ////////////////////////////////////////////
     // All should be false for deployment //////
@@ -87,7 +86,7 @@ public class Gos extends Application {
 
     public static Stage stage;
 
-    // Some statics that people can access from wherever so we don't have to
+    // Some statics that people can access from wherever so we don't have to   
     // pass them around.
     public static Gos gos;
     public static Simulator sim;
@@ -97,7 +96,7 @@ public class Gos extends Application {
     public static MainScreen mainScene;
     public static AnswerScreen answerScene;
     public static InfoScreen infoScene;
-    public static InquireScreen inquireScene;
+    public static InquireScreen inquireScene; 
     public static WelcomeWindow welcomeWindow;
     public static PlayedBeforeWindow playedBeforeWindow;
     public static ContactConsentWindow contactConsentWindow;
@@ -111,9 +110,9 @@ public class Gos extends Application {
     public static OKWindow noDiscoveryPointsWindow;
     public static ScratchPadWindow scratchPadWindow;
     public static SkipToWindow skipToWindow;
-    public static AssessmentWindow assessmentWindow;
+    public static AssessmentWindow assessmentWindow; 
 
-    @Override
+    @Override 
     public void start(Stage primaryStage) {
         gos = this;
 
@@ -134,7 +133,7 @@ public class Gos extends Application {
         mainScene = new MainScreen(this, new BorderPane(), wid, hgt);
         answerScene = new AnswerScreen(this, new BorderPane(), wid, hgt);
         infoScene = new InfoScreen(this, new BorderPane(), wid, hgt);
-        //inquireScene = new InquireScreen(this, new BorderPane(), wid, hgt);
+        //inquireScene = new InquireScreen(this, new BorderPane(), wid, hgt);   
         //createExperimentScreen = new CreateExperimentScreen(this, new BorderPane(), wid, hgt);
 
         welcomeWindow = new WelcomeWindow(500, 500);
@@ -151,10 +150,10 @@ public class Gos extends Application {
         skipToWindow = new SkipToWindow(400, 600);
         assessmentWindow = new AssessmentWindow(1100, 1000);
 
-        String str = "Sorry, you don't have enough Discovery Points to do that.  You will " +
+        /*String str = "Sorry, you don't have enough Discovery Points to do that.  You will " +
         "get another one next turn.";
         noDiscoveryPointsWindow = new OKWindow(250, 250, "Out of Discovery Points", str);
-        noDiscoveryPointsWindow.centerText();
+        noDiscoveryPointsWindow.centerText();*/
 
         // Simulator should be created last because it will send updates
         // to the various parts of the screen as it creates stuff.
@@ -305,7 +304,7 @@ public class Gos extends Application {
     public static void showAssessmentWindow() {
         assessmentWindow.show();
     }
-
+ 
     public static boolean checkDiscoveryPoints() {
         /*if (Player.getDiscoveryPoints() <= 0) {
             noDiscoveryPointsWindow.showAndWait(true);
