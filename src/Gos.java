@@ -78,7 +78,7 @@ public class Gos extends Application {
     // All should be false for deployment //////
     ////////////////////////////////////////////
     public static boolean testing = false;
-    public static boolean showSkipWindow = true;
+    public static boolean showSkipWindow = false;
     public static boolean assessmentMode = false;
     ////////////////////////////////////////////
     ////////////////////////////////////////////
@@ -99,6 +99,7 @@ public class Gos extends Application {
     public static InquireScreen inquireScene; 
     public static WelcomeWindow welcomeWindow;
     public static PlayedBeforeWindow playedBeforeWindow;
+    public static PlayAgainWindow playAgainWindow;
     public static ContactConsentWindow contactConsentWindow;
     public static StartSurveyWindow startSurveyWindow;
     public static StartFeedbackWindow startFeedbackWindow;
@@ -139,6 +140,7 @@ public class Gos extends Application {
         welcomeWindow = new WelcomeWindow(500, 500);
         contactConsentWindow = new ContactConsentWindow(500, 450);
         playedBeforeWindow = new PlayedBeforeWindow(500, 350);
+        playAgainWindow = new PlayAgainWindow(500, 350);
         startSurveyWindow = new StartSurveyWindow(500, 350);
         startFeedbackWindow = new StartFeedbackWindow(500, 350);
         betaWindow = new BetaWindow(400, 530);
@@ -204,7 +206,7 @@ public class Gos extends Application {
 
         // Don't actually show the stage yet since we have some
         // initial welcome windows to show.  Although how does this
-        // hold up with the demographic surveys?  It might not.
+        // hold up with the demographic surveys?  It might not. 
         //  Indeed it does not.
         //stage.show();
         
@@ -280,6 +282,10 @@ public class Gos extends Application {
         startRealGameWindow.showAndWait();
     }
 
+    public static void showPlayAgainWindow() {
+        playAgainWindow.showAndWait();
+    }
+
     public static void showStartFeedbackWindow() {
         startFeedbackWindow.showAndWait();
     }
@@ -312,22 +318,6 @@ public class Gos extends Application {
         }*/
         return true;
     }
-
-    /*public void showExperimentScreen() {
-        createExperimentScreen.rebuild();
-        changeScene(createExperimentScreen);
-    }*/
-
-    public static void completeTask() {
-        simRunner.finishTask();
-        changeScene(mainScene);
-        //mainScene.updateTaskText();
-        //mainScene.updateExerciseText();
-    }
-
-    /*public void completeQuestion() {
-        simRunner.finishQuestion();
-    }*/
 
     public static void selectShape(SysShape shape) {
         Player.setSelectedShape(shape);

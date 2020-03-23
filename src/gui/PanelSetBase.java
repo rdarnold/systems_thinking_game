@@ -22,6 +22,7 @@ public abstract class PanelSetBase implements SimulatorEventListener, ClassInfo 
     MainScreen parent;
 
     PanelLeftBase m_LeftPanelBase;
+    PanelRightBase m_RightPanelBase;
     PanelTopBase m_TopPanelBase;
     PanelBottomBase m_BottomPanelBase;
 
@@ -33,17 +34,32 @@ public abstract class PanelSetBase implements SimulatorEventListener, ClassInfo 
     }
 
     public void addPanels(PanelLeftBase left, PanelTopBase top, PanelBottomBase bottom) {
+        addPanels(left, null, top, bottom);
+    }
+
+    public void addPanels(PanelLeftBase left, PanelRightBase right, PanelTopBase top, PanelBottomBase bottom) {
         m_LeftPanelBase = left;
+        m_RightPanelBase = right;
         m_TopPanelBase = top;
         m_BottomPanelBase = bottom;
         
         // And set up the fade stuff
         fadeInTimeline = new Timeline();
-        KeyFrame key = new KeyFrame(Duration.millis(300),
+        if (m_RightPanelBase == null) {
+            KeyFrame key = new KeyFrame(Duration.millis(300),
+                            new KeyValue (m_LeftPanelBase.opacityProperty(), 1),
+                            new KeyValue (m_TopPanelBase.opacityProperty(), 1),
+                            new KeyValue (m_BottomPanelBase.opacityProperty(), 1)); 
+            fadeInTimeline.getKeyFrames().add(key);  
+        }
+        else {
+            KeyFrame key = new KeyFrame(Duration.millis(300),
                         new KeyValue (m_LeftPanelBase.opacityProperty(), 1),
                         new KeyValue (m_TopPanelBase.opacityProperty(), 1),
-                        new KeyValue (m_BottomPanelBase.opacityProperty(), 1)); 
-        fadeInTimeline.getKeyFrames().add(key);   
+                        new KeyValue (m_BottomPanelBase.opacityProperty(), 1),
+                        new KeyValue (m_RightPanelBase.opacityProperty(), 1)); 
+            fadeInTimeline.getKeyFrames().add(key);  
+        } 
         fadeInTimeline.setOnFinished((ae) -> onFadeInFinished());
 
         /*fadeOutTimeline = new Timeline();
@@ -65,6 +81,10 @@ public abstract class PanelSetBase implements SimulatorEventListener, ClassInfo 
             m_LeftPanelBase.reset();
         }
 
+        if (m_RightPanelBase != null) {
+            m_RightPanelBase.reset();
+        }
+
         if (m_TopPanelBase != null) {
             m_TopPanelBase.reset();
         }
@@ -73,6 +93,10 @@ public abstract class PanelSetBase implements SimulatorEventListener, ClassInfo 
     public void update() {
         if (m_LeftPanelBase != null) {
             m_LeftPanelBase.update();
+        }
+        
+        if (m_RightPanelBase != null) {
+            m_RightPanelBase.update();
         }
 
         if (m_TopPanelBase != null) {
@@ -110,9 +134,13 @@ public abstract class PanelSetBase implements SimulatorEventListener, ClassInfo 
         if (bFade == false) {
             m_BottomPanelBase.setOpacity(1);
             m_LeftPanelBase.setOpacity(1);
+            if (m_RightPanelBase != null) {
+                m_RightPanelBase.setOpacity(1);
+            }
             m_TopPanelBase.setOpacity(1);
             parent.overallRoot.setBottom(m_BottomPanelBase);
             parent.overallRoot.setLeft(m_LeftPanelBase);
+            parent.overallRoot.setRight(m_RightPanelBase);
             parent.overallRoot.setTop(m_TopPanelBase);
             return;
         }
@@ -129,6 +157,13 @@ public abstract class PanelSetBase implements SimulatorEventListener, ClassInfo 
             parent.overallRoot.getLeft().equals(m_LeftPanelBase) == false) {
             m_LeftPanelBase.setOpacity(0);
             parent.overallRoot.setLeft(m_LeftPanelBase);
+            bSet = true;
+        }
+
+        if (m_RightPanelBase != null && (parent.overallRoot.getRight() == null ||
+            parent.overallRoot.getRight().equals(m_RightPanelBase) == false)) {
+            m_RightPanelBase.setOpacity(0);
+            parent.overallRoot.setRight(m_RightPanelBase);
             bSet = true;
         }
 

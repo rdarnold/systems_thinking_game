@@ -67,6 +67,7 @@ public class MainPanelSet extends PanelSetBase {
 
     MainPanelBottom panelBottom;
     MainPanelLeft panelLeft;
+    MainPanelRight panelRight;
     MainPanelTop panelTop;
     
     public static OKWindow mainPanelWindow;
@@ -76,10 +77,11 @@ public class MainPanelSet extends PanelSetBase {
         super(main);
 
         panelLeft = new MainPanelLeft(this);
+        panelRight = new MainPanelRight(this);
         panelTop = new MainPanelTop(this);
         panelBottom = new MainPanelBottom(this);
         
-        addPanels(panelLeft, panelTop, panelBottom);
+        addPanels(panelLeft, panelRight, panelTop, panelBottom);
 
         // Should maybe have a helper.xml file where all the helper text is,
         // the stuff that isn't in the info area

@@ -15,7 +15,7 @@
     <text>
     If left alone, all the spinning shapes in this system will probably be destroyed.  Your goal is to 
     shift the state of the system so that the shapes multiply instead of being destroyed.  Create as many 
-    shapes as you can!
+    shapes as you can!  Your score will be the number of shapes left after all 5 turns are complete.
     </text>
   </task>
   <task>
@@ -23,7 +23,7 @@
     <turns>5</turns>
     <name>Four Shapes: Second Try</name>
     <text>
-    Could you have done better?  Try again!  Make more spinning shapes as quickly as possible.
+    Make as many spinning shapes as you can, as quickly as possible.
     </text>
   </task>
   <task>
@@ -31,9 +31,9 @@
     <turns>10</turns>
     <name>Chaos</name>
     <text>
-    Your shape is the circled shape in the middle of the screen.  
-    Your goal is to raise your shape's level as high as possible.  
-    Levels are gained by growing bigger.
+    Your shape is the circled shape in the middle of the screen.  Your goal is to raise your shape's 
+    level as high as possible.  Levels are gained by growing bigger.  Your score will be your shape's level 
+    after all 10 turns are complete.
     </text>
   </task>
   <task>
@@ -41,7 +41,7 @@
     <turns>10</turns>
     <name>Chaos: Second Try</name>
     <text>
-    Could you have done better?  Try again!  Raise your shape's level as high as possible.
+    Raise your shape's level as high as possible.
     </text>
   </task>
 </tasks>

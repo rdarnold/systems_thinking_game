@@ -44,12 +44,12 @@ public class Score {
         exDisplayId = ex.getDisplayId();
         taskId = task.getId();
 
-        strExTask = "Scenario " + exDisplayId + "." + (taskId + 1);
+        strExTask = "Stage " + exDisplayId + "." + (taskId + 1);
         strExTaskExtended = strExTask + ": " + ex.getName() + ", " + task.getName();
 
-        //strExTask = "Scenario: " + ex.getName() + ", Task: " + task.getName();
+        //strExTask = "Stage: " + ex.getName() + ", Task: " + task.getName();
         strScore = "";
-        //strScore = "Scenario " + exId + ", Task " + taskId + ": No score formula found!";
+        //strScore = "Stage " + exId + ", Task " + taskId + ": No score formula found!";
 
         switch (exId) {
             case 0:

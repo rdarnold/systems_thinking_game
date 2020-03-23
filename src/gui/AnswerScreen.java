@@ -202,6 +202,11 @@ public class AnswerScreen extends GosSceneBase {
         Question question = Player.getCurrentQuestion();
         Exercise exercise = Player.getCurrentExercise();
 
+        // Check if we have a prior answer to this question - if so, 
+        // we want to populate the question with the answer the player already
+        // provided 
+        Answer priorAnswer = Player.getPriorAnswer(question);
+
         //exerciseText.setText(exercise.getAnswerScreenText());
 
         questionNameText.setText("Current Question: " + question.getName());
@@ -225,6 +230,10 @@ public class AnswerScreen extends GosSceneBase {
                 GridPane.setRowIndex(field, row);
                 GridPane.setColumnIndex(field, 2);
                 GridPane.setHalignment(field, HPos.CENTER);
+
+                if (priorAnswer != null) {
+                    field.setText(Utils.stripLastCRLF(priorAnswer.getStrAnswer()));
+                }
                 break;
             }
             case MultilineInput: {
@@ -238,6 +247,10 @@ public class AnswerScreen extends GosSceneBase {
                 GridPane.setRowIndex(area, row);
                 GridPane.setColumnIndex(area, 2);
                 GridPane.setHalignment(area, HPos.CENTER);
+                
+                if (priorAnswer != null) {  
+                    area.setText(Utils.stripLastCRLF(priorAnswer.getStrAnswer()));
+                }
                 break;
             }
             case Choice: {
@@ -253,12 +266,18 @@ public class AnswerScreen extends GosSceneBase {
                     btn.setUserData(num);
                     btn.wrapTextProperty().setValue(true);
                     btn.setTextAlignment(TextAlignment.RIGHT);
-                    num++;
                     tempAdd(btn);
                     GridPane.setRowIndex(btn, row);
                     GridPane.setColumnIndex(btn, 2);
                     GridPane.setHalignment(btn, HPos.RIGHT);
                     row++;
+
+                    if (priorAnswer != null) {
+                        if (priorAnswer.answerOptionSelected(num) == true) {
+                            btn.setSelected(true);
+                        }
+                    }
+                    num++;
                 }
                 break;
             }
@@ -270,12 +289,18 @@ public class AnswerScreen extends GosSceneBase {
                     CheckBox btn = new CheckBox(opt);
                     tempCheckBoxes.add(btn);
                     btn.setUserData(num);
-                    num++;
                     tempAdd(btn);
                     GridPane.setRowIndex(btn, row);
                     GridPane.setColumnIndex(btn, 2);
                     GridPane.setHalignment(btn, HPos.LEFT); 
                     row++;
+
+                    if (priorAnswer != null) {
+                        if (priorAnswer.answerOptionSelected(num) == true) {
+                            btn.setSelected(true);
+                        }
+                    }
+                    num++;
                 }
                 break;
             }
@@ -298,7 +323,7 @@ public class AnswerScreen extends GosSceneBase {
         if (checkAnswers() == false) {
             return false;
         }
-        // Save them to some data
+        // Save them to some data 
         saveAnswers();
         
         //gos.completeQuestion();

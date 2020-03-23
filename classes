@@ -12,6 +12,7 @@ src/Gos.java
 src/ExerciseListWrapper.java
 src/FileTransfer.java
 src/GravityWell.java
+src/Impact.java
 src/Info.java
 src/InfoListWrapper.java
 src/MovableCircle.java
@@ -74,6 +75,7 @@ src/gui/InquirePanelTop.java
 src/gui/InquireScreen.java
 src/gui/MainPanelBottom.java
 src/gui/MainPanelLeft.java
+src/gui/MainPanelRight.java
 src/gui/MainPanelSet.java
 src/gui/MainPanelTop.java
 src/gui/MainScreen.java
@@ -86,9 +88,11 @@ src/gui/ObservePanelTop.java
 src/gui/OKWindow.java
 src/gui/PanelBottomBase.java
 src/gui/PanelLeftBase.java
+src/gui/PanelRightBase.java
 src/gui/PanelTopBase.java
 src/gui/PanelSetBase.java
 src/gui/PlayedBeforeWindow.java
+src/gui/PlayAgainWindow.java
 src/gui/RevealButton.java
 src/gui/ScratchPadWindow.java
 src/gui/ScreenInfoArea.java

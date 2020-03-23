@@ -62,6 +62,19 @@ public final class Player {
     public static boolean getSkipped() { return m_bSkipped; }
     public static void setSkipped() { m_bSkipped = true; }
 
+    // Has the player played current exercise already?  If so, the player 
+    // is doing a replay and does not need to change or update answers to 
+    // questions in the same exercise.
+    public static boolean m_bReplaying = false;
+    public static boolean getReplaying() { return m_bReplaying; }
+    public static void setReplaying(boolean rep) { m_bReplaying = rep; }
+    public static int m_numRetries = 0; // How many times has the player retried the current stage?
+    public static int getRetries() { return m_numRetries; }
+    public static void addRetry() { m_numRetries++; }
+    public static void resetRetries() { m_numRetries = 0; }
+    public static int m_fourShapesRetries = 0;  // How many times has player retried this stage?
+    public static int m_chaosRetries= 0;
+
     // Info if the player wants to provide it.
     private static int id = 0;
     private static int submittedId = 0; // If they tried to submit their own ID we record that too
@@ -268,7 +281,57 @@ public final class Player {
         return getDataSizeString(getPlayerData());
     }
 
+    public static boolean hasAnsweredQuestionsForExercise(int exId) {
+        // Check to see if we have any answers for the passed in exercise/stage Id,
+        // if so, we can say yes, the player has indeed answered the questions for this stage;
+        // as we wouldn't check this while doing the answers, if any one answer for that stage
+        // exists, the player has answered them all.
+        for (Answer ans : Player.answers) {
+            if (ans.getExerciseId() == exId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Used to repopulate an answer field if one was already given
+    public static Answer getPriorAnswer(Question question) {
+        // Go backwards to find the most recent answer to this question, if there is one
+        for (int i = Player.answers.size() - 1; i >= 0; i--) {
+            Answer ans = Player.answers.get(i);
+            if (ans.getQuestionId() == question.getId()) {
+                return ans;
+            }
+        }
+        return null;
+    }
+
+    public static boolean isDuplicateAnswer(Question question, String answerText) {
+        // Go backwards from the end; if we find the id and it isn't the same, it's not
+        // a duplicate, even though it may duplicate an answer even earlier than that - 
+        // but we want to record that the player had an answer, changed, then changed
+        // back later.
+        for (int i = Player.answers.size() - 1; i >= 0; i--) {
+            Answer ans = Player.answers.get(i);
+            if (ans.getQuestionId() == question.getId()) {
+                if (answerText.equals(ans.getStrAnswer()) == true) {
+                    return true;
+                }
+                return false;
+            }
+        }
+        return false;
+    }
+
     public static void recordAnswer(Question question, String answerText) {
+        // So, we're going to say, if the player is recording the exact same answer
+        // as the last time s/he answered this question, we're just not going to record it,
+        // because it's moot - it's the same answer.  So look through the answer list to
+        // find the last answer for this same question, and compare the answer - if it's different,
+        // record it anew.
+        if (isDuplicateAnswer(question, answerText) == true) {
+            return;
+        }
         Answer answer = new Answer(question, answerText);
         answers.add(answer);
     }
@@ -851,6 +914,16 @@ public final class Player {
         return currentExercise.getNextTask();
     }
 
+    
+    public static Task previousTask() {
+        if (currentExercise == null) {
+            return null;
+        }
+        Task task = currentExercise.previousTask();
+        updateTaskTrackers();
+        return task;
+    }
+
     public static Task nextTask() {
         if (currentExercise == null) {
             return null;
@@ -865,5 +938,12 @@ public final class Player {
             return null;
         }
         return currentExercise.nextQuestion();
+    }
+
+    public static void resetQuestions() {
+        if (currentExercise == null) {
+            return;
+        }
+        currentExercise.resetQuestions();
     }
 }

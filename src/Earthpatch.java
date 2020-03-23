@@ -182,22 +182,29 @@ public class Earthpatch extends MovableCircle {
         Earthpatch newPatch;
 
         newPatch = new Earthpatch(this);
+        newPatch.setFill(Color.rgb(255, 0, 0));  // Set to red and slowly bring it down to dark red
         newPatch.prepareNewSpawn();
         newPatch.moveTo(x - space, y + space);
         //newPatch.setColor(color);
         sim.addEarthpatch(newPatch);
 
         newPatch = new Earthpatch(this);
+        newPatch.setFill(Color.rgb(255, 0, 0));
         newPatch.prepareNewSpawn();
         newPatch.moveTo(x + space, y + space);
         //newPatch.setColor(color);
         sim.addEarthpatch(newPatch);
 
         newPatch = new Earthpatch(this);
+        newPatch.setFill(Color.rgb(255, 0, 0));
         newPatch.prepareNewSpawn();
         newPatch.moveTo(x, y - space);
         //newPatch.setColor(color);
         sim.addEarthpatch(newPatch);
+        
+        // Now we will change the colors
+        setFill(Color.ORANGE);
+        patch.setFill(Color.ORANGE);
     }
  
     public boolean checkEarthCollisions(ArrayList<Earthpatch> patches) {
@@ -251,6 +258,17 @@ public class Earthpatch extends MovableCircle {
                 setSize(0);
             }
             return;
+        }
+        else { 
+            // If the color is not the normal "dark red" bring it down towards dark red
+            int red = (int)(getFill().getRed() * 255);
+            if (red > 127) {
+                red-=2;
+                if (red < 127) {
+                    red = 127;
+                }
+                setFill(Color.rgb(red, 0, 0));
+            }
         }
 
         spawnTimer--;

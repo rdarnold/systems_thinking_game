@@ -486,11 +486,15 @@
     <exercise>4</exercise>
     <id>25</id>
     <name>Chaos</name>
-    <text>Does the color of a spinning shape matter?</text>
-    <answerType>Choice</answerType>
+    <text>What things in the game directly affect the red balls?  Check all that apply</text>
+    <answerType>Check</answerType>
     <answerOptions>
-        <answerOption>Yes</answerOption>
-        <answerOption>No</answerOption>
+        <answerOption>Rain</answerOption>
+        <answerOption>Shapes</answerOption>
+        <answerOption>Gravity</answerOption>
+        <answerOption>Paradigm</answerOption>
+        <answerOption>Spikes</answerOption>
+        <answerOption>Other red balls</answerOption>
         <answerOption>Not enough information</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
@@ -499,7 +503,7 @@
     <exercise>4</exercise>
     <id>26</id>
     <name>Chaos</name>
-    <text>If it does matter, what does the color of a spinning shape mean?</text>
+    <text>What does the color of a spinning shape mean?</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>It determines how fast a shape grows</answerOption>
@@ -540,6 +544,7 @@
         <answerOption>The time of day that you did the simulation</answerOption>
         <answerOption>The personal biases of the simulation's designer</answerOption>
         <answerOption>Stock prices in South America</answerOption>
+        <answerOption>Yourself</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
   </question>

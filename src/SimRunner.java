@@ -213,7 +213,7 @@ public class SimRunner implements SimulatorEventListener {
         if (task == null) {
             // We start with the survey so we would normally do this.
             //Gos.gos.showExercisePopup(Player.getCurrentExercise());
-            Gos.gos.showAnswerScreen();
+            Gos.showAnswerScreen();
         }
         else {
             // But if we skip the survey we just begin like this.
@@ -259,6 +259,19 @@ public class SimRunner implements SimulatorEventListener {
         sim.start(); // If we haven't started yet, start now.
     }
 
+    // Restart whatever task you were previously on.  So if you're null, you go to the 
+    // last task of your current exercise.  At the same time we need to be moving to the
+    // main screen.
+    public void restartTask() {
+        //Task task = Player.previousTask();
+        //Gos.showMainScreen();
+        //startTask(task);
+        
+        // I guess your task isn't nulled out yet???
+        Gos.showMainScreen();
+        startTask(Player.getCurrentTask());
+    }
+
     public void finishTask() {
         // Every time we finish, upload our data.  That way if something
         // happens with the final upload, at least we have something.  Also
@@ -271,7 +284,15 @@ public class SimRunner implements SimulatorEventListener {
             // Ok so we are out of tasks.  Start the questions
             // session in that case.
             //finishExercise();
-            Gos.gos.showAnswerScreen();
+
+            // Actually first pop up the replay window, but only if we have answered the
+            // questions once already.
+            if (Player.hasAnsweredQuestionsForExercise(Player.getCurrentExerciseNumberTracker()) == false) {
+                Gos.showAnswerScreen();
+            }
+            else {
+                Gos.showPlayAgainWindow();
+            }
         }
         else {
             startTask(task);
@@ -284,7 +305,7 @@ public class SimRunner implements SimulatorEventListener {
 
         // Now GUI stuff
         Gos.mainScene.onNewExercise();
-        Gos.gos.showMainScreen();
+        Gos.showMainScreen();
         startTask(Player.getCurrentTask());
     }
 
@@ -303,7 +324,7 @@ public class SimRunner implements SimulatorEventListener {
             //}
             // If we have any pop-up text, show that
             // to the user first.
-            Gos.gos.showExercisePopup(Player.getCurrentExercise());
+            Gos.showExercisePopup(Player.getCurrentExercise());
         }
 
         if (Player.getCurrentExercise() == null) {
@@ -364,7 +385,11 @@ public class SimRunner implements SimulatorEventListener {
     // Right now being done with questions is the same as being
     // done with the exercise.
     public void finishQuestions() {
-        finishExercise();
+        //finishExercise();
+
+        // Actually now we just pop up the play again window any time we're
+        // done with exercise questions
+        Gos.showPlayAgainWindow();
     }
 
     public void uploadData() {

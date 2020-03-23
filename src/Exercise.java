@@ -28,6 +28,9 @@ public class Exercise extends GameDataItem {
     public int currentQuestionNumber = 0;
     public int currentTaskNumber = 0;
 
+    //public ArrayList<Task> getTasks() { return taskList; }
+    //public ArrayList<Question> getQuestions() { return questionList; }
+
     /////////////////////
     ///// XML STUFF /////
     /////////////////////
@@ -58,6 +61,10 @@ public class Exercise extends GameDataItem {
 
     public int getNumQuestions() {
         return questionList.size();
+    }
+
+    public void resetQuestions() {
+        currentQuestionNumber = 0;
     }
 
     public Question nextQuestion() {
@@ -96,6 +103,15 @@ public class Exercise extends GameDataItem {
             return null;
         }
         return taskList.get(num);
+    }
+
+    public Task previousTask() {
+        currentTaskNumber--;
+        if (currentTaskNumber < 0) {
+            currentTaskNumber = 0;
+            return null;
+        }
+        return getCurrentTask();
     }
 
     public Task nextTask() {
