@@ -13,9 +13,8 @@
     <turns>5</turns>
     <name>Four Shapes</name>
     <text>
-    If left alone, all the spinning shapes in this system will probably be destroyed.  Your goal is to 
-    shift the state of the system so that the shapes multiply instead of being destroyed.  Create as many 
-    shapes as you can!  Your score will be the number of shapes left after all 5 turns are complete.
+    Your goal is to create as many shapes as you can!  Your score will be the number of shapes 
+    left after all 5 turns are complete.
     </text>
   </task>
   <task>

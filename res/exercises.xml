@@ -25,18 +25,17 @@
     <name>Tutorial</name>
     <text>This is the tutorial exercise and introduces you to the game. Use the 
     'Observe' button on the left of the screen to watch the system without moving 
-    forward by a turn.
-    CRCRClick the 'Change System' button at the bottom of the screen when you are ready to
-    advance the system forward and move on to the next turn.</text>
+    forward by a turn.  Click the 'Change System' button at the bottom of the screen when you are ready to
+    advance the system forward.</text>
   </exercise>
   <exercise>
     <id>3</id>
     <displayId>1</displayId>
     <name>Four Shapes</name>
-    <text>This is the first real exercise of the game.  Use the 
+    <text>This is the first stage of the game.  Use the 
     Observe and Experiment buttons on the left of the screen to figure out how the system works. 
-    CRCRClick the 'Change System' button at the bottom of the screen when you are ready to
-    advance the system forward and move on to the next turn.</text>
+    Click the 'Change System' button at the bottom of the screen when you are ready to
+    advance the system forward.</text>
   </exercise>
   <exercise>
     <id>4</id>
@@ -45,13 +44,11 @@
     <noSelect>true</noSelect>
     <noDeath>true</noDeath>
     <name>Chaos</name>
-    <text>This exercise pulls together the things you've learned about the system in previous 
-    exercises.  There are two major changes in this exercise. First, shapes do not divide anymore. 
+    <text>There are two major changes in this stage. First, shapes do not divide anymore. 
     Instead, they have a "level" which increases when the shape would have 
-    divided previously. The level will appear as a number in the 
-    center of the shape when it reaches 1 or higher. Higher level is better.  Secondly, 
-    now you only control a single shape. You cannot make changes 
-    to other shapes, but you can still change overall system parameters.</text>
+    divided previously. The level appears as a number in the 
+    center of the shape.  Secondly, 
+    you can only change the shape circled in red.  You can still change overall system parameters.</text>
   </exercise>
   <exercise>
     <id>5</id>

@@ -66,6 +66,7 @@ import javafx.scene.text.TextAlignment;
 
 import java.nio.file.Files; 
 import java.nio.file.Paths;
+import java.nio.charset.Charset;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
@@ -769,7 +770,7 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
 
         FileChooser fileChooser = new FileChooser(); 
         //String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
-        fileChooser.setInitialDirectory(new File("C://Ross//Work//Japan//Drones//Code//systems_thinking_game_evolved//data"));   
+        fileChooser.setInitialDirectory(new File("C://Ross//Work//Japan//Drones//Code//systems_thinking_game_evolved//data//current"));   
         fileChooser.setTitle("Open Player Data File");      
         fileChooser.getExtensionFilters().addAll(
          new ExtensionFilter("Text Files", "*.txt"));                              
@@ -780,7 +781,8 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         try {
             lines = Files.readAllLines(Paths.get(selectedFile.getPath()));
         } catch (IOException ex) {
-            Utils.log("Error loading player data");
+            Utils.log("Error loading player data: " + ex + ", filename: " + Paths.get(selectedFile.getPath()));
+            return;
         }
 
         /*for (String line : lines) {

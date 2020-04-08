@@ -75,21 +75,21 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
 
     SysShape selected = null;
 
-    Slider globalSlider;
+    //Slider globalSlider;
     Slider rainRateSlider;
-    Slider rainSpeedSlider;
-    ChoiceBox cbDur;
-    ChoiceBox<Constants.Dir> cbRain;
-    ColorPicker dotColor;
-    Slider dotSize;
-    Slider dotSpeed;
+    //Slider rainSpeedSlider;
+    //ChoiceBox cbDur;
+    //ChoiceBox<Constants.Dir> cbRain;
+    //ColorPicker dotColor;
+    //Slider dotSize;
+    //Slider dotSpeed;
     //CheckBox gravityReverse;
     ChoiceBox<Constants.GravityRules> cbGravity;
-    ChoiceBox<Constants.ArmorRules> cbArmor;
+    //ChoiceBox<Constants.ArmorRules> cbArmor;
     ChoiceBox<Constants.Paradigms> cbParadigm;
     ChoiceBox<Constants.GrowthRules> cbGrowth;
-    CheckBox chkSteal;
-    CheckBox chkGive;
+    //CheckBox chkSteal;
+    //CheckBox chkGive;
 
     ActionPanelVBox avbGravity;
     ActionPanelVBox avbRain;
@@ -128,21 +128,16 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         Info info = null;
         
         info = Data.getInfoByName("Gravity");
-        //Utils.addToolTip(cbGravity, info.getText());
         avbGravity.addToolTip(info.getText());
 
         info = Data.getInfoByName("Rain");
-        //Utils.addToolTip(rainRateSlider, info.getText());
         avbRain.addToolTip(info.getText());
 
         info = Data.getInfoByName("Paradigm");
-        //Utils.addToolTip(cbParadigm, info.getText());
         avbParadigm.addToolTip(info.getText());
 
-        //info = Data.getInfoByName("Growth");
         String str = "When Growth is set to 'No Growth' shapes will not grow through environmental " +
         "factors.  However, spikes will also not form.";
-        //Utils.addToolTip(cbGrowth, str);   
         avbGrowth.addToolTip(str);
     }
 
@@ -217,12 +212,12 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         int row = 0;
         int col = 0;
 
-        cbDur = new ChoiceBox();
+        /*cbDur = new ChoiceBox();
         cbDur.getItems().add("1 second");
         cbDur.getItems().add("2 seconds");
         cbDur.getItems().add("3 seconds");
         cbDur.getItems().add("4 seconds");
-        cbDur.getItems().add("5 seconds");
+        cbDur.getItems().add("5 seconds");*/
         //node = addChoiceBox(cbDur, "Turn Duration:");
         //setupOneItem(node, row++, col);
 
@@ -232,38 +227,38 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         //setupOneItem(avbGravity, 2, col);
         setupOneItem(avbGravity, row++, col);
 
-        globalSlider = createSlider();
+        //globalSlider = createSlider();
         //node = addSliderControl(globalSlider, "Movement Rate");
         //setupOneItem(node, row++, col);
 
         row = 0;
         col++; 
-        cbRain = new ChoiceBox<Constants.Dir>();
-        cbRain.getItems().setAll(Constants.Dir.values());
-        cbRain.getSelectionModel().selectFirst();
+        //cbRain = new ChoiceBox<Constants.Dir>();
+        //cbRain.getItems().setAll(Constants.Dir.values());
+        //cbRain.getSelectionModel().selectFirst();
         //node = addChoiceBox(cbRain, "Rain Origin");
         //setupOneItem(node, row++, col);
 
         rainRateSlider = createSlider();
         avbRain = addSliderControl(rainRateSlider, "Rain Rate");
         //setupOneItem(avbRain, 2, col);
-        setupOneItem(avbRain, row++, col);
+        setupOneItem(avbRain, row, col);
 
-        rainSpeedSlider = createSlider();
+        //rainSpeedSlider = createSlider();
         //node = addSliderControl(rainSpeedSlider, "Rain Speed");
         //setupOneItem(node, row++, col);
 
         row = 0;
         col++; 
-        dotColor = new ColorPicker(Data.currentValues.getMovingDotColor());
+        //dotColor = new ColorPicker(Data.currentValues.getMovingDotColor());
         //node = addColorControl(dotColor, "Moving Dot Color");
         //setupOneItem(node, row++, col);
 
-        dotSize = createSlider();
+        //dotSize = createSlider();
         //node = addSliderControl(dotSize, "Moving Dot Size");
         //setupOneItem(node, row++, col);
 
-        dotSpeed = createSlider();
+        //dotSpeed = createSlider();
         //node = addSliderControl(dotSpeed, "Circle Speed");
         //setupOneItem(node, row++, col);
         
@@ -271,22 +266,22 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         cbGrowth.getItems().setAll(Constants.GrowthRules.values());
         avbGrowth = addChoiceBox(cbGrowth, "Growth");
         //setupOneItem(avbGrowth, 2, col);
-        setupOneItem(avbGrowth, row++, col);
+        setupOneItem(avbGrowth, row, col);
 
         //row = 0;
         //col++; 
 
-        cbArmor = new ChoiceBox<Constants.ArmorRules>();
-        cbArmor.getItems().setAll(Constants.ArmorRules.values());
+        //cbArmor = new ChoiceBox<Constants.ArmorRules>();
+        //cbArmor.getItems().setAll(Constants.ArmorRules.values());
         //node = addChoiceBox(cbArmor, "Armor Rules");
         //setupOneItem(node, row++, col);
         
         // Tooltip needed
-        chkSteal = new CheckBox();
+        //chkSteal = new CheckBox();
         //node = addCheckBox(chkSteal, "Shapes Cannot Steal");
         //setupOneItem(node, row++, col);
 
-        chkGive = new CheckBox();
+        //chkGive = new CheckBox();
         //node = addCheckBox(chkGive, "Shapes Cannot Give");
         //setupOneItem(node, row++, col);
 
@@ -296,7 +291,7 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         cbParadigm.getItems().setAll(Constants.Paradigms.values());
         avbParadigm = addChoiceBox(cbParadigm, "Paradigm");
         //setupOneItem(avbParadigm, 2, col);
-        setupOneItem(avbParadigm, row++, col);
+        setupOneItem(avbParadigm, row, col);
 
         // Actually a high leverage point would be how much the spinning
         // affects each other, like how fast each thing steals from each other.
@@ -330,25 +325,25 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
     }
 
     public void setToCurrentValues() {
-        cbDur.getSelectionModel().select(Data.currentValues.turnSeconds - 1);
-        cbRain.getSelectionModel().select(Data.currentValues.rainOrigin);
-        dotColor.setValue(Data.currentValues.getMovingDotColor());
-        populateCheck(chkSteal, Data.currentValues.noTakeSize);
-        populateCheck(chkGive, Data.currentValues.noGiveSize);
+        //cbDur.getSelectionModel().select(Data.currentValues.turnSeconds - 1);
+        //cbRain.getSelectionModel().select(Data.currentValues.rainOrigin);
+        //dotColor.setValue(Data.currentValues.getMovingDotColor());
+        //populateCheck(chkSteal, Data.currentValues.noTakeSize);
+        //populateCheck(chkGive, Data.currentValues.noGiveSize);
         cbGravity.getSelectionModel().select(Data.currentValues.gravityRules);
-        cbArmor.getSelectionModel().select(Data.currentValues.armorRules);
+        //cbArmor.getSelectionModel().select(Data.currentValues.armorRules);
         cbParadigm.getSelectionModel().select(Data.currentValues.paradigm);
         cbGrowth.getSelectionModel().select(Data.currentValues.growthRules);
-        globalSlider.setValue(getSliderPositionForValue(
-            Data.startingValues.globalMoveRate, Data.currentValues.globalMoveRate));
+        //globalSlider.setValue(getSliderPositionForValue(
+        //    Data.startingValues.globalMoveRate, Data.currentValues.globalMoveRate));
         rainRateSlider.setValue(getSliderPositionForValue(
             Data.startingValues.rainRate, Data.currentValues.rainRate));
-        rainSpeedSlider.setValue(getSliderPositionForValue(
-            Data.startingValues.rainSpeedVar, Data.currentValues.rainSpeedVar));
-        dotSpeed.setValue(getSliderPositionForValue(
-            Data.startingValues.movingDotSpeedRate, Data.currentValues.movingDotSpeedRate));
-        dotSize.setValue(getSliderPositionForValue(
-            Data.startingValues.movingDotSize, Data.currentValues.movingDotSize));
+        //rainSpeedSlider.setValue(getSliderPositionForValue(
+        //    Data.startingValues.rainSpeedVar, Data.currentValues.rainSpeedVar));
+        //dotSpeed.setValue(getSliderPositionForValue(
+        //    Data.startingValues.movingDotSpeedRate, Data.currentValues.movingDotSpeedRate));
+        //dotSize.setValue(getSliderPositionForValue(
+        //    Data.startingValues.movingDotSize, Data.currentValues.movingDotSize));
         
         GravityWell well = Gos.sim.getGravityWell();
         if (well != null) {
@@ -442,39 +437,34 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         // Look through and if anything is different, mark it for coloration.
 
         // ChoiceBoxes
-        setStyleForControl(cbDur, isDifferent(cbDur, Data.currentValues.turnSeconds - 1));
-        setStyleForControl(cbRain, isDifferent(cbRain, Data.currentValues.rainOrigin));
+        //setStyleForControl(cbDur, isDifferent(cbDur, Data.currentValues.turnSeconds - 1));
+        //setStyleForControl(cbRain, isDifferent(cbRain, Data.currentValues.rainOrigin));
         setStyleForControl(cbGravity, isDifferent(cbGravity, Data.currentValues.gravityRules));
-        setStyleForControl(cbArmor, isDifferent(cbArmor, Data.currentValues.armorRules));
+        //setStyleForControl(cbArmor, isDifferent(cbArmor, Data.currentValues.armorRules));
         setStyleForControl(cbParadigm, isDifferent(cbParadigm, Data.currentValues.paradigm));
         setStyleForControl(cbGrowth, isDifferent(cbGrowth, Data.currentValues.growthRules));
         
         // Sliders
-        setStyleForControl(globalSlider, isDifferent(globalSlider, 
-            Data.currentValues.globalMoveRate, Data.startingValues.globalMoveRate));
+        //setStyleForControl(globalSlider, isDifferent(globalSlider, 
+        //    Data.currentValues.globalMoveRate, Data.startingValues.globalMoveRate));
         setStyleForControl(rainRateSlider, isDifferent(rainRateSlider, 
             Data.currentValues.rainRate, Data.startingValues.rainRate));
-        setStyleForControl(rainSpeedSlider, isDifferent(rainSpeedSlider, 
+        /*setStyleForControl(rainSpeedSlider, isDifferent(rainSpeedSlider, 
             Data.currentValues.rainSpeedVar, Data.startingValues.rainSpeedVar));
         setStyleForControl(dotSpeed, isDifferent(dotSpeed, 
             Data.currentValues.movingDotSpeedRate, Data.startingValues.movingDotSpeedRate));
         setStyleForControl(dotSize, isDifferent(dotSize, 
-            Data.currentValues.movingDotSize, Data.startingValues.movingDotSize));
-        /*setStyleForControl(globalSlider, isDifferent(globalSlider, 50));
-        setStyleForControl(rainRateSlider, isDifferent(rainRateSlider, 50));
-        setStyleForControl(dotSpeed, isDifferent(dotSpeed, 50));
-        setStyleForControl(dotSize, isDifferent(dotSize, 50));
-        setStyleForControl(rainSpeedSlider, isDifferent(rainSpeedSlider, 50));*/
+            Data.currentValues.movingDotSize, Data.startingValues.movingDotSize));*/
 
         // Checkboxes
-        setStyleForControl(chkSteal, isDifferent(chkSteal, Data.currentValues.noTakeSize));
-        setStyleForControl(chkGive, isDifferent(chkGive, Data.currentValues.noGiveSize));
+        //setStyleForControl(chkSteal, isDifferent(chkSteal, Data.currentValues.noTakeSize));
+        //setStyleForControl(chkGive, isDifferent(chkGive, Data.currentValues.noGiveSize));
 
         // Other
-        setStyleForControl(dotColor, isDifferent(dotColor, 
+        /*setStyleForControl(dotColor, isDifferent(dotColor, 
             Data.currentValues.movingDotR,
             Data.currentValues.movingDotG,
-            Data.currentValues.movingDotB));
+            Data.currentValues.movingDotB));*/
     }
 
     private double getSliderPositionForValue(double start_val, double val) {
@@ -589,9 +579,9 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         //values.globalMoveRate = 
           //  Data.startingValues.globalMoveRate * getMultiplierForSlider(globalSlider);
 
-        values.turnSeconds = cbDur.getSelectionModel().getSelectedIndex() + 1;
+        //values.turnSeconds = cbDur.getSelectionModel().getSelectedIndex() + 1;
 
-        values.rainOrigin = cbRain.getSelectionModel().getSelectedIndex();
+        //values.rainOrigin = cbRain.getSelectionModel().getSelectedIndex();
 
         values.rainRate = Utils.round(getMultiplierForSlider(rainRateSlider), 3);
             
@@ -607,20 +597,20 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         //values.movingDotSize = 
            // Data.startingValues.movingDotSize * getMultiplierForSlider(dotSize);
 
-        Color color = (Color)dotColor.getValue();
+        /*Color color = (Color)dotColor.getValue();
         // Extremely strange that I need to multiply by 255 in this case as sometimes
         // I seem to get back the 0-255 value .. but here I get back a 0-1 number.
         values.movingDotR = (int)(255.0 * color.getRed());
         values.movingDotG = (int)(255.0 * color.getGreen());
-        values.movingDotB = (int)(255.0 * color.getBlue());
+        values.movingDotB = (int)(255.0 * color.getBlue());*/
 
         values.gravityRules = cbGravity.getSelectionModel().getSelectedIndex();
-        values.armorRules = cbArmor.getSelectionModel().getSelectedIndex();
+        //values.armorRules = cbArmor.getSelectionModel().getSelectedIndex();
         values.paradigm = cbParadigm.getSelectionModel().getSelectedIndex();
         values.growthRules = cbGrowth.getSelectionModel().getSelectedIndex();
 
-        values.noTakeSize = chkSteal.isSelected();
-        values.noGiveSize = chkGive.isSelected();
+        //values.noTakeSize = chkSteal.isSelected();
+        //values.noGiveSize = chkGive.isSelected();
 
         values.gravityWellCenterX = 0;
         values.gravityWellCenterY = 0;

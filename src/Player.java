@@ -299,7 +299,8 @@ public final class Player {
         // Go backwards to find the most recent answer to this question, if there is one
         for (int i = Player.answers.size() - 1; i >= 0; i--) {
             Answer ans = Player.answers.get(i);
-            if (ans.getQuestionId() == question.getId()) {
+            if (ans.getQuestionId() == question.getId() &&
+                ans.getExerciseId() == question.getExercise()) {
                 return ans;
             }
         }

@@ -3,8 +3,8 @@
 
 
 .root{
-    -fx-font-size: 11pt;
-    -fx-font-family: "Segoe UI";
+    -fx-font-size: 10.5pt;
+    -fx-font-family: "Arial";
     -fx-base: rgb(235, 235, 235);
     -fx-background: rgb(245, 245, 245);
 }

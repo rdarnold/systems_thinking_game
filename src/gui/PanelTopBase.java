@@ -72,13 +72,14 @@ public class PanelTopBase extends ActionPanelBase {
     protected ScreenInfoArea infoArea;
     public ScreenInfoArea getInfoArea() { return infoArea; }
 
-    protected int instructionTextWidth = 750;
+    public static int instructionTextWidth = 750;
 
     public PanelTopBase() {
         super();
         setStyle("-fx-border-color: darkgray;");
-        setPrefHeight(195);
-        setPadding(new Insets(10));
+        //setPrefHeight(95);
+        setPrefHeight(Gos.hgt - 605);
+        setPadding(new Insets(2));
         setAlignment(Pos.CENTER);
         setSpacing(5);
 
@@ -92,8 +93,9 @@ public class PanelTopBase extends ActionPanelBase {
         // Create a new m_MainVBox.  This is used by the parent class
         // as the main vbox upon which to add children nodes.
         setMainVBox(new VBox()); 
-        m_MainVBox.setPadding(new Insets(5));
+        //m_MainVBox.setPadding(new Insets(5));
         m_MainHBox.getChildren().add(m_MainVBox);
+        m_MainVBox.setAlignment(Pos.CENTER);
         
         setStyle("-fx-background-color: #E0EEEE; " + 
                  "-fx-border-color: black; " +

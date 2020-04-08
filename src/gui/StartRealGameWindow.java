@@ -91,7 +91,7 @@ public class StartRealGameWindow extends DialogWindow {
         Utils.addVerticalSpace(m_MainVBox, space);
 
         textLabel = addLeftLabel();
-        Utils.addVerticalSpace(m_MainVBox, space);
+        //Utils.addVerticalSpace(m_MainVBox, space);
 
         Info info = Data.getInfoByName("Game Play");
         if (info != null) {

@@ -11,8 +11,8 @@
         CRCRThe game consists of the following sections:
         CR- Demographic Survey (~10 minutes)
         CR- In-Game Tutorial (~5 minutes)
-        CR- Gameplay: Four Shapes exercise (~20+ minutes)
-        CR- Gameplay: Chaos exercise (~20+ minutes)
+        CR- Gameplay: Four Shapes stage (~20+ minutes)
+        CR- Gameplay: Chaos stage (~20+ minutes)
         CR- Feedback (~5 minutes)
         CR- Self-assessment (~15 minutes)
         CRCRThe entire experience will probably take at least an hour of concentrated time. Feel free to explore the simulation at your own pace.
@@ -22,9 +22,9 @@
         <name>Introduction</name>
         <text>
         The purpose of this game is to understand how people approach and solve certain 
-        types of complex problems. During the game, you will be presented with a 
-        set of scenarios.  In each scenario, there is a system which has a
-        set of spinning shapes of various types, colors, sizes, and properties.  The scenario will 
+        types of complex problems. During the game, you will play through 2 stages.  In each stage, 
+        there is a system which has a
+        set of spinning shapes of various types, colors, sizes, and properties.  The stage will 
         provide an objective for you to achieve within a certain number of turns.  
         CRCREach turn is an interval of several seconds during which the system moves forward 
         in time.  Before each turn of the task, you’ll be able to make changes to the system.  
@@ -38,7 +38,7 @@
     <info name="General">
         <name>General</name>
         <text>
-        Each scenario consists of several shapes that move around screen and behave in certain ways, 
+        Each stage consists of several shapes that move around screen and behave in certain ways, 
         some laws that restrict how things work, and other hidden variables.  It will be your job to try 
         to understand how this system works, answer questions about it, and make changes to make it behave 
         certain ways.
@@ -59,7 +59,7 @@
         it do what you want. To do that, you'll need to know:CRCR
         1: Some things about how the system works.CR
         2: What things you should change.CR
-        3: How much to change them (or in which direction).CRCR
+        3: How much to change them (or in which direction).
         </text> 
     </info>
     <info name="Observe">
@@ -77,7 +77,7 @@
         Devise experiments to test and learn about the system.  You can design an experiment that shows
         how a particular set of changes will affect the system over the course of one turn.  All experiments
         start from the original state of the system, and can only run for a single turn.
-        CRCROnce you create an experiment, you can watch and re-watch it as many times as you
+        Once you create an experiment, you can watch and re-watch it as many times as you
         want.  Or, you can create a new experiment, which will replace the old one.
         </text>
     </info>
@@ -86,7 +86,7 @@
         <text>
         Make desired changes to the system, then proceed to the next turn in the task.  Each task has
         only a set number of turns, with a goal that you will be trying to achieve within those turns.
-        CRCRWhen proceeding to the next turn, you will be presented with a set of sliders and selections
+        When proceeding to the next turn, you will be presented with a set of sliders and selections
         that allow you to tweak the system as you wish.
         </text>
     </info>

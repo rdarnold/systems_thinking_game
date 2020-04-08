@@ -48,7 +48,7 @@ public class NextTaskWindow extends DialogWindow {
         int labelWid = wid - 20;
 
         MovableButton btn;
-        String str;
+        String str = "";
         VBox box = m_MainVBox;
 
         // Just clear the entire thing off before we do anything further.

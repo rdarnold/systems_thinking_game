@@ -70,6 +70,7 @@ public class ActionPanelVBox extends VBox {
     
     public Label addLabel(String str) { 
         m_Label = new Label(str);
+        //m_Label.setStyle("-fx-font-weight: bold; ");
         getChildren().add(m_Label);
         return m_Label; 
     }

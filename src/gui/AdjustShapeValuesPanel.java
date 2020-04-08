@@ -70,7 +70,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
     ChoiceBox cbCorner;
     ChoiceBox cbSpin;
     ColorPicker picker;
-    Slider sizeSlider;
+    //Slider sizeSlider;
     Slider spinSlider;
     //Button btnSac;
     
@@ -134,7 +134,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
             }
         });
 
-        sizeSlider = createSlider();
+        //sizeSlider = createSlider();
         /*addSliderControl(sizeSlider, "Size");
         sizeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov,
@@ -161,6 +161,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         });
         
         picker = new ColorPicker((Color)selected.getFill());
+        picker.setMaxWidth(Constants.BUTTON_WIDTH);
         addColorControl(picker, "Color");
         picker.setOnAction(new EventHandler() {
             public void handle(Event t) {
@@ -244,7 +245,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         selected.setFill((Color)shape.getFill());
         picker.setValue((Color)selected.getFill());
         selected.setSizePercent(shape.getSizePercent());
-        sizeSlider.setValue(selected.getSizePercent());
+        //sizeSlider.setValue(selected.getSizePercent());
         selected.setSpinSpeedPercent(shape.getSpinSpeedPercent());
         spinSlider.setValue(selected.getSpinSpeedPercent());
     }
@@ -333,7 +334,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         setStyleForControl(cbSpin, isDifferent(cbSpin, (shape.getSpinRight() == false)));
         
         // Sliders
-        setStyleForControl(sizeSlider, isDifferent(sizeSlider, shape.getSizePercent()));
+        //etStyleForControl(sizeSlider, isDifferent(sizeSlider, shape.getSizePercent()));
         setStyleForControl(spinSlider, isDifferent(spinSlider, shape.getSpinSpeedPercent()));
 
         // Other

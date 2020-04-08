@@ -206,7 +206,6 @@ public class AnswerScreen extends GosSceneBase {
         // we want to populate the question with the answer the player already
         // provided 
         Answer priorAnswer = Player.getPriorAnswer(question);
-
         //exerciseText.setText(exercise.getAnswerScreenText());
 
         questionNameText.setText("Current Question: " + question.getName());

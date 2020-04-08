@@ -74,7 +74,7 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         lblName.setTextAlignment(TextAlignment.CENTER);
         //lblName.setFont(new Font(20));
         lblName.setStyle("-fx-font-weight: bold; "+ 
-                         "-fx-font-size: 20px;");
+                         "-fx-font-size: 18px;");
         getChildren().add(lblName);
 
         lblScenario = new Label();
@@ -94,7 +94,7 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
             Player.currentExerciseNameTrackerProperty()
         ));*/
         lblScenario.textProperty().bind(Bindings.createStringBinding(() -> 
-            "Scenario " + Player.getCurrentExerciseDisplayIdTracker() +
+            "Stage " + Player.getCurrentExerciseDisplayIdTracker() +
             ": " + Player.getCurrentExerciseNameTracker(),
             Player.currentExerciseDisplayIdTrackerProperty(), 
             Player.currentExerciseDisplayIdTrackerProperty(),
@@ -123,15 +123,16 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         buttonBox.setAlignment(Pos.CENTER);
         buttonVBox.getChildren().add(buttonBox);
         
-        HBox buttonBox2 = new HBox();
-        buttonBox2.setSpacing(2);
-        buttonBox2.setAlignment(Pos.CENTER);
-        buttonVBox.getChildren().add(buttonBox2);
+        //HBox buttonBox2 = new HBox();
+        //buttonBox2.setSpacing(2);
+        //buttonBox2.setAlignment(Pos.CENTER);
+        //buttonVBox.getChildren().add(buttonBox2);
 
         MovableButton btn = null;
+        int nBtnWid = 60;
 
-        btn = new MovableButton("Help");
-        btn.setPrefWidth(60);
+        /*btn = new MovableButton("Help");
+        btn.setPrefWidth(nBtnWid);
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -140,11 +141,11 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
             }
         });
         buttonList.add(btn);
-        buttonBox.getChildren().add(btn);
+        buttonBox.getChildren().add(btn);*/
 
         btn = new MovableButton("Score");
         Utils.addToolTip(btn, "Shows your scores for each stage.");
-        btn.setPrefWidth(60);
+        btn.setPrefWidth(nBtnWid);
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -157,7 +158,7 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
 
         btn = new MovableButton("Info");
         Utils.addToolTip(btn, "Access some text information about the system.");
-        btn.setPrefWidth(60);
+        btn.setPrefWidth(nBtnWid);
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -171,7 +172,8 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         btn = new MovableButton("Notes");
         Utils.addToolTip(btn, "Notes is an area for you to record notes and observations about the system.  You can write " +
           "anything in it, and it will stick around for the entire game.");
-        btn.setPrefWidth(184);
+        //btn.setPrefWidth((nBtnWid * 3) + 4);
+        btn.setPrefWidth(nBtnWid);
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -180,7 +182,8 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
             }
         });
         buttonList.add(btn);
-        buttonBox2.getChildren().add(btn);
+        buttonBox.getChildren().add(btn);
+        //buttonBox2.getChildren().add(btn);
 
         m_HelpWindow = new OKWindow(400, 500, "", "");
         m_ScoreWindow = new OKWindow(400, 500, "Score Record", "No scores yet.");

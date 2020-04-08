@@ -131,7 +131,7 @@ public class MainPanelTop extends PanelTopBase {
         //super.addToRightSide(scenarioTitle);
 
         super.addToRightSide(instructionText);
-        Utils.addVerticalSpace(m_MainVBox, 10);
+        Utils.addVerticalSpace(m_MainVBox, 5);
 
         super.addToRightSide(taskText);
     }

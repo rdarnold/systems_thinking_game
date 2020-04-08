@@ -573,11 +573,12 @@ public class VariableWindow extends DialogWindow {
         String str = "";
         for (int i = 0; i < labList.size(); i++) {
             str += labList.get(i).getText() + ": " + 
-                // Uncomment below and comment above if I want to slim down text here
-                // for data streamlining purposes.
-                //i + ":" + 
                 getRankForChoiceBox(cbList.get(i)) + "\r\n";
         }
+
+        // Now add the rationale
+        str += "Rationale:\r\n" + m_taRationale.getText();
+
         Player.recordAction(Action.Type.SubmitVarRating, str, thisScreen.className());
 
         m_bCancelled = false;

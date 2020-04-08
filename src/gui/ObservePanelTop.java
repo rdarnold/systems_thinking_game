@@ -95,18 +95,16 @@ public class ObservePanelTop extends PanelTopBase {
         super.update();
 
         if (Player.inPracticeMode()) {
-            instructionText.setText("Here you can observe the system as it progresses over time.  " +
-            "\r\n\r\nClick the 'Play All' button to watch the system from start to finish. Click " +
+            instructionText.setText("Click the 'Play All' button to watch the system for 3 turns. Click " +
             "the '>' button to just watch the system through a single turn. " +
-            "\r\n\r\nWhen you are finished observing, click the 'Main Screen' button to go to the main " +
+            "When you are finished observing, click the 'Main Screen' button to go to the main " +
             "screen and continue the game.  You can return to this screen from the main screen " +
             "at any time.");
         }
         else {
-            instructionText.setText("Here you can observe the system as it progresses over time. " +
-            "\r\n\r\nClick the 'Play All' button to watch the system from start to finish. Click " +
+            instructionText.setText("Click the 'Play All' button to watch the system for 3 turns. Click " +
             "the '>' button to just watch the system through a single turn. " +
-            "\r\n\r\nWhen you are finished observing, click the 'Main Screen' button to go to the main " +
+            "When you are finished observing, click the 'Main Screen' button to go to the main " +
             "screen and continue the game.  You can return to this screen from the main screen " +
             "at any time.");
         }

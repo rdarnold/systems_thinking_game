@@ -66,8 +66,8 @@ import gos.analyzer.*;
 // Gos - Game of Systems
 //public class Gos extends Application implements SimulatorEventListener {
 public class Gos extends Application {
-    int wid = 1000;
-    int hgt = 800;
+    public static int wid = 1000; // 1000 is ok here because we can use the entire screen width at 1024
+    public static int hgt = 720; // Taskbar can be 40px thick, so we need at most 768 - 40 = 728
 
     // If the player chooses to skip the surveys
     public static boolean skipSurveys = false;
@@ -78,7 +78,7 @@ public class Gos extends Application {
     // All should be false for deployment //////
     ////////////////////////////////////////////
     public static boolean testing = false;
-    public static boolean showSkipWindow = false;
+    public static boolean showSkipWindow = true;
     public static boolean assessmentMode = false;
     ////////////////////////////////////////////
     ////////////////////////////////////////////
@@ -142,9 +142,9 @@ public class Gos extends Application {
         playedBeforeWindow = new PlayedBeforeWindow(500, 350);
         playAgainWindow = new PlayAgainWindow(500, 350);
         startSurveyWindow = new StartSurveyWindow(500, 350);
-        startFeedbackWindow = new StartFeedbackWindow(500, 350);
+        startFeedbackWindow = new StartFeedbackWindow(500, 400);
         betaWindow = new BetaWindow(400, 530);
-        exercisePopupWindow = new ExercisePopupWindow(400, 400);
+        exercisePopupWindow = new ExercisePopupWindow(400, 450);
         startSimulationWindow = new StartSimulationWindow(600, 600);
         startRealGameWindow = new StartRealGameWindow(600, 700);
         variableWindow = new VariableWindow(400, 700);
@@ -291,14 +291,14 @@ public class Gos extends Application {
     }
 
     public static void showTaskWindow() {
-        OKWindow wind = new OKWindow(250, 250, 
+        OKWindow wind = new OKWindow(250, 350, 
             "New Task: " + Player.getCurrentTaskNameTracker() + "!", 
             Player.getCurrentTaskTextTracker());
         wind.showAndWait(true);
     }
 
     public static void showNextTutorialWindow() {
-        OKWindow wind = new OKWindow(250, 250, 
+        OKWindow wind = new OKWindow(250, 350, 
             "New Tutorial Goal: ", Player.getCurrentTaskTextTracker());
         wind.showAndWait(true);
     }

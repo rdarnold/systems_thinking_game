@@ -202,10 +202,12 @@ public class MainPanelBottom extends PanelBottomBase {
                 Gos.sim.unpause();
                 Gos.sim.snapCurrent();
                 //if (Player.getCurrentTurnNumber() >= Player.getMaxTurns()) {
-                if (Player.getPlayedTurns().onLastTurn()) {
-                    Gos.mainScene.showNextTaskWindow();
-                }
-                else {
+                // Why would you ever want this here??? 
+                // Pop up the next task window when we hit Change System???
+                //if (Player.getPlayedTurns().onLastTurn()) {
+                //    Gos.mainScene.showNextTaskWindow();
+                //}
+                //else {
                     // Show the correct controls
                     Gos.mainScene.showChangePanelSet(); 
                     //Player.setSelectedShape(sim.shapes.get(0));
@@ -218,7 +220,7 @@ public class MainPanelBottom extends PanelBottomBase {
                         Tutorial.setTextForTutorialTurn(Player.getCurrentTurnNumber());
                         Gos.showNextTutorialWindow();
                     }
-                }
+                //}
             }
         });
         buttonList.add(btn);

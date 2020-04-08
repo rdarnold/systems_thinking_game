@@ -119,7 +119,6 @@ public class Answer {
         
         line = fromLines.get(lineNum);
         while (line != null && line.substring(0, 4).equals("@STX") == false) {
-            line = fromLines.get(lineNum);
             if (line.substring(0, 4).equals("ANS:") == true) {
                 line = line.substring(5, line.length());
                 answerType = Question.AnswerType.fromInt(Utils.tryParseInt(line));
@@ -143,6 +142,7 @@ public class Answer {
             // If I need anything else, I can just add another entry here and
             // it won't render "old data" unloadable
             lineNum++;
+            line = fromLines.get(lineNum);
         }
 
         lineNum++;

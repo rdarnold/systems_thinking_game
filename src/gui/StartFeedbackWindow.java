@@ -128,7 +128,7 @@ public class StartFeedbackWindow extends DialogWindow {
         // the stuff that isn't in the info area
         str = "You have indicated that you have played the simulation before.  If you previously " +
         "filled out all the feedback questions, completed the Systems Thinking self-assessment " +
-        "after the simulation, AND you used the same ID and/or the same name to play this time, you may end the game here.  However, if you have not " +
+        "after the simulation, and you used the same ID and/or the same name to play this time, you may end the game here.  However, if you have not " +
         "completed those sections during a previous play-through, or you have used a different name and ID, please click the Continue button to proceed " +
         "to the feedback and self-assessment sections.  Thank you!";
         textLabel = addLeftLabel(str);

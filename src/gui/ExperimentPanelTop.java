@@ -86,9 +86,8 @@ public class ExperimentPanelTop extends PanelTopBase {
         instructionText.setPrefWidth(instructionTextWidth);
         instructionText.setText("Using an experiment, you can make changes to " + 
         "your current system and see how these changes affect the system for 1 turn. " + 
-        "\r\n\r\n" +
         "Once you create an experiment, you can re-watch it as many times as you want using the " +
-        "Re-Run Experiment button.\r\n\r\nUse the 'Restore' button to restore the system to " +
+        "Re-Run Experiment button. Use the 'Restore' button to restore the system to " +
         "its original non-experimented state.");
 
         super.addToRightSide(instructionText);

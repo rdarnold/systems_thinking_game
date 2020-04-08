@@ -238,7 +238,7 @@ public final class FileTransfer {
             Player.lastSavedData = Player.getPlayerData();
             Utils.log(Player.getDataSizeString(Player.lastSavedData));
             if (createFileFromString(service, Player.getDataFileName(), 
-                    "Simulation Results", "text/plain", Player.lastSavedData) != null) {
+                    "Simulation Results", "text/plain;charset=UTF-8", Player.lastSavedData) != null) {
                 setUploadProgress(1);
                 setUploadSuccess(1);
                 Player.incSaveNum(); // Increment the number of saves we've done during the game

@@ -147,10 +147,10 @@ public class Exercise extends GameDataItem {
 
     public String toString(boolean carriageReturn) {
         if (carriageReturn == true) {
-            return "Exercise " + (getId() + 1) + "\r\n" + getName();
+            return "Stage " + (getId() + 1) + "\r\n" + getName();
         } 
         else {
-            return "Exercise " + (getId() + 1) + ": " + getName();
+            return "Stage " + (getId() + 1) + ": " + getName();
         }
     }
 

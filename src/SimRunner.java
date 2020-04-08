@@ -165,7 +165,7 @@ public class SimRunner implements SimulatorEventListener {
         //actualSnapshots.add(shot);
         //Player.addCurrentTurnNumber();
         //Turn turn = runOneTurn(false); // Typically we don't need to record.  It's very CPU intensive.
-        Turn turn = runOneTurn(true); // Now actually we always record so that we can use the new slider
+        Turn turn = runOneTurn(true); // Now actually we always record so that we can use the new slider (in actual game)
         // But we have to make sure we free all the frames of our old turn so we don't waste memory.
         // We don't need them anymore anyway.
         Turn oldTurn = Player.getPlayedTurns().getCurrentTurn();
@@ -266,7 +266,7 @@ public class SimRunner implements SimulatorEventListener {
         //Task task = Player.previousTask();
         //Gos.showMainScreen();
         //startTask(task);
-        
+
         // I guess your task isn't nulled out yet???
         Gos.showMainScreen();
         startTask(Player.getCurrentTask());
@@ -284,15 +284,20 @@ public class SimRunner implements SimulatorEventListener {
             // Ok so we are out of tasks.  Start the questions
             // session in that case.
             //finishExercise();
-
-            // Actually first pop up the replay window, but only if we have answered the
-            // questions once already.
-            if (Player.hasAnsweredQuestionsForExercise(Player.getCurrentExerciseNumberTracker()) == false) {
-                Gos.showAnswerScreen();
+            if (Player.getCurrentExercise().getId() >= 3) {
+                // Actually first pop up the replay window, but only if we have answered the
+                // questions once already.
+                if (Player.hasAnsweredQuestionsForExercise(Player.getCurrentExerciseNumberTracker()) == false) {
+                    Gos.showAnswerScreen();
+                }
+                else {
+                    Gos.showPlayAgainWindow();
+                }
             }
             else {
-                Gos.showPlayAgainWindow();
+                finishExercise();
             }
+
         }
         else {
             startTask(task);
@@ -389,7 +394,12 @@ public class SimRunner implements SimulatorEventListener {
 
         // Actually now we just pop up the play again window any time we're
         // done with exercise questions
-        Gos.showPlayAgainWindow();
+        if (Player.getCurrentExercise().getId() >= 3) {
+            Gos.showPlayAgainWindow();
+        }
+        else {
+            finishExercise();
+        }
     }
 
     public void uploadData() {

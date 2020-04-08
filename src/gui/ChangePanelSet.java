@@ -208,7 +208,7 @@ public class ChangePanelSet extends PanelSetBase {
         // Do next turn.
         Gos.simRunner.advanceTask();
         
-        Player.addDiscoveryPoints(1);
+        //Player.addDiscoveryPoints(1);
     }
 
     public void onCancelButton() {

@@ -22,11 +22,11 @@ public final class Constants {
 
     public static final int SIM_WIDTH = 590;
     public static final int SIM_HEIGHT = 525;
-
+ 
     public static final int SIM_CENTER_X = SIM_WIDTH/2;
     public static final int SIM_CENTER_Y = SIM_HEIGHT/2;
 
-    public static final String VERSION_NUMBER_STRING = "0.69";
+    public static final String VERSION_NUMBER_STRING = "0.74";
 
     // Some key strings for the system
     public static final String SHAPE_KEY_STRING = "@S";
