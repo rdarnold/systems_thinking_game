@@ -200,6 +200,24 @@ public class Simulator {
         return shape;
     }
 
+    public void addShapesFromSnap(SystemSnapshot snap) {
+        // Add them all first, THEN trigger the number of shapes changed
+        for (int i = 0; i < snap.shapes.size(); i++) {
+            SysShape newItem = new SysShape(snap.shapes.get(i));
+            shapes.add(newItem);
+            if (newItem.getWasSelected() == true) {
+                Gos.selectShape(newItem);
+            }
+        }
+
+        // Now trigger the number changed at the very end
+        int size = getNumberLiveShapes();
+        for (int i = 0; i < simulatorListeners.size(); i++) {
+            //simulatorListeners.get(i).onShapeAdded(shape);
+            simulatorListeners.get(i).onNumberOfShapesChanged(size);
+        }
+    }
+
     public SysShape addShape(SysShape shape) {
         shapes.add(shape);
 
@@ -344,7 +362,6 @@ public class Simulator {
         // Make sure we always have something selected if there
         // is something to select.
         if (shapes != null && shapes.size() > 0 && Player.getSelectedShape() == null) {
-            Utils.log("BOOBS 5");
             Gos.selectShape(shapes.get(0));
         }
     }
@@ -751,6 +768,11 @@ public class Simulator {
             totalGravity += getGravity(patch);
         }
         return totalGravity;
+    }
+
+    public int getNumberTotalShapes() {
+        // In this case, we don't care if they're dead or alive
+        return shapes.size();
     }
 
     public int getNumberLiveShapes() {

@@ -694,9 +694,20 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         Menu menuFile = new Menu("File");
         bar.getMenus().add(menuFile);
 
+        MenuItem add;
+        
+        add = new MenuItem("Download Data");
+            add.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent t) {
+                onClickDownloadData();
+            }
+        });        
+ 
+        menuFile.getItems().addAll(add);
+
         //MenuItem add = new MenuItem("Shuffle",
             //new ImageView(new Image("menusample/new.png")));
-        MenuItem add = new MenuItem("Load Player Data");
+        add = new MenuItem("Load Player Data");
             add.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
                 onClickLoadPlayerData();
@@ -763,6 +774,15 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
 
         // Show the system as we loaded in desc
         Gos.mainScene.showChangePanelSet(); 
+    }
+
+    private void onClickDownloadData() {
+        // Let's download and organize all the data from the site.
+        // We can also do any post-processing if we need to do something to them.
+        // I think we'll organize by month, and then by ID.
+
+        // A folder is a file with mimeType = 'application/vnd.google-apps.folder'
+        FileTransfer.downloadFiles();
     }
 
     private void onClickLoadPlayerData() {

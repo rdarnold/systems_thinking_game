@@ -227,12 +227,10 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
     /*private void onClickSacrifice() {
         Gos.sim.sacrificeShapeForSpikes(Player.getSelectedShape());
     }*/
-
-    public void setToCurrentValues() {
+    public void setToShapeValues(SysShape shape) {
         if (selected == null) {
             return;
         }
-        SysShape shape = Player.getSelectedShape();
 
         selected.makeShape(shape.getNumCorners());
         cbCorner.getSelectionModel().select(selected.getNumCorners() - 3);
@@ -250,6 +248,10 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
         spinSlider.setValue(selected.getSpinSpeedPercent());
     }
 
+    public void setToCurrentShapeValues() {
+        setToShapeValues(Player.getSelectedShape());
+    }
+
     // When we change anything, there are times when we only allow one change
     // per turn so we would have to change everything back.
     public void setValues(Node node) {
@@ -261,7 +263,7 @@ public class AdjustShapeValuesPanel extends SelectableShapePanel implements Adju
             return;
         }
         if (node == null) {
-            setToCurrentValues();
+            setToCurrentShapeValues();
             return;
         }
 

@@ -74,7 +74,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
     //CreateExperimentDialog experimentDialog;
 
     MovableButton exp1;
-    MovableButton exp2;
+    /*MovableButton exp2;
     MovableButton exp3;
     MovableButton exp4;
     MovableButton exp5;
@@ -85,7 +85,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
     MovableButton del4;
     MovableButton del5;
 
-    public Label discoveryPointText;
+    public Label discoveryPointText;*/
     
     private ExperimentPanelLeft thisScreen;
 
@@ -96,7 +96,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
         create();
     }
 
-    void showAlert(MovableButton expBtn, MovableButton delBtn) {
+    /*void showAlert(MovableButton expBtn, MovableButton delBtn) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirm");
         alert.setHeaderText("Delete Experiment");
@@ -108,8 +108,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
             expBtn.setDisable(true);
             delBtn.setDisable(true);
         } 
-    }
-
+    }*/
 
     private void create() {
         //dialog = new CreateExperimentDialog();
@@ -121,6 +120,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
 
         Label label = new Label("Experiments");
         label.setPadding(new Insets(20));
+        label.setStyle("-fx-font-weight: bold; ");
         getChildren().add(label);
 
         /*discoveryPointText = new Label();
@@ -141,8 +141,8 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 //Gos.sim.restoreCurrentSnap();
                 Gos.sim.restoreBaseSnap();
                 //Gos.gos.showExperimentScreen();
-                if (Gos.checkDiscoveryPoints() == false)
-                    return;
+                //if (Gos.checkDiscoveryPoints() == false)
+                //    return;
                 //if (Player.getDiscoveryPoints() > 0) {
                     // Ugh maybe I should tie these two panels together better.
                     //Gos.gos.mainScene.showExperimentCreationPanel();
@@ -153,7 +153,28 @@ public class ExperimentPanelLeft extends PanelLeftBase {
         });
         getChildren().add(btn);
 
-        Utils.addVerticalSpace(this, 30);
+        btn = new MovableButton("Edit Last");
+        str = "Edit your last experiment.";
+        Utils.addToolTip(btn, str);
+        //btn.moveTo(0, 200);
+        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Player.recordButtonAction(event, thisScreen.className());
+                //Gos.sim.restoreCurrentSnap();
+                Gos.sim.restoreBaseSnap();
+                //Gos.gos.showExperimentScreen();
+                //if (Gos.checkDiscoveryPoints() == false)
+                //    return;
+                //if (Player.getDiscoveryPoints() > 0) {
+                    // Ugh maybe I should tie these two panels together better.
+                    //Gos.gos.mainScene.showExperimentCreationPanel();
+                    m_ParentPanelSet.onEditButton();
+                //}
+                //showChooseExperimentTypeWindow();
+            }
+        });
+        getChildren().add(btn);
 
         HBox hbox = new HBox();
         getChildren().add(hbox);
@@ -175,7 +196,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
         });
         //hbox.getChildren().add(exp1);
 
-        del1 = new MovableButton("X");
+        /*del1 = new MovableButton("X");
         str = "Delete experiment 1.";
         Utils.addToolTip(del1, str);
         del1.setPrefWidth(10);
@@ -319,9 +340,9 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 showAlert(exp5, del5);
             }
         });
-        //hbox.getChildren().add(del5);
+        //hbox.getChildren().add(del5);*/
 
-        Utils.addVerticalSpace(this, 30);
+        /*Utils.addVerticalSpace(this, 30);
 
         btn = new MovableButton("Restore");
         str = "Restore the system to its current non-experimented state.";
@@ -334,7 +355,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
                 Gos.sim.restoreCurrentSnap();
             }
         });
-        getChildren().add(btn);
+        getChildren().add(btn);*/
 
         /*Utils.addVerticalSpace(this, 30);
 
@@ -357,7 +378,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
             Experiment e = (Experiment)exp1.getUserData();
             shots.add(e.getSnap());
         } 
-        if (exp2.getUserData() != null) {
+        /*if (exp2.getUserData() != null) {
             Experiment e = (Experiment)exp2.getUserData();
             shots.add(e.getSnap());
         }
@@ -372,7 +393,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
         if (exp5.getUserData() != null) {
             Experiment e = (Experiment)exp5.getUserData();
             shots.add(e.getSnap());
-        }
+        }*/
 
         return shots;
     }
@@ -400,7 +421,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
         return null;*/
     }
 
-    private MovableButton getDelBtnForExpButton(MovableButton expButton) {
+    /*private MovableButton getDelBtnForExpButton(MovableButton expButton) {
         if (expButton == exp1) {
             return del1;
         }
@@ -418,7 +439,7 @@ public class ExperimentPanelLeft extends PanelLeftBase {
         }
         
         return null;
-    }
+    }*/
 
     public boolean addExperiment(Experiment exp) {
         MovableButton expButton = getNextFreeExpButton();
@@ -428,27 +449,27 @@ public class ExperimentPanelLeft extends PanelLeftBase {
         expButton.setDisable(false);
         expButton.setUserData(exp);
 
-        MovableButton delButton = getDelBtnForExpButton(expButton);
+        /*MovableButton delButton = getDelBtnForExpButton(expButton);
         if (delButton != null)
-            delButton.setDisable(false);
+            delButton.setDisable(false);*/
         return true;
     }
 
     public void removeExperiment(MovableButton btn) {
         btn.setDisable(true);
         btn.setUserData(null);
-        MovableButton delButton = getDelBtnForExpButton(btn);
+        /*MovableButton delButton = getDelBtnForExpButton(btn);
         if (delButton != null)
-            delButton.setDisable(true);
+            delButton.setDisable(true);*/
     }
 
     @Override
     public void reset() {
         removeExperiment(exp1);
-        removeExperiment(exp2);
+        /*removeExperiment(exp2);
         removeExperiment(exp3);
         removeExperiment(exp4);
-        removeExperiment(exp5);
+        removeExperiment(exp5);*/
         update();
     }
 

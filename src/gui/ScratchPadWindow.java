@@ -87,7 +87,7 @@ public class ScratchPadWindow extends Stage implements ClassInfo  {
         super(StageStyle.DECORATED); 
         thisScreen = this;
 
-        setTitle("Notes");
+        setTitle("Notepad");
 
         m_nWidth = wid;
         m_nHeight = hgt;

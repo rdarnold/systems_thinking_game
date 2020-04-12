@@ -75,7 +75,15 @@ public class NextTaskWindow extends DialogWindow {
         //addCenteredLabel(str);
         //Utils.addVerticalSpace(box, space);
 
-        Score score = new Score(Gos.sim);
+        Score score = new Score();
+        // We assign 50 the second we hit it, even if the number "busts"
+        // 50, we don't really care
+        if (won == true) {
+            score.get(Gos.sim, 50);
+        }
+        else {
+            score.get(Gos.sim);
+        }
         Data.scores.add(score);
         str = score.toString();
         addCenteredLabel(str);
@@ -92,10 +100,13 @@ public class NextTaskWindow extends DialogWindow {
             Utils.addVerticalSpace(box, space);
         } else {
             Exercise e = Player.getCurrentExercise();
-            str = //"You've completed the entire " + e.getName() + " scenario! " +
-            "You'll now be given a set of " +
-            "questions that relate to the scenario.";
-            addCenteredLabel(str);
+            // If we are further than the tutorial, ask our questions
+            if (e.getId() > 2) {
+                str = //"You've completed the entire " + e.getName() + " scenario! " +
+                "You'll now be given a set of " +
+                "questions that relate to the scenario.";
+                addCenteredLabel(str);
+            }
             Utils.addVerticalSpace(box, space);
         }
 
@@ -114,11 +125,17 @@ public class NextTaskWindow extends DialogWindow {
     
     @Override
     public void showAndWait() {
+        if (isShowing() == true) {
+            return;
+        }
         build(true);
         super.showAndWait();
     }
 
     public void showAndWait(boolean won) {
+        if (isShowing() == true) {
+            return;
+        }
         build(won);
         super.showAndWait();
     }

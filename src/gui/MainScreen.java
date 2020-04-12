@@ -284,8 +284,10 @@ public class MainScreen extends GosSceneBase {
         // But we also have to update all the other stuff like advancing to the end of
         // the task and resetting the simulator
 
-        // Wait, is this also being called from sim.endTurn()?  Which should trigger
-        // the onEndTurn function in this class?
+        // This is also being called from sim.endTurn().  Which should trigger
+        // the next task window in this case?  Actually we're going to say we don't
+        // care; if the next task window is already showing, it just ignores additional
+        // calls to show it
         Platform.runLater(() -> {
             Gos.mainScene.showNextTaskWindow(won);
         });

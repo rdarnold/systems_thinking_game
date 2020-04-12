@@ -941,6 +941,13 @@ public final class Player {
         return currentExercise.nextQuestion();
     }
 
+    public static Question previousQuestion() {
+        if (currentExercise == null) {
+            return null;
+        }
+        return currentExercise.previousQuestion();
+    }
+
     public static void resetQuestions() {
         if (currentExercise == null) {
             return;

@@ -154,6 +154,7 @@ public class MainPanelBottom extends PanelBottomBase {
         frameSlider.setMajorTickUnit(50);
         frameSlider.setMinorTickCount(1);
         frameSlider.setBlockIncrement(10);
+        frameSlider.getStyleClass().add("gos-frame-slider");
         GridPane.setRowIndex(frameSlider, 0);
         
         // Happens no matter what changed the value

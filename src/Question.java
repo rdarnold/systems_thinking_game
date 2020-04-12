@@ -61,6 +61,9 @@ public class Question extends GameDataItem {
     //private final StringProperty text = new SimpleStringProperty("");
     private ObjectProperty<AnswerType> answerType = new SimpleObjectProperty<>(AnswerType.Input);
 
+    // A unique id for each question.  the regular "id" variable is within each exercise.
+    private final IntegerProperty uId = new SimpleIntegerProperty(0);
+
     // So this works just fine if I dont have it wrapped in answerOptions
     //@XmlElement(name="answerOption")
     //private ArrayList<String> answerOptions = new ArrayList<String>();
@@ -104,6 +107,19 @@ public class Question extends GameDataItem {
 
     public ObjectProperty<AnswerType> answerTypeProperty() {
         return answerType;
+    }
+    
+
+    public int getUId() {
+        return uId.get();
+    }
+
+    public void setUId(int num) {
+        uId.set(num);
+    }
+
+    public IntegerProperty uIdProperty() {
+        return uId;
     }
     
     /*public void stripCarriageReturns() {

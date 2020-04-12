@@ -121,7 +121,7 @@ public class MainPanelSet extends PanelSetBase {
     }
 
     @Override
-    public void onNumberOfShapesChanged(int numberShapes) { 
+    public void onNumberOfShapesChanged(int numberLiveShapes) { 
         // In some tasks, reaching a certain number of shapes is our
         // goal.  So we have to be paying attention to the current
         // number of shapes.
@@ -138,11 +138,18 @@ public class MainPanelSet extends PanelSetBase {
         // shapes are removed or added?
         switch (Player.getCurrentExerciseNumberTracker()) {
             case 3:
-                if (numberShapes >= 50) {
+                if (numberLiveShapes >= 50) {
                     // Win
                     Gos.mainScene.forceCompleteTask(true);
                 }
-                else if (numberShapes <= 0) {
+
+                // We don't want to check living shapes to see if a player loses,
+                // because we can have situations where we clear the sim, and are rebuilding
+                // it from a snapshot, and haven't fully rebuilt it yet but earlier shapes
+                // are actually dead and don't register as living even though we have
+                // a lot of shapes in the system
+                // So, we use total shapes instead
+                if (Gos.sim.getNumberTotalShapes() <= 0) {
                     // Lose
                     Gos.mainScene.forceCompleteTask(false);
                 }

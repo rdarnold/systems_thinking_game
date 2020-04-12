@@ -115,7 +115,12 @@ public class ExperimentPanelSet extends PanelSetBase {
     }
 
     public void onCreateButton() {
-        expCreationPartner.show();
+        expCreationPartner.showPanels(false);
+    }
+
+    public void onEditButton() {
+        // But we also want to load up the parameters of the last experiment
+        expCreationPartner.showPanels(true);
     }
 
     public void onCreateExperiment(Experiment exp) {

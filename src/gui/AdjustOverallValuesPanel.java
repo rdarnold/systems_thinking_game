@@ -324,20 +324,20 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         setValues(null);
     }
 
-    public void setToCurrentValues() {
+    public void setToValues(Values vals) {
         //cbDur.getSelectionModel().select(Data.currentValues.turnSeconds - 1);
         //cbRain.getSelectionModel().select(Data.currentValues.rainOrigin);
         //dotColor.setValue(Data.currentValues.getMovingDotColor());
         //populateCheck(chkSteal, Data.currentValues.noTakeSize);
         //populateCheck(chkGive, Data.currentValues.noGiveSize);
-        cbGravity.getSelectionModel().select(Data.currentValues.gravityRules);
+        cbGravity.getSelectionModel().select(vals.gravityRules);
         //cbArmor.getSelectionModel().select(Data.currentValues.armorRules);
-        cbParadigm.getSelectionModel().select(Data.currentValues.paradigm);
-        cbGrowth.getSelectionModel().select(Data.currentValues.growthRules);
+        cbParadigm.getSelectionModel().select(vals.paradigm);
+        cbGrowth.getSelectionModel().select(vals.growthRules);
         //globalSlider.setValue(getSliderPositionForValue(
         //    Data.startingValues.globalMoveRate, Data.currentValues.globalMoveRate));
         rainRateSlider.setValue(getSliderPositionForValue(
-            Data.startingValues.rainRate, Data.currentValues.rainRate));
+            Data.startingValues.rainRate, vals.rainRate));
         //rainSpeedSlider.setValue(getSliderPositionForValue(
         //    Data.startingValues.rainSpeedVar, Data.currentValues.rainSpeedVar));
         //dotSpeed.setValue(getSliderPositionForValue(
@@ -347,8 +347,12 @@ public class AdjustOverallValuesPanel extends PanelTopBase implements AdjustValu
         
         GravityWell well = Gos.sim.getGravityWell();
         if (well != null) {
-            well.moveTo(Data.currentValues.gravityWellCenterX, Data.currentValues.gravityWellCenterY);
+            well.moveTo(vals.gravityWellCenterX, vals.gravityWellCenterY);
         }
+    }
+
+    public void setToCurrentValues() {
+        setToValues(Data.currentValues);
     }
     
     // When we change anything, there are times when we only allow one change

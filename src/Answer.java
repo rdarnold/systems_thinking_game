@@ -8,7 +8,8 @@ import java.util.EnumSet;
 public class Answer {
 
     public Question.AnswerType answerType;
-    public int questionId = -1;
+    public int questionId = -1; // The ID within the exercise of the question
+    public int questionUId = -1; // The unique ID of the question
     public int exerciseId = -1;
     public int retries = 0; // When this answer was given, how many retries had the player done on this stage?
     public long timestamp; // Every acion has a timestamp so we know when it occurred.
@@ -19,12 +20,14 @@ public class Answer {
         setTimeToNow(); // Restamp it later if needs be if we pre-created this.
         answerType = question.getAnswerType();
         questionId = question.getId();
+        questionUId = question.getUId();
         exerciseId = question.getExercise(); // This is stored as an int on the question
         retries = Player.getRetries(); // How many retries when this answer was created?
         strAnswerText = text;
     }
 
     public int getQuestionId() { return questionId; }
+    public int getQuestionUId() { return questionUId; }
     public int getExerciseId() { return exerciseId; }
     public int getRetries() { return retries; }
     public long getTimestamp() { return timestamp; }
@@ -85,6 +88,8 @@ public class Answer {
         sb.append("\r\n");
         sb.append("QI: " + questionId);
         sb.append("\r\n");
+        sb.append("UD: " + questionUId);
+        sb.append("\r\n");
         sb.append("EI: " + exerciseId);
         sb.append("\r\n");
         sb.append("RT: " + retries);
@@ -130,6 +135,10 @@ public class Answer {
             else if (line.substring(0, 3).equals("QI:") == true) {
                 line = line.substring(4, line.length());
                 questionId = Utils.tryParseInt(line);
+            }
+            else if (line.substring(0, 3).equals("UD:") == true) {
+                line = line.substring(4, line.length());
+                questionUId = Utils.tryParseInt(line);
             }
             else if (line.substring(0, 3).equals("EI:") == true) {
                 line = line.substring(4, line.length());

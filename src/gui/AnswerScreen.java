@@ -69,6 +69,7 @@ public class AnswerScreen extends GosSceneBase {
     ArrayList<CheckBox> tempCheckBoxes;
     ArrayList<ToggleGroup> tempToggleGroups;
     MovableButton doneButton;
+    MovableButton backButton;
     Text questionNameText;
     Text questionNumText;
     Text questionText;
@@ -105,6 +106,15 @@ public class AnswerScreen extends GosSceneBase {
             public void handle(MouseEvent event) {
                 Player.recordButtonAction(event, thisScreen.className());
                 submitAnswers();
+            }
+        });
+
+        backButton = new MovableButton("Back");
+        backButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Player.recordButtonAction(event, thisScreen.className());
+                onBackButton();
             }
         });
 
@@ -211,6 +221,13 @@ public class AnswerScreen extends GosSceneBase {
         questionNameText.setText("Current Question: " + question.getName());
         questionNumText.setText("Question " + (question.getId() + 1) + " / " + exercise.getNumQuestions());
 
+        if (question.getId() <= 0) {
+            backButton.setDisable(true);
+        }
+        else {
+            backButton.setDisable(false);
+        }
+
         // Let's put the question text right above the question.
         questionText.setText(question.getText());
 
@@ -304,11 +321,15 @@ public class AnswerScreen extends GosSceneBase {
                 break;
             }
         }
-
         GridPane.setRowIndex(doneButton, row + 1);
         GridPane.setColumnIndex(doneButton, 2);
         GridPane.setHalignment(doneButton, HPos.CENTER);
         tempAdd(doneButton);
+
+        GridPane.setRowIndex(backButton, row + 2);
+        GridPane.setColumnIndex(backButton, 2);
+        GridPane.setHalignment(backButton, HPos.CENTER);
+        tempAdd(backButton);
 
         //GridPane.setRowIndex(cancelButton, row + 2);
         //GridPane.setColumnIndex(cancelButton, 2);
@@ -316,6 +337,18 @@ public class AnswerScreen extends GosSceneBase {
         //tempAdd(cancelButton);
 
         update();
+    }
+
+    private boolean onBackButton() {
+        // Go back to the previous question in case someone hit submit by mistake
+        // or wants to change an answer.
+        if (Player.previousQuestion() == null) {
+            return false;
+        }
+        else {
+            rebuild();
+        }
+        return true;
     }
 
     private boolean submitAnswers() {
@@ -330,7 +363,7 @@ public class AnswerScreen extends GosSceneBase {
             // Ok move to the next part.
             //Utils.log("Out of questions.");
             simRunner.finishQuestions();
-            Utils.log(Player.getAnswerData());
+            //Utils.log(Player.getAnswerData());
         }
         else {
             rebuild();

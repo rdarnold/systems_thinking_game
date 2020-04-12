@@ -79,7 +79,7 @@ public class Gos extends Application {
     ////////////////////////////////////////////
     public static boolean testing = false;
     public static boolean showSkipWindow = true;
-    public static boolean assessmentMode = false;
+    public static boolean assessmentMode = true;
     ////////////////////////////////////////////
     ////////////////////////////////////////////
     ////////////////////////////////////////////
@@ -183,6 +183,7 @@ public class Gos extends Application {
 
         stage = primaryStage;
         stage.setTitle("The Systems Thinking Game v" + Constants.VERSION_NUMBER_STRING);
+        stage.setResizable(false);
 
         showMainScreen();
 

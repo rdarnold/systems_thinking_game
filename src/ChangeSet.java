@@ -28,6 +28,9 @@ public class ChangeSet {
     private SysShape oldShape;
     private SysShape newShape;
 
+    public Values getNewValues() { return newSet; }
+    public SysShape getNewShape() { return newShape; }
+
     public ChangeSet(Values oldv, SysShape olds) {
         // Just constantly increment the change sets.  But provide ids, so that
         // we can reference them if necessary from different parts of our log

@@ -76,6 +76,15 @@ public class Exercise extends GameDataItem {
         return getCurrentQuestion();
     }
 
+    public Question previousQuestion() {
+        currentQuestionNumber--;
+        if (currentQuestionNumber < 0) {
+            currentQuestionNumber = 0;
+            return null;
+        }
+        return getCurrentQuestion();
+    }
+
     public Question getCurrentQuestion() {
         if (questionList == null || questionList.size() == 0) {
             return null;

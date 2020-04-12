@@ -46,14 +46,6 @@ public class ExpCreationPanelTop extends AdjustOverallValuesPanel {
         lab.setPrefWidth(instructionTextWidth);
         lab.setWrapText(true);
         super.m_MainVBox.getChildren().add(lab);
-        
-        /*Line lin = new Line();
-        lin.setStartX(5);
-        lin.setEndX(300);
-        lin.setStartY(50);
-        lin.setEndY(50);
-        lin.setStrokeWidth(1);
-        super.m_MainVBox.getChildren().add(lin);*/
 
         Utils.addVerticalSpace(super.m_MainVBox, 10);
     }

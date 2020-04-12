@@ -22,6 +22,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream; 
 import java.io.FileOutputStream; 
+import java.io.ByteArrayOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
@@ -426,6 +430,101 @@ public final class FileTransfer {
                     System.out.printf("%s (%s)\n", file.getName(), file.getId());
                 }
             }
+        } 
+        catch (IOException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    
+    public static boolean organizeFile(String fileName, String fileNameAndPath) {
+        String destPath = "C:/Ross/Work/Japan/Drones/Code/systems_thinking_game_evolved/data/";
+        
+        // A filename looks something like this:
+        // STT_Anon_1_ID365481_2020-04-09_T19-30-12_Z.txt
+
+        // So, we can parse out most of the useful data from that name
+        // Step back 22 characters from the end of the name to find the beginning of the date
+        int start = fileName.length() - 26;
+        int end = start + 7;
+        String strYearMonth = fileName.substring(start, end) + "/";
+
+        // First, add the month to destPath
+        destPath += strYearMonth;
+
+        // Now, add the ID (from within the filename) to the destPath
+        start = fileName.indexOf("_ID") + "_ID".length();
+        end = fileName.length() - 27;
+        destPath += fileName.substring(start, end);
+
+        try {
+            // Create the folder for the month, if it doesn't exist
+            Files.createDirectories(Paths.get(destPath));
+
+            // Move the file
+            Path temp = Files.move(
+                Paths.get(fileNameAndPath),  
+                Paths.get(destPath + "/" + fileName)); 
+    
+            if (temp != null) { 
+                return true;
+            } 
+            else { 
+                System.out.println("Failed to move the file"); 
+            } 
+        }
+        catch (IOException e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public static void downloadFiles() {
+        // This is the parent folder ID:
+        String parentFolderId = "0B9qbayJt45sFV3FkaTJxeWZQRnM";  
+        String filePath = "C:/Ross/Work/Japan/Drones/Code/systems_thinking_game_evolved/data/temp/";
+        
+        // If we want to change the date/time after which we show results, change this:
+        String startDateTime = "2020-04-11" + "T12:00:00";
+
+        try {
+            // Build a new authorized API client service.
+            Drive service = getDriveService();
+
+            // It pages through at 1000 (or whatever we specify as page size) results
+            // per page; we need to keep re-requesting to get through all the results
+            String pageToken = null;
+            do {
+                // Print the names and IDs for up to 200 files.
+                FileList result = service.files().list()
+                    // Search only within SimulationResults folder, and only actual files, not folders
+                    //.setQ("('" + parentFolderId + "' in parents) and (mimeType != 'application/vnd.google-apps.folder')")
+                    .setQ("('" + parentFolderId + "' in parents) and (mimeType != 'application/vnd.google-apps.folder') and (modifiedTime > '" + startDateTime + "')")
+                    .setPageSize(1000)
+                    .setFields("nextPageToken, files(id, name)")
+                    .setPageToken(pageToken)
+                    .execute();
+                // These are com.google.api.services.drive.model.File 
+                // NOT java.io.File
+                List<File> files = result.getFiles();
+                if (files == null || files.size() == 0) {
+                    Utils.log("No files found.");
+                } else {
+                    for (File file : files) {
+                        // Write to file
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        service.files().get(file.getId()).executeMediaAndDownloadTo(byteArrayOutputStream);
+                        try (OutputStream outputStream = new FileOutputStream(filePath + file.getName())) {
+                            byteArrayOutputStream.writeTo(outputStream);
+                            outputStream.close();
+                        }
+                        Utils.log("Downloaded: " + file.getName() + " (" + file.getId() + ")");
+                        organizeFile(file.getName(), filePath + file.getName());
+                    }
+                }
+                pageToken = result.getNextPageToken();
+            } while (pageToken != null);
         } 
         catch (IOException e) {
             System.out.println(e.toString());

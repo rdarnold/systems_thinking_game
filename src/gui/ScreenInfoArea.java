@@ -129,7 +129,7 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         //buttonVBox.getChildren().add(buttonBox2);
 
         MovableButton btn = null;
-        int nBtnWid = 60;
+        int nBtnWid = 57;
 
         /*btn = new MovableButton("Help");
         btn.setPrefWidth(nBtnWid);
@@ -169,11 +169,12 @@ public class ScreenInfoArea extends VBox implements ClassInfo {
         buttonList.add(btn);
         buttonBox.getChildren().add(btn);
 
-        btn = new MovableButton("Notes");
-        Utils.addToolTip(btn, "Notes is an area for you to record notes and observations about the system.  You can write " +
+        btn = new MovableButton("Notepad");
+        btn.setPrefWidth(nBtnWid);
+        Utils.addToolTip(btn, "Notepad is an area for you to record notes and observations about the system.  You can write " +
           "anything in it, and it will stick around for the entire game.");
         //btn.setPrefWidth((nBtnWid * 3) + 4);
-        btn.setPrefWidth(nBtnWid);
+        btn.setPrefWidth(nBtnWid + 25);
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

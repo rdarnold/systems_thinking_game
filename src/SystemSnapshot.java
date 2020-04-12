@@ -116,13 +116,17 @@ public class SystemSnapshot {
         // Now we re-build from the snapshot
         
         //for (SysShape item : shapes) {
-        for (int i = 0; i < shapes.size(); i++) {
+        // We should not re-add like this because this will trigger a "onNumberShapesChanged"
+        // notification on a number of shapes that is not the totality of the system; we should
+        // trigger those changes after we're done rebuilding it
+        /*for (int i = 0; i < shapes.size(); i++) {
             SysShape newItem = new SysShape(shapes.get(i));
             sim.addShape(newItem);
             if (newItem.getWasSelected() == true) {
                 Gos.selectShape(newItem);
             }
-        }
+        }*/
+        sim.addShapesFromSnap(this);
         
         //for (Raindrop item : drops) {
         for (int i = 0; i < drops.size(); i++) {

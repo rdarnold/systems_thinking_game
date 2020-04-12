@@ -72,6 +72,10 @@ public class ExpCreationPanelSet extends PanelSetBase {
     ExpCreationPanelLeft panelLeft;
     ExpCreationPanelTop panelTop;
 
+    // We keep track of the last change set so that we can "edit" an experiment
+    // by loading the changes from the last experiment
+    ChangeSet lastChangeSet = null;
+
     public ExpCreationPanelSet(MainScreen main) {
         super(main);
 
@@ -98,10 +102,22 @@ public class ExpCreationPanelSet extends PanelSetBase {
         experimentPanelPartner = partner;
     }
 
-    @Override
+    /*@Override
     public void show() {
         panelLeft.setup(AdjustShapeValuesPanel.Configs.Default);
         panelTop.setup(AdjustOverallValuesPanel.Configs.Default);
+        super.show();
+    }*/
+
+    public void showPanels(boolean editing) {
+        panelLeft.setup(AdjustShapeValuesPanel.Configs.Default);
+        panelTop.setup(AdjustOverallValuesPanel.Configs.Default);
+        // If we are editing, we want to load up the last set of values that
+        // the player used
+        if (editing == true && lastChangeSet != null) {
+            panelLeft.setToShapeValues(lastChangeSet.getNewShape());
+            panelTop.setToValues(lastChangeSet.getNewValues());
+        }
         super.show();
     }
     
@@ -124,8 +140,8 @@ public class ExpCreationPanelSet extends PanelSetBase {
     }
 
     public void onCreateButton(String fromClassName) {
-        if (Gos.checkDiscoveryPoints() == false)
-            return;
+        //if (Gos.checkDiscoveryPoints() == false)
+        //    return;
 
         /*if (Player.getDiscoveryPoints() <= 0) {
             // Disallow, cancel instead.  Pop up telling
@@ -134,7 +150,7 @@ public class ExpCreationPanelSet extends PanelSetBase {
             return;
         }*/
         // Show a pop up asking them to confirm?  Or dont bother?
-        Player.subDiscoveryPoints(1);
+        //Player.subDiscoveryPoints(1);
 
         // We need to figure out which shape is selected, so we know what
         // to submit to when we create the experiment.
@@ -156,6 +172,9 @@ public class ExpCreationPanelSet extends PanelSetBase {
         changeSet.setNew(exp.getSnap().getValues(), shape);
         Player.recordAction(Action.Type.SubmitExpChange, changeSet.toString(), fromClassName);
         
+        // Record it for future use when we edit experiments
+        lastChangeSet = changeSet;
+
         // Now show the right panel.  Man this is weird calling out
         // like this.
         experimentPanelPartner.onCreateExperiment(exp);

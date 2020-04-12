@@ -32,6 +32,13 @@ public class Score {
     // From a specific system state, based on current exercise
     // and task, calculate a score
     public void get(Simulator s) {
+        get(s, s.getNumberLiveShapes());
+    }
+
+    // If we don't want to use the shapes in the current sim, we can pass it a number
+    // of shapes. This is useful if the state of the sim may have changed since our score
+    // was generated
+    public void get(Simulator s, int numShapes) {
         sim = s;
         ex = Player.getCurrentExercise();
         task = ex.getCurrentTask();
@@ -62,7 +69,7 @@ public class Score {
                 strScore = "There is no score for the tutorial.";
                 break;
             case 3:
-                createExerciseScore1();
+                createExerciseScore1(numShapes);
                 break;
             case 4:
                 createExerciseScore2();
@@ -81,18 +88,17 @@ public class Score {
         sim = null;
     }
 
-    private void createExerciseScore1() {
+    private void createExerciseScore1(int numShapes) {
         switch (taskId) {
             case 0: 
             case 1:{
                 // Over 5 turns, try to maximum the number of spinning shapes in the system.  
                 // The more shapes you can make (or preserve), the better.
-                int num = sim.getNumberLiveShapes();
-                if (num == 50) {
-                    strScore = "Wow, nice job!\r\nYou finished with all " + num + " shapes.";
+                if (numShapes >= 50) {
+                    strScore = "Wow, nice job!\r\nYou finished with all " + numShapes + " shapes.";
                 }
                 else {
-                    strScore = "You finished with " + num + " shapes.";
+                    strScore = "You finished with " + numShapes + " shapes.";
                 }
                 break;
             }
