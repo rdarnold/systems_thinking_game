@@ -48,46 +48,50 @@ public final class STUtils {
     private STUtils() { // private constructor
     }
 
+    public static int getOverallScoreForSkillStr(String str) {
+        return 0;
+    }
+
     public static int calc(STSkills skill) {
         switch (skill) {
             case ExploreMultiplePerspectives:
-                return calcExploreMultiplePerspectives();
+                return getOverallScoreForSkillStr(calcExploreMultiplePerspectives());
             case ConsiderWholesAndParts:
-                return calcConsiderWholesAndParts();
+                return getOverallScoreForSkillStr(calcConsiderWholesAndParts());
             case EffectivelyRespondToUncertaintyAndAmbiguity:
-                return calcEffectivelyRespondToUncertaintyAndAmbiguity();
+                return getOverallScoreForSkillStr(calcEffectivelyRespondToUncertaintyAndAmbiguity());
             case ConsiderIssuesAppropriately:
-                return calcConsiderIssuesAppropriately();
+                return getOverallScoreForSkillStr(calcConsiderIssuesAppropriately());
             case UseMentalModelingAndAbstraction:
-                return calcUseMentalModelingAndAbstraction();
+                return getOverallScoreForSkillStr(calcUseMentalModelingAndAbstraction());
     
             // Structure
             case RecognizeSystems:
-                return calcRecognizeSystems();
+                return getOverallScoreForSkillStr(calcRecognizeSystems());
             case MaintainBoundaries:
-                return calcMaintainBoundaries();
+                return getOverallScoreForSkillStr(calcMaintainBoundaries());
             case DifferentiateAndQuantifyElements:
-                return calcDifferentiateAndQuantifyElements();
+                return getOverallScoreForSkillStr(calcDifferentiateAndQuantifyElements());
     
             // Content
             case IdentifyRelationships:
-                return calcIdentifyRelationships();
+                return getOverallScoreForSkillStr(calcIdentifyRelationships());
             case CharacterizeRelationships:
-                return calcCharacterizeRelationships();
+                return getOverallScoreForSkillStr(calcCharacterizeRelationships());
             case IdentifyFeedbackLoops:
-                return calcIdentifyFeedbackLoops();
+                return getOverallScoreForSkillStr(calcIdentifyFeedbackLoops());
             case CharacterizeFeedbackLoops:
-                return calcCharacterizeFeedbackLoops();
+                return getOverallScoreForSkillStr(calcCharacterizeFeedbackLoops());
     
             // Behavior
             case DescribePastSystemBehavior:
-                return calcDescribePastSystemBehavior();
+                return getOverallScoreForSkillStr(calcDescribePastSystemBehavior());
             case PredictFutureSystemBehavior:
-                return calcPredictFutureSystemBehavior();
+                return getOverallScoreForSkillStr(calcPredictFutureSystemBehavior());
             case RespondToChangesOverTime:
-                return calcRespondToChangesOverTime();
+                return getOverallScoreForSkillStr(calcRespondToChangesOverTime());
             case UseLeveragePoints:
-                return calcUseLeveragePoints();
+                return getOverallScoreForSkillStr(calcUseLeveragePoints());
         }
         return -1;
     }
@@ -189,7 +193,8 @@ public final class STUtils {
     ////////////////////////
     //// Mindset Domain ////
     ////////////////////////
-    public static int calcExploreMultiplePerspectives() {
+    public static String calcExploreMultiplePerspectives() {
+        String strScore = "";
         // Usual things you'd look at with this skill:
         // - Looking from the point of view of different stakeholders
         // - Considering the problem from the POV of different fields like environmental, political
@@ -214,103 +219,224 @@ public final class STUtils {
         // of problem and I'm not proscribing what those are but only to look FOR them and be aware they
         // exist.
 
-        return 0;
+        return strScore;
     }
 
-    public static int calcConsiderWholesAndParts() {
-        // Tweak both overarching and specific parameters
-        return 0;
+    public static String calcConsiderWholesAndParts() {
+
+        // The string basically "tells the story" of the score and where it came from,
+        // and how each variable affected it.  It's pre-pended with a single number
+        // which is the actual score.
+        String strScore = "";
+
+        /*
+        -	Holistic thinking - did they use a strategy that flowed from one turn to the next 
+            (keeping the “big picture” in mind), or was each turn a "new thing"
+        -	Does the player consider the entire stage as a system?  Or do they focus on specific turns?  
+            They need to consider the entire stage holistically and determine their goals based on that.
+        -	Using a coordinated approach that considers the effects of each choice at each time period.
+        -	Adjusts both the Shape direction and speed, and the overall parameters (shows an appreciation 
+            for wholes and parts but not necessarily recognition that whole is other than parts or the philosophical utilization of this idea)
+        */
+       
+        /* 
+        0: Overall strategy is not coordinated.  Temporal aspects not considered.  Does not make choices that 
+        are intended to flow into each other from one turn to the next. 0/3 answers correct on 32.
+
+        1: Shows desire to coordinate an overall strategy for a stage.  Strategy is not effective or is erratic.  
+        Makes effective choices on some turns but ineffective choices on others. 1/3 answers correct on 32.
+
+        2: Coordinates an overall strategy that considers the entire stage and the differing changes that 
+        need to be made each turn.  Strategy achieves success but is not the ideal approach.  Makes choices 
+        that influence each other from turn to turn but the choices are not the ideal.  1-2 / 3 answers correct on 32.
+
+        3: Coordinates an overall strategy that considers the entire stage and the differing changes that 
+        need to be made each turn.  Strategy achieves success but is not the ideal approach.  Makes effective 
+        choices that influence each other from turn to turn and feed into each other effectively. 2-3 / 3 answers correct on 32.
+
+        4: Coordinates an overall strategy that considers the entire stage and the differing changes that 
+        need to be made each turn.  Strategy succeeds in achieving 50 shapes in under 5 turns.  3/3 answers correct on 32.
+        */
+
+        double score = 0;
+
+        // Start with answers correct on question 32
+        Answer ans = Player.getAnswerForQuestionUID(32);
+        if (ans == null) {
+            return "Not enough data";
+        }
+        int numCorrect = ans.getTotalCorrect();
+        int numPartial = ans.getTotalPartial();
+        int numWrong = ans.getTotalIncorrect();
+
+        // Our total is the total correct - the total wrong
+        // But minus half for each partial
+        score = numCorrect - numWrong - (numPartial/2);
+
+        strScore += "Score: " + score + ", for Q32: " + numCorrect + " correct, " + numWrong + "wrong\r\n";
+
+        // Now check what we did with the strategy and other related variables,
+        // count round 2 of both of the stages equally
+        // Remember this doesn't need to be perfect, we're just proving that we can get measures like this
+
+        return returnStr(score, strScore);
     }
 
-    public static int calcEffectivelyRespondToUncertaintyAndAmbiguity() {
+    public static String calcEffectivelyRespondToUncertaintyAndAmbiguity() {
+        String strScore = "";
         // When doing poorly, makes choices that turn the system back around to doing well.  Or, perhaps
         // when doing poorly, does experiments and then uses the results to make the system then do better.
-        return 0;
+        return strScore;
     }
 
-    public static int calcConsiderIssuesAppropriately() {
+    public static String calcConsiderIssuesAppropriately() {
+        String strScore = "";
         // Time spent doing experiments and observations and number of them prior to jumping in
         // Does not get frustrated and just "give up" during play; continues to try hard
-        return 0;
+        return strScore;
     }
  
-    public static int calcUseMentalModelingAndAbstraction() {
+    public static String calcUseMentalModelingAndAbstraction() {
+        String strScore = "";
         // Describes the strategy after the exercise, and the rationale for variable choices
-        return 0;
+        return strScore;
     }
 
     ////////////////////////
     /// Structure Domain ///
     ////////////////////////
-    public static int calcRecognizeSystems() {
+    public static String calcRecognizeSystems() {
+        String strScore = "";
         // It'll have to be based on the questions, like, what kind of problem is this?  and one of
         // the answers is "systemic"  but if you do poorly in general on the sim we can say perhaps
         // you didn't recognize that it was systemic.  So if you for example did a lot of the same
         // manipulation of just the gravity well, and never the overarching parameters, then you didn't
         // realize it was systemic and you didn't do anything to fix that.
-        return 0;
+        return strScore;
     }
 
-    public static int calcMaintainBoundaries() {
+    public static String calcMaintainBoundaries() {
+        String strScore = "";
         // Does the player touch the correct things, and rate the variables correctly, do the 
         // choices actually affect the system and aren't peripheral to the system
-        return 0;
+        return strScore;
     }
 
-    public static int calcDifferentiateAndQuantifyElements() {
+    public static String calcDifferentiateAndQuantifyElements() {
+        String strScore = "";
         // The questions about the system, and also the degree to which different parameters are tweaked
         // I need to put in specific questions about this.
-        return 0;
+        return strScore;
     }
 
     
     ////////////////////////
     //// Content Domain ////
     ////////////////////////
-    public static int calcIdentifyRelationships() {
+    public static String calcIdentifyRelationships() {
+        String strScore = "";
         // Questions about the system, and in general how well the person did (or does this give an overall score to all areas?)
         // I need to put in specific questions about this.  What is related to what?
-        return 0;
+        return strScore;
     }
 
-    public static int calcCharacterizeRelationships() {
+    public static String calcCharacterizeRelationships() {
+        String strScore = "";
         // Questions about the system, and how the strengths of the variables are rated
         // I need to put in specific questions about this.  What is related to what, and HOW MUCH?
-        return 0;
+        return strScore;
     }
 
-    public static int calcIdentifyFeedbackLoops() {
+    public static String calcIdentifyFeedbackLoops() {
+        String strScore = "";
         // Did the person successfully create the emergent behavior of the dots
         // I need to put in specific questions about this.  What is related to what?
-        return 0;
+        return strScore;
     }
 
-    public static int calcCharacterizeFeedbackLoops() {
+    public static String calcCharacterizeFeedbackLoops() {
+        String strScore = "";
         // Did the person successfully create the emergent behavior of the dots and use it to score well?
         // I need to put in specific questions about this.  What is related to what, and HOW MUCH?
-        return 0;
+        return strScore;
     }
 
     /////////////////////////
     //// Behavior Domain ////
     /////////////////////////
-    public static int calcDescribePastSystemBehavior() {
+    public static String calcDescribePastSystemBehavior() {
+        String strScore = "";
         // Questions about system behavior
-        return 0;
+        return strScore;
     }
     
-    public static int calcPredictFutureSystemBehavior() {
+    public static String calcPredictFutureSystemBehavior() {
+        String strScore = "";
         // Questions about what would happen if xyz
-        return 0;
+        return strScore;
     }
 
-    public static int calcRespondToChangesOverTime() {
+    public static String calcRespondToChangesOverTime() {
+        String strScore = "";
         // Does the subject change methods over time as the system state changes?  Or keeps trying the same thing?
-        return 0;
+        return strScore;
     }
 
-    public static int calcUseLeveragePoints() {
+    public static String calcUseLeveragePoints() {
+        String strScore = "";
         // Uses paradigm, uses shape spin, Laws (gravity) effectively?
-        return 0;
+        return strScore;
+    }
+
+    public static String returnStr(double score, String strScore) {
+        return "" + Utils.round(score, 2) + strScore;
+    }
+
+    public static String calcStrategy() {
+        String str = "";
+
+        // Figure out what someone's general strategy was, but provide information on how we came to that
+        // conclusion.
+
+        /* IDEAL:
+        •	Turn 1:
+            o	Turn Growth to “No Growth”
+            o	Move Gravity Well to bottom hemisphere but not right in the corners
+            o	Turn Rain Rate to max
+        •	Turn 2:
+            o	Turn Rain Rate to min
+        •	Turn 3:
+            o	Turn Growth to “Growth”
+        •	Turn 4, 5:
+            o	Leave Rain Rate at min
+            o	Move Gravity Well to general area of red ball storm
+        •	Within first 3 turns:
+            o	Turn Paradigm to “Cooperative”
+        */
+
+        /* Some things to consider from Whole and Parts:
+        Overall strategy is not coordinated.  Temporal aspects not considered.  Does not make choices that 
+        are intended to flow into each other from one turn to the next.
+
+        1: Shows desire to coordinate an overall strategy for a stage.  Strategy is not effective or is erratic.  
+        Makes effective choices on some turns but ineffective choices on others. 
+
+        2: Coordinates an overall strategy that considers the entire stage and the differing changes that 
+        need to be made each turn.  Strategy achieves success but is not the ideal approach.  Makes choices 
+        that influence each other from turn to turn but the choices are not the ideal.  
+
+        3: Coordinates an overall strategy that considers the entire stage and the differing changes that 
+        need to be made each turn.  Strategy achieves success but is not the ideal approach.  Makes effective 
+        choices that influence each other from turn to turn and feed into each other effectively. 
+
+        4: Coordinates an overall strategy that considers the entire stage and the differing changes that 
+        need to be made each turn.  Strategy succeeds in achieving 50 shapes in under 5 turns.
+        */
+
+        // So, let's determine what we CAN figure out about the person's strategy, and assign some overall 
+        // quantitative measures from here, and then we can use those to apply to the various skills as
+        // is fitting
+
+        return str;
     }
 }

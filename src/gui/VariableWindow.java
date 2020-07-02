@@ -280,7 +280,7 @@ public class VariableWindow extends DialogWindow {
         labList.add(lab);
         labOrderedList.add(lab);
         lab.setPrefWidth(200);
-        lab.setPrefHeight(31);
+        lab.setPrefHeight(28);
         lab.setMaxWidth(Double.MAX_VALUE);
         lab.setAlignment(Pos.CENTER_RIGHT);
         m_LeftBox.getChildren().add(lab);

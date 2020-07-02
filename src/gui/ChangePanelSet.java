@@ -92,8 +92,8 @@ public class ChangePanelSet extends PanelSetBase {
         "make changes to the system.  On the left " +
         "side, you'll notice some changes that you can make to the currently selected " +
         "shape.  Click a different shape to select it.  On the top are some general, " +
-        "overall settings that you can adjust.  During the game, please make whatever changes you feel " +
-        "will help to achieve your objective for the current task, then click Submit at the " + 
+        "overall settings that you can adjust.  During the game, please make whatever changes you think " +
+        "will help to reach your goal for the current stage, then click Submit at the " + 
         "bottom of the screen.  For now, during the Tutorial mode, you will be asked to make just one change per turn.";
         changePanelWindow = new OKWindow(400, 500, strTitle, strText);
 

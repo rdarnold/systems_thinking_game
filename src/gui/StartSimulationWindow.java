@@ -105,7 +105,7 @@ public class StartSimulationWindow extends DialogWindow {
         VBox box = m_MainVBox;
 
         if (Gos.skipSurveys == false) {
-            str = "Thank you for completing the surveys!  Now, let's get to the game!";
+            str = "Thank you for completing the surveys!";
             titleLabel = addCenteredLabel(str);
             Utils.addVerticalSpace(box, space);
         }
@@ -128,7 +128,7 @@ public class StartSimulationWindow extends DialogWindow {
         copyable.setAlignment(Pos.CENTER);
         m_MainVBox.getChildren().add(copyable);
 
-        addCenteredLabel("Please use this ID if you decide to replay the game; it will allow\r\nyou to skip all of the survey questions, and aids in our data collection.");
+        addCenteredLabel("Please use this ID if you decide to replay the game; it will allow\r\nyou to skip all of the survey questions, and helps with data collection.");
         Utils.addVerticalSpace(box, space);
 
         okBtn = new MovableButton("OK");

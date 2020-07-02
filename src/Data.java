@@ -99,6 +99,15 @@ public final class Data {
         }
     }
 
+    public static Question getQuestionByUID(int uid) {
+        for (Question q : questionList) {
+            if (q.getUid() == uid) {
+                return q;
+            }
+        }
+        return null;
+    }
+
     public static Question getQuestion(int id, int exNum) {
         for (Question q : questionList) {
             if (q.getId() == id && exNum == q.getExercise()) {

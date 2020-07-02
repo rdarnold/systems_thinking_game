@@ -391,6 +391,9 @@ public class SimRunner implements SimulatorEventListener {
     // done with the exercise.
     public void finishQuestions() {
         //finishExercise();
+        
+        // We'll upload consistently here so we get all the data in case someone stops
+        uploadData();
 
         // Actually now we just pop up the play again window any time we're
         // done with exercise questions

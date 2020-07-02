@@ -1,8 +1,24 @@
 For the Sectigo cert (received in email)
+
+(THIS IS THE OLD OUTDATED METHOD) 
 - Must open/install the cert in FireFox
     Then, go to Options
     Privacy and Security
     Certificate->View Certificates
     Click on the Sectigo cert and click "Backup" 
-    set password for **SystemsThinkingGame12
+    set password to **SystemsThinkingGame12
 - Once I have the .p12 file, use Keystore Explorer to open it, and "Rename" to "ra_id" instead of "ross arnold's sectigo limited id"
+
+(THIS IS THE NEW METHOD)
+UPDATE:  FireFix no longer works, MUST USE IE
+- Must open/install the cert in IE 8+
+    Then, go to Settings->internet options
+    Content
+    Certificates
+    Click on the Sectigo cert (at the bottom) and click "Export"
+    Yes, export the private key
+    (It will try to export as a *.pfx file; this is the SAME as a p12)
+    set password to **SystemsThinkingTest12
+    (It will export to Desktop by default)
+    Rename the extension to p12
+- Once I have the .p12 file, use Keystore Explorer to open it, and "Rename" to "ra_id" instead of the long string of characters and numbers under Entry Name

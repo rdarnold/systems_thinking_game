@@ -1085,9 +1085,21 @@ public class SysShape extends MovablePolygon {
                 }
             }
             else {
+                // So, we have now set to the smallest size, and "shaved off" the extra,
+                // but we want to sub that "extra" when we reset to max size.
+
+                // So first figure out how much size we actually reduced it by
+                double sizeLost = getPrevSize() - getMinSize();
+
+                // Then sub the amount by that much, the result of which is subtracted from
+                // our max size.
+                double toSub = amount - sizeLost;
+
                 // If not, I lose one success and go back to max size.
+                // No, it shouldn't be MAX size, because we're liable to instantly re-level,
+                // it should be max MINUS whatever the extra was
                 subSuccess();
-                setSize(getMaxSize());
+                setSize((getMaxSize() - toSub));
             }
         }
         return (getPrevSize() - getSize());
@@ -1269,6 +1281,14 @@ public class SysShape extends MovablePolygon {
             if (otherShape.isDead() == true) {
                 continue;
             }
+
+            // Can't steal size from our "home shape" if its level is zero and it
+            // is at min size and we're in Chaos, because it can't die
+            if (sim.noPlayerDeath() == true && Player.getSelectedShape() == otherShape &&
+                otherShape.getSuccess() == 0 && otherShape.getSize() == otherShape.getMinSize()) {
+                continue;
+            }
+
             // If we have the same number of corners, we are considered allies
             // and thus we dont take each others' size.  
            // if (getNumCorners() == otherShape.getNumCorners()) {

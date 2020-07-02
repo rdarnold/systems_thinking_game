@@ -88,8 +88,16 @@ public class ChangeSet {
                 sb.append(" C" + newShape.getSpinSpeed());
             if (oldShape.getSpin() != newShape.getSpin())
                 sb.append(" D" + newShape.getSpin());
-            if (oldShape.getFill() != newShape.getFill())
+            if (oldShape.getFill() != newShape.getFill()) {
+                /*Color c = (Color)newShape.getFill();
+                int r = (int)(c.getRed() * 255);
+                int g = (int)(c.getGreen() * 255);
+                int b = (int)(c.getBlue() * 255);*/
                 sb.append(" E" + newShape.getFill());
+                // We want the color showing as rgb, not hex, so we can
+                // easily tell what it is - not that it actually matters
+                //sb.append(" E" + r + "," + g + "," + b);
+            }
             sb.append("\r\n");
         }
 

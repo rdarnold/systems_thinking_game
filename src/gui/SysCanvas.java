@@ -348,27 +348,28 @@ public class SysCanvas extends Canvas {
     }
 
     private DropShadow lineGlow = Utils.createLineGlow(Color.BLACK);
-    private void drawSysShape(GraphicsContext gc, SysShape item) {
-        gc.setEffect(lineGlow);
+    private void drawSysShape(GraphicsContext gc, SysShape shape) {
+        // Using this effect takes a lot of CPU power, especially when we draw a lot of them at once
+        //gc.setEffect(lineGlow);
 
         // Now we're going to try to draw some indication that the shape is
         // "pulling" size from other shapes
-        for (SysShape otherShape : item.getStoleFrom()) {
+        gc.setLineWidth(2);
+        gc.setLineDashes(10);
+        gc.setLineDashOffset(m_fDashOffset);
+        gc.setLineCap(StrokeLineCap.ROUND);
+        for (SysShape otherShape : shape.getStoleFrom()) {
             if (otherShape.isDead() == false) {
                 // Draw some line from them to us based on some timer variable.
-                gc.setStroke(item.getFill());
-                gc.setLineWidth(2);
-                gc.setLineDashes(10);
-                gc.setLineDashOffset(m_fDashOffset);
-                gc.setLineCap(StrokeLineCap.ROUND);
-                gc.strokeLine(otherShape.getCenterX(), otherShape.getCenterY(), item.getCenterX(), item.getCenterY());
+                gc.setStroke(shape.getFill());
+                gc.strokeLine(otherShape.getCenterX(), otherShape.getCenterY(), shape.getCenterX(), shape.getCenterY());
             }
         }
         gc.setLineDashes(0);
-        gc.setEffect(null);
+        //gc.setEffect(null);
 
         // Actually draw this later so that we can see the shapes over their own lines
-        drawMovablePolygon(gc, item);
+        drawMovablePolygon(gc, shape);
     }
     
     private void drawBorder(GraphicsContext gc) {

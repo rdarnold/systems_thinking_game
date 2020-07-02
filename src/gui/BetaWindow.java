@@ -189,13 +189,16 @@ public class BetaWindow extends DialogWindow {
                             pb.setProgress(0);
                             failures++;
                             if (failures >= 2) {
+                                Player.copyDataToClipboard();
+                                String strSavedTo = Player.saveDataToFile();
+
                                 uploadingText.setText("Unable to upload.  There may be " +
                                 "firewall issues or other network constraints.  Your results " +
-                                "have been saved to file here: " + "<nowhere.txt>" + ".  Please " + 
+                                "have been saved to file here: " + strSavedTo + ".  Please " + 
                                 "attach this file " +
                                 "to an email and send it to systemsthinkingtest@gmail.com.  If " +
-                                "this is not done, your results will not be processed and your efforts " +
-                                "in the game will have been in vain!  Sorry for the inconvenience!");
+                                "this is not done, your results may not be processed and your efforts " +
+                                "in the game may have been in vain!  Sorry for the inconvenience!");
                                 okBtn.setDisable(false);
                                 okBtn.setText("I have sent the email");
                                 okBtn.setPrefWidth(300);
@@ -210,7 +213,6 @@ public class BetaWindow extends DialogWindow {
                                     }
                                 });
                                 m_MainVBox.getChildren().add(altBtn);
-                                Player.copyDataToClipboard();
                             }
                             else {
                                 uploadingText.setText("Upload failed.  Please retry.");

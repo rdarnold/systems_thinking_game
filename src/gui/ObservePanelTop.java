@@ -93,21 +93,30 @@ public class ObservePanelTop extends PanelTopBase {
     @Override
     public void update() {
         super.update();
-
-        if (Player.inPracticeMode()) {
+        
+        instructionText.setText("Click the 'Play All' button to watch the system for 3 turns. Click " +
+        "the '>' button to just watch the system through a single turn. After clicking one of the Play buttons, " +
+        "You can drag the slider back " +
+        "and forth to check what the system is doing at different points in time." +
+        "When you are finished observing, click the 'Main Screen' button to go to the main " +
+        "screen and continue the game.  You can return to this screen from the main screen " +
+        "at any time.");
+        /*if (Player.inPracticeMode()) {
             instructionText.setText("Click the 'Play All' button to watch the system for 3 turns. Click " +
-            "the '>' button to just watch the system through a single turn. " +
+            "the '>' button to just watch the system through a single turn. You can drag the slider back " +
+            "and forth to check what the system is doing at diffrent points in time." +
             "When you are finished observing, click the 'Main Screen' button to go to the main " +
             "screen and continue the game.  You can return to this screen from the main screen " +
             "at any time.");
         }
         else {
             instructionText.setText("Click the 'Play All' button to watch the system for 3 turns. Click " +
-            "the '>' button to just watch the system through a single turn. " +
+            "the '>' button to just watch the system through a single turn. You can drag the slider back " +
+            "and forth to check what the system is doing at diffrent points in time." +
             "When you are finished observing, click the 'Main Screen' button to go to the main " +
             "screen and continue the game.  You can return to this screen from the main screen " +
             "at any time.");
-        }
+        }*/
 
     }
 }

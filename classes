@@ -68,11 +68,6 @@ src/gui/ExperimentPanelSet.java
 src/gui/ExperimentPanelTop.java
 src/gui/GosSceneBase.java
 src/gui/InfoScreen.java
-src/gui/InquirePanelBottom.java
-src/gui/InquirePanelLeft.java
-src/gui/InquirePanelSet.java
-src/gui/InquirePanelTop.java
-src/gui/InquireScreen.java
 src/gui/MainPanelBottom.java
 src/gui/MainPanelLeft.java
 src/gui/MainPanelRight.java

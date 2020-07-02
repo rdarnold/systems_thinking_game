@@ -14,6 +14,10 @@ import java.net.*; // To get the mac address
 import java.security.*;
 import java.util.Enumeration;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
+
 // GUI stuff
 import javafx.scene.control.*;
 import javafx.scene.control.Tooltip;
@@ -38,6 +42,9 @@ import javafx.util.Duration;
 // Graphics stuff that could be moved into a GraphicsUtils file
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
+
+//import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileSystemView;
 
 import gos.gui.*;
 
@@ -541,6 +548,19 @@ public final class Utils {
         return titledPane;
     }
 
+    public static String getJavaVersion() {
+        return "" + System.getProperty("java.version");
+    }
+
+    public static String getJVMMemoryMB() {
+        // Max heap size of the JVM but this should be really similar to what I set
+        return "" + (Runtime.getRuntime().maxMemory() / 1000000);
+    }
+
+    public static String getOSName() {
+        return System.getProperty("os.name");
+    }
+
     // Attempt to get the MAC address if we are allowed to.
     public static String getMacAddress() {
         return (String)AccessController.doPrivileged(new PrivilegedAction() {
@@ -561,6 +581,24 @@ public final class Utils {
                 }
             }
         });
+    }
+
+    // Saves file and returns string that shows file location
+    // Assumes filename has .txt extension already
+    public static String saveFileToMyDocs(String fileName, String fileContents) {
+        //new JFileChooser().getFileSystemView().getDefaultDirectory().toString();
+        String path = FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
+        String fileAndPath = path + "/" + fileName;
+
+        try {
+            Files.write(Paths.get(fileAndPath), fileContents.getBytes());
+        }
+        catch (IOException e) {
+            System.out.println(e.toString());
+            return "<Write File Failed>";
+        }
+
+        return fileAndPath;
     }
 
     // Remove the last CR and LF if exists

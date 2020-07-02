@@ -91,10 +91,9 @@ public class MainPanelSet extends PanelSetBase {
         // should explain that somewhere.
         "This is the main screen from which you can navigate to other screens " + 
         "to gather information about the system, or proceed with the game by " + 
-        "clicking the 'Change System' button.  The 'Help' button at the top " + 
-        "left will show this text again.  The 'Info' button shows a list of " + 
-        "all different types of information about the game, in case you get " + 
-        "stuck, confused, or just want to re-read something to refresh your memory.\r\n\r\n" + 
+        "clicking the 'Change System' button.  The 'Info' button at the top left shows a list of " + 
+        "all different types of information about the game.  the 'Notepad' button opens a " +
+        "notepad window in which you can write anything you want throughout the game.\r\n\r\n" + 
         "Your goal for this task is shown in bold on the top panel of the screen.";
         mainPanelWindow = new OKWindow(400, 500, strTitle, strText);
 

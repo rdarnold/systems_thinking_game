@@ -94,8 +94,8 @@ public class Score {
             case 1:{
                 // Over 5 turns, try to maximum the number of spinning shapes in the system.  
                 // The more shapes you can make (or preserve), the better.
-                if (numShapes >= 50) {
-                    strScore = "Wow, nice job!\r\nYou finished with all " + numShapes + " shapes.";
+                if (numShapes >= 49) {
+                    strScore = "Wow, nice job!\r\nYou finished with " + numShapes + " shapes.";
                 }
                 else {
                     strScore = "You finished with " + numShapes + " shapes.";

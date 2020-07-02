@@ -436,9 +436,22 @@ public final class FileTransfer {
         }
     }
 
+    public static boolean isSelfTestFile(String fileNameAndPath) {
+        return false;
+    }
+
+    public static void cleanResults() {
+        // Clean up the "Complete" results so that it only keeps the most recent, highest number
+        // playthrough for any result.  This might "mask" previous playthroughs but if they put in
+        // number of playthroughs, I can see that, and also I can automatically scan all the files for
+        // same name or MAC address or ID to see if any "potential same players" exist.
+        // This is not for evaluation purposes, it's just for myself to see more complete results
+        // by just looking in a folder.  For the assessment, I need to have my tool automatically look
+        // through the folders and seek out specific things.
+    }
     
-    public static boolean organizeFile(String fileName, String fileNameAndPath) {
-        String destPath = "C:/Ross/Work/Japan/Drones/Code/systems_thinking_game_evolved/data/";
+    public static boolean organizeFile(String fileName, String fromNameAndPath) {
+        String dataPath = "C:/Ross/Work/Japan/Drones/Code/systems_thinking_game_evolved/data/";
         
         // A filename looks something like this:
         // STT_Anon_1_ID365481_2020-04-09_T19-30-12_Z.txt
@@ -449,29 +462,40 @@ public final class FileTransfer {
         int end = start + 7;
         String strYearMonth = fileName.substring(start, end) + "/";
 
-        // First, add the month to destPath
-        destPath += strYearMonth;
+        // First, add the month to dataPath
+        dataPath += strYearMonth;
 
-        // Now, add the ID (from within the filename) to the destPath
+        // Now, add the ID (from within the filename) to the dataPath
         start = fileName.indexOf("_ID") + "_ID".length();
         end = fileName.length() - 27;
-        destPath += fileName.substring(start, end);
+        dataPath += fileName.substring(start, end);
+
+        String destNameAndPath = dataPath + "/" + fileName;
 
         try {
-            // Create the folder for the month, if it doesn't exist
-            Files.createDirectories(Paths.get(destPath));
+            // Create the folder, if it doesn't exist
+            Files.createDirectories(Paths.get(dataPath));
 
-            // Move the file
-            Path temp = Files.move(
-                Paths.get(fileNameAndPath),  
-                Paths.get(destPath + "/" + fileName)); 
+            // If it's anon and has my MAC address from my laptop then move it into a "self-test"
+            // folder or just leave it in temp?
+            if (isSelfTestFile(destNameAndPath) == true) {
+                // zoids
+            }
+            else {
+                // And if it has a higher than 5 result then copy it into "complete" folder
     
-            if (temp != null) { 
-                return true;
-            } 
-            else { 
-                System.out.println("Failed to move the file"); 
-            } 
+                // Move the file
+                Path temp = Files.move(
+                    Paths.get(fromNameAndPath),  
+                    Paths.get(destNameAndPath)); 
+
+                if (temp != null) { 
+                    return true;
+                } 
+                else { 
+                    System.out.println("Failed to move the file"); 
+                } 
+            }
         }
         catch (IOException e) {
             return false;
@@ -484,9 +508,6 @@ public final class FileTransfer {
         // This is the parent folder ID:
         String parentFolderId = "0B9qbayJt45sFV3FkaTJxeWZQRnM";  
         String filePath = "C:/Ross/Work/Japan/Drones/Code/systems_thinking_game_evolved/data/temp/";
-        
-        // If we want to change the date/time after which we show results, change this:
-        String startDateTime = "2020-04-11" + "T12:00:00";
 
         try {
             // Build a new authorized API client service.
@@ -500,7 +521,7 @@ public final class FileTransfer {
                 FileList result = service.files().list()
                     // Search only within SimulationResults folder, and only actual files, not folders
                     //.setQ("('" + parentFolderId + "' in parents) and (mimeType != 'application/vnd.google-apps.folder')")
-                    .setQ("('" + parentFolderId + "' in parents) and (mimeType != 'application/vnd.google-apps.folder') and (modifiedTime > '" + startDateTime + "')")
+                    .setQ("('" + parentFolderId + "' in parents) and (mimeType != 'application/vnd.google-apps.folder') and (modifiedTime > '" + Constants.DL_START_DATE_TIME + "')")
                     .setPageSize(1000)
                     .setFields("nextPageToken, files(id, name)")
                     .setPageToken(pageToken)

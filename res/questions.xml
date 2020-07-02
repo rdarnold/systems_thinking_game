@@ -2,7 +2,7 @@
 <questions>
   <question>
     <exercise>0</exercise>
-    <uId>1</uId>
+    <uid>1</uid>
     <name>Gender</name>
     <text>Please select your gender.</text>
     <answerType>Choice</answerType>
@@ -15,7 +15,7 @@
   </question>
   <question>
     <exercise>0</exercise>
-    <uId>2</uId>
+    <uid>2</uid>
     <name>Residence</name>
     <text>Please provide your state (if in USA) or country (if outside USA)CR
     of residence.</text>
@@ -38,7 +38,7 @@
   </question>-->
   <question>
     <exercise>0</exercise>
-    <uId>3</uId>
+    <uid>3</uid>
     <name>Age</name>
     <text>Please select your age category.</text>
     <answerType>Choice</answerType>
@@ -57,7 +57,7 @@
   </question>
   <question>
     <exercise>0</exercise>
-    <uId>4</uId>
+    <uid>4</uid>
     <name>English Language Ability</name>
     <text>Please select your level of English language ability.</text>
     <answerType>Choice</answerType>
@@ -71,7 +71,7 @@
   </question>
   <question>
     <exercise>0</exercise>
-    <uId>5</uId>
+    <uid>5</uid>
     <name>Education Level</name>
     <text>Please select your education level.</text>
     <answerType>Choice</answerType>
@@ -92,7 +92,7 @@
   </question>
   <question>
     <exercise>0</exercise>
-    <uId>6</uId>
+    <uid>6</uid>
     <name>Study Areas</name>
     <text>What were the primary areas of study (majors, research focuses, etc.)CR
     during your academic career?  Please list all areas.</text>
@@ -100,7 +100,7 @@
   </question>
   <question>
     <exercise>0</exercise>
-    <uId>7</uId>
+    <uid>7</uid>
     <name>Systems Thinking Experience</name>
     <text>Do you have any experience in Systems Thinking?  If yes,CR
     where does this experience come from (classes, books, conferences, workCR
@@ -136,7 +136,7 @@
   </question>-->
   <question>
     <exercise>0</exercise>
-    <uId>8</uId>
+    <uid>8</uid>
     <name>Computer Gaming</name>
     <text>Please select your computer gaming background.</text>
     <answerType>Choice</answerType>
@@ -260,7 +260,7 @@
   </question>-->
   <question>
     <exercise>0</exercise>
-    <uId>9</uId>
+    <uid>9</uid>
     <name>Learning Style</name>
     <text>Please select your preferred learning styles, if any.  You may select more than one.</text>
     <answerType>Check</answerType>
@@ -279,7 +279,7 @@
   </question>
   <question>
     <exercise>1</exercise>
-    <uId>10</uId>
+    <uid>10</uid>
     <name>Occupational Area</name>
     <text> Please describe your area(s) of expertise in your career.</text>
     <answerType>MultilineInput</answerType>
@@ -294,7 +294,7 @@
   </question>-->
   <question>
     <exercise>1</exercise>
-    <uId>11</uId>
+    <uid>11</uid>
     <name>Job Titles</name>
     <text> Please provide your current and past position title(s) in your career, if anyCR
     (Ex: Elementary Teacher, Designer, Systems Engineer, Associate Professor, etc.)</text>
@@ -302,7 +302,7 @@
   </question>
   <question>
     <exercise>1</exercise>
-    <uId>12</uId>
+    <uid>12</uid>
     <name>Career Experience</name>
     <text>How many years of professional work experience do you have, if any?</text>
     <answerType>Choice</answerType>
@@ -320,7 +320,7 @@
   </question>
   <question>
     <exercise>2</exercise>
-    <uId>13</uId>
+    <uid>13</uid>
     <name>Tutorial</name>
     <text>After the introduction and tutorial, do you feel likeCR
     you understand how to play the game?</text>
@@ -334,21 +334,21 @@
   </question>
   <question>
     <exercise>3</exercise>
-    <uId>14</uId>
+    <uid>14</uid>
     <name>Four Shapes</name>
     <text>Did your changes work the way you expected them to?  If not, please explain.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>3</exercise>
-    <uId>15</uId>
+    <uid>15</uid>
     <name>Four Shapes</name>
     <text>Please describe how you approached this stage and what your strategy was.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>3</exercise>
-    <uId>16</uId>
+    <uid>16</uid>
     <name>Four Shapes</name>
     <text>After observing all turns, you may have noticed that most of theCR
     shapes are often gone.  Why?</text>
@@ -362,25 +362,28 @@
         <answerOption>Multiple interrelated factors</answerOption>
         <answerOption>Not enough information to answer</answerOption>
     </answerOptions>
+    <correct>5</correct>
+    <partial>1</partial>
   </question>
   <question>
     <exercise>3</exercise>
-    <uId>17</uId>
+    <uid>17</uid>
     <name>Four Shapes</name>
     <text>What makes a shape divide into two?</text>
     <answerType>Choice</answerType>
     <answerOptions>
         <answerOption>Impacting with another shape</answerOption>
-        <answerOption>Impacting with a star</answerOption>
+        <answerOption>Impacting with a spike</answerOption>
         <answerOption>Its size</answerOption>
         <answerOption>Its spin</answerOption>
         <answerOption>Random</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>2</correct>
   </question>
   <question>
     <exercise>3</exercise>
-    <uId>18</uId>
+    <uid>18</uid>
     <name>Four Shapes</name>
     <text>What does the rain do when the Growth variable is set to "Growth" (the default setting)?</text>
     <answerType>Choice</answerType>
@@ -392,10 +395,11 @@
         <answerOption>Not enough information to answer</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>0</correct>
   </question>
   <question>
     <exercise>3</exercise>
-    <uId>19</uId>
+    <uid>19</uid>
     <name>Four Shapes</name>
     <text>What would most likely happen to the overall system if the rain rate wereCR 
     increased by a large amount but no other variables were changed?</text>
@@ -407,10 +411,12 @@
         <answerOption>It depends on when the rain rate is increased</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>2</correct>
+    <partial>3</partial>
   </question>
   <question>
     <exercise>3</exercise>
-    <uId>20</uId>
+    <uid>20</uid>
     <name>Four Shapes</name>
     <text>What are the things that make the spinning shapes increase in size?  Check all that apply.</text>
     <answerType>Check</answerType>
@@ -424,10 +430,11 @@
         <answerOption>Stealing or "pulling" size from other nearby shapes</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>0,1,6</correct>
   </question>
   <question>
     <exercise>3</exercise>
-    <uId>21</uId>
+    <uid>21</uid>
     <name>Four Shapes</name>
     <text>What happens when 2 red balls collide?</text>
     <answerType>Choice</answerType>
@@ -440,14 +447,16 @@
         <answerOption>Not enough information</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>2</correct>
   </question>
   <question>
     <exercise>3</exercise>
-    <uId>22</uId>
+    <uid>22</uid>
     <name>Four Shapes</name>
-    <text>What is the key factor limiting growth in this system?</text>
+    <text>Is there a key factor limiting growth of the number of spinning shapes in this system?</text>
     <answerType>Choice</answerType>
     <answerOptions>
+        <answerOption>No, growth is not limited by anything</answerOption>
         <answerOption>There are not enough red balls</answerOption>
         <answerOption>Gravity is not strong enough</answerOption>
         <answerOption>The system starts with too few spinning shapes</answerOption>
@@ -456,31 +465,32 @@
         <answerOption>Not enough information</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>4</correct>
   </question>
   <question>
     <exercise>3</exercise>
-    <uId>23</uId>
+    <uid>23</uid>
     <name>Four Shapes</name>
     <text>Does this system remind you of any real life system?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>24</uId>
+    <uid>24</uid>
     <name>Chaos</name>
     <text>Did your changes work the way you expected them to?  If not, please explain.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>25</uId>
+    <uid>25</uid>
     <name>Chaos</name>
     <text>Please describe how you approached this stage and what your strategy was.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>26</uId>
+    <uid>26</uid>
     <name>Chaos</name>
     <text>Would you say the system, without any of your changes, is stable or unstable?</text>
     <answerType>Choice</answerType>
@@ -490,10 +500,11 @@
         <answerOption>I don't know</answerOption>
         <answerOption>Not enough information</answerOption>
     </answerOptions>
+    <correct>1</correct>
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>27</uId>
+    <uid>27</uid>
     <name>Chaos</name>
     <text> If a large shape, rapidly spinning left (counter-clockwise), wereCR 
     introduced to the system, what do you think would happen to it overCR
@@ -508,10 +519,11 @@
         <answerOption>I don't know</answerOption>
         <answerOption>Not enough information</answerOption>
     </answerOptions>
+    <correct>0</correct>
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>28</uId>
+    <uid>28</uid>
     <name>Chaos</name>
     <text>What things in the game directly affect the red balls?  Check all that apply</text>
     <answerType>Check</answerType>
@@ -525,10 +537,11 @@
         <answerOption>Not enough information</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>0,1,4,5</correct>
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>29</uId>
+    <uid>29</uid>
     <name>Chaos</name>
     <text>What does the color of a spinning shape mean?</text>
     <answerType>Choice</answerType>
@@ -540,10 +553,11 @@
         <answerOption>Not enough information</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>3</correct>
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>30</uId>
+    <uid>30</uid>
     <name>Chaos</name>
     <text>Which of the following sets of actions is most likely to gain your shapeCR
     the most levels the fastest?</text>
@@ -555,10 +569,12 @@
         <answerOption>Not enough information</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>1</correct>
+    <partial>0</partial>
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>31</uId>
+    <uid>31</uid>
     <name>Chaos</name>
     <text>Which of the following would you include as part of the total "system" thatCR
     affects the game score?  Check all that apply.</text>
@@ -574,10 +590,11 @@
         <answerOption>Yourself</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>0,2,4,5,7</correct>
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>32</uId>
+    <uid>32</uid>
     <name>Chaos</name>
     <text>Which would you say are the root causes of the fact that your shape will notCR
     gain levels in the final stage if you don't intervene?  Check all that apply.</text>
@@ -591,10 +608,11 @@
         <answerOption>The researcher's goal to improve complex problem solving skills globally</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
+    <correct>2,3,5</correct>
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>33</uId>
+    <uid>33</uid>
     <name>Chaos</name>
     <text>Is there any reason you believe you did not do as well as you could have? Check all that apply.</text>
     <answerType>Check</answerType>
@@ -616,7 +634,7 @@
   </question>
   <question>
     <exercise>4</exercise>
-    <uId>34</uId>
+    <uid>34</uid>
     <name>Chaos</name>
     <text>In addition to the variables offered in the Change the System screenCR
     (Shape Type, Rain Rate, Paradigm, etc.), were there any others that you wouldCR
@@ -625,7 +643,7 @@
   </question>
   <!--<question>
     <exercise>4</exercise>
-    <uId>34</uId>
+    <uid>34</uid>
     <name>Chaos</name>
     <text>Did you feel like any of the variables did not do what you expectedCR
     them to do when you changed them?  If yes, please explain.</text>
@@ -633,28 +651,28 @@
   </question>-->
   <question>
     <exercise>4</exercise>
-    <uId>35</uId>
+    <uid>35</uid>
     <name>Chaos</name>
     <text>How has your game play style changed over the course of the game?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>5</exercise>
-    <uId>36</uId>
+    <uid>36</uid>
     <name>Feedback</name>
     <text>What are the things you found most difficult about this simulation?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>5</exercise>
-    <uId>37</uId>
+    <uid>37</uid>
     <name>Feedback</name>
     <text>What are the things you found easiest about this simulation?</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>5</exercise>
-    <uId>38</uId>
+    <uid>38</uid>
     <name>Feedback</name>
     <text>Did any external factors affect your ability to perform well (disruptions,CR
     noisy environment, need for coffee, etc.)?</text>
@@ -662,7 +680,7 @@
   </question>
   <question>
     <exercise>5</exercise>
-    <uId>39</uId>
+    <uid>39</uid>
     <name>Feedback</name>
     <text>Do you feel that your performance in the game reflected your abilityCR 
     to think systemically? Why or why not?</text>
@@ -670,22 +688,22 @@
   </question>
   <question>
     <exercise>5</exercise>
-    <uId>40</uId>
+    <uid>40</uid>
     <name>Feedback</name>
-    <text>Did you understand the simulation tasks and your objectives as a player?  
+    <text>Did you understand the simulation tasks and your goals as a player?  
     If not, please explain.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>5</exercise>
-    <uId>41</uId>
+    <uid>41</uid>
     <name>Feedback</name>
     <text>If there are any other comments you would like to make, please enter them here.</text>
     <answerType>MultilineInput</answerType>
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>42</uId>
+    <uid>42</uid>
     <name>Explore Multiple Perspectives</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -700,7 +718,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>43</uId>
+    <uid>43</uid>
     <name>Consider the Wholes and Parts</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -715,7 +733,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>44</uId>
+    <uid>44</uid>
     <name>Effectively Respond to Uncertainty and Ambiguity</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -730,7 +748,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>45</uId>
+    <uid>45</uid>
     <name>Consider Issues Appropriately</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -745,7 +763,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>46</uId>
+    <uid>46</uid>
     <name>Use Mental Modeling and Abstraction</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -760,7 +778,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>47</uId>
+    <uid>47</uid>
     <name>Recognize Systems</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -775,7 +793,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>48</uId>
+    <uid>48</uid>
     <name>Define and Maintain Boundaries</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -790,7 +808,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>49</uId>
+    <uid>49</uid>
     <name>Differentiate and Quantify Elements</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -805,7 +823,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>50</uId>
+    <uid>50</uid>
     <name>Identify Relationships</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -820,7 +838,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>51</uId>
+    <uid>51</uid>
     <name>Characterize Relationships </name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -835,7 +853,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>52</uId>
+    <uid>52</uid>
     <name>Identify Feedback Loops</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -850,7 +868,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>53</uId>
+    <uid>53</uid>
     <name>Characterize Feedback Loops</name>
     <text>Please select the option that best describes your own behavior when solving complex problems.</text>
     <answerType>Choice</answerType>
@@ -865,7 +883,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>54</uId>
+    <uid>54</uid>
     <name>Describe Past System Behavior</name>
     <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
@@ -880,7 +898,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>55</uId>
+    <uid>55</uid>
     <name>Predict Future System Behavior</name>
     <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
@@ -895,7 +913,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>56</uId>
+    <uid>56</uid>
     <name>Respond to Changes over Time</name>
     <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>
@@ -910,7 +928,7 @@
   </question>
   <question>
     <exercise>6</exercise>
-    <uId>57</uId>
+    <uid>57</uid>
     <name>Use Leverage Points to Product Effects</name>
     <text>Please select the option that best describes your own behavior when solving complex problems in a system.</text>
     <answerType>Choice</answerType>

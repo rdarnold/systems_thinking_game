@@ -17,6 +17,11 @@ public final class Constants {
 
     public static final String RES_LOAD_PATH = "/res/";
 
+    public static final String SAVED_DATA_FILE_NAME = "SystemThinkingGame_Data.txt";
+
+    // If we want to change the date/time after which we download results, change this:
+    public static final String DL_START_DATE_TIME = "2020-07-01" + "T12:00:00";
+
     public static final int BUTTON_WIDTH = 120;
     public static final int NODE_SIZE = 125;
 
@@ -26,7 +31,7 @@ public final class Constants {
     public static final int SIM_CENTER_X = SIM_WIDTH/2;
     public static final int SIM_CENTER_Y = SIM_HEIGHT/2;
 
-    public static final String VERSION_NUMBER_STRING = "0.81";
+    public static final String VERSION_NUMBER_STRING = "1.04";
 
     // Some key strings for the system
     public static final String SHAPE_KEY_STRING = "@S";

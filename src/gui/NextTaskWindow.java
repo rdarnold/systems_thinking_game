@@ -78,12 +78,13 @@ public class NextTaskWindow extends DialogWindow {
         Score score = new Score();
         // We assign 50 the second we hit it, even if the number "busts"
         // 50, we don't really care
-        if (won == true) {
+        // We didn't get 50 though, we "win" if we get to the end of the stage
+        /*if (won == true) {
             score.get(Gos.sim, 50);
         }
-        else {
+        else {*/
             score.get(Gos.sim);
-        }
+        //}
         Data.scores.add(score);
         str = score.toString();
         addCenteredLabel(str);
@@ -116,11 +117,23 @@ public class NextTaskWindow extends DialogWindow {
             @Override
             public void handle(MouseEvent event) {
                 Player.recordButtonAction(event, thisScreen.className());
-                Gos.simRunner.finishTask();
-                close();
+                onOK();
             }
         });
         addTempControl(btn);
+    }
+
+    // Just in case, let's not let them hit this multiple times at once
+    private static long lastOKMS = 0;
+    private void onOK() {
+        long now = System.currentTimeMillis();
+        int diffSeconds = (int)((now - lastOKMS)/1000);
+        lastOKMS = now;
+        if (diffSeconds < 10) {
+            return;
+        }
+        Gos.simRunner.finishTask();
+        close();
     }
     
     @Override

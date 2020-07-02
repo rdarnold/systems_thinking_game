@@ -96,7 +96,7 @@ public class Gos extends Application {
     public static MainScreen mainScene;
     public static AnswerScreen answerScene;
     public static InfoScreen infoScene;
-    public static InquireScreen inquireScene; 
+    //public static InquireScreen inquireScene; 
     public static WelcomeWindow welcomeWindow;
     public static PlayedBeforeWindow playedBeforeWindow;
     public static PlayAgainWindow playAgainWindow;
@@ -265,9 +265,9 @@ public class Gos extends Application {
         changeScene(infoScene);
     }
 
-    public static void showInquireScreen() {
+    /*public static void showInquireScreen() {
         changeScene(inquireScene);
-    }
+    }*/
 
     public static void showExercisePopup(Exercise exer) {
         if (exer.getPopupText() != "") {

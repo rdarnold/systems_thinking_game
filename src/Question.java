@@ -56,13 +56,18 @@ public class Question extends GameDataItem {
     // XML using the annotation @XmlElement(name="XYZ") where XYZ is the actual
     // name in the XML file.  If not specified it defaults to the name of the variable.
     private final IntegerProperty exercise = new SimpleIntegerProperty(0);
+
+    // A unique id for each question.  the regular "id" variable is within each exercise.
+    private final IntegerProperty uid = new SimpleIntegerProperty(0);
+
     //private final IntegerProperty id = new SimpleIntegerProperty(0);
     //private final StringProperty name = new SimpleStringProperty("");
     //private final StringProperty text = new SimpleStringProperty("");
     private ObjectProperty<AnswerType> answerType = new SimpleObjectProperty<>(AnswerType.Input);
 
-    // A unique id for each question.  the regular "id" variable is within each exercise.
-    private final IntegerProperty uId = new SimpleIntegerProperty(0);
+    // Correct and partial answers
+    private StringProperty correct = new SimpleStringProperty("");
+    private StringProperty partial = new SimpleStringProperty("");
 
     // So this works just fine if I dont have it wrapped in answerOptions
     //@XmlElement(name="answerOption")
@@ -96,6 +101,18 @@ public class Question extends GameDataItem {
     public IntegerProperty ExerciseProperty() {
         return exercise;
     }
+    
+    public int getUid() {
+        return uid.get();
+    }
+
+    public void setUid(int num) {
+        uid.set(num);
+    }
+
+    public IntegerProperty UidProperty() {
+        return uid;
+    }
 
     public AnswerType getAnswerType() {
         return answerType.get();
@@ -108,18 +125,29 @@ public class Question extends GameDataItem {
     public ObjectProperty<AnswerType> answerTypeProperty() {
         return answerType;
     }
-    
 
-    public int getUId() {
-        return uId.get();
+    public String getCorrect() {
+        return correct.get();
     }
 
-    public void setUId(int num) {
-        uId.set(num);
+    public void setCorrect(String str) {
+        correct.set(str);
     }
 
-    public IntegerProperty uIdProperty() {
-        return uId;
+    public StringProperty correctProperty() {
+        return correct;
+    }
+
+    public String getPartial() {
+        return partial.get();
+    }
+
+    public void setPartial(String str) {
+        partial.set(str);
+    }
+
+    public StringProperty partialProperty() {
+        return partial;
     }
     
     /*public void stripCarriageReturns() {

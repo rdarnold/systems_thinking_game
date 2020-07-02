@@ -790,7 +790,7 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
 
         FileChooser fileChooser = new FileChooser(); 
         //String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
-        fileChooser.setInitialDirectory(new File("C://Ross//Work//Japan//Drones//Code//systems_thinking_game_evolved//data//current"));   
+        fileChooser.setInitialDirectory(new File("C://Ross//Work//Japan//Drones//Code//systems_thinking_game_evolved//data//complete"));   
         fileChooser.setTitle("Open Player Data File");      
         fileChooser.getExtensionFilters().addAll(
          new ExtensionFilter("Text Files", "*.txt"));                              

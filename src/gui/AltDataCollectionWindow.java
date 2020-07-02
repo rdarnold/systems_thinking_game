@@ -109,8 +109,8 @@ public class AltDataCollectionWindow extends DialogWindow {
         // Should maybe have a helper.xml file where all the helper text is,
         // the stuff that isn't in the info area
         String strText = 
-        "If the upload has failed, and the file either has not saved correctly " +
-        "(for example, saved to <nowhere.txt>) or you can't find it, there is one " +
+        "If the upload has failed, and the file " + Constants.SAVED_DATA_FILE_NAME + " either has not saved correctly " +
+        "to your My Documents or Home folder or you can't find it, there is one " +
         "more alternative.  Your research data has been copied to the clipboard.  If you " +
         "compose a new email right now, you can select Edit->Paste into the main body, " +
         "or click inside the main body and press Ctrl+V.  A long block of text should " +

@@ -166,68 +166,6 @@ public class WelcomeWindow extends DialogWindow {
         });
 
         Utils.addVerticalSpace(box, space);
-        //Utils.addVerticalSpace(box, space);
-
-        /*lab = new Label("To maintain anonymity, each player is tracked through an ID number.");
-        lab.setWrapText(true);
-        lab.setTextAlignment(TextAlignment.CENTER);
-        lab.setPrefWidth(labWidth);
-        m_MainVBox.getChildren().add(lab);*/
-
-       /* lab = new Label("If you know your ID number, please enter it below.  If not, " +
-          "a new one will be generated for you. ");
-        lab.setWrapText(true);
-        //lab.setPrefWidth(labWidth);
-        //lab.setTextAlignment(TextAlignment.CENTER);
-        m_MainVBox.getChildren().add(lab);
-         
-        m_tfId = addNewLabelTextField("ID Number (Optional): ");
-        m_tfId.setText("" + Player.getId());*/
-        
-        // Now we need, text fields for ID, Name, and Email.
-        // And how many times you've played through this simulation.
-        // A consent box for "I am OK with being contacted 
-        // regarding this test."
-        // And a Generate ID button.
-        /*MovableButton btn = new MovableButton("Generate ID");
-        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                //Gos.gos.showMainScreen();
-                Player.recordButtonAction(event, thisScreen.className());
-                onGenerateID();
-            }
-        });
-        m_MainVBox.getChildren().add(btn);*/
-
-        /*Utils.addVerticalSpace(box, space);
-        
-        lab = new Label("Please enter the number " +
-            "of times you've played.");
-        lab.setWrapText(true);
-        lab.setPrefWidth(labWidth);
-        m_MainVBox.getChildren().add(lab);
-
-        m_tfTimes = addNewLabelTextField("Times Played: ");
-        Utils.addVerticalSpace(box, space);
-        m_tfTimes.setText("0");*/
-
-        // Check this box if you consent to being contacted about your results.
-        //Utils.addVerticalSpace(box, space);
-
-    /*  lab = new Label("You may provide your name and/or email below. ");
-        lab.setWrapText(true);
-        lab.setPrefWidth(labWidth);
-        m_MainVBox.getChildren().add(lab);
-
-        m_cbConsent = new CheckBox("Check this box if you consent to being contacted about your results.");
-        m_MainVBox.getChildren().add(m_cbConsent);
-
-        m_tfName = addNewLabelTextField("Name (Optional): ");
-        m_tfEmail = addNewLabelTextField("Email (Optional): ");*/
-
-        // Do we want a consent box for "I am OK with being contacted 
-        // regarding this test." 
 
         okBtn = new MovableButton("OK");
         okBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {

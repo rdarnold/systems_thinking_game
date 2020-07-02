@@ -125,12 +125,16 @@ public class ContactConsentWindow extends DialogWindow {
          "data you provide will be protected and stored offline. All subjects providing " +
          "personally identifiable data must be over 18 years of age. At the time of this study, " +
          "the method of assessment is still unproven and thus each subject’s score should not " +
-         "be regarded as authoritative.";
+         "be regarded as authoritative.\r\n\r\nIf you provide your email address, the researchers will be " +
+         "able to email you with a set of your Systems Thinking scores after the research is complete.";
         textLabel = addLeftLabel(str);
-        Utils.addVerticalSpace(box, space);
+        Utils.addVerticalSpace(box, 1);
+        str = "You will need " +
+         "to complete the entire game and answer all questions in order to receive your Systems Thinking score.";
+        textLabel = addLeftLabel(str);
+        textLabel.setStyle("-fx-font-weight: bold; ");
 
-        //m_cbConsent = new CheckBox("Check this box if you consent to being contacted.");
-        //m_MainVBox.getChildren().add(m_cbConsent);
+        Utils.addVerticalSpace(box, space);
 
         m_tfName = addNewLabelTextField("Name (Optional): ");
         m_tfEmail = addNewLabelTextField("Email (Optional): ");

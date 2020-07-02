@@ -86,10 +86,10 @@ public class ObservePanelSet extends PanelSetBase {
         // the stuff that isn't in the info area
         String strTitle = "Observe the System";
         String strText = 
-        "You'll start with a tutorial just to get to know how the game " +
+        "You start with a tutorial to learn how the game " +
         "works." +
         "\r\n\r\n" +
-        "You start the tutorial on the Observe Screen. " +
+        "The tutorial starts on the Observe Screen. " +
         "On this screen, you can watch the system evolve over time without " +
         "using up any turns. " +
         "You can observe the system in action using the controls " +

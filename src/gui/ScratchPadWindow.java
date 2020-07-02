@@ -120,7 +120,8 @@ public class ScratchPadWindow extends Stage implements ClassInfo  {
         // Using TextArea because HTMLEditor sucks and defaults to stupid
         // line spacing that can't be changed
         m_textArea = new TextArea();
-        m_textArea.setText("This is free space for you to take notes and record observations.");
+        m_textArea.setText("This is free space for you to take notes and record observations. " +  
+         " Anything you write here will stick around for the whole game, even if you close this window.");
         m_textArea.setPrefHeight(2000);
         m_MainVBox.getChildren().add(m_textArea);
 

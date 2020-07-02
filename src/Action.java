@@ -102,6 +102,10 @@ public class Action {
 
     public Action(Action.Type aType, String strDescription, String strScreen) {
         Exercise ex = Player.getCurrentExercise();
+        if (ex == null) {
+            init(aType, strDescription, strScreen, 0, 0, 0);
+            return;
+        }
         int nEx = ex.getId();
         int nTask = ex.currentTaskNumber;
         int nTurn = Player.getCurrentTurnNumber();

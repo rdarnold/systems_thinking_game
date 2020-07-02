@@ -85,6 +85,9 @@ public final class Player {
     private static boolean contactConsent = false;
     private static boolean playedBefore = false;
     private static String macAddress = "";
+    private static String osName = "";
+    private static String JVMMemory = "";
+    private static String javaVersion = "";
     private static String tutorialData = "";
     private static String scoreText = ""; // Only used for the data analyzer right now just so I can see what the score is
     
@@ -281,6 +284,18 @@ public final class Player {
         return getDataSizeString(getPlayerData());
     }
 
+    public static Answer getAnswerForQuestionUID(int uID) {
+        // Go back from the end, because we want to return the "MOST RECENT"
+        // answer for this UID (for now)
+        for (int index = answers.size()-1; index >= 0; index--) {
+            Answer ans = answers.get(index);
+            if (ans.getQuestionUid() == uID) {
+                return ans;
+            }
+        }
+        return null;
+    }
+
     public static boolean hasAnsweredQuestionsForExercise(int exId) {
         // Check to see if we have any answers for the passed in exercise/stage Id,
         // if so, we can say yes, the player has indeed answered the questions for this stage;
@@ -408,6 +423,10 @@ public final class Player {
         clipboard.setContent(content);
     }
 
+    public static String saveDataToFile() {
+        return Utils.saveFileToMyDocs(Constants.SAVED_DATA_FILE_NAME, Player.getPlayerData());
+    }
+
     public static String getPlayerData() { 
         StringBuilder result = new StringBuilder();
         // Build the string that represents the file we want to send
@@ -423,6 +442,9 @@ public final class Player {
 
         lastTimeLogged = System.currentTimeMillis();
         macAddress = Utils.getMacAddress();
+        osName = Utils.getOSName();
+        JVMMemory = Utils.getJVMMemoryMB();
+        javaVersion = Utils.getJavaVersion();
 
         // Start with the meta-data like the id, name, email, etc.
         // Get some timestamps on there, might even help us figure out where people
@@ -438,6 +460,9 @@ public final class Player {
         appendLine(result, "PB: " + playedBefore);
         appendLine(result, "Times: " + timesPlayed);
         appendLine(result, "MAC: " + macAddress); // Add in the MAC if we are allowed.
+        appendLine(result, "OS: " + osName); // Put in the OS if we were able to
+        appendLine(result, "Mem: " + JVMMemory); // Max RAM in MB
+        appendLine(result, "JVer: " + javaVersion);
         appendLine(result, "Start: " + startTime);
         appendLine(result, "End: " + endTime);
         appendLine(result, "Tutorial: \r\n" + tutorialData + "EndTutorial");
@@ -644,6 +669,40 @@ public final class Player {
         str = lines.get(i);
         macAddress = str.substring(("MAC: ").length(), str.length());
         //appendLine(result, "MAC: " + Utils.getMacAddress()); // Add in the MAC if we are allowed.
+
+        // Now check OS; older results might not have it; we need a better way to do this
+        i++;
+        str = lines.get(i);
+        if (str.length() < ("OS: ").length() || str.substring(0, ("OS: ").length()).equals("OS: ") == false) {
+            // They didn't have the OS string so just move on
+            i--;
+        }
+        else {
+            osName = str.substring(("OS: ").length(), str.length());
+        }
+
+        // Do the same with max heap memory for the JVM
+        i++;
+        str = lines.get(i);
+        if (str.length() < ("Mem: ").length() || str.substring(0, ("Mem: ").length()).equals("Mem: ") == false) {
+            // They didn't have the string so just move on
+            i--;
+        }
+        else {
+            JVMMemory = str.substring(("Mem: ").length(), str.length());
+        }
+        
+        // Do the same with Java Version
+        i++;
+        str = lines.get(i);
+        if (str.length() < ("JVer: ").length() || str.substring(0, ("JVer: ").length()).equals("JVer: ") == false) {
+            // They didn't have the string so just move on
+            i--;
+        }
+        else {
+            javaVersion = str.substring(("JVer: ").length(), str.length());
+        }
+
         i++;
         str = lines.get(i);
         startTime = Utils.tryParseLong(str.substring(("Start: ").length(), str.length()));

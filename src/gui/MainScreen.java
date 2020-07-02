@@ -72,14 +72,14 @@ public class MainScreen extends GosSceneBase {
 
     private ChangePanelSet changePanelSet;
     private ObservePanelSet observePanelSet;
-    private InquirePanelSet inquirePanelSet;
+    //private InquirePanelSet inquirePanelSet;
     private MainPanelSet mainPanelSet;
     private ExperimentPanelSet experimentPanelSet;
     private ExpCreationPanelSet expCreationPanelSet;
 
     public ChangePanelSet getChangePanelSet() { return changePanelSet; }
     public ObservePanelSet getObservePanelSet() { return observePanelSet; }
-    public InquirePanelSet getInquirePanelSet() { return inquirePanelSet; }
+    //public InquirePanelSet getInquirePanelSet() { return inquirePanelSet; }
     public MainPanelSet getMainPanelSet() { return mainPanelSet; }
     public ExperimentPanelSet getExperimentPanelSet() { return experimentPanelSet; }
     public ExpCreationPanelSet getExpCreationPanelSet() { return expCreationPanelSet; }
@@ -112,7 +112,7 @@ public class MainScreen extends GosSceneBase {
         // Create all the panel sets
         changePanelSet = new ChangePanelSet(this);
         observePanelSet = new ObservePanelSet(this);
-        inquirePanelSet = new InquirePanelSet(this);
+        //inquirePanelSet = new InquirePanelSet(this);
         mainPanelSet = new MainPanelSet(this);
         experimentPanelSet = new ExperimentPanelSet(this);
         expCreationPanelSet = new ExpCreationPanelSet(this);
@@ -121,7 +121,7 @@ public class MainScreen extends GosSceneBase {
         panelSetList = new ArrayList<PanelSetBase>();
         panelSetList.add(changePanelSet);
         panelSetList.add(observePanelSet);
-        panelSetList.add(inquirePanelSet);
+        //panelSetList.add(inquirePanelSet);
         panelSetList.add(mainPanelSet);
         panelSetList.add(experimentPanelSet);
         panelSetList.add(expCreationPanelSet);
@@ -201,10 +201,10 @@ public class MainScreen extends GosSceneBase {
         observePanelSet.show(); 
     }
 
-    public void showInquirePanelSet() {
+    /*public void showInquirePanelSet() {
         Gos.sim.snapCurrent();
         inquirePanelSet.show(); 
-    }
+    }*/
 
     public void showExperimentPanelSet() {
         Gos.sim.snapCurrent();

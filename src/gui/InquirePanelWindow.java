@@ -109,7 +109,7 @@ public class InquirePanelWindow extends DialogWindow {
         "side, you'll notice some changes that you can make to the currently selected " +
         "shape.  Click a different shape to select it.  On the top are some general, " +
         "overall settings that you can adjust.  During the game, please make whatever changes you feel " +
-        "will help to achieve your objective for the current task, then click Submit at the " + 
+        "will help to reach your goal for the current stage, then click Submit at the " + 
         "bottom of the screen.  For now, during the Tutorial mode, you will be asked to make just one change per turn.";
         textLabel = addLeftLabel(str);
         Utils.addVerticalSpace(box, space);
