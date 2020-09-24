@@ -20,7 +20,7 @@ public final class Constants {
     public static final String SAVED_DATA_FILE_NAME = "SystemThinkingGame_Data.txt";
 
     // If we want to change the date/time after which we download results, change this:
-    public static final String DL_START_DATE_TIME = "2020-07-01" + "T12:00:00";
+    public static final String DL_START_DATE_TIME = "2020-08-18" + "T12:00:00";
 
     public static final int BUTTON_WIDTH = 120;
     public static final int NODE_SIZE = 125;

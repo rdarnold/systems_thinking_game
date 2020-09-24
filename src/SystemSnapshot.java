@@ -256,8 +256,8 @@ public class SystemSnapshot {
         }
     }
 
-    // Read in a string and restore a snap from that string
-    public void restoreFromString(Simulator sim, String str) {
+    // Read in a string and set a snap from that string.
+    public void setFromString(Simulator sim, String str) {
         clear();
 
         // When we saved out, we saved the 'selected' state onto the shapes,
@@ -268,7 +268,7 @@ public class SystemSnapshot {
         // So we first load up the string as an array of lines
         String lines[] = str.split("\\r?\\n");
 
-        // First find the beginning to make sure we're actually at the snapshot
+        // Now go through and parse each line to load in the snapshot data
         int i = 0;
         String line = lines[i];
         while (line != null) {
@@ -279,14 +279,6 @@ public class SystemSnapshot {
             parseOneLine(sim, line);
             i++;
         }
-        //String curLine = // get the SysShape string from the str
-        //if (curLine == isSysShape whatever) {
-        //  SysShape newItem = new SysShape(sim, curLine);
-        //  shapes.add(newItem);
-        //}
-
-        // Then we restore it to the sim
-        restore(sim);
     }
 
     // How much "stuff" is in this snapshot?

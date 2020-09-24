@@ -26,6 +26,7 @@ public class Answer {
         strAnswerText = text;
     }
 
+    public Question.AnswerType getAnswerType() { return answerType; }
     public int getQuestionId() { return questionId; }
     public int getQuestionUid() { return questionUid; }
     public int getExerciseId() { return exerciseId; }

@@ -284,6 +284,37 @@ public final class Player {
         return getDataSizeString(getPlayerData());
     }
 
+    public static String getFirstCharForAnswerUID(int uID) {
+        Answer ans = getAnswerForQuestionUID(uID);
+        if (ans == null || ans.getStrAnswer() == null || ans.getStrAnswer().length() < 1) {
+            return "";
+        }
+        return ans.getStrAnswer().substring(0, 1);
+    }
+
+    public static String getStrAnswerForQuestionUID(int uID) {
+        Answer ans = getAnswerForQuestionUID(uID);
+        if (ans == null) {
+            return "";
+        }
+        return ans.getStrAnswer();
+    }
+
+    public static int getCodeAnswerForQuestionUID(int uID) {
+        Answer ans = getAnswerForQuestionUID(uID);
+        if (ans == null) {
+            return -1;
+        }
+        String strAns = ans.getStrAnswer();
+
+        // Now check the code, it's whatever is before the colon
+        String code = strAns.substring(0, 1);
+        if (strAns.substring(1, 2).equals(":") == false) {
+            code += strAns.substring(1, 2);
+        }
+        return Utils.tryParseInt(code);
+    }
+
     public static Answer getAnswerForQuestionUID(int uID) {
         // Go back from the end, because we want to return the "MOST RECENT"
         // answer for this UID (for now)
@@ -408,6 +439,62 @@ public final class Player {
             result.append("\r\n");
         }
         return "\r\nSCORE:\r\n" + result.toString(); 
+    }
+
+    public static int getScoreForStageRound(int stage, int round) {
+        String str = getStrScoreForStageRound(stage, round);
+        if (str == null || str.equals("") == true || str.length() < 1) {
+            return -1;
+        }
+        return Utils.tryParseInt(str);
+    }
+
+    // Based on player UI, not internal structure,
+    // so stage 1.1 is stage 1, round 1
+    public static String getStrScoreForStageRound(int stage, int round) {
+        // Looks like this:
+        /*
+        Stage 0.1: There is no score for the tutorial.
+        Stage 1.1: You finished with 6 shapes.
+        Stage 1.2: You finished with 25 shapes.
+        Stage 2.1: You achieved level 0!
+        Stage 2.2: You achieved level 22!
+        */
+
+        // getScoreText, NOT getScoreData which only works during the game, this is for display
+        // in the excel file / data analyzer.  getScoreText loads the text from the player's
+        // data file.
+        String strScore = getScoreText();
+        String find = "Stage " + stage + "." + round;
+        int index = strScore.indexOf(find);
+        if (index == -1) {
+            return "";
+        }
+
+        // See if they maxed
+        String maxScore = find + ": Wow, nice job";
+        if (strScore.indexOf(maxScore) != -1) {
+            return "50";
+        }
+
+        if (stage == 1) {
+            index += "Stage 1.1: You finished with ".length();
+        }
+        else if (stage == 2) {
+            index += "Stage 2.1: You achieved level ".length();
+        }
+
+        // We have the first number
+        String score = "" + strScore.charAt(index);
+
+        // Now move forward as long as each character is a number
+        index++;
+        while (Character.isDigit(strScore.charAt(index)) == true) {
+            score += strScore.charAt(index);
+            index++;
+        }
+        
+        return score;
     }
 
     public static String getScratchPadData() {
@@ -838,13 +925,16 @@ public final class Player {
 
         List<String> loadLines = new ArrayList<String>();
 
-        // Now we just keep going until we hit the end
+        // Now we just keep going until we hit the end or the scores
         String line = lines.get(i);
         while (line != null) {
             if (i >= lines.size()) {
                 break;
             }
             line = lines.get(i);
+            if (line.length() >= ("SCORE:").length() && line.substring(0, ("SCORE:").length()).equals("SCORE:")) {
+                break;
+            }
             loadLines.add(line);
             i++;
         }

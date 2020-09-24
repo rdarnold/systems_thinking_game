@@ -9,6 +9,7 @@ src/Exercise.java
 src/Experiment.java
 src/GameDataItem.java
 src/Gos.java
+src/ExcelUtils.java
 src/ExerciseListWrapper.java
 src/FileTransfer.java
 src/GravityWell.java
@@ -41,6 +42,7 @@ src/XmlProcessor.java
 src/analyzer/AssessmentData.java
 src/analyzer/AssessmentWindow.java
 src/analyzer/GameTimeSlice.java
+src/analyzer/RatingData.java
 src/analyzer/STSkills.java
 src/analyzer/STUtils.java
 src/gui/ActionPanelBase.java

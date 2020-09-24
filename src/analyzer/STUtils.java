@@ -190,6 +190,843 @@ public final class STUtils {
     i.e. it captures the same skills as what was done during the sim
     */
 
+    // Pass it a string like "32 28 17" and it'll return the sum of correct, partial, and incorrect
+    // answers for those questions (C P I) as in 4 1 12
+    public static String getCorrectPartialIncorrectForAnswerSet(String strAnswerSet) {
+        String[] questions = strAnswerSet.split(" ");
+        Answer ans = null;
+        
+        int numCorrect = 0;
+        int numPartial = 0;
+        int numWrong = 0;
+        for (int i = 0; i < questions.length; i++) {
+            int uid = Utils.tryParseInt(questions[i]);
+            ans = Player.getAnswerForQuestionUID(uid);
+            numCorrect += ans.getTotalCorrect();
+            numPartial += ans.getTotalPartial();
+            numWrong += ans.getTotalIncorrect();
+        }
+
+        return "" + numCorrect + " " + numPartial + " " + numWrong;
+    }
+
+    // Simply sum up the question correctness for each skill
+    // we return it as a string so we can do it all in one go then we parse it out later
+    public static String getCorrectPartialIncorrectForSkill(int skillDomain, int skillNum) {
+        String str = "0 0 0";
+        switch (skillDomain) {
+            case 1: {
+                switch (skillNum) {
+                    case 2: // 1.2 wholes and parts
+                        // 32
+                        return getCorrectPartialIncorrectForAnswerSet("32");
+                    case 3: // 1.3  Effectively Respond to Uncertainty and Ambiguity
+                        break;
+                    case 4: // 1.4  Consider Issues Appropriately
+                        break;
+                }
+                break;
+            }
+            case 2: {
+                switch (skillNum) {
+                    case 2: // 2.2  Define and Maintain Boundaries
+                        // 27, 28, 31, 32
+                        return getCorrectPartialIncorrectForAnswerSet("27 28 31 32");
+                    case 3: // 2.3  Differentiate and Quantify Elements
+                        // 17, 20, 22, 27, 28, 29, 30
+                        return getCorrectPartialIncorrectForAnswerSet("17 20 22 27 28 29 30");
+                }
+                break;
+            }
+            case 3: {
+                switch (skillNum) {
+                    case 1: // 3.1  Identify Relationships
+                        // 18, 21, 27, 28, 31, 32, 
+                        return getCorrectPartialIncorrectForAnswerSet("18 21 27 28 31 32");
+                    case 2: // 3.2  Characterize Relationships
+                        // 18, 21
+                        return getCorrectPartialIncorrectForAnswerSet("18 21");
+                    case 3: // 3.3  Identify Feedback Loops
+                        // 19, 22, 26, 27
+                        return getCorrectPartialIncorrectForAnswerSet("19 22 26 27");
+                    case 4: // 3.4  Characterize Feedback Loops
+                        // 19, 22, 27
+                        return getCorrectPartialIncorrectForAnswerSet("19 22 27");
+                }
+                break;
+            }
+            case 4: {
+                switch (skillNum) {
+                    case 2: // 4.2  Predict Future System Behavior
+                        // 26, 27, 30
+                        return getCorrectPartialIncorrectForAnswerSet("26 27 30");
+                    case 3: // 4.3  Respond to Changes over Time
+                        break;
+                    case 4: // 4.4  Use Leverage Points to Produce Effects
+                        break;
+                }
+                break;
+            }
+        }
+
+        return str;
+    }
+    
+    public static int getCorrectForSkill(int skillDomain, int skillNum) {
+        String strSum = getCorrectPartialIncorrectForSkill(skillDomain, skillNum);
+        String[] vals = strSum.split(" ");
+        return Utils.tryParseInt(vals[0]);
+    }
+
+    public static int getPartialForSkill(int skillDomain, int skillNum) {
+        String strSum = getCorrectPartialIncorrectForSkill(skillDomain, skillNum);
+        String[] vals = strSum.split(" ");
+        return Utils.tryParseInt(vals[1]);
+
+    }
+    public static int getIncorrectForSkill(int skillDomain, int skillNum) {
+        String strSum = getCorrectPartialIncorrectForSkill(skillDomain, skillNum);
+        String[] vals = strSum.split(" ");
+        return Utils.tryParseInt(vals[2]);
+    }
+
+
+    // So we need to be able to load up the system at any point in any stage based on the player
+    // data. 
+    public static boolean loadSystemAtStageRoundTurn(int stageNum, int roundNum, int turnNum) {
+        Action action = AssessmentData.findSubmitChangeActionForStageRoundTurn(stageNum, roundNum, turnNum);
+        if (action == null) {
+            return false;
+        }
+
+        // "false" is to make it AFTER not BEFORE; we want AFTER because we need to see
+        // the changes that the player made, otherwise we won't see the changed variables
+        SystemSnapshot snap = AssessmentData.createSnapshotFromSubmitAction(action, false);
+        if (snap == null) {
+            return false;
+        }
+
+        // Then we restore it to the sim
+        snap.restore(Gos.sim);
+        return true;
+    }
+
+    // So now, calc each "data point" and then I can put a chart together showing which
+    // skill scores are affected by which data points.  These are ALL booleans and are
+    // designed to be booleans, they're like "question answers" in that they can be either
+    // correct or not.  
+    public static int STAGE_FOUR_SHAPES = 3;
+    public static int STAGE_CHAOS = 4;
+    public static int MAX_TURNS_FOUR_SHAPES = 5;
+    public static int MAX_TURNS_CHAOS = 10;
+    public static int ROUND_1 = 0;
+    public static int ROUND_2 = 1;
+
+    // Did they turn up rain rate and change growth (while rain was turned up) to decrease spikes
+    // and set up a red ball storm?  
+    public static boolean dp1_rainAndGrowth(int stg, int rnd, int maxTurns) {
+        // Check to see if growth was changed to no growth at any time, and if so, during that
+        // time, was rain rate also turned up.
+        int turn = 0;
+        for (turn = 0; turn < maxTurns; turn++) {
+            if (loadSystemAtStageRoundTurn(stg, rnd, turn) == true) {
+                if (Data.currentValues.growthRules == Constants.GrowthRules.NoGrowth.getValue()) {
+                    if (Data.currentValues.rainRate > 0.8) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    // We only check the 2nd round of each stage, assuming the first is practice
+    // This is generally true across the board, much scoring is based off of round 2
+    public static boolean dp1_rainAndGrowth_stg1() {
+        return dp1_rainAndGrowth(STAGE_FOUR_SHAPES, ROUND_2, MAX_TURNS_FOUR_SHAPES);
+    }
+    public static boolean dp1_rainAndGrowth_stg2() {
+        return dp1_rainAndGrowth(STAGE_CHAOS, ROUND_2, MAX_TURNS_CHAOS);
+    }
+
+    // Did they “block” the screen at any point so that new spike formation was
+    // generally prevented?  This could be through a shape line or through tweaking
+    // the variables to reduce spike formation but generally speaking, you stopped
+    // new spikes from forming effectively for the remainder of the stage.
+    public static boolean dp2_stoppedSpikes(int stg, int rnd, int maxTurns) {
+        // So basically just check if we have a very limited number of spikes,
+        // if, after the second turn, we've ever been able to get spikes 
+        // below let's say 10, which should
+        // happen in the case of both creating a red ball storm and in the
+        // case of blocking with a line
+        int turn = 0;
+        for (turn = 2; turn < maxTurns; turn++) {
+            if (loadSystemAtStageRoundTurn(stg, rnd, turn) == true) {
+                if (Gos.sim.spikes.size() <= 10) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean dp2_stoppedSpikes_stg1() {
+        return dp2_stoppedSpikes(STAGE_FOUR_SHAPES, ROUND_2, MAX_TURNS_FOUR_SHAPES);
+    }
+    public static boolean dp2_stoppedSpikes_stg2() {
+        return dp2_stoppedSpikes(STAGE_CHAOS, ROUND_2, MAX_TURNS_CHAOS);
+    }
+
+    // Did they successfully change the ratio of red balls to spikes such that red balls
+    // are at least double the number of spikes (and at least 50 red balls exist)
+    public static boolean dp3_ballSpikeRatio(int stg, int rnd, int maxTurns) {
+        // First, we need at least 50 red balls.  Then, make sure there are 
+        // less than half number of spikes as there are red balls
+        // TODO check this later to make sure this is reasonable and isn't giving
+        // people score when they shouldn't have it, but I think 50+ red balls
+        // should make sense
+        int turn = 0;
+        for (turn = 0; turn < maxTurns; turn++) {
+            if (loadSystemAtStageRoundTurn(stg, rnd, turn) == true) {
+                int rb = Gos.sim.patches.size();
+                if (rb >= 50) {
+                    if (Gos.sim.spikes.size() < (rb/2)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean dp3_ballSpikeRatio_stg1() {
+        return dp3_ballSpikeRatio(STAGE_FOUR_SHAPES, ROUND_2, MAX_TURNS_FOUR_SHAPES);
+    }
+    public static boolean dp3_ballSpikeRatio_stg2() {
+        return dp3_ballSpikeRatio(STAGE_CHAOS, ROUND_2, MAX_TURNS_CHAOS);
+    }
+
+    // Did they pull their shapes towards the "center of mass" of red balls within
+    // the scenario?   Maybe I don't care about this right now; there are too many
+    // red ball things
+    /*public static boolean dp4_pullTowardsBalls(int stg, int rnd, int maxTurns) {
+        // Calculate a local center of red balls and see if the gravity well is within
+        // that general area.
+        // Actually even easier - just look at their gravity well location and see
+        // if it has a lot of red balls around it.  So, in the 25% of the game area
+        // surrounding the gravity well, does it contain more than 50% of the red
+        // balls and are there are least 20 red balls in the game.
+        int turn = 0;
+        for (turn = 0; turn < maxTurns; turn++) {
+            if (loadSystemAtStageRoundTurn(stg, rnd, turn) == true) {
+                int rb = Gos.sim.patches.size();
+                if (rb >= 20) {
+                    
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean dp4_pullTowardsBalls_stg1() {
+        return dp4_pullTowardsBalls(STAGE_FOUR_SHAPES, ROUND_2, MAX_TURNS_FOUR_SHAPES);
+    }
+    public static boolean dp4_pullTowardsBalls_stg2() {
+        return dp4_pullTowardsBalls(STAGE_CHAOS, ROUND_2, MAX_TURNS_CHAOS);
+    }*/
+
+    // Did their score improve from round to round?
+    public static boolean dp5_scoreImproved(int stgNum) {
+        String strScore1 = Player.getStrScoreForStageRound(stgNum, 1);
+        String strScore2 = Player.getStrScoreForStageRound(stgNum, 2);
+        if (strScore1 == null || strScore1.length() <= 0 || strScore2 == null || strScore2.length() <= 0) {
+            return false;
+        }
+        int score1 = Utils.tryParseInt(strScore1);
+        int score2 = Utils.tryParseInt(strScore2);
+        if (score1 < 0 || score2 < 0) {
+            return false;
+        }
+        // Can't improve if they maxed score... so we'll say they get this point
+        // if they maxed it on the first try
+        if (score1 >= 50 || score2 > score1) {
+            return true;
+        }
+        return false;
+    }
+    // In this case, stage 1 is 1 and stage 2 is 2, it's not zero-based
+    public static boolean dp5_scoreImproved_stg1() {
+        return dp5_scoreImproved(1);
+    }
+    public static boolean dp5_scoreImproved_stg2() {
+        return dp5_scoreImproved(2);
+    }
+
+
+    // Did they increase the number of red balls as the game proceeded? 
+    // Or did we capture this with the ball/spike ratio already?
+    public static boolean dp6() {
+        return false;
+    }
+
+    // Did they switch their shape to turn clockwise and keep it there after they changed it 
+    // (did they end the stage with it clockwise)?  This only pertains to Chaos stage
+    // since all shapes will eventually eat other ones in 4 shapes if they're not clockwise
+    public static boolean dp7_clockwise() {
+        // So look through until we find the turn where we flip it clockwise, then
+        // make sure we don't flip it back.
+        int turn = 0;
+        boolean spinDir = false;
+        for (turn = 0; turn < MAX_TURNS_CHAOS; turn++) {
+            if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, turn) == true) {
+                SysShape shape = Player.getSelectedShape();
+                spinDir = shape.getSpin();
+            }
+            else {
+                break;
+            }
+        }
+        return spinDir;
+    }
+
+    // Did the player increase spin speed of own shape to max while spinning clockwise
+    // in Chaos stage?
+    public static boolean dp7_spinSpeedMaxWhileClockwise() {
+        // So look through until we find turns where it's clockwise, then see
+        // if we max it, and make sure we don't flip it back or unmax it
+        // (or at least, it's in the proper configuration at the turn's end)
+        int turn = 0;
+        boolean spinDir = false;
+        boolean maxSpeed = false;
+        for (turn = 0; turn < MAX_TURNS_CHAOS; turn++) {
+            if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, turn) == true) {
+                SysShape shape = Player.getSelectedShape();
+                spinDir = shape.getSpin();
+                maxSpeed = false;
+                if (spinDir == true && shape.getSpinSpeedPercent() > 90) {
+                    maxSpeed = true;
+                }
+            }
+            else {
+                break;
+            }
+        }
+        return (spinDir && maxSpeed);
+    }
+
+    // Did they switch paradigm to cooperative on the chaos stage?    
+    public static boolean dp8_paradigmCoop() {
+        int turn = 0;
+        for (turn = 0; turn < MAX_TURNS_CHAOS; turn++) {
+            if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, turn) == true) {
+                if (Data.currentValues.paradigm == Constants.Paradigms.Cooperative.getValue()) {
+                    return true;
+                }
+            }
+            else {
+                break;
+            }
+        }
+        return false;
+    }
+
+    // Did the player observe at least one “Play All” on Four Shapes (NOT the tutorial) 
+    // before starting the main game?   
+    public static boolean dp9_playAllFourShapes() {
+        Action action = AssessmentData.findButtonActionForStageRoundTurn(3, 0, 0, "Play All");
+        if (action != null) {
+            return true;
+        }
+        return false;
+    }
+
+    // Did the player go back and observe (Play All) again to see the new stuff on the Chaos stage?    
+    public static boolean dp10_playAllChaos() {
+        Action action = AssessmentData.findButtonActionForStageRoundTurn(4, 0, 0, "Play All");
+        if (action != null) {
+            return true;
+        }
+        return false;
+    }
+
+    // Did the player conduct experiments at all in the beginning? 
+    public static boolean dp11_experiments() {
+        Action action = AssessmentData.findButtonActionForStageRoundTurn(3, 0, 0, "Create");
+        if (action != null) {
+            return true;
+        }
+        return false;
+    } 
+
+    // Did the player use the experiment slider to zero in on events?   
+    // I don't think I have a mechanism for recording this
+    /*public static boolean dp10_experimentSlider() {
+        return false;
+    } */
+
+    // Did the player try any new experiments on the chaos stage before forging forward?  
+    public static boolean dp12_newExpChaos() {
+        Action action = AssessmentData.findButtonActionForStageRoundTurn(4, 0, 0, "Create");
+        if (action != null) {
+            return true;
+        }
+        return false;
+    }  
+
+    // Did the player try changing every single variable in experiments? (should be weighted the highest)  
+    public static boolean dp13_changeAllExpVars() {
+        // Let's just look through all experiments in the entire game and see if they did
+        // at least one with each variable changed.
+        return false;
+    }
+    // Did the player try changing at least 3 variables in experiments?
+    public static boolean dp13_changeThreeExpVars() {
+        // Let's just look through all experiments in the entire game and see if they did
+        // at least one with each variable changed.
+        return false;
+    }
+    // Did the player try changing at least 3 overall variables in experiments?
+    public static boolean dp13_changeThreeOverallExpVars() {
+        // Let's just look through all experiments in the entire game and see if they did
+        // at least one with each variable changed.
+        return false;
+    }
+    // Did the player try changing at least 3 specific variables in experiments?
+    public static boolean dp13_changeThreeSpecificExpVars() {
+        // Let's just look through all experiments in the entire game and see if they did
+        // at least one with each variable changed.
+        return false;
+    }
+    // Did the player try changing every single variable BEFORE jumping into the sim?
+    public static boolean dp13_changeAllExpVarsFirst() {
+        // Let's just look through all experiments in the entire game and see if they did
+        // at least one with each variable changed.
+        return false;
+    }
+    // Did the player try changing at least 3 variables BEFORE jumping into the sim?
+    public static boolean dp13_changeThreeExpVarsFirst() {
+        // Let's just look through all experiments in the entire game and see if they did
+        // at least one with each variable changed.
+        return false;
+    }
+    // Did the player try changing at least 3 overall variables BEFORE jumping into the sim?
+    public static boolean dp13_changeThreeOverallExpVarsFirst() {
+        // Let's just look through all experiments in the entire game and see if they did
+        // at least one with each variable changed.
+        return false;
+    }
+    // Did the player try changing at least 3 specific variables BEFORE jumping into the sim?
+    public static boolean dp13_changeThreeSpecificExpVarsFirst() {
+        // Let's just look through all experiments in the entire game and see if they did
+        // at least one with each variable changed.
+        return false;
+    }
+    
+    // At turn 1, did they order the overall variable ratings (generally) correctly
+    // in each stage?
+
+    // So, your top 3 should be growth, paradigm, and gravity well location for Chaos- if any
+    // one of these is in the top 3 (we'll say 4 just because of the difficulty of learning
+    // the system is likely to produce something spurious) then you're good
+    public static boolean dp14_orderGrowthVariable(int stg) {
+        RatingData ratings = new RatingData(stg, 1, 0);
+        if (ratings != null) {
+            if (ratings.inTopX(4, RatingData.RatingType.Growth) == true) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean dp14_orderGrowthVariable_stg1() {
+        return dp14_orderGrowthVariable(3);
+    }
+    public static boolean dp14_orderGrowthVariable_stg2() {
+        return dp14_orderGrowthVariable(4);
+    }
+
+    public static boolean dp14_orderParadigmVariable(int stg) {
+        RatingData ratings = new RatingData(stg, 1, 0);
+        if (ratings != null) {
+            if (ratings.inTopX(4, RatingData.RatingType.Paradigm) == true) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // I would not consider paradigm important on turn 1 of stage 1,
+    // it doesn't become important until later
+    /*public static boolean dp14_orderParadigmVariable_stg1() {
+        return dp14_orderParadigmVariable(3);
+    }*/
+    public static boolean dp14_orderParadigmVariable_stg2() {
+        return dp14_orderParadigmVariable(4);
+    }
+
+    public static boolean dp14_orderGravityWellLocationVariable(int stg) {
+        RatingData ratings = new RatingData(stg, 1, 0);
+        if (ratings != null) {
+            if (ratings.inTopX(4, RatingData.RatingType.GravityWellLocation) == true) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean dp14_orderGravityWellLocationVariable_stg1() {
+        return dp14_orderGravityWellLocationVariable(3);
+    }
+    public static boolean dp14_orderGravityWellLocationVariable_stg2() {
+        return dp14_orderGravityWellLocationVariable(4);
+    }
+
+    // At turn 1, was shape color and type rated below speed and dir?
+    public static boolean dp15_rateSpinDirOverType(int stg) {
+        // So, for individual vars, spin dir has to come first, then spin speed,
+        // then color/type
+        RatingData ratings = new RatingData(stg, 1, 0);
+        int spinDirRating = ratings.getRatingFor(RatingData.RatingType.ShapeSpinDirection);
+        int spinSpeedRating = ratings.getRatingFor(RatingData.RatingType.ShapeSpinSpeed);
+        int typeRating = ratings.getRatingFor(RatingData.RatingType.ShapeType);
+        int colorRating = ratings.getRatingFor(RatingData.RatingType.ShapeColor);
+        if (spinDirRating <= typeRating || spinDirRating <= colorRating) {
+            return false;
+        }
+        if (spinSpeedRating <= typeRating || spinSpeedRating <= colorRating) {
+            return false;
+        }
+        return true;
+    }
+    public static boolean dp15_rateSpinDirOverType_stg1() {
+        return dp15_rateSpinDirOverType(3);
+    }
+    public static boolean dp15_rateSpinDirOverType_stg2() {
+        return dp15_rateSpinDirOverType(4);
+    }
+
+    // Was the order of specific vars actually correct?  This would take the other
+    // dp15 and up it by one "level" of difficulty by saying that dir also had to be rated
+    // greater than speed
+    public static boolean dp15_orderSpecificVariables(int stg) {
+        // So, for individual vars, spin dir has to come first, then spin speed,
+        // then color/type
+        RatingData ratings = new RatingData(stg, 1, 0);
+        int spinDirRating = ratings.getRatingFor(RatingData.RatingType.ShapeSpinDirection);
+        int spinSpeedRating = ratings.getRatingFor(RatingData.RatingType.ShapeSpinSpeed);
+        int typeRating = ratings.getRatingFor(RatingData.RatingType.ShapeType);
+        int colorRating = ratings.getRatingFor(RatingData.RatingType.ShapeColor);
+        if (spinDirRating <= spinSpeedRating || spinDirRating <= typeRating || spinDirRating <= colorRating) {
+            return false;
+        }
+        if (spinSpeedRating <= typeRating ||  spinSpeedRating <= colorRating) {
+            return false;
+        }
+        return true;
+    }
+    public static boolean dp15_orderSpecificVariables_stg1() {
+        return dp15_orderSpecificVariables(3);
+    }
+    public static boolean dp15_orderSpecificVariables_stg2() {
+        return dp15_orderSpecificVariables(4);
+    }
+
+    // Rated overall variables more than specific variables?   
+    public static boolean dp16_overallVarRating(int stg) {
+        // Let's see what they have... if they have all the ratings,
+        // then we'll use only the 2nd chaos stage.  If not, we'll
+        // go back in time until we find one that they do have if they
+        // didn't complete the whole thing.
+        RatingData ratings = null;
+        ratings = new RatingData(stg, 1, 0);
+        if (ratings != null) {
+            if (ratings.getWeightedSumOverallRatings() > ratings.getWeightedSumSpecificRatings()) {
+                return true;
+            }
+            return false;
+        }
+        ratings = new RatingData(stg, 0, 0);
+        if (ratings != null) {
+            if (ratings.getWeightedSumOverallRatings() > ratings.getWeightedSumSpecificRatings()) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+    public static boolean dp16_overallVarRating_stg1() {
+        return dp15_orderSpecificVariables(3);
+    }
+    public static boolean dp16_overallVarRating_stg2() {
+        return dp15_orderSpecificVariables(4);
+    }
+
+    // Did the player change variable ratings on different turns on round 2
+    // of either stage?  Player should have done this as the different variables
+    // definitely change in importance
+    public static boolean dp17_changedVarRatings(int stg, int maxTurns) {
+        RatingData ratings = null;
+        RatingData prevRatings = null;
+        int turn = 0;
+        for (turn = 0; turn < maxTurns; turn++) {
+            ratings = new RatingData(stg, 1, turn);
+            if (ratings != null && prevRatings != null) {
+                if (ratings.ratingsEqual(prevRatings) == false) {
+                    return true;
+                }
+            }
+            prevRatings = ratings;
+        }
+        return false;
+    }
+    public static boolean dp17_changedVarRatings_stg1() {
+        return dp17_changedVarRatings(3, MAX_TURNS_FOUR_SHAPES);
+    }
+    public static boolean dp17_changedVarRatings_stg2() {
+        return dp17_changedVarRatings(4, MAX_TURNS_CHAOS);
+    }
+    
+    // Did the player NOT change Shape Type ever in Chaos stage round 2?  
+    public static boolean dp18_noChangeShapeType() {
+        int turn = 0;
+        boolean spinDir = false;
+        if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, 0) == false) {
+            return false;
+        }
+        SysShape shape = Player.getSelectedShape();
+        int startingType = shape.getNumCorners();
+
+        for (turn = 1; turn < MAX_TURNS_CHAOS; turn++) {
+            if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, turn) == true) {
+                shape = Player.getSelectedShape();
+                if (startingType != shape.getNumCorners()) {
+                    // Oops, they changed it...
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /* SCORE TIERS:
+    STAGE 1:
+    0-5 is LOW score
+    6-15 is SOME score (you made some progress)
+    16-30 is SUCCESS score
+    31-48 is HIGH SUCCESS score
+    49+ is HIGH score (since the game records a 50 as a 49 due to race condition)
+
+    STAGE 2:
+    0-1 is LOW score
+    2-9 is SOME score (you made some progress)
+    10-20 is SUCCESS score
+    21-29 is HIGH SUCCESS
+    30+ is HIGH score
+    */
+
+    // Tiers are 0-4 just like maturity ratings on skills
+    public static int calcFourShapesScoreTier() {
+        // Get the score at the end of round 2 of each stage
+        int score = Player.getScoreForStageRound(1, 2);
+        if (score < 0) {
+            return 0;
+        }
+        else if (score <= 5) {
+            return 0;
+        }
+        else if (score <= 15) {
+            return 1;
+        }
+        else if (score <= 30) {
+            return 2;
+        }
+        else if (score <= 48) {
+            return 3;
+        }
+        return 4;
+    }
+    public static int calcChaosScoreTier() {
+        // Get the score at the end of round 2 of each stage
+        int score = Player.getScoreForStageRound(2, 2);
+        if (score < 0) {
+            return 0;
+        }
+        else if (score <= 1) {
+            return 0;
+        }
+        else if (score <= 9) {
+            return 1;
+        }
+        else if (score <= 20) {
+            return 2;
+        }
+        else if (score <= 29) {
+            return 3;
+        }
+        return 4;
+    }
+
+    public static double getDataPointWeightForSkill(int domain, int num) {
+        // Literally just reverse score weight
+        return (1.0 - getScoreWeightForSkill(domain, num));
+    }
+
+    // How much is total game score weighted for each skill?
+    // It's only different for Respond to Uncertainty, in which case
+    // score is 60% of total.  In all others, it's 30% of total.
+    public static double getScoreWeightForSkill(int domain, int num) {
+        if (domain == 1 && num == 3) {
+            return 0.6;
+        }
+        return 0.3;
+    }
+
+    // Four shapes is 1/3, Chaos is 2/3
+    public static double getScoreWeightForStage(int stg) {
+        if (stg == STAGE_FOUR_SHAPES) {
+            return (1.0 / 3.0);
+        }
+        else if (stg == STAGE_CHAOS) {
+            return (2.0 / 3.0);
+        }
+        else {
+            Utils.log("ERROR - unknown stage " + stg + " passed to getScoreWeightForStage");
+        }
+        return 0;
+    }
+
+    // So, this is a percentile of total score (0-100) based on the various weights
+    // and values
+    public static double getWeightedOverallScoreForSkill(int domain, int num) {
+        // For most skills, the max is 30%.  
+
+        // It's 0-4, so a 4 is 100% for this stage
+        double stg1_perc = calcFourShapesScoreTier() * 25;
+        double stg2_perc = calcChaosScoreTier() * 25;
+
+        // Now, weight the scores
+        stg1_perc *= getScoreWeightForStage(STAGE_FOUR_SHAPES);
+        stg2_perc *= getScoreWeightForStage(STAGE_CHAOS);
+
+        // Combine the weighted score for total (out of 100%)
+        double total_perc = stg1_perc + stg2_perc;
+
+        // Now, multiply by weight for this skill (generally ending up at 0-30%)
+        return (total_perc * getScoreWeightForSkill(domain, num));
+    }
+
+    public static double calcMaxScoreForQuestion(int uid) {
+        Answer ans = Player.getAnswerForQuestionUID(uid);
+        if (ans == null) {
+            return 0;
+        }
+        return (ans.getMaxCorrect());
+    }
+
+    public static double calcScoreForQuestion(int uid) {
+        Answer ans = Player.getAnswerForQuestionUID(uid);
+        if (ans == null) {
+            return 0;
+        }
+        double numCorrect = ans.getTotalCorrect();
+        double numPartial = ans.getTotalPartial();
+        double numWrong = ans.getTotalIncorrect();
+
+        if (ans.getAnswerType() == Question.AnswerType.Choice) {
+            // So, if it's a choice if one answer, we either get it correct
+            // for a +1, get a partial for +0.5, or get it wrong for 0
+            return (numCorrect + (0.5 * numPartial));
+        }
+        else if (ans.getAnswerType() == Question.AnswerType.Check) {
+            // So, we take numCorrect, minus half for each partial,
+            // because in theory a partial here should NOT be selected,
+            // it's just not "as wrong" so we wouldn't want someone to select
+            // the correct answer AND ALSO a partial
+            // And then minus 1 for each wrong
+            // But, if you ONLY have partials selected, we'll give partial
+            // credit
+
+            // NO everyone did shitty on this so we're not going to deduct
+            // for wrong answers
+            /*if (numCorrect == 0 && numPartial > 0 && numWrong == 0) {
+                return (0.5 * numPartial);
+            }
+            return (numCorrect - numWrong - (numPartial/2));*/
+            return (numCorrect + (0.5 * numPartial));
+        }
+
+        return 0;
+    }
+
+    // Pass it a string like "32 21 28 17"
+    public static double calcMaxScoreForQuestions(String strQuestions) {
+        double max = 0;
+        String[] arrQs = strQuestions.split(" ");
+
+        for (String str : arrQs) {
+            int num = Utils.tryParseInt(str);
+            max += calcMaxScoreForQuestion(num);
+        }
+    
+        return max;
+    }
+
+    // Pass it a string like "32 21 28 17"
+    public static double calcScoreForQuestions(String strQuestions) {
+        double score = 0;
+        String[] arrQs = strQuestions.split(" ");
+
+        for (String str : arrQs) {
+            int num = Utils.tryParseInt(str);
+            score += calcScoreForQuestion(num);
+        }
+    
+        return score;
+    }
+
+    // Returned as a percentile from 0-100% right now
+    public static String calcScoreForSkill(int domain, int skillnum) {
+        if (domain == 1 && skillnum == 2) {
+            return calcConsiderWholesAndParts();
+        }
+        if (domain == 1 && skillnum == 3) {
+            return calcEffectivelyRespondToUncertaintyAndAmbiguity();
+        }
+        if (domain == 1 && skillnum == 4) {
+            return calcConsiderIssuesAppropriately();
+        }
+
+        if (domain == 2 && skillnum == 2) {
+            return calcMaintainBoundaries();
+        }
+        if (domain == 2 && skillnum == 3) {
+            return calcDifferentiateAndQuantifyElements();
+        }
+
+        if (domain == 3 && skillnum == 1) {
+            return calcIdentifyRelationships();
+        }
+        if (domain == 3 && skillnum == 2) {
+            return calcCharacterizeRelationships();
+        }
+        if (domain == 3 && skillnum == 3) {
+            return calcIdentifyFeedbackLoops();
+        }
+        if (domain == 3 && skillnum == 4) {
+            return calcCharacterizeFeedbackLoops();
+        }
+
+        if (domain == 4 && skillnum == 2) {
+            return calcPredictFutureSystemBehavior();
+        }
+        if (domain == 4 && skillnum == 3) {
+            return calcRespondToChangesOverTime();
+        }
+        if (domain == 4 && skillnum == 4) {
+            return calcUseLeveragePoints();
+        }
+        return "";
+    }
+
     ////////////////////////
     //// Mindset Domain ////
     ////////////////////////
@@ -258,42 +1095,123 @@ public final class STUtils {
         need to be made each turn.  Strategy succeeds in achieving 50 shapes in under 5 turns.  3/3 answers correct on 32.
         */
 
-        double score = 0;
+        int domain = 1;
+        int skillNum = 2;
+        String strQuestions = "32";
 
-        // Start with answers correct on question 32
-        Answer ans = Player.getAnswerForQuestionUID(32);
-        if (ans == null) {
-            return "Not enough data";
-        }
-        int numCorrect = ans.getTotalCorrect();
-        int numPartial = ans.getTotalPartial();
-        int numWrong = ans.getTotalIncorrect();
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
 
-        // Our total is the total correct - the total wrong
-        // But minus half for each partial
-        score = numCorrect - numWrong - (numPartial/2);
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        max_dp_score += calcMaxScoreForQuestions(strQuestions);
+        dp_score += calcScoreForQuestions(strQuestions);
 
-        strScore += "Score: " + score + ", for Q32: " + numCorrect + " correct, " + numWrong + "wrong\r\n";
+        // Now add game dps
+        // We have none for this skill
 
-        // Now check what we did with the strategy and other related variables,
-        // count round 2 of both of the stages equally
-        // Remember this doesn't need to be perfect, we're just proving that we can get measures like this
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
 
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
         return returnStr(score, strScore);
     }
 
     public static String calcEffectivelyRespondToUncertaintyAndAmbiguity() {
         String strScore = "";
-        // When doing poorly, makes choices that turn the system back around to doing well.  Or, perhaps
-        // when doing poorly, does experiments and then uses the results to make the system then do better.
-        return strScore;
+        int domain = 1;
+        int skillNum = 3;
+        //String strQuestions = "";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // No questions for this one
+        //max_dp_score += calcMaxScoreForQuestions(strQuestions);
+        //dp_score += calcScoreForQuestions(strQuestions);
+
+        // Game data points
+        max_dp_score++;
+        dp_score += dp5_scoreImproved_stg1() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp5_scoreImproved_stg2() ? 1 : 0;
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
 
     public static String calcConsiderIssuesAppropriately() {
         String strScore = "";
-        // Time spent doing experiments and observations and number of them prior to jumping in
-        // Does not get frustrated and just "give up" during play; continues to try hard
-        return strScore;
+        int domain = 1;
+        int skillNum = 4;
+        //String strQuestions = "";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // No questions for this one
+        //max_dp_score += calcMaxScoreForQuestions(strQuestions);
+        //dp_score += calcScoreForQuestions(strQuestions);
+
+        // Game data points
+        max_dp_score++;
+        dp_score += dp9_playAllFourShapes() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp10_playAllChaos() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp11_experiments() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp12_newExpChaos() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp13_changeAllExpVars() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp13_changeThreeExpVars() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp13_changeThreeOverallExpVars() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp13_changeThreeSpecificExpVars() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp13_changeAllExpVarsFirst() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp13_changeThreeExpVarsFirst() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp13_changeThreeOverallExpVarsFirst() ? 1 : 0;
+        max_dp_score++;
+        dp_score += dp13_changeThreeSpecificExpVarsFirst() ? 1 : 0;
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
  
     public static String calcUseMentalModelingAndAbstraction() {
@@ -303,7 +1221,7 @@ public final class STUtils {
     }
 
     ////////////////////////
-    /// Structure Domain ///
+    /// Content Domain ///
     ////////////////////////
     public static String calcRecognizeSystems() {
         String strScore = "";
@@ -317,48 +1235,245 @@ public final class STUtils {
 
     public static String calcMaintainBoundaries() {
         String strScore = "";
-        // Does the player touch the correct things, and rate the variables correctly, do the 
-        // choices actually affect the system and aren't peripheral to the system
-        return strScore;
+        int domain = 2;
+        int skillNum = 2;
+        String strQuestions = "31 32";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // Questions
+        max_dp_score += calcMaxScoreForQuestions(strQuestions);
+        dp_score += calcScoreForQuestions(strQuestions);
+
+        // Game data points
+        // No game dps for this one
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
 
     public static String calcDifferentiateAndQuantifyElements() {
         String strScore = "";
-        // The questions about the system, and also the degree to which different parameters are tweaked
-        // I need to put in specific questions about this.
-        return strScore;
+        int domain = 2;
+        int skillNum = 3;
+        String strQuestions = "17 20 22 27 28 29 30";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // Questions
+        max_dp_score += calcMaxScoreForQuestions(strQuestions);
+        dp_score += calcScoreForQuestions(strQuestions);
+
+        // Game data points
+        max_dp_score++;
+        dp_score += dp18_noChangeShapeType() ? 1 : 0;
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
 
     
     ////////////////////////
-    //// Content Domain ////
+    //// Structure Domain ////
     ////////////////////////
     public static String calcIdentifyRelationships() {
         String strScore = "";
-        // Questions about the system, and in general how well the person did (or does this give an overall score to all areas?)
-        // I need to put in specific questions about this.  What is related to what?
-        return strScore;
+        int domain = 3;
+        int skillNum = 1;
+        String strQuestions = "16 18 21 27 28 31 32";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // Questions
+        max_dp_score += calcMaxScoreForQuestions(strQuestions);
+        dp_score += calcScoreForQuestions(strQuestions);
+
+        // Game data points
+        // More heavily weight stage 2
+        max_dp_score++;
+        dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp2_stoppedSpikes_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp2_stoppedSpikes_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp7_clockwise() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp8_paradigmCoop() ? 2 : 0;
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
 
     public static String calcCharacterizeRelationships() {
         String strScore = "";
-        // Questions about the system, and how the strengths of the variables are rated
-        // I need to put in specific questions about this.  What is related to what, and HOW MUCH?
-        return strScore;
+        int domain = 3;
+        int skillNum = 2;
+        String strQuestions = "18 21";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // Questions
+        max_dp_score += calcMaxScoreForQuestions(strQuestions);
+        dp_score += calcScoreForQuestions(strQuestions);
+
+        // Game data points
+        // More heavily weight stage 2
+        max_dp_score++;
+        dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp2_stoppedSpikes_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp2_stoppedSpikes_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
+        max_dp_score+=2;
+        dp_score += dp7_spinSpeedMaxWhileClockwise() ? 2 : 0;
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
 
     public static String calcIdentifyFeedbackLoops() {
         String strScore = "";
-        // Did the person successfully create the emergent behavior of the dots
-        // I need to put in specific questions about this.  What is related to what?
-        return strScore;
+        int domain = 3;
+        int skillNum = 3;
+        String strQuestions = "16 19 22 26 27";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // Questions
+        max_dp_score += calcMaxScoreForQuestions(strQuestions);
+        dp_score += calcScoreForQuestions(strQuestions);
+
+        // Game data points
+        // More heavily weight stage 2
+        max_dp_score++;
+        dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
 
     public static String calcCharacterizeFeedbackLoops() {
         String strScore = "";
-        // Did the person successfully create the emergent behavior of the dots and use it to score well?
-        // I need to put in specific questions about this.  What is related to what, and HOW MUCH?
-        return strScore;
+        int domain = 3;
+        int skillNum = 4;
+        String strQuestions = "19 22 27";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // Questions
+        max_dp_score += calcMaxScoreForQuestions(strQuestions);
+        dp_score += calcScoreForQuestions(strQuestions);
+
+        // Game data points
+        // More heavily weight stage 2
+        max_dp_score++;
+        dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
 
     /////////////////////////
@@ -372,24 +1487,130 @@ public final class STUtils {
     
     public static String calcPredictFutureSystemBehavior() {
         String strScore = "";
-        // Questions about what would happen if xyz
-        return strScore;
+        int domain = 4;
+        int skillNum = 2;
+        String strQuestions = "26 27 30";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // Questions
+        max_dp_score += calcMaxScoreForQuestions(strQuestions);
+        dp_score += calcScoreForQuestions(strQuestions);
+
+        // Game data points
+        // None for this one
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
 
     public static String calcRespondToChangesOverTime() {
         String strScore = "";
-        // Does the subject change methods over time as the system state changes?  Or keeps trying the same thing?
-        return strScore;
+        int domain = 4;
+        int skillNum = 3;
+        //String strQuestions = "";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // Questions
+        // None for this one
+
+        // Game data points
+        max_dp_score++;
+        dp_score += dp17_changedVarRatings_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp17_changedVarRatings_stg2() ? 2 : 0;
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
 
     public static String calcUseLeveragePoints() {
         String strScore = "";
-        // Uses paradigm, uses shape spin, Laws (gravity) effectively?
-        return strScore;
+        int domain = 4;
+        int skillNum = 4;
+        //String strQuestions = "";
+
+        // Start with the overall score
+        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+
+        // Now factor in the answers and data points score
+        double max_dp_score = 0;
+        double dp_score = 0;
+        
+        // Questions
+        // None for this one
+
+        // Game data points
+        max_dp_score++;
+        dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
+        max_dp_score+=2;
+        dp_score += dp8_paradigmCoop() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp14_orderGrowthVariable_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp14_orderGrowthVariable_stg2() ? 2 : 0;
+        max_dp_score+=2;
+        dp_score += dp14_orderParadigmVariable_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp14_orderGravityWellLocationVariable_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp14_orderGravityWellLocationVariable_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp15_rateSpinDirOverType_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp15_rateSpinDirOverType_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp15_orderSpecificVariables_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp15_orderSpecificVariables_stg2() ? 2 : 0;
+        max_dp_score++;
+        dp_score += dp16_overallVarRating_stg1() ? 1 : 0;
+        max_dp_score+=2;
+        dp_score += dp16_overallVarRating_stg2() ? 2 : 0;
+
+        double dp_perc = dp_score / max_dp_score;
+        
+        // Weight it
+        dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        // Add it in
+        score += dp_perc;
+
+        // We now have a 0-100% score for this skill.
+        return returnStr(score, strScore);
     }
 
     public static String returnStr(double score, String strScore) {
-        return "" + Utils.round(score, 2) + strScore;
+        return "" + Utils.round(score, 0) + strScore;
     }
 
     public static String calcStrategy() {
