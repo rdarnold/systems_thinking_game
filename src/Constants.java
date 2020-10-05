@@ -20,7 +20,7 @@ public final class Constants {
     public static final String SAVED_DATA_FILE_NAME = "SystemThinkingGame_Data.txt";
 
     // If we want to change the date/time after which we download results, change this:
-    public static final String DL_START_DATE_TIME = "2020-08-18" + "T12:00:00";
+    public static final String DL_START_DATE_TIME = "2020-09-18" + "T12:00:00";
 
     public static final int BUTTON_WIDTH = 120;
     public static final int NODE_SIZE = 125;
@@ -31,7 +31,7 @@ public final class Constants {
     public static final int SIM_CENTER_X = SIM_WIDTH/2;
     public static final int SIM_CENTER_Y = SIM_HEIGHT/2;
 
-    public static final String VERSION_NUMBER_STRING = "1.04";
+    public static final String VERSION_NUMBER_STRING = "1.05";
 
     // Some key strings for the system
     public static final String SHAPE_KEY_STRING = "@S";
@@ -46,6 +46,44 @@ public final class Constants {
     
     public static enum Dir {
         Top, Bottom, Left, Right;
+    }
+
+    public static enum VariableType {
+        RainRate(0, "Rain Rate"),
+        GravityWellLocation(1, "Gravity Well Location"),
+        GravityDirection(2, "Gravity Direction"),
+        Growth(3, "Growth"),
+        Paradigm(4, "Paradigm"),
+        ShapeSpinSpeed(5, "Shape Spin Speed"),
+        ShapeSpinDirection(6, "Shape Spin Direction"),
+        ShapeType(7, "Shape Type"),
+        ShapeColor(8, "Shape Color");
+
+        private int _value;
+        private String _label;
+
+        VariableType(int value, String label) {
+            this._value = value;
+            this._label = label;
+        }
+
+        public int getValue() {
+                return _value;
+        }
+        public String toString() {
+                return _label;
+        }
+        public String getLabel() {
+                return _label;
+        }
+
+        private static VariableType[] cachedValues = null;
+        public static VariableType fromInt(int i) {
+            if (VariableType.cachedValues == null) {
+                VariableType.cachedValues = VariableType.values();
+            }
+            return VariableType.cachedValues[i];
+        }
     }
 
     public static enum GravityRules {

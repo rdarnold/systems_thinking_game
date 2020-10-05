@@ -601,6 +601,11 @@ public final class Utils {
         return fileAndPath;
     }
 
+    // It's typically called "chomp" in other Java utils so I'll call it that here too
+    public static String chomp(String str) {
+        return stripLastCRLF(str);
+    }
+
     // Remove the last CR and LF if exists
     public static final char LF = '\n';
     public static final char CR = '\r';

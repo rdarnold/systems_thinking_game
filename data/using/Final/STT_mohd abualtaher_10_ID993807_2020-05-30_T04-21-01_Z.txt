@@ -1,0 +1,2030 @@
+MS: 1590812461493
+LT: 2020-05-30 06:21:01 +0200
+ZT: 2020-05-30 04:21:01 Z
+ID: 993807
+SubID: 0
+Consent: true
+Name: mohd abualtaher
+Email: mohd.h.m.abualtaher@ntnu.no
+PB: false
+Times: 0
+MAC: 94-E9-79-BA-4A-53
+STXP: 2
+Start: 1590810660420
+End: 1590812461485
+Tutorial: 
+TUTORIAL TURN 1: GOOD, Gravity Well was moved to bottom right corner (X:577,Y:511)
+TUTORIAL TURN 2: 
+TUTORIAL TURN 3: GOOD, rain rate was reduced to the lowest (0.0)
+TUTORIAL TURN 4: GOOD, paradigm is Cooperative
+TUTORIAL TURN 5: GOOD, growth was changed to NoGrowth
+EndTutorial
+ANS: 2
+AT: 63326
+QI: 0
+UD: 1
+EI: 0
+RT: 0
+@STX
+1: Male
+@ETX
+ANS: 0
+AT: 70503
+QI: 1
+UD: 2
+EI: 0
+RT: 0
+@STX
+Norway
+@ETX
+ANS: 2
+AT: 75622
+QI: 2
+UD: 3
+EI: 0
+RT: 0
+@STX
+4: 35 to 44 years
+@ETX
+ANS: 2
+AT: 80310
+QI: 3
+UD: 4
+EI: 0
+RT: 0
+@STX
+0: Fluent
+@ETX
+ANS: 2
+AT: 84110
+QI: 4
+UD: 5
+EI: 0
+RT: 0
+@STX
+10: Ph.D.
+@ETX
+ANS: 1
+AT: 95763
+QI: 5
+UD: 6
+EI: 0
+RT: 0
+@STX
+food science
+@ETX
+ANS: 1
+AT: 118202
+QI: 6
+UD: 7
+EI: 0
+RT: 0
+@STX
+classes and readings
+@ETX
+ANS: 2
+AT: 122236
+QI: 7
+UD: 8
+EI: 0
+RT: 0
+@STX
+4: Never play computer games
+@ETX
+ANS: 3
+AT: 132289
+QI: 8
+UD: 9
+EI: 0
+RT: 0
+@STX
+2: Visual (spatial): You prefer using pictures, images, and spatial understanding
+4: Verbal (linguistic): You prefer using words, both in speech and writing
+7: Social (interpersonal): You prefer to learn in groups or with other people
+@ETX
+ANS: 1
+AT: 169725
+QI: 0
+UD: 10
+EI: 1
+RT: 0
+@STX
+food science
+food safety
+food security studies
+@ETX
+ANS: 1
+AT: 193371
+QI: 1
+UD: 11
+EI: 1
+RT: 0
+@STX
+Phd candidate , teaching assistant and researcher
+@ETX
+ANS: 2
+AT: 198364
+QI: 2
+UD: 12
+EI: 1
+RT: 0
+@STX
+5: 13 to 20 years
+@ETX
+ANS: 1
+AT: 1072415
+QI: 0
+UD: 14
+EI: 3
+RT: 0
+@STX
+yes
+@ETX
+ANS: 1
+AT: 1110978
+QI: 1
+UD: 15
+EI: 3
+RT: 0
+@STX
+absolutely random
+@ETX
+ANS: 2
+AT: 1150184
+QI: 2
+UD: 16
+EI: 3
+RT: 0
+@STX
+5: Multiple interrelated factors
+@ETX
+ANS: 2
+AT: 1171475
+QI: 3
+UD: 17
+EI: 3
+RT: 0
+@STX
+0: Impacting with another shape
+@ETX
+ANS: 2
+AT: 1193442
+QI: 4
+UD: 18
+EI: 3
+RT: 0
+@STX
+0: It increases the size of shapes, turns into red balls, and turns red balls into spikes
+@ETX
+ANS: 2
+AT: 1232995
+QI: 5
+UD: 19
+EI: 3
+RT: 0
+@STX
+3: It depends on when the rain rate is increased
+@ETX
+ANS: 3
+AT: 1293328
+QI: 6
+UD: 20
+EI: 3
+RT: 0
+@STX
+0: Impacting rain
+1: Impacting red balls
+3: They automatically increase in size over time
+4: They automatically increase in size while moving
+5: Impacting the gravity well
+@ETX
+ANS: 2
+AT: 1313162
+QI: 7
+UD: 21
+EI: 3
+RT: 0
+@STX
+3: A spike is created
+@ETX
+ANS: 2
+AT: 1357083
+QI: 8
+UD: 22
+EI: 3
+RT: 0
+@STX
+6: Not enough information
+@ETX
+ANS: 1
+AT: 1380536
+QI: 9
+UD: 23
+EI: 3
+RT: 0
+@STX
+yes
+@ETX
+ANS: 1
+AT: 1425209
+QI: 0
+UD: 36
+EI: 5
+RT: 0
+@STX
+not dificult at all
+@ETX
+ANS: 1
+AT: 1459670
+QI: 1
+UD: 37
+EI: 5
+RT: 0
+@STX
+abserving the interactions between variables
+@ETX
+ANS: 1
+AT: 1516402
+QI: 2
+UD: 38
+EI: 5
+RT: 0
+@STX
+yes , the screen dimentions of java .... couldnt adjust it fit to screen !!
+@ETX
+ANS: 1
+AT: 1536043
+QI: 3
+UD: 39
+EI: 5
+RT: 0
+@STX
+yes to certain extent
+@ETX
+ANS: 1
+AT: 1546803
+QI: 4
+UD: 40
+EI: 5
+RT: 0
+@STX
+yes
+@ETX
+ANS: 1
+AT: 1553370
+QI: 5
+UD: 41
+EI: 5
+RT: 0
+@STX
+no
+@ETX
+ANS: 2
+AT: 1591866
+QI: 0
+UD: 42
+EI: 6
+RT: 0
+@STX
+3: Actively explores unfamiliar perspectives, but still tends to miss some non-obvious perspectives
+@ETX
+ANS: 2
+AT: 1607791
+QI: 1
+UD: 43
+EI: 6
+RT: 0
+@STX
+3: Tends to consider the problem holistically and considers the importance of the parts in most cases
+@ETX
+ANS: 2
+AT: 1661067
+QI: 2
+UD: 44
+EI: 6
+RT: 0
+@STX
+2: Decisions made when faced with uncertainty are as often flawed as are appropriate 
+@ETX
+ANS: 2
+AT: 1682766
+QI: 3
+UD: 45
+EI: 6
+RT: 0
+@STX
+3: Rarely jumps to conclusions when issues occur; often spends appropriate time to absorb complexity
+@ETX
+ANS: 2
+AT: 1691739
+QI: 4
+UD: 46
+EI: 6
+RT: 0
+@STX
+3: Able to simplify the problem through mental modeling with increasingly accurate results using increasingly simpler models; recognizes that all models are flawed but some are useful
+@ETX
+ANS: 2
+AT: 1700252
+QI: 5
+UD: 47
+EI: 6
+RT: 0
+@STX
+3: Recognizes that the problem is systemic and is able to identify associated behaviors or systems in concrete terms more than half of the time
+@ETX
+ANS: 2
+AT: 1715110
+QI: 6
+UD: 48
+EI: 6
+RT: 0
+@STX
+3: Able to maintain a problem boundary that, over time and context, contains most of the relevant elements and minimizes extraneous elements
+@ETX
+ANS: 2
+AT: 1726165
+QI: 7
+UD: 49
+EI: 6
+RT: 0
+@STX
+3: Able to quantify properties of elements, such as the maximum quantity of a stock or the rate of a flow, accurately more than half of the time
+@ETX
+ANS: 2
+AT: 1730525
+QI: 8
+UD: 50
+EI: 6
+RT: 0
+@STX
+3: Able to recognize many relationships even though they are indirect or distant in space or time
+@ETX
+ANS: 2
+AT: 1741356
+QI: 9
+UD: 51
+EI: 6
+RT: 0
+@STX
+2: Able to estimate the strength of a relationship with some consistency
+@ETX
+ANS: 2
+AT: 1749928
+QI: 10
+UD: 52
+EI: 6
+RT: 0
+@STX
+2: Able to recognize some feedback loops even though they are indirect, non-obvious, or distant in space or time
+@ETX
+ANS: 2
+AT: 1763330
+QI: 11
+UD: 53
+EI: 6
+RT: 0
+@STX
+2: Able to estimate the strength and properties of feedback loops with some consistency
+@ETX
+ANS: 2
+AT: 1771219
+QI: 12
+UD: 54
+EI: 6
+RT: 0
+@STX
+3: Able to describe past system behavior quantitatively with some accuracy
+@ETX
+ANS: 2
+AT: 1776126
+QI: 13
+UD: 55
+EI: 6
+RT: 0
+@STX
+2: Able to predict future system behavior in estimated terms over short timescales
+@ETX
+ANS: 2
+AT: 1781845
+QI: 14
+UD: 56
+EI: 6
+RT: 0
+@STX
+2: Responds to changes over time in ways that are less often effective than not
+@ETX
+ANS: 2
+AT: 1795013
+QI: 15
+UD: 57
+EI: 6
+RT: 0
+@STX
+2: Recognizes some high strength leverage points, and usually pushes them in the right direction
+@ETX
+ACT: 0
+AT: 7938
+AX: 0 0 0
+AS: WelcomeWindow
+AD: OK
+ACT: 0
+AT: 52406
+AX: 0 0 0
+AS: ContactConsentWindow
+AD: OK
+ACT: 0
+AT: 55658
+AX: 0 0 0
+AS: StartSurveyWindow
+AD: OK
+ACT: 0
+AT: 63325
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 70503
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 75622
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 80310
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 84110
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 95763
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 118202
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 122236
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 132289
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 134926
+AX: 1 0 0
+AS: ExercisePopupWindow
+AD: OK
+ACT: 0
+AT: 169725
+AX: 1 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 193371
+AX: 1 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 198364
+AX: 1 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 202097
+AX: 2 0 0
+AS: StartSimulationWindow
+AD: OK
+ACT: 5
+AT: 202701
+AX: 2 0 0
+AS: SimRunner
+AD: Started Tutorial
+ACT: 0
+AT: 229955
+AX: 2 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 432187
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 533716
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 561616
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 600644
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Main Screen
+ACT: 0
+AT: 610163
+AX: 2 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 618683
+AX: 2 0 0
+AS: MainPanelLeft
+AD: Observe
+ACT: 0
+AT: 657738
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: >
+ACT: 0
+AT: 663762
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 674502
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Main Screen
+ACT: 0
+AT: 701813
+AX: 2 0 0
+AS: MainPanelLeft
+AD: Observe
+ACT: 0
+AT: 706767
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 721256
+AX: 2 0 0
+AS: ScreenInfoArea ObserveScreen
+AD: Info
+ACT: 4
+AT: 724732
+AX: 2 0 0
+AS: InfoScreen
+AD: General
+ACT: 4
+AT: 730197
+AX: 2 0 0
+AS: InfoScreen
+AD: Game Play
+ACT: 4
+AT: 736657
+AX: 2 0 0
+AS: InfoScreen
+AD: Observe
+ACT: 4
+AT: 739927
+AX: 2 0 0
+AS: InfoScreen
+AD: Experiment
+ACT: 4
+AT: 744865
+AX: 2 0 0
+AS: InfoScreen
+AD: Change System
+ACT: 0
+AT: 751638
+AX: 2 0 0
+AS: InfoScreen
+AD: Back
+ACT: 0
+AT: 761205
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Main Screen
+ACT: 0
+AT: 769705
+AX: 2 0 0
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 781056
+AX: 2 0 0
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 783857
+AX: 2 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 808811
+AX: 2 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 898613
+AX: 2 0 0
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 898618
+AX: 2 0 0
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.5 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R295 S262
+CHANGED_VALUES !C
+V C0.288 P1 R577 S511
+AFTER_VALUES V A1.0 B0 C0.288 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+!START_SNAPSHOT
+@R x:465 y:493 r:2.1 d:Bottom
+@R x:578 y:492 r:2.2 d:Bottom
+@R x:522 y:438 r:2.1 d:Bottom
+@R x:102 y:499 r:2.4 d:Bottom
+@R x:34 y:464 r:2.3 d:Bottom
+@R x:40 y:433 r:2.2 d:Bottom
+@R x:560 y:428 r:2.2 d:Bottom
+@R x:589 y:439 r:2.3 d:Bottom
+@R x:28 y:380 r:2.0 d:Bottom
+@R x:509 y:386 r:2.1 d:Bottom
+@R x:89 y:366 r:2.0 d:Bottom
+@R x:198 y:414 r:2.3 d:Bottom
+@R x:421 y:465 r:2.6 d:Bottom
+@R x:234 y:384 r:2.2 d:Bottom
+@R x:155 y:478 r:2.8 d:Bottom
+@R x:28 y:357 r:2.1 d:Bottom
+@R x:455 y:367 r:2.2 d:Bottom
+@R x:143 y:360 r:2.2 d:Bottom
+@R x:531 y:502 r:3.1 d:Bottom
+@R x:412 y:351 r:2.2 d:Bottom
+@R x:179 y:492 r:3.1 d:Bottom
+@R x:156 y:371 r:2.4 d:Bottom
+@R x:323 y:492 r:3.2 d:Bottom
+@R x:403 y:349 r:2.3 d:Bottom
+@R x:234 y:359 r:2.4 d:Bottom
+@R x:300 y:417 r:2.8 d:Bottom
+@R x:410 y:355 r:2.4 d:Bottom
+@R x:165 y:511 r:3.5 d:Bottom
+@R x:330 y:475 r:3.3 d:Bottom
+@R x:139 y:371 r:2.6 d:Bottom
+@R x:372 y:380 r:2.7 d:Bottom
+@R x:67 y:462 r:3.3 d:Bottom
+@R x:440 y:455 r:3.3 d:Bottom
+@R x:568 y:299 r:2.2 d:Bottom
+@R x:462 y:402 r:3.0 d:Bottom
+@R x:462 y:412 r:3.1 d:Bottom
+@R x:574 y:330 r:2.5 d:Bottom
+@R x:437 y:288 r:2.2 d:Bottom
+@R x:103 y:335 r:2.6 d:Bottom
+@R x:377 y:320 r:2.5 d:Bottom
+@R x:190 y:482 r:3.8 d:Bottom
+@R x:485 y:315 r:2.5 d:Bottom
+@R x:494 y:475 r:3.8 d:Bottom
+@R x:117 y:483 r:3.9 d:Bottom
+@R x:364 y:430 r:3.5 d:Bottom
+@R x:463 y:378 r:3.1 d:Bottom
+@R x:216 y:278 r:2.3 d:Bottom
+@R x:303 y:467 r:3.9 d:Bottom
+@R x:475 y:345 r:2.9 d:Bottom
+@R x:75 y:401 r:3.4 d:Bottom
+@R x:11 y:269 r:2.3 d:Bottom
+@R x:512 y:301 r:2.6 d:Bottom
+@R x:477 y:333 r:2.9 d:Bottom
+@R x:436 y:330 r:2.9 d:Bottom
+@R x:36 y:406 r:3.6 d:Bottom
+@R x:323 y:358 r:3.2 d:Bottom
+@R x:66 y:255 r:2.3 d:Bottom
+@R x:511 y:363 r:3.3 d:Bottom
+@R x:382 y:294 r:2.7 d:Bottom
+@R x:362 y:216 r:2.0 d:Bottom
+@R x:11 y:321 r:3.0 d:Bottom
+@R x:397 y:392 r:3.7 d:Bottom
+@R x:257 y:252 r:2.4 d:Bottom
+@R x:13 y:301 r:2.9 d:Bottom
+@R x:93 y:298 r:2.9 d:Bottom
+@R x:257 y:295 r:2.9 d:Bottom
+@R x:334 y:323 r:3.2 d:Bottom
+@R x:577 y:280 r:2.8 d:Bottom
+@R x:562 y:316 r:3.2 d:Bottom
+@R x:414 y:303 r:3.1 d:Bottom
+@R x:155 y:242 r:2.5 d:Bottom
+@R x:440 y:201 r:2.1 d:Bottom
+@R x:113 y:342 r:3.6 d:Bottom
+@R x:301 y:310 r:3.3 d:Bottom
+@R x:554 y:223 r:2.4 d:Bottom
+@R x:89 y:322 r:3.5 d:Bottom
+@R x:315 y:309 r:3.4 d:Bottom
+@R x:556 y:305 r:3.4 d:Bottom
+@R x:481 y:284 r:3.2 d:Bottom
+@R x:9 y:184 r:2.1 d:Bottom
+@R x:586 y:330 r:3.8 d:Bottom
+@R x:201 y:206 r:2.4 d:Bottom
+@R x:196 y:229 r:2.7 d:Bottom
+@R x:559 y:285 r:3.4 d:Bottom
+@R x:363 y:232 r:2.8 d:Bottom
+@R x:454 y:311 r:3.8 d:Bottom
+@R x:371 y:243 r:3.0 d:Bottom
+@R x:38 y:175 r:2.2 d:Bottom
+@R x:302 y:205 r:2.6 d:Bottom
+@R x:128 y:249 r:3.2 d:Bottom
+@R x:193 y:254 r:3.3 d:Bottom
+@R x:226 y:182 r:2.4 d:Bottom
+@R x:335 y:194 r:2.6 d:Bottom
+@R x:417 y:259 r:3.5 d:Bottom
+@R x:374 y:167 r:2.3 d:Bottom
+@R x:499 y:187 r:2.6 d:Bottom
+@R x:359 y:156 r:2.2 d:Bottom
+@R x:324 y:153 r:2.2 d:Bottom
+@R x:172 y:207 r:3.0 d:Bottom
+@R x:212 y:238 r:3.5 d:Bottom
+@R x:462 y:180 r:2.7 d:Bottom
+@R x:271 y:138 r:2.1 d:Bottom
+@R x:179 y:175 r:2.7 d:Bottom
+@R x:379 y:153 r:2.4 d:Bottom
+@R x:572 y:207 r:3.3 d:Bottom
+@R x:62 y:130 r:2.1 d:Bottom
+@R x:91 y:231 r:3.8 d:Bottom
+@R x:353 y:125 r:2.1 d:Bottom
+@R x:163 y:159 r:2.7 d:Bottom
+@R x:551 y:133 r:2.3 d:Bottom
+@R x:421 y:119 r:2.1 d:Bottom
+@R x:6 y:212 r:3.8 d:Bottom
+@R x:22 y:110 r:2.0 d:Bottom
+@R x:572 y:124 r:2.3 d:Bottom
+@R x:587 y:143 r:2.7 d:Bottom
+@R x:482 y:202 r:3.9 d:Bottom
+@R x:399 y:193 r:3.8 d:Bottom
+@R x:349 y:200 r:4.0 d:Bottom
+@R x:196 y:191 r:3.9 d:Bottom
+@R x:307 y:100 r:2.1 d:Bottom
+@R x:131 y:112 r:2.4 d:Bottom
+@R x:330 y:101 r:2.2 d:Bottom
+@R x:92 y:148 r:3.3 d:Bottom
+@R x:590 y:114 r:2.6 d:Bottom
+@R x:161 y:146 r:3.4 d:Bottom
+@R x:424 y:88 r:2.1 d:Bottom
+@R x:566 y:94 r:2.3 d:Bottom
+@R x:309 y:136 r:3.4 d:Bottom
+@R x:316 y:101 r:2.6 d:Bottom
+@R x:141 y:83 r:2.2 d:Bottom
+@R x:387 y:144 r:3.9 d:Bottom
+@R x:446 y:140 r:3.9 d:Bottom
+@R x:513 y:80 r:2.3 d:Bottom
+@R x:457 y:85 r:2.5 d:Bottom
+@R x:46 y:75 r:2.3 d:Bottom
+@R x:247 y:73 r:2.3 d:Bottom
+@R x:188 y:96 r:3.1 d:Bottom
+@R x:168 y:60 r:2.0 d:Bottom
+@R x:276 y:107 r:3.7 d:Bottom
+@R x:383 y:106 r:3.8 d:Bottom
+@R x:478 y:56 r:2.1 d:Bottom
+@R x:94 y:57 r:2.2 d:Bottom
+@R x:244 y:80 r:3.2 d:Bottom
+@R x:252 y:93 r:3.9 d:Bottom
+@R x:543 y:80 r:3.5 d:Bottom
+@R x:271 y:79 r:3.6 d:Bottom
+@R x:571 y:58 r:2.8 d:Bottom
+@R x:406 y:65 r:3.3 d:Bottom
+@R x:398 y:74 r:3.9 d:Bottom
+@R x:433 y:41 r:2.3 d:Bottom
+@R x:532 y:47 r:2.8 d:Bottom
+@R x:49 y:36 r:2.3 d:Bottom
+@R x:302 y:50 r:3.4 d:Bottom
+@R x:116 y:46 r:3.3 d:Bottom
+@R x:235 y:33 r:2.6 d:Bottom
+@R x:137 y:33 r:2.8 d:Bottom
+@R x:497 y:29 r:2.7 d:Bottom
+@R x:451 y:23 r:2.3 d:Bottom
+@R x:471 y:27 r:3.1 d:Bottom
+@R x:544 y:28 r:3.6 d:Bottom
+@R x:293 y:21 r:3.0 d:Bottom
+@R x:100 y:15 r:2.6 d:Bottom
+@R x:128 y:17 r:3.4 d:Bottom
+@R x:62 y:12 r:3.2 d:Bottom
+@R x:4 y:6 r:2.3 d:Bottom
+@R x:293 y:4 r:2.4 d:Bottom
+@R x:85 y:2 r:2.4 d:Bottom
+@R x:577 y:0 r:2.4 d:Bottom
+@K x:111 y:436 vx:-1 vy:0 s:9 h:0
+@K x:303 y:115 vx:0 vy:1 s:11 h:0
+@K x:346 y:151 vx:0 vy:0 s:11 h:0
+@K x:192 y:78 vx:-1 vy:1 s:12 h:0
+@K x:552 y:10 vx:-1 vy:1 s:14 h:0
+@K x:388 y:179 vx:-1 vy:1 s:13 h:0
+@K x:566 y:170 vx:1 vy:1 s:11 h:0
+@K x:124 y:68 vx:0 vy:-1 s:25 h:0
+@K x:567 y:128 vx:0 vy:-1 s:14 h:0
+@K x:199 y:161 vx:1 vy:1 s:13 h:0
+@K x:382 y:8 vx:1 vy:1 s:17 h:0
+@K x:484 y:66 vx:-1 vy:-1 s:14 h:0
+@K x:331 y:497 vx:0 vy:0 s:12 h:0
+@K x:116 y:35 vx:0 vy:-1 s:25 h:0
+@K x:491 y:233 vx:0 vy:-1 s:21 h:0
+@K x:314 y:99 vx:-1 vy:-1 s:4 h:1
+@K x:260 y:71 vx:0 vy:-1 s:25 h:0
+@K x:404 y:186 vx:-1 vy:-1 s:5 h:1
+@K x:376 y:233 vx:0 vy:-1 s:9 h:0
+@K x:25 y:254 vx:0 vy:-1 s:11 h:0
+@K x:111 y:215 vx:1 vy:-1 s:18 h:0
+@K x:146 y:220 vx:0 vy:-1 s:25 h:0
+@K x:111 y:96 vx:0 vy:-1 s:12 h:0
+@K x:146 y:268 vx:0 vy:-1 s:12 h:0
+@K x:542 y:334 vx:0 vy:-1 s:16 h:0
+@K x:409 y:246 vx:0 vy:-1 s:18 h:0
+@K x:568 y:259 vx:0 vy:-1 s:25 h:0
+@K x:397 y:192 vx:0 vy:-1 s:16 h:0
+@K x:540 y:182 vx:0 vy:-1 s:25 h:0
+@K x:167 y:481 vx:1 vy:0 s:12 h:0
+@K x:166 y:305 vx:1 vy:-1 s:11 h:0
+@K x:170 y:303 vx:-1 vy:-1 s:7 h:1
+@K x:525 y:340 vx:1 vy:-1 s:11 h:1
+@K x:42 y:294 vx:0 vy:-1 s:25 h:0
+@K x:551 y:282 vx:1 vy:-1 s:25 h:0
+@K x:379 y:370 vx:1 vy:-1 s:14 h:0
+@K x:389 y:354 vx:0 vy:-1 s:18 h:0
+@K x:531 y:389 vx:-1 vy:-1 s:15 h:0
+@K x:18 y:399 vx:0 vy:-1 s:25 h:0
+@K x:385 y:333 vx:0 vy:-1 s:19 h:0
+@K x:226 y:511 vx:1 vy:0 s:25 h:0
+@K x:102 y:335 vx:0 vy:-1 s:18 h:0
+@K x:267 y:441 vx:1 vy:-1 s:12 h:1
+@K x:484 y:447 vx:0 vy:-1 s:23 h:0
+@K x:477 y:368 vx:1 vy:-1 s:25 h:0
+@K x:395 y:431 vx:-1 vy:-1 s:25 h:0
+@K x:580 y:410 vx:1 vy:-1 s:16 h:0
+@K x:12 y:443 vx:0 vy:-1 s:25 h:0
+@K x:408 y:381 vx:0 vy:-1 s:25 h:0
+@K x:438 y:320 vx:0 vy:-1 s:25 h:0
+@K x:505 y:461 vx:-1 vy:-1 s:20 h:1
+@K x:279 y:438 vx:0 vy:-1 s:17 h:0
+@K x:150 y:380 vx:0 vy:-1 s:24 h:0
+@K x:341 y:353 vx:1 vy:-1 s:24 h:0
+@K x:168 y:490 vx:-1 vy:0 s:2 h:1
+@K x:403 y:457 vx:1 vy:-1 s:18 h:0
+@K x:63 y:449 vx:-1 vy:-1 s:17 h:0
+@K x:496 y:476 vx:1 vy:-1 s:11 h:1
+@K x:101 y:475 vx:0 vy:-1 s:17 h:0
+@K x:194 y:435 vx:0 vy:-1 s:17 h:0
+@K x:563 y:469 vx:-1 vy:-1 s:16 h:0
+@K x:522 y:440 vx:-1 vy:-1 s:12 h:0
+@K x:19 y:422 vx:1 vy:-1 s:12 h:0
+@K x:221 y:417 vx:0 vy:-1 s:12 h:0
+@K x:335 y:431 vx:1 vy:-1 s:11 h:0
+@K x:142 y:497 vx:1 vy:-1 s:10 h:0
+@K x:203 y:517 vx:-1 vy:-1 s:6 h:0
+@K x:582 y:510 vx:-1 vy:-1 s:6 h:0
+@K x:495 y:486 vx:0 vy:-1 s:6 h:0
+@E x:436 y:395 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:282 y:381 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:252 y:482 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:513 y:481 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:56 y:479 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:413 y:477 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:349 y:476 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:351 y:499 vx:-1 vy:-1 s:1 i:0 h:1 t:0
+@E x:545 y:487 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:144 y:497 vx:0 vy:-1 s:5 i:6 h:1 t:0
+@E x:387 y:500 vx:0 vy:-1 s:1 i:10 h:1 t:1
+@E x:398 y:497 vx:0 vy:-1 s:7 i:6 h:1 t:1
+@E x:33 y:475 vx:-1 vy:-1 s:10 i:5 h:0 t:0
+@E x:61 y:521 vx:-1 vy:-1 s:10 i:5 h:0 t:0
+@E x:536 y:494 vx:0 vy:-1 s:10 i:5 h:0 t:0
+@E x:558 y:505 vx:0 vy:-1 s:2 i:10 h:1 t:1
+@E x:47 y:504 vx:0 vy:-1 s:10 i:8 h:0 t:0
+@E x:75 y:504 vx:1 vy:-1 s:10 i:8 h:0 t:0
+@E x:595 y:500 vx:0 vy:-1 s:10 i:10 h:0 t:0
+@E x:404 y:514 vx:0 vy:-1 s:10 i:13 h:0 t:0
+@E x:399 y:510 vx:-1 vy:-1 s:10 i:13 h:0 t:0
+@E x:464 y:508 vx:0 vy:-1 s:10 i:13 h:0 t:0
+@E x:474 y:512 vx:0 vy:-1 s:10 i:13 h:0 t:0
+@E x:343 y:510 vx:0 vy:0 s:10 i:14 h:0 t:0
+@E x:370 y:501 vx:1 vy:-1 s:10 i:14 h:0 t:0
+@E x:339 y:488 vx:-1 vy:0 s:10 i:14 h:0 t:0
+@E x:578 y:514 vx:1 vy:-1 s:8 i:15 h:1 t:0
+@E x:574 y:513 vx:-1 vy:-1 s:10 i:14 h:0 t:0
+@E x:18 y:514 vx:0 vy:-1 s:10 i:14 h:0 t:0
+@E x:21 y:514 vx:-1 vy:-1 s:10 i:14 h:0 t:0
+@E x:507 y:515 vx:1 vy:-1 s:9 i:15 h:0 t:0
+@E x:506 y:515 vx:0 vy:-1 s:9 i:15 h:0 t:0
+@G x:577 y:511
+V A1.0 B0 C0.288 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+!END_SNAPSHOT
+
+ACT: 6
+AT: 905131
+AX: 2 0 0
+AS: SimRunner
+AD: TurnEnd 2:0:0 Tutorial, SCORE: There is no score for the tutorial.
+ACT: 0
+AT: 916314
+AX: 2 0 1
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 920179
+AX: 2 0 1
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 932687
+AX: 2 0 1
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 932691
+AX: 2 0 1
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.288 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+CHANGED_VALUES !C
+V
+AFTER_VALUES V A1.0 B0 C0.288 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+!START_SNAPSHOT
+@R x:163 y:522 r:2.1 d:Bottom
+@R x:147 y:472 r:2.0 d:Bottom
+@R x:28 y:494 r:2.2 d:Bottom
+@R x:279 y:414 r:2.0 d:Bottom
+@R x:353 y:406 r:2.0 d:Bottom
+@R x:18 y:411 r:2.1 d:Bottom
+@R x:222 y:487 r:2.5 d:Bottom
+@R x:484 y:441 r:2.3 d:Bottom
+@R x:103 y:380 r:2.0 d:Bottom
+@R x:389 y:396 r:2.1 d:Bottom
+@R x:175 y:413 r:2.2 d:Bottom
+@R x:374 y:392 r:2.1 d:Bottom
+@R x:424 y:409 r:2.2 d:Bottom
+@R x:35 y:425 r:2.3 d:Bottom
+@R x:393 y:478 r:2.6 d:Bottom
+@R x:71 y:364 r:2.0 d:Bottom
+@R x:443 y:470 r:2.6 d:Bottom
+@R x:122 y:450 r:2.5 d:Bottom
+@R x:554 y:457 r:2.6 d:Bottom
+@R x:583 y:365 r:2.1 d:Bottom
+@R x:504 y:363 r:2.1 d:Bottom
+@R x:476 y:498 r:2.9 d:Bottom
+@R x:166 y:478 r:2.8 d:Bottom
+@R x:313 y:523 r:3.1 d:Bottom
+@R x:421 y:395 r:2.4 d:Bottom
+@R x:531 y:423 r:2.6 d:Bottom
+@R x:283 y:421 r:2.6 d:Bottom
+@R x:261 y:436 r:2.8 d:Bottom
+@R x:203 y:480 r:3.1 d:Bottom
+@R x:98 y:508 r:3.3 d:Bottom
+@R x:209 y:397 r:2.6 d:Bottom
+@R x:555 y:362 r:2.4 d:Bottom
+@R x:91 y:420 r:2.8 d:Bottom
+@R x:231 y:357 r:2.4 d:Bottom
+@R x:39 y:414 r:2.8 d:Bottom
+@R x:320 y:455 r:3.1 d:Bottom
+@R x:15 y:449 r:3.1 d:Bottom
+@R x:195 y:300 r:2.1 d:Bottom
+@R x:345 y:468 r:3.3 d:Bottom
+@R x:291 y:451 r:3.2 d:Bottom
+@R x:328 y:434 r:3.1 d:Bottom
+@R x:154 y:483 r:3.5 d:Bottom
+@R x:20 y:337 r:2.5 d:Bottom
+@R x:216 y:495 r:3.7 d:Bottom
+@R x:418 y:319 r:2.4 d:Bottom
+@R x:271 y:316 r:2.4 d:Bottom
+@R x:308 y:340 r:2.6 d:Bottom
+@R x:299 y:325 r:2.5 d:Bottom
+@R x:29 y:451 r:3.5 d:Bottom
+@R x:366 y:396 r:3.1 d:Bottom
+@R x:321 y:495 r:3.9 d:Bottom
+@R x:375 y:378 r:3.0 d:Bottom
+@R x:157 y:300 r:2.4 d:Bottom
+@R x:144 y:285 r:2.3 d:Bottom
+@R x:83 y:295 r:2.4 d:Bottom
+@R x:125 y:305 r:2.5 d:Bottom
+@R x:446 y:375 r:3.1 d:Bottom
+@R x:231 y:456 r:3.8 d:Bottom
+@R x:370 y:249 r:2.1 d:Bottom
+@R x:51 y:448 r:3.8 d:Bottom
+@R x:149 y:432 r:3.7 d:Bottom
+@R x:165 y:382 r:3.3 d:Bottom
+@R x:458 y:276 r:2.4 d:Bottom
+@R x:409 y:399 r:3.5 d:Bottom
+@R x:372 y:358 r:3.2 d:Bottom
+@R x:10 y:355 r:3.2 d:Bottom
+@R x:301 y:330 r:3.0 d:Bottom
+@R x:325 y:359 r:3.3 d:Bottom
+@R x:113 y:432 r:4.0 d:Bottom
+@R x:436 y:278 r:2.6 d:Bottom
+@R x:371 y:265 r:2.5 d:Bottom
+@R x:576 y:301 r:2.9 d:Bottom
+@R x:17 y:206 r:2.0 d:Bottom
+@R x:220 y:285 r:2.8 d:Bottom
+@R x:281 y:343 r:3.4 d:Bottom
+@R x:442 y:250 r:2.5 d:Bottom
+@R x:369 y:326 r:3.3 d:Bottom
+@R x:548 y:294 r:3.0 d:Bottom
+@R x:384 y:281 r:2.9 d:Bottom
+@R x:54 y:192 r:2.0 d:Bottom
+@R x:444 y:199 r:2.1 d:Bottom
+@R x:338 y:300 r:3.2 d:Bottom
+@R x:432 y:297 r:3.2 d:Bottom
+@R x:589 y:303 r:3.3 d:Bottom
+@R x:358 y:263 r:2.9 d:Bottom
+@R x:266 y:360 r:4.0 d:Bottom
+@R x:1 y:329 r:3.7 d:Bottom
+@R x:299 y:237 r:2.7 d:Bottom
+@R x:392 y:208 r:2.4 d:Bottom
+@R x:17 y:326 r:3.8 d:Bottom
+@R x:117 y:220 r:2.6 d:Bottom
+@R x:118 y:252 r:3.0 d:Bottom
+@R x:286 y:282 r:3.4 d:Bottom
+@R x:120 y:221 r:2.7 d:Bottom
+@R x:230 y:202 r:2.5 d:Bottom
+@R x:187 y:280 r:3.5 d:Bottom
+@R x:460 y:252 r:3.2 d:Bottom
+@R x:54 y:179 r:2.3 d:Bottom
+@R x:106 y:254 r:3.3 d:Bottom
+@R x:328 y:159 r:2.1 d:Bottom
+@R x:191 y:180 r:2.4 d:Bottom
+@R x:318 y:214 r:2.9 d:Bottom
+@R x:389 y:240 r:3.3 d:Bottom
+@R x:273 y:273 r:3.8 d:Bottom
+@R x:585 y:241 r:3.4 d:Bottom
+@R x:122 y:273 r:3.9 d:Bottom
+@R x:584 y:213 r:3.1 d:Bottom
+@R x:2 y:176 r:2.6 d:Bottom
+@R x:99 y:261 r:3.9 d:Bottom
+@R x:590 y:198 r:3.0 d:Bottom
+@R x:350 y:188 r:2.9 d:Bottom
+@R x:538 y:153 r:2.4 d:Bottom
+@R x:6 y:151 r:2.4 d:Bottom
+@R x:284 y:173 r:2.8 d:Bottom
+@R x:323 y:207 r:3.4 d:Bottom
+@R x:257 y:150 r:2.5 d:Bottom
+@R x:147 y:123 r:2.1 d:Bottom
+@R x:139 y:133 r:2.3 d:Bottom
+@R x:421 y:153 r:2.7 d:Bottom
+@R x:458 y:117 r:2.1 d:Bottom
+@R x:68 y:214 r:3.9 d:Bottom
+@R x:23 y:140 r:2.6 d:Bottom
+@R x:408 y:116 r:2.2 d:Bottom
+@R x:163 y:119 r:2.3 d:Bottom
+@R x:530 y:163 r:3.2 d:Bottom
+@R x:101 y:165 r:3.3 d:Bottom
+@R x:253 y:142 r:2.9 d:Bottom
+@R x:72 y:134 r:2.8 d:Bottom
+@R x:218 y:183 r:3.9 d:Bottom
+@R x:243 y:179 r:3.9 d:Bottom
+@R x:319 y:112 r:2.5 d:Bottom
+@R x:128 y:171 r:3.9 d:Bottom
+@R x:408 y:103 r:2.4 d:Bottom
+@R x:520 y:134 r:3.2 d:Bottom
+@R x:512 y:127 r:3.1 d:Bottom
+@R x:497 y:128 r:3.2 d:Bottom
+@R x:545 y:120 r:3.1 d:Bottom
+@R x:402 y:114 r:3.0 d:Bottom
+@R x:415 y:92 r:2.5 d:Bottom
+@R x:409 y:122 r:3.4 d:Bottom
+@R x:21 y:87 r:2.5 d:Bottom
+@R x:221 y:105 r:3.1 d:Bottom
+@R x:322 y:118 r:3.6 d:Bottom
+@R x:167 y:105 r:3.3 d:Bottom
+@R x:554 y:89 r:2.9 d:Bottom
+@R x:353 y:111 r:3.7 d:Bottom
+@R x:525 y:84 r:2.9 d:Bottom
+@R x:357 y:95 r:3.4 d:Bottom
+@R x:85 y:75 r:2.8 d:Bottom
+@R x:480 y:67 r:2.6 d:Bottom
+@R x:446 y:77 r:3.1 d:Bottom
+@R x:374 y:79 r:3.3 d:Bottom
+@R x:195 y:73 r:3.2 d:Bottom
+@R x:448 y:48 r:2.2 d:Bottom
+@R x:240 y:77 r:3.7 d:Bottom
+@R x:301 y:67 r:3.4 d:Bottom
+@R x:319 y:47 r:2.5 d:Bottom
+@R x:352 y:59 r:3.3 d:Bottom
+@R x:412 y:57 r:3.4 d:Bottom
+@R x:457 y:62 r:3.9 d:Bottom
+@R x:336 y:49 r:3.3 d:Bottom
+@R x:323 y:42 r:3.0 d:Bottom
+@R x:349 y:42 r:3.3 d:Bottom
+@R x:298 y:25 r:2.1 d:Bottom
+@R x:283 y:26 r:2.4 d:Bottom
+@R x:116 y:20 r:2.0 d:Bottom
+@R x:136 y:35 r:3.9 d:Bottom
+@R x:559 y:27 r:3.4 d:Bottom
+@R x:94 y:25 r:3.7 d:Bottom
+@R x:62 y:18 r:3.1 d:Bottom
+@R x:33 y:18 r:3.7 d:Bottom
+@R x:99 y:8 r:2.2 d:Bottom
+@R x:231 y:9 r:3.3 d:Bottom
+@R x:242 y:5 r:2.9 d:Bottom
+@R x:449 y:2 r:2.8 d:Bottom
+@R x:68 y:0 r:4.0 d:Bottom
+@K x:240 y:321 vx:0 vy:1 s:12 h:1
+@K x:273 y:102 vx:0 vy:1 s:10 h:1
+@K x:2 y:114 vx:0 vy:1 s:6 h:0
+@K x:156 y:7 vx:0 vy:1 s:12 h:1
+@K x:350 y:250 vx:0 vy:1 s:7 h:1
+@K x:258 y:38 vx:0 vy:-1 s:8 h:0
+@K x:438 y:156 vx:0 vy:1 s:11 h:0
+@K x:119 y:170 vx:0 vy:1 s:8 h:0
+@K x:88 y:188 vx:0 vy:1 s:2 h:1
+@K x:497 y:107 vx:0 vy:1 s:14 h:0
+@K x:259 y:215 vx:0 vy:-1 s:22 h:0
+@K x:219 y:91 vx:1 vy:-1 s:12 h:0
+@K x:566 y:75 vx:0 vy:1 s:11 h:0
+@K x:159 y:20 vx:1 vy:-1 s:18 h:0
+@K x:550 y:68 vx:1 vy:-1 s:7 h:0
+@K x:305 y:16 vx:0 vy:1 s:17 h:0
+@K x:304 y:88 vx:-1 vy:-1 s:16 h:0
+@K x:172 y:118 vx:1 vy:-1 s:12 h:0
+@K x:162 y:301 vx:0 vy:-1 s:12 h:0
+@K x:441 y:267 vx:0 vy:-1 s:12 h:0
+@K x:96 y:192 vx:0 vy:-1 s:22 h:0
+@K x:265 y:108 vx:0 vy:-1 s:16 h:0
+@K x:434 y:179 vx:0 vy:-1 s:8 h:0
+@K x:359 y:258 vx:0 vy:-1 s:19 h:0
+@K x:14 y:161 vx:0 vy:-1 s:18 h:0
+@K x:153 y:496 vx:1 vy:0 s:8 h:0
+@K x:549 y:157 vx:0 vy:-1 s:25 h:0
+@K x:284 y:253 vx:0 vy:-1 s:9 h:0
+@K x:48 y:230 vx:0 vy:-1 s:19 h:0
+@K x:349 y:105 vx:-1 vy:-1 s:12 h:0
+@K x:274 y:261 vx:0 vy:-1 s:13 h:0
+@K x:250 y:333 vx:1 vy:-1 s:22 h:0
+@K x:255 y:308 vx:-1 vy:-1 s:15 h:0
+@K x:55 y:280 vx:0 vy:-1 s:25 h:0
+@K x:438 y:394 vx:0 vy:-1 s:17 h:0
+@K x:280 y:408 vx:0 vy:-1 s:18 h:0
+@K x:528 y:272 vx:1 vy:-1 s:25 h:0
+@K x:268 y:363 vx:1 vy:-1 s:25 h:0
+@K x:547 y:297 vx:1 vy:-1 s:17 h:0
+@K x:373 y:337 vx:0 vy:-1 s:23 h:0
+@K x:152 y:376 vx:0 vy:-1 s:8 h:0
+@K x:312 y:507 vx:0 vy:0 s:21 h:0
+@K x:48 y:429 vx:0 vy:-1 s:21 h:0
+@K x:108 y:339 vx:1 vy:-1 s:21 h:0
+@K x:99 y:334 vx:-1 vy:-1 s:5 h:1
+@K x:548 y:428 vx:1 vy:-1 s:18 h:0
+@K x:109 y:391 vx:0 vy:-1 s:22 h:0
+@K x:370 y:412 vx:0 vy:-1 s:25 h:0
+@K x:338 y:450 vx:0 vy:0 s:19 h:0
+@K x:417 y:442 vx:-1 vy:0 s:25 h:0
+@K x:340 y:415 vx:0 vy:-1 s:25 h:0
+@K x:219 y:417 vx:0 vy:-1 s:14 h:0
+@K x:527 y:385 vx:0 vy:-1 s:16 h:0
+@K x:100 y:430 vx:0 vy:-1 s:24 h:0
+@K x:31 y:459 vx:0 vy:-1 s:23 h:0
+@K x:84 y:463 vx:0 vy:-1 s:23 h:0
+@K x:282 y:469 vx:1 vy:-1 s:20 h:0
+@K x:252 y:437 vx:0 vy:-1 s:19 h:0
+@K x:261 y:477 vx:1 vy:-1 s:15 h:0
+@K x:515 y:448 vx:-1 vy:-1 s:14 h:0
+@K x:183 y:466 vx:0 vy:-1 s:13 h:0
+@K x:208 y:483 vx:-1 vy:-1 s:12 h:0
+@K x:5 y:383 vx:0 vy:-1 s:11 h:0
+@K x:83 y:289 vx:0 vy:-1 s:10 h:0
+@K x:574 y:449 vx:0 vy:-1 s:8 h:0
+@K x:443 y:489 vx:0 vy:-1 s:7 h:0
+@K x:343 y:488 vx:-1 vy:-1 s:6 h:0
+@K x:392 y:486 vx:0 vy:-1 s:6 h:0
+@K x:517 y:421 vx:1 vy:-1 s:5 h:0
+@E x:40 y:444 vx:0 vy:-1 s:8 i:0 h:1 t:0
+@E x:454 y:448 vx:0 vy:-1 s:4 i:0 h:1 t:1
+@E x:84 y:485 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:68 y:442 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:580 y:463 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:544 y:480 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:146 y:486 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:276 y:491 vx:0 vy:-1 s:2 i:0 h:1 t:0
+@E x:373 y:475 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:271 y:495 vx:0 vy:-1 s:4 i:0 h:1 t:0
+@E x:313 y:482 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:354 y:498 vx:0 vy:-1 s:4 i:0 h:1 t:1
+@E x:362 y:499 vx:-1 vy:-1 s:4 i:0 h:1 t:0
+@E x:8 y:489 vx:0 vy:-1 s:4 i:0 h:1 t:0
+@E x:5 y:490 vx:0 vy:-1 s:4 i:0 h:1 t:0
+@E x:431 y:482 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:6 y:494 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:46 y:494 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:518 y:496 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:502 y:496 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:122 y:501 vx:0 vy:-1 s:8 i:3 h:1 t:1
+@E x:102 y:493 vx:-1 vy:-1 s:10 i:2 h:0 t:0
+@E x:559 y:493 vx:0 vy:-1 s:10 i:2 h:0 t:0
+@E x:551 y:501 vx:0 vy:-1 s:10 i:2 h:0 t:0
+@E x:447 y:497 vx:1 vy:-1 s:5 i:7 h:1 t:0
+@E x:466 y:491 vx:1 vy:-1 s:10 i:4 h:1 t:1
+@E x:373 y:489 vx:1 vy:-1 s:10 i:5 h:0 t:0
+@E x:386 y:491 vx:1 vy:-1 s:10 i:5 h:1 t:0
+@E x:204 y:498 vx:0 vy:-1 s:10 i:8 h:0 t:0
+@E x:201 y:500 vx:-1 vy:-1 s:10 i:8 h:0 t:0
+@E x:209 y:506 vx:1 vy:-1 s:10 i:8 h:0 t:0
+@E x:191 y:506 vx:-1 vy:-1 s:10 i:8 h:0 t:0
+@E x:513 y:510 vx:0 vy:-1 s:10 i:11 h:0 t:0
+@E x:542 y:511 vx:1 vy:-1 s:10 i:11 h:0 t:0
+@E x:526 y:503 vx:0 vy:-1 s:10 i:11 h:0 t:0
+@E x:515 y:508 vx:-1 vy:-1 s:10 i:11 h:0 t:0
+@E x:497 y:515 vx:1 vy:-1 s:10 i:14 h:0 t:0
+@E x:507 y:512 vx:1 vy:-1 s:10 i:14 h:0 t:0
+@E x:0 y:493 vx:0 vy:-1 s:9 i:16 h:0 t:0
+@E x:19 y:496 vx:0 vy:-1 s:9 i:16 h:0 t:0
+@E x:14 y:480 vx:1 vy:0 s:9 i:16 h:0 t:0
+@E x:355 y:514 vx:1 vy:1 s:9 i:16 h:0 t:0
+@E x:370 y:508 vx:0 vy:0 s:9 i:16 h:0 t:0
+@E x:353 y:484 vx:-1 vy:-1 s:9 i:16 h:0 t:0
+@E x:264 y:507 vx:0 vy:0 s:9 i:16 h:0 t:0
+@E x:288 y:510 vx:1 vy:1 s:9 i:16 h:0 t:0
+@E x:459 y:516 vx:0 vy:-1 s:7 i:18 h:0 t:0
+@E x:471 y:516 vx:0 vy:-1 s:7 i:18 h:0 t:0
+@E x:318 y:520 vx:1 vy:-1 s:6 i:19 h:1 t:0
+@E x:330 y:520 vx:1 vy:-1 s:6 i:19 h:0 t:0
+@G x:577 y:511
+V A1.0 B0 C0.288 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+!END_SNAPSHOT
+
+ACT: 6
+AT: 938701
+AX: 2 0 1
+AS: SimRunner
+AD: TurnEnd 2:0:1 Tutorial, SCORE: There is no score for the tutorial.
+ACT: 0
+AT: 947307
+AX: 2 0 2
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 960474
+AX: 2 0 2
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 983063
+AX: 2 0 2
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 983070
+AX: 2 0 2
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.288 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+CHANGED_VALUES !C
+V C0.0
+AFTER_VALUES V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+!START_SNAPSHOT
+@R x:326 y:497 r:2.2 d:Bottom
+@R x:148 y:506 r:2.3 d:Bottom
+@R x:282 y:468 r:2.2 d:Bottom
+@R x:470 y:443 r:2.1 d:Bottom
+@R x:177 y:432 r:2.1 d:Bottom
+@R x:243 y:415 r:2.1 d:Bottom
+@R x:9 y:413 r:2.1 d:Bottom
+@R x:303 y:409 r:2.1 d:Bottom
+@R x:3 y:477 r:2.5 d:Bottom
+@R x:105 y:472 r:2.5 d:Bottom
+@R x:114 y:448 r:2.4 d:Bottom
+@R x:391 y:491 r:2.7 d:Bottom
+@R x:49 y:414 r:2.3 d:Bottom
+@R x:11 y:358 r:2.0 d:Bottom
+@R x:335 y:513 r:2.9 d:Bottom
+@R x:506 y:525 r:3.0 d:Bottom
+@R x:125 y:461 r:2.7 d:Bottom
+@R x:127 y:338 r:2.0 d:Bottom
+@R x:182 y:484 r:2.9 d:Bottom
+@R x:395 y:379 r:2.3 d:Bottom
+@R x:262 y:344 r:2.1 d:Bottom
+@R x:538 y:397 r:2.5 d:Bottom
+@R x:206 y:439 r:2.8 d:Bottom
+@R x:389 y:374 r:2.4 d:Bottom
+@R x:43 y:371 r:2.4 d:Bottom
+@R x:274 y:508 r:3.3 d:Bottom
+@R x:162 y:489 r:3.2 d:Bottom
+@R x:545 y:319 r:2.1 d:Bottom
+@R x:472 y:468 r:3.1 d:Bottom
+@R x:147 y:359 r:2.4 d:Bottom
+@R x:435 y:417 r:2.8 d:Bottom
+@R x:435 y:325 r:2.2 d:Bottom
+@R x:520 y:426 r:2.9 d:Bottom
+@R x:153 y:335 r:2.3 d:Bottom
+@R x:586 y:406 r:2.8 d:Bottom
+@R x:230 y:414 r:2.9 d:Bottom
+@R x:399 y:411 r:2.9 d:Bottom
+@R x:293 y:408 r:2.9 d:Bottom
+@R x:330 y:490 r:3.5 d:Bottom
+@R x:302 y:430 r:3.1 d:Bottom
+@R x:75 y:496 r:3.6 d:Bottom
+@R x:318 y:438 r:3.2 d:Bottom
+@R x:484 y:394 r:2.9 d:Bottom
+@R x:572 y:310 r:2.3 d:Bottom
+@R x:54 y:415 r:3.1 d:Bottom
+@R x:529 y:314 r:2.4 d:Bottom
+@R x:399 y:429 r:3.3 d:Bottom
+@R x:102 y:374 r:2.9 d:Bottom
+@R x:135 y:256 r:2.0 d:Bottom
+@R x:234 y:457 r:3.6 d:Bottom
+@R x:576 y:277 r:2.2 d:Bottom
+@R x:5 y:387 r:3.1 d:Bottom
+@R x:308 y:384 r:3.1 d:Bottom
+@R x:139 y:332 r:2.7 d:Bottom
+@R x:182 y:268 r:2.2 d:Bottom
+@R x:197 y:278 r:2.3 d:Bottom
+@R x:324 y:372 r:3.1 d:Bottom
+@R x:371 y:428 r:3.6 d:Bottom
+@R x:122 y:377 r:3.2 d:Bottom
+@R x:27 y:280 r:2.4 d:Bottom
+@R x:552 y:278 r:2.4 d:Bottom
+@R x:347 y:264 r:2.3 d:Bottom
+@R x:493 y:330 r:2.9 d:Bottom
+@R x:487 y:259 r:2.3 d:Bottom
+@R x:371 y:313 r:2.8 d:Bottom
+@R x:411 y:432 r:3.9 d:Bottom
+@R x:267 y:428 r:3.9 d:Bottom
+@R x:441 y:250 r:2.3 d:Bottom
+@R x:6 y:367 r:3.4 d:Bottom
+@R x:349 y:406 r:3.8 d:Bottom
+@R x:63 y:424 r:4.0 d:Bottom
+@R x:566 y:230 r:2.2 d:Bottom
+@R x:166 y:364 r:3.5 d:Bottom
+@R x:284 y:216 r:2.1 d:Bottom
+@R x:240 y:204 r:2.0 d:Bottom
+@R x:589 y:363 r:3.6 d:Bottom
+@R x:235 y:200 r:2.0 d:Bottom
+@R x:133 y:217 r:2.2 d:Bottom
+@R x:34 y:274 r:2.8 d:Bottom
+@R x:41 y:252 r:2.6 d:Bottom
+@R x:422 y:345 r:3.6 d:Bottom
+@R x:499 y:266 r:2.8 d:Bottom
+@R x:261 y:357 r:3.8 d:Bottom
+@R x:289 y:223 r:2.4 d:Bottom
+@R x:190 y:266 r:2.9 d:Bottom
+@R x:524 y:318 r:3.5 d:Bottom
+@R x:274 y:225 r:2.5 d:Bottom
+@R x:356 y:195 r:2.2 d:Bottom
+@R x:303 y:343 r:3.9 d:Bottom
+@R x:372 y:200 r:2.3 d:Bottom
+@R x:530 y:344 r:4.0 d:Bottom
+@R x:405 y:271 r:3.2 d:Bottom
+@R x:114 y:252 r:3.0 d:Bottom
+@R x:230 y:290 r:3.5 d:Bottom
+@R x:494 y:278 r:3.4 d:Bottom
+@R x:85 y:291 r:3.6 d:Bottom
+@R x:42 y:247 r:3.1 d:Bottom
+@R x:414 y:213 r:2.7 d:Bottom
+@R x:524 y:249 r:3.2 d:Bottom
+@R x:543 y:215 r:2.8 d:Bottom
+@R x:590 y:174 r:2.3 d:Bottom
+@R x:496 y:255 r:3.4 d:Bottom
+@R x:197 y:207 r:2.8 d:Bottom
+@R x:327 y:153 r:2.1 d:Bottom
+@R x:151 y:216 r:3.0 d:Bottom
+@R x:553 y:163 r:2.3 d:Bottom
+@R x:330 y:175 r:2.5 d:Bottom
+@R x:571 y:193 r:2.8 d:Bottom
+@R x:8 y:210 r:3.1 d:Bottom
+@R x:470 y:167 r:2.5 d:Bottom
+@R x:568 y:211 r:3.2 d:Bottom
+@R x:216 y:207 r:3.2 d:Bottom
+@R x:290 y:166 r:2.6 d:Bottom
+@R x:310 y:233 r:3.7 d:Bottom
+@R x:199 y:217 r:3.5 d:Bottom
+@R x:200 y:170 r:2.8 d:Bottom
+@R x:391 y:132 r:2.2 d:Bottom
+@R x:281 y:218 r:3.7 d:Bottom
+@R x:247 y:121 r:2.1 d:Bottom
+@R x:162 y:216 r:3.8 d:Bottom
+@R x:566 y:140 r:2.5 d:Bottom
+@R x:71 y:165 r:3.0 d:Bottom
+@R x:315 y:118 r:2.2 d:Bottom
+@R x:327 y:148 r:2.8 d:Bottom
+@R x:490 y:135 r:2.6 d:Bottom
+@R x:563 y:153 r:3.0 d:Bottom
+@R x:581 y:114 r:2.3 d:Bottom
+@R x:404 y:147 r:3.0 d:Bottom
+@R x:402 y:144 r:3.0 d:Bottom
+@R x:73 y:173 r:3.7 d:Bottom
+@R x:205 y:101 r:2.2 d:Bottom
+@R x:107 y:130 r:2.9 d:Bottom
+@R x:462 y:145 r:3.3 d:Bottom
+@R x:247 y:137 r:3.2 d:Bottom
+@R x:566 y:121 r:2.9 d:Bottom
+@R x:112 y:127 r:3.1 d:Bottom
+@R x:536 y:120 r:3.0 d:Bottom
+@R x:100 y:89 r:2.3 d:Bottom
+@R x:325 y:110 r:2.9 d:Bottom
+@R x:460 y:122 r:3.3 d:Bottom
+@R x:460 y:108 r:3.0 d:Bottom
+@R x:435 y:87 r:2.5 d:Bottom
+@R x:130 y:129 r:3.8 d:Bottom
+@R x:94 y:99 r:3.0 d:Bottom
+@R x:138 y:80 r:2.5 d:Bottom
+@R x:231 y:80 r:2.6 d:Bottom
+@R x:411 y:117 r:3.9 d:Bottom
+@R x:316 y:75 r:2.6 d:Bottom
+@R x:290 y:98 r:3.5 d:Bottom
+@R x:266 y:75 r:2.8 d:Bottom
+@R x:381 y:67 r:2.6 d:Bottom
+@R x:293 y:65 r:2.6 d:Bottom
+@R x:253 y:57 r:2.4 d:Bottom
+@R x:521 y:87 r:3.8 d:Bottom
+@R x:299 y:52 r:2.4 d:Bottom
+@R x:284 y:42 r:2.0 d:Bottom
+@R x:90 y:62 r:3.1 d:Bottom
+@R x:494 y:45 r:2.4 d:Bottom
+@R x:337 y:54 r:3.0 d:Bottom
+@R x:551 y:51 r:3.0 d:Bottom
+@R x:229 y:60 r:3.8 d:Bottom
+@R x:300 y:54 r:3.6 d:Bottom
+@R x:373 y:37 r:2.7 d:Bottom
+@R x:73 y:35 r:2.7 d:Bottom
+@R x:47 y:38 r:3.2 d:Bottom
+@R x:25 y:24 r:2.2 d:Bottom
+@R x:404 y:25 r:2.5 d:Bottom
+@R x:31 y:31 r:3.5 d:Bottom
+@R x:52 y:24 r:3.0 d:Bottom
+@R x:249 y:20 r:2.9 d:Bottom
+@R x:250 y:13 r:2.2 d:Bottom
+@R x:482 y:19 r:3.9 d:Bottom
+@R x:179 y:14 r:3.7 d:Bottom
+@R x:87 y:11 r:3.7 d:Bottom
+@R x:134 y:4 r:2.0 d:Bottom
+@R x:358 y:2 r:2.7 d:Bottom
+@R x:397 y:0 r:3.7 d:Bottom
+@K x:255 y:54 vx:0 vy:1 s:5 h:0
+@K x:443 y:102 vx:0 vy:1 s:16 h:0
+@K x:284 y:276 vx:-1 vy:1 s:10 h:0
+@K x:12 y:72 vx:0 vy:-1 s:9 h:0
+@K x:159 y:139 vx:0 vy:1 s:16 h:0
+@K x:99 y:100 vx:-1 vy:1 s:9 h:0
+@K x:178 y:90 vx:-1 vy:1 s:12 h:0
+@K x:552 y:518 vx:1 vy:0 s:11 h:0
+@K x:321 y:160 vx:0 vy:-1 s:9 h:0
+@K x:472 y:126 vx:0 vy:1 s:10 h:0
+@K x:429 y:19 vx:1 vy:1 s:18 h:0
+@K x:227 y:224 vx:0 vy:-1 s:12 h:1
+@K x:322 y:53 vx:1 vy:-1 s:8 h:0
+@K x:541 y:110 vx:-1 vy:-1 s:8 h:0
+@K x:502 y:442 vx:0 vy:0 s:12 h:0
+@K x:526 y:203 vx:0 vy:-1 s:16 h:0
+@K x:85 y:121 vx:1 vy:-1 s:12 h:0
+@K x:328 y:164 vx:-1 vy:-1 s:8 h:1
+@K x:255 y:171 vx:0 vy:-1 s:10 h:0
+@K x:548 y:240 vx:1 vy:-1 s:25 h:0
+@K x:427 y:197 vx:-1 vy:-1 s:17 h:1
+@K x:426 y:179 vx:0 vy:-1 s:18 h:0
+@K x:33 y:259 vx:0 vy:-1 s:15 h:0
+@K x:407 y:224 vx:1 vy:-1 s:25 h:0
+@K x:158 y:200 vx:0 vy:-1 s:12 h:0
+@K x:392 y:303 vx:0 vy:-1 s:12 h:0
+@K x:119 y:296 vx:0 vy:-1 s:25 h:0
+@K x:440 y:269 vx:-1 vy:-1 s:16 h:0
+@K x:381 y:343 vx:0 vy:-1 s:25 h:0
+@K x:136 y:376 vx:1 vy:-1 s:21 h:0
+@K x:248 y:339 vx:0 vy:-1 s:5 h:0
+@K x:216 y:232 vx:1 vy:-1 s:23 h:0
+@K x:51 y:263 vx:0 vy:-1 s:16 h:0
+@K x:298 y:317 vx:0 vy:-1 s:25 h:0
+@K x:257 y:266 vx:0 vy:-1 s:18 h:0
+@K x:145 y:393 vx:0 vy:-1 s:11 h:1
+@K x:580 y:387 vx:-1 vy:-1 s:13 h:0
+@K x:254 y:291 vx:1 vy:-1 s:18 h:0
+@K x:574 y:235 vx:0 vy:-1 s:25 h:0
+@K x:453 y:385 vx:0 vy:-1 s:25 h:0
+@K x:300 y:362 vx:0 vy:-1 s:25 h:0
+@K x:441 y:331 vx:0 vy:-1 s:25 h:0
+@K x:56 y:461 vx:1 vy:-1 s:8 h:1
+@K x:532 y:422 vx:-1 vy:-1 s:5 h:1
+@K x:467 y:441 vx:0 vy:-1 s:19 h:0
+@K x:546 y:327 vx:0 vy:-1 s:25 h:0
+@K x:27 y:403 vx:-1 vy:-1 s:21 h:0
+@K x:64 y:475 vx:0 vy:0 s:20 h:0
+@K x:20 y:380 vx:0 vy:-1 s:25 h:0
+@K x:386 y:401 vx:0 vy:-1 s:18 h:0
+@K x:215 y:329 vx:1 vy:-1 s:25 h:0
+@K x:219 y:402 vx:1 vy:-1 s:22 h:0
+@K x:85 y:434 vx:1 vy:-1 s:18 h:0
+@K x:511 y:396 vx:0 vy:-1 s:16 h:0
+@K x:183 y:503 vx:0 vy:0 s:19 h:0
+@K x:296 y:433 vx:1 vy:-1 s:25 h:0
+@K x:304 y:459 vx:0 vy:-1 s:24 h:0
+@K x:268 y:366 vx:1 vy:-1 s:23 h:0
+@K x:118 y:448 vx:0 vy:-1 s:20 h:0
+@K x:9 y:473 vx:0 vy:-1 s:19 h:0
+@K x:335 y:433 vx:0 vy:-1 s:18 h:0
+@K x:254 y:447 vx:0 vy:-1 s:18 h:0
+@K x:202 y:367 vx:0 vy:-1 s:17 h:0
+@K x:133 y:428 vx:0 vy:-1 s:17 h:0
+@K x:181 y:451 vx:-1 vy:-1 s:14 h:0
+@K x:341 y:455 vx:0 vy:-1 s:13 h:0
+@K x:399 y:473 vx:0 vy:-1 s:13 h:0
+@K x:95 y:462 vx:0 vy:-1 s:12 h:0
+@K x:56 y:497 vx:-1 vy:-1 s:12 h:0
+@K x:421 y:498 vx:1 vy:-1 s:11 h:0
+@K x:162 y:504 vx:-1 vy:0 s:10 h:0
+@K x:94 y:436 vx:-1 vy:-1 s:3 h:1
+@E x:423 y:424 vx:0 vy:-1 s:2 i:0 h:1 t:1
+@E x:118 y:471 vx:0 vy:0 s:5 i:0 h:1 t:1
+@E x:350 y:463 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:557 y:469 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:565 y:487 vx:-1 vy:-1 s:7 i:0 h:1 t:0
+@E x:545 y:502 vx:0 vy:0 s:8 i:0 h:1 t:0
+@E x:559 y:494 vx:0 vy:0 s:8 i:0 h:1 t:0
+@E x:547 y:494 vx:0 vy:1 s:8 i:0 h:1 t:0
+@E x:13 y:489 vx:-1 vy:-1 s:8 i:1 h:1 t:0
+@E x:227 y:493 vx:0 vy:-1 s:5 i:4 h:1 t:1
+@E x:245 y:500 vx:0 vy:-1 s:10 i:1 h:0 t:0
+@E x:307 y:491 vx:0 vy:-1 s:10 i:4 h:0 t:0
+@E x:314 y:492 vx:-1 vy:-1 s:10 i:4 h:0 t:0
+@E x:37 y:507 vx:1 vy:-1 s:10 i:7 h:0 t:0
+@E x:48 y:501 vx:1 vy:-1 s:8 i:8 h:1 t:0
+@E x:71 y:510 vx:-1 vy:-1 s:4 i:14 h:1 t:0
+@E x:316 y:506 vx:1 vy:-1 s:10 i:11 h:0 t:0
+@E x:308 y:509 vx:0 vy:-1 s:10 i:11 h:0 t:0
+@E x:438 y:514 vx:1 vy:-1 s:3 i:16 h:1 t:1
+@E x:440 y:506 vx:0 vy:-1 s:10 i:12 h:0 t:0
+@E x:552 y:499 vx:0 vy:-1 s:6 i:19 h:0 t:0
+@E x:571 y:502 vx:0 vy:1 s:6 i:19 h:0 t:0
+@E x:561 y:480 vx:0 vy:0 s:6 i:19 h:0 t:0
+@E x:536 y:508 vx:1 vy:1 s:4 i:20 h:1 t:1
+@E x:554 y:508 vx:-1 vy:0 s:6 i:19 h:0 t:0
+@E x:546 y:488 vx:0 vy:0 s:6 i:19 h:0 t:0
+@G x:577 y:511
+V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+!END_SNAPSHOT
+
+ACT: 6
+AT: 989807
+AX: 2 0 2
+AS: SimRunner
+AD: TurnEnd 2:0:2 Tutorial, SCORE: There is no score for the tutorial.
+ACT: 0
+AT: 1001482
+AX: 2 0 3
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 1009171
+AX: 2 0 3
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 1018343
+AX: 2 0 3
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 1018347
+AX: 2 0 3
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+CHANGED_VALUES !C
+V
+AFTER_VALUES V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+!START_SNAPSHOT
+@R x:132 y:428 r:2.1 d:Bottom
+@R x:373 y:367 r:2.1 d:Bottom
+@R x:105 y:395 r:2.3 d:Bottom
+@R x:24 y:345 r:2.3 d:Bottom
+@R x:291 y:384 r:3.7 d:Bottom
+@R x:469 y:213 r:2.2 d:Bottom
+@R x:563 y:191 r:2.1 d:Bottom
+@R x:308 y:360 r:4.0 d:Bottom
+@R x:419 y:290 r:3.3 d:Bottom
+@R x:295 y:196 r:2.4 d:Bottom
+@R x:125 y:292 r:3.9 d:Bottom
+@R x:40 y:207 r:3.1 d:Bottom
+@R x:355 y:172 r:2.7 d:Bottom
+@R x:13 y:187 r:3.9 d:Bottom
+@R x:462 y:100 r:2.4 d:Bottom
+@R x:319 y:57 r:2.3 d:Bottom
+@R x:129 y:45 r:2.5 d:Bottom
+@R x:137 y:16 r:2.0 d:Bottom
+@R x:428 y:6 r:2.2 d:Bottom
+@K x:234 y:96 vx:0 vy:1 s:9 h:0
+@K x:497 y:73 vx:1 vy:-1 s:5 h:0
+@K x:163 y:69 vx:0 vy:1 s:5 h:0
+@K x:79 y:169 vx:0 vy:1 s:8 h:0
+@K x:526 y:129 vx:0 vy:-1 s:11 h:0
+@K x:472 y:284 vx:0 vy:1 s:7 h:0
+@K x:251 y:111 vx:0 vy:-1 s:12 h:0
+@K x:104 y:104 vx:0 vy:-1 s:4 h:0
+@K x:18 y:30 vx:0 vy:-1 s:12 h:0
+@K x:122 y:225 vx:0 vy:1 s:20 h:0
+@K x:338 y:81 vx:0 vy:1 s:15 h:0
+@K x:128 y:45 vx:0 vy:1 s:18 h:0
+@K x:245 y:430 vx:1 vy:0 s:10 h:0
+@K x:373 y:177 vx:0 vy:1 s:15 h:0
+@K x:212 y:10 vx:0 vy:1 s:19 h:0
+@K x:577 y:236 vx:0 vy:-1 s:9 h:0
+@K x:177 y:37 vx:0 vy:-1 s:15 h:0
+@K x:469 y:89 vx:-1 vy:-1 s:12 h:0
+@K x:538 y:100 vx:0 vy:1 s:25 h:0
+@K x:222 y:102 vx:0 vy:-1 s:12 h:0
+@K x:474 y:181 vx:0 vy:-1 s:10 h:0
+@K x:50 y:11 vx:0 vy:1 s:25 h:0
+@K x:211 y:141 vx:0 vy:-1 s:9 h:0
+@K x:231 y:305 vx:1 vy:-1 s:14 h:0
+@K x:578 y:132 vx:0 vy:-1 s:17 h:0
+@K x:14 y:199 vx:0 vy:-1 s:12 h:0
+@K x:307 y:462 vx:0 vy:0 s:12 h:0
+@K x:471 y:211 vx:1 vy:-1 s:25 h:0
+@K x:430 y:257 vx:0 vy:-1 s:14 h:0
+@K x:332 y:191 vx:0 vy:-1 s:20 h:0
+@K x:313 y:129 vx:0 vy:-1 s:14 h:0
+@K x:420 y:238 vx:0 vy:-1 s:25 h:0
+@K x:366 y:299 vx:1 vy:-1 s:17 h:0
+@K x:453 y:284 vx:1 vy:-1 s:12 h:0
+@K x:262 y:414 vx:0 vy:-1 s:19 h:0
+@K x:93 y:318 vx:1 vy:-1 s:25 h:0
+@K x:139 y:469 vx:0 vy:0 s:25 h:0
+@K x:41 y:402 vx:0 vy:-1 s:25 h:0
+@K x:298 y:379 vx:-1 vy:-1 s:25 h:0
+@K x:61 y:450 vx:-1 vy:-1 s:22 h:0
+@K x:453 y:360 vx:1 vy:-1 s:23 h:0
+@K x:46 y:460 vx:0 vy:0 s:16 h:1
+@K x:386 y:452 vx:-1 vy:-1 s:16 h:0
+@E x:501 y:345 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:516 y:337 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:252 y:369 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:278 y:347 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:542 y:365 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:514 y:324 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:559 y:408 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:227 y:396 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:477 y:430 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:14 y:442 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:49 y:473 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:198 y:422 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:236 y:455 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:40 y:380 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:191 y:333 vx:1 vy:-1 s:10 i:0 h:1 t:0
+@E x:191 y:323 vx:1 vy:-1 s:10 i:0 h:1 t:0
+@E x:181 y:487 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:326 y:421 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:213 y:510 vx:0 vy:1 s:10 i:0 h:0 t:0
+@E x:582 y:354 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:281 y:463 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:536 y:488 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:570 y:506 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:556 y:424 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:496 y:451 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:566 y:467 vx:1 vy:1 s:10 i:0 h:0 t:0
+@E x:352 y:499 vx:0 vy:-1 s:10 i:4 h:0 t:0
+@E x:358 y:505 vx:0 vy:-1 s:10 i:4 h:0 t:0
+@E x:578 y:476 vx:1 vy:0 s:10 i:11 h:0 t:0
+@E x:571 y:480 vx:-1 vy:0 s:10 i:11 h:0 t:0
+@E x:570 y:445 vx:0 vy:-1 s:10 i:11 h:0 t:0
+@E x:181 y:338 vx:1 vy:0 s:6 i:20 h:0 t:0
+@E x:201 y:338 vx:0 vy:-1 s:6 i:20 h:0 t:0
+@E x:191 y:318 vx:0 vy:-1 s:6 i:20 h:0 t:0
+@G x:577 y:511
+V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+!END_SNAPSHOT
+
+ACT: 6
+AT: 1023972
+AX: 2 0 3
+AS: SimRunner
+AD: TurnEnd 2:0:3 Tutorial, SCORE: There is no score for the tutorial.
+ACT: 0
+AT: 1027455
+AX: 2 0 4
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 1035729
+AX: 2 0 4
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 1042429
+AX: 2 0 4
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 1042430
+AX: 2 0 4
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R577 S511
+CHANGED_VALUES !C
+V Q1
+AFTER_VALUES V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q1 R577 S511
+!START_SNAPSHOT
+@R x:80 y:437 r:2.3 d:Bottom
+@R x:44 y:467 r:2.5 d:Bottom
+@R x:77 y:462 r:2.5 d:Bottom
+@R x:577 y:361 r:2.6 d:Bottom
+@R x:217 y:448 r:3.3 d:Bottom
+@R x:345 y:334 r:2.7 d:Bottom
+@R x:184 y:280 r:2.3 d:Bottom
+@R x:240 y:380 r:3.2 d:Bottom
+@R x:578 y:246 r:2.2 d:Bottom
+@R x:548 y:272 r:2.5 d:Bottom
+@R x:31 y:291 r:2.7 d:Bottom
+@R x:138 y:339 r:3.2 d:Bottom
+@R x:580 y:232 r:2.7 d:Bottom
+@R x:546 y:184 r:2.2 d:Bottom
+@R x:193 y:234 r:3.3 d:Bottom
+@R x:426 y:195 r:3.0 d:Bottom
+@R x:536 y:124 r:2.3 d:Bottom
+@R x:115 y:163 r:3.2 d:Bottom
+@R x:168 y:153 r:3.4 d:Bottom
+@R x:0 y:93 r:2.4 d:Bottom
+@R x:11 y:128 r:3.9 d:Bottom
+@R x:101 y:89 r:3.3 d:Bottom
+@R x:247 y:66 r:3.0 d:Bottom
+@R x:187 y:37 r:3.1 d:Bottom
+@R x:575 y:0 r:3.0 d:Bottom
+@K x:277 y:422 vx:0 vy:-1 s:8 h:0
+@K x:327 y:504 vx:0 vy:-1 s:8 h:0
+@K x:322 y:278 vx:0 vy:-1 s:11 h:0
+@K x:122 y:500 vx:0 vy:1 s:8 h:0
+@K x:213 y:239 vx:0 vy:1 s:10 h:0
+@K x:508 y:303 vx:0 vy:1 s:5 h:0
+@K x:149 y:412 vx:0 vy:0 s:12 h:0
+@K x:344 y:198 vx:0 vy:1 s:10 h:0
+@K x:455 y:341 vx:0 vy:1 s:15 h:0
+@K x:235 y:175 vx:-1 vy:1 s:13 h:0
+@K x:193 y:457 vx:0 vy:0 s:25 h:0
+@K x:499 y:21 vx:1 vy:-1 s:9 h:0
+@K x:203 y:61 vx:-1 vy:1 s:14 h:0
+@K x:130 y:109 vx:1 vy:-1 s:20 h:0
+@K x:105 y:458 vx:1 vy:0 s:25 h:0
+@K x:519 y:233 vx:0 vy:-1 s:20 h:0
+@K x:138 y:271 vx:0 vy:-1 s:9 h:0
+@K x:158 y:269 vx:0 vy:-1 s:17 h:0
+@K x:437 y:120 vx:1 vy:-1 s:12 h:0
+@K x:476 y:346 vx:0 vy:-1 s:25 h:0
+@K x:256 y:103 vx:1 vy:-1 s:15 h:0
+@K x:288 y:361 vx:-1 vy:0 s:25 h:0
+@K x:557 y:91 vx:1 vy:1 s:25 h:0
+@K x:551 y:286 vx:0 vy:-1 s:25 h:0
+@K x:458 y:249 vx:1 vy:-1 s:25 h:0
+@K x:506 y:448 vx:0 vy:0 s:21 h:0
+@K x:203 y:331 vx:-1 vy:-1 s:6 h:0
+@E x:507 y:60 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:319 y:8 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:448 y:132 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:12 y:336 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:438 y:514 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:6 y:352 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:163 y:337 vx:0 vy:-1 s:4 i:0 h:1 t:1
+@E x:258 y:508 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:422 y:369 vx:-1 vy:-1 s:4 i:0 h:1 t:1
+@E x:584 y:445 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:557 y:382 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:127 y:455 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:475 y:418 vx:0 vy:1 s:10 i:0 h:0 t:0
+@E x:425 y:451 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:520 y:478 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:130 y:495 vx:-1 vy:-1 s:4 i:0 h:1 t:0
+@E x:209 y:494 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:162 y:497 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:162 y:485 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:550 y:404 vx:0 vy:0 s:10 i:3 h:0 t:0
+@E x:556 y:438 vx:0 vy:1 s:10 i:3 h:0 t:0
+@E x:529 y:415 vx:-1 vy:1 s:10 i:3 h:0 t:0
+@E x:28 y:505 vx:1 vy:-1 s:10 i:3 h:0 t:0
+@E x:19 y:500 vx:1 vy:-1 s:10 i:3 h:0 t:0
+@E x:45 y:497 vx:0 vy:-1 s:10 i:7 h:0 t:0
+@E x:41 y:501 vx:0 vy:-1 s:10 i:7 h:0 t:0
+@E x:227 y:489 vx:0 vy:0 s:10 i:8 h:0 t:0
+@E x:248 y:497 vx:1 vy:0 s:10 i:8 h:0 t:0
+@E x:242 y:458 vx:1 vy:-1 s:10 i:8 h:0 t:0
+@E x:547 y:496 vx:1 vy:1 s:10 i:9 h:0 t:0
+@E x:574 y:476 vx:1 vy:0 s:10 i:9 h:0 t:0
+@E x:529 y:478 vx:-1 vy:1 s:10 i:9 h:0 t:0
+@G x:577 y:511
+V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q1 R577 S511
+!END_SNAPSHOT
+
+ACT: 6
+AT: 1047889
+AX: 2 0 4
+AS: SimRunner
+AD: TurnEnd 2:0:4 Tutorial, SCORE: There is no score for the tutorial.
+ACT: 0
+AT: 1052699
+AX: 2 0 5
+AS: NextTaskWindow
+AD: OK
+ACT: 5
+AT: 1052703
+AX: 3 0 0
+AS: SimRunner
+AD: Started Four Shapes
+ACT: 0
+AT: 1059665
+AX: 3 0 0
+AS: NextTaskWindow
+AD: OK
+ACT: 5
+AT: 1059666
+AX: 3 1 0
+AS: SimRunner
+AD: Started Four Shapes: Round Two
+ACT: 0
+AT: 1062923
+AX: 3 1 0
+AS: NextTaskWindow
+AD: OK
+ACT: 0
+AT: 1072415
+AX: 3 1 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1110978
+AX: 3 1 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1150184
+AX: 3 1 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1171475
+AX: 3 1 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1193442
+AX: 3 1 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1232995
+AX: 3 1 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1293328
+AX: 3 1 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1313162
+AX: 3 1 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1357083
+AX: 3 1 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1380536
+AX: 3 1 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1386662
+AX: 3 1 0
+AS: PlayAgainWindow
+AD: Continue
+ACT: 0
+AT: 1388961
+AX: 4 0 0
+AS: PlayAgainWindow
+AD: Continue
+ACT: 0
+AT: 1397703
+AX: 5 0 0
+AS: ExercisePopupWindow
+AD: OK
+ACT: 0
+AT: 1425209
+AX: 5 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1459670
+AX: 5 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1516402
+AX: 5 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1536043
+AX: 5 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1546803
+AX: 5 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1553370
+AX: 5 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1557544
+AX: 5 0 0
+AS: PlayAgainWindow
+AD: Continue
+ACT: 0
+AT: 1562176
+AX: 6 0 0
+AS: ExercisePopupWindow
+AD: OK
+ACT: 0
+AT: 1591866
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1607791
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1661067
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1682766
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1691739
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1700252
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1715110
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1726165
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1730525
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1741356
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1749928
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1763330
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1771219
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1776126
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1781845
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1795013
+AX: 6 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 1801064
+AX: 6 0 0
+AS: PlayAgainWindow
+AD: Continue
+
+ScratchPad:
+This is free space for you to take notes and record observations.  Anything you write here will stick around for the whole game, even if you close this window.
+
+SCORE:
+Stage 0.1: There is no score for the tutorial.

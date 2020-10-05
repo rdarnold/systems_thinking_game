@@ -59,6 +59,9 @@ public final class AssessmentData {
         //observeSlices
         // Keep in mind we START in observe mode so we need to start from the very beginning
         Action startAction = findNextButtonPress(0, "OK", "StartSimulationWindow");
+        if (startAction == null) {
+            return;
+        }
         long start = startAction.timestamp;
 
         slice = new GameTimeSlice();
@@ -66,6 +69,9 @@ public final class AssessmentData {
         slice.startTimeMS = startAction.timestamp;
 
         Action endAction = findNextButtonPress(0, "Main Screen", "ObservePanelBottom");
+        if (endAction == null) {
+            return;
+        }
         slice.endTimeMS = endAction.timestamp;
         
         observeSlices.add(slice);
@@ -76,14 +82,19 @@ public final class AssessmentData {
             startAction = findNextButtonPress(start, "Observe", "MainPanelLeft");
             endAction = findNextButtonPress(start, "Main Screen", "ObservePanelBottom");
 
-            if (startAction != null && endAction != null) {slice = new GameTimeSlice();
-                slice.sliceType = GameTimeSlice.Type.Obs;
-                slice.startTimeMS = startAction.timestamp;
-                slice.endTimeMS = endAction.timestamp;
-                observeSlices.add(slice);
-                
-                start = slice.endTimeMS + 1;
+            if (startAction == null || endAction == null) {
+                break;
             }
+
+            //if (startAction != null && endAction != null) {
+            slice = new GameTimeSlice();
+            slice.sliceType = GameTimeSlice.Type.Obs;
+            slice.startTimeMS = startAction.timestamp;
+            slice.endTimeMS = endAction.timestamp;
+            observeSlices.add(slice);
+            
+            start = slice.endTimeMS + 1;
+            //}
         }
     }
 
@@ -123,10 +134,16 @@ public final class AssessmentData {
         // So, find when the tutorial began
         //Action firstAction = findNextButtonPress(0, "OK", "StartSimulationWindow");
         Action fa = findFirstActionForExercise(2, 0);  // ex 2 is Tutorial
+        if (fa == null) {
+            return;
+        }
         long startTimeMS = fa.timestamp;
 
         //Action la = findNextButtonPress(0, "OK", "StartRealGameWindow");
         Action la = findFirstActionForExercise(3, 0);  // ex 3 is Four Shapes
+        if (la == null) {
+            return;
+        }
         long endTimeMS = la.timestamp-1;
 
         // So we have the start and end time, so now we want to look at how much time
@@ -285,6 +302,20 @@ public final class AssessmentData {
             }
         }
         return null;
+    }
+
+    // These are all zero-based indeces
+    public static int countSubmitExpChangeActionForStageRoundTurn(int stage, int round, int turn) {
+        // Go through action list and find the associated SubmitChange action for a stage, it's the
+        // one that was pressed ON that turn; so you're ALREADY ON turn 1, and then press submitchange
+        int count = 0;
+        for (Action action : Player.actions) {
+            if (action.actionType != Action.Type.SubmitExpChange)
+                continue;
+            if (action.exNum == stage && action.taskNum == round && action.turnNum == turn)
+                count++;
+        }
+        return count;
     }
     
     // These are all zero-based indeces
@@ -465,7 +496,7 @@ public final class AssessmentData {
         // Figure out how to display tutorial data
         String tdata = Player.getTutorialData();
 
-        Utils.log(tdata);
+        //Utils.log(tdata);
 
         if (tdata.indexOf("TURN 1: GOOD") != -1) { ret += "Y, "; } else { ret += "N, "; }
         if (tdata.indexOf("TURN 2: GOOD") != -1) { ret += "Y, "; } else { ret += "N, "; }
@@ -672,15 +703,120 @@ public final class AssessmentData {
         return action.getDesc();
     }
 
-    public static int addScoreForSkill(Row rowHeader, Row row, int colNum, int domainNum, int skillNum) {
+    public static int getTotalCorrectAnswersForStage1() {
+        int totalCorrect = 0;
+        int totalPartial = 0;
+        int totalWrong = 0;
+        for (int uid = 14; uid <= 23; uid++) {
+            // And show total correct and not correct
+            Answer ans = Player.getAnswerForQuestionUID(uid);
+            if (ans == null) {
+                continue;
+            }
+            int numCorrect = ans.getTotalCorrect();
+            int numPartial = ans.getTotalPartial();
+            int numWrong = ans.getTotalIncorrect();
+    
+            totalCorrect += numCorrect;
+            totalPartial += numPartial;
+            totalWrong += numWrong;
+        }
+        return totalCorrect;
+    }
+
+    public static int getTotalCorrectAnswersForStage2() {
+        int totalCorrect = 0;
+        int totalPartial = 0;
+        int totalWrong = 0;
+        for (int uid = 24; uid <= 35; uid++) {
+            // And show total correct and not correct
+            Answer ans = Player.getAnswerForQuestionUID(uid);
+            if (ans == null) {
+                continue;
+            }
+            int numCorrect = ans.getTotalCorrect();
+            int numPartial = ans.getTotalPartial();
+            int numWrong = ans.getTotalIncorrect();
+    
+            totalCorrect += numCorrect;
+            totalPartial += numPartial;
+            totalWrong += numWrong;
+        }
+        return totalCorrect;
+    }
+    
+    public static int addScoreRatingForSkill_Stage1(Row rowHeader, Row row, int colNum, int domainNum, int skillNum) {
+        return addScoreRatingForSkill_Stage1(rowHeader, row, colNum, domainNum, skillNum, STUtils.ScoreType.Full);
+    }
+
+    // The score ratings take the percentiles and convert them to 0-4 ratings basically
+    public static int addScoreRatingForSkill_Stage1(Row rowHeader, Row row, int colNum, int domainNum, int skillNum, STUtils.ScoreType type) {
         int col = colNum;
-        rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum + " Total");
-        addDataPoint(row, col, STUtils.calcScoreForSkill(domainNum, skillNum));
+        if (rowHeader != null) {
+            rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum);
+        }
+        int score = STUtils.calcIntScoreForSkill_Stage1(domainNum, skillNum, type);
+        addDataPoint(row, col, STUtils.convertPercentScoreToRating(score));
+        return col;
+    }
+
+    
+    public static int addScoreRatingForSkill(Row rowHeader, Row row, int colNum, int domainNum, int skillNum) {
+        return addScoreRatingForSkill(rowHeader, row, colNum, domainNum, skillNum, STUtils.ScoreType.Full);
+    }
+
+    public static int addScoreRatingForSkill(Row rowHeader, Row row, int colNum, int domainNum, int skillNum, STUtils.ScoreType type) {
+        int col = colNum;
+        if (rowHeader != null) {
+            rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum);
+        }
+        int score = STUtils.calcIntScoreForSkill(domainNum, skillNum, type);
+        addDataPoint(row, col, STUtils.convertPercentScoreToRating(score));
+        return col;
+    }
+
+    public static int addScoreForSkill_Stage1(Row rowHeader, Row row, int colNum, int domainNum, int skillNum) {
+        return addScoreForSkill_Stage1(rowHeader, row, colNum, domainNum, skillNum, false);
+    }
+
+    public static int addScoreForSkill_Stage1(Row rowHeader, Row row, int colNum, int domainNum, int skillNum, boolean numberOnly) {
+        int col = colNum;
+        if (rowHeader != null) {
+            rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum + " Total");
+        }
+        String scoreStr = STUtils.calcScoreForSkill_Stage1(domainNum, skillNum);
+        if (numberOnly == true) {
+            int score = STUtils.getIntForScoreStr(scoreStr);
+            addDataPoint(row, col, (int)score);
+        }
+        else {
+            addDataPoint(row, col, scoreStr);
+        }
+        return col;
+    }
+
+    public static int addScoreForSkill(Row rowHeader, Row row, int colNum, int domainNum, int skillNum) {
+        return addScoreForSkill(rowHeader, row, colNum, domainNum, skillNum, false);
+    }
+
+    public static int addScoreForSkill(Row rowHeader, Row row, int colNum, int domainNum, int skillNum, boolean numberOnly) {
+        int col = colNum;
+        if (rowHeader != null) {
+            rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum + " Total");
+        }
+        String scoreStr = STUtils.calcScoreForSkill(domainNum, skillNum);
+        if (numberOnly == true) {
+            int score = STUtils.getIntForScoreStr(scoreStr);
+            addDataPoint(row, col, (int)score);
+        }
+        else {
+            addDataPoint(row, col, scoreStr);
+        }
         // I could put game data points here but I don't have a separate calculator for that right now,
         // it's just baked into each skill
         //rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum + " PlayRating");
         //addDataPoint(row, col, STUtils.getCorrectForSkill(domainNum, skillNum));
-        col++;
+        /*col++;
         rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum + "C");
         addDataPoint(row, col, STUtils.getCorrectForSkill(domainNum, skillNum));
         col++;
@@ -688,7 +824,7 @@ public final class AssessmentData {
         addDataPoint(row, col, STUtils.getPartialForSkill(domainNum, skillNum));
         col++;
         rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum + "I");
-        addDataPoint(row, col, STUtils.getIncorrectForSkill(domainNum, skillNum));
+        addDataPoint(row, col, STUtils.getIncorrectForSkill(domainNum, skillNum));*/
 
         // I could put the percentiles from each thing here, like X percentage from dp / ?s,
         // and X percentage from total game score
@@ -733,9 +869,94 @@ public final class AssessmentData {
         return ratings;
     }
 
+    public static Workbook createExcelFile() {
+        Workbook wb = new HSSFWorkbook();
+        //Workbook wb = new XSSFWorkbook();
+        //CreationHelper createHelper = wb.getCreationHelper();
+        wb.createSheet("ST Results");
+        wb.createSheet("Demographics");
+        wb.createSheet("Feedback");
+        wb.createSheet("Notepad");
+        wb.createSheet("ST Exposure");
+        wb.createSheet("Scores (Overall)");
+        wb.createSheet("Scores (Stg1)");
+        wb.createSheet("Score #s (Overall)");
+        wb.createSheet("Score #s (Stg1)");
+        wb.createSheet("Score R#s (Overall)"); // Ratings not percentiles
+        wb.createSheet("Score R#s (Stg1)"); // Ratings not percentiles
+        wb.createSheet("Score DP (Overall)"); // DP only
+        wb.createSheet("Score DP (Stg1)"); // DP only
+        return wb;
+    }
+
+    public static void writeExcelData(Workbook wb, int rowNum) {
+        writeExcelSheet1(wb.getSheetAt(0), rowNum);
+        writeExcelSheet2(wb.getSheetAt(1), rowNum);
+        writeExcelSheet3(wb.getSheetAt(2), rowNum);
+        writeExcelSheet4(wb.getSheetAt(3), rowNum);
+        writeExcelSheet5(wb.getSheetAt(4), rowNum);
+        writeExcelSheet6(wb.getSheetAt(5), rowNum);
+        writeExcelSheet7(wb.getSheetAt(6), rowNum);
+        writeExcelSheet8(wb.getSheetAt(7), rowNum);
+        writeExcelSheet9(wb.getSheetAt(8), rowNum);
+        writeExcelSheet10(wb.getSheetAt(9), rowNum);
+        writeExcelSheet11(wb.getSheetAt(10), rowNum);
+        writeExcelSheet12(wb.getSheetAt(11), rowNum);
+        writeExcelSheet13(wb.getSheetAt(12), rowNum);
+
+        // Do some aligning
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(7), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(8), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(9), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(10), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(11), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(12), 2);
+
+        // Make them fit.
+        ExcelUtils.autoSizeColumns(wb);
+
+        // Limit their widths
+        //ExcelUtils.limitColumnWidths(wb, 50);
+        ExcelUtils.limitColumnWidths(wb.getSheetAt(0), 75);
+        ExcelUtils.limitColumnWidths(wb.getSheetAt(1), 50);
+        ExcelUtils.limitColumnWidths(wb.getSheetAt(2), 50);
+        ExcelUtils.limitColumnWidths(wb.getSheetAt(3), 300);
+        ExcelUtils.limitColumnWidths(wb.getSheetAt(4), 50);
+
+        // Wrap them all
+        ExcelUtils.wrapAllCells(wb);
+    }
+
+    public static void finalizeExcelData(Workbook wb) {
+        finalizeExcelData(wb, false);
+    }
+
+    public static void finalizeExcelData(Workbook wb, boolean usePlayerName) {
+        String fileNameAndPath = "";
+        if (usePlayerName == false) {
+            fileNameAndPath = "C:/Ross/Work/Japan/Drones/Code/systems_thinking_game_evolved/data/using/_Combined_All_Data";
+        }
+        else {
+            fileNameAndPath = "C:/Ross/Work/Japan/Drones/Code/systems_thinking_game_evolved/data/using/" + Player.getName() + "_" + Player.getId();
+        } 
+        ExcelUtils.writeExcelFile(wb, fileNameAndPath);
+        Utils.log("Excel file written.");
+    }
+
+    public static void writeRowHeader(Row rowHeader, int colNum, String str) {
+        if (rowHeader == null) {
+            return;
+        }
+        /*Cell cell = row.getCell(0);
+        if (cell == null || cell.getCellType() == Cell.CELL_TYPE_BLANK) {
+            return;
+        }*/
+        rowHeader.createCell(colNum).setCellValue(str);
+    }
+    
     // So in here we want things like the player's scores, calculated total times of various activities, etc.
     // And here we will write out the data to Excel just as a more straight-forward data dump for analysis
-    public static void writeExcelData() {
+    public static void writeExcelSheet1(Sheet sheet, int rowNum) {
         // So, write the data out to excel from the currently loaded player.  So we'll have to do these one at a time
         // and hand-merge the excel data for now but it shouldn't be too bad.  If we get a lot more results I can
         // automate that whole portion too.
@@ -751,19 +972,23 @@ public final class AssessmentData {
 
         // So to save time, all I'm going to do is, when I click to write excel data I just write the currently
         // loaded person.  Then I'll just copy and paste the sheets together since there really aren't so many.
-        Workbook wb = new HSSFWorkbook();
+        /*Workbook wb = new HSSFWorkbook();
         //Workbook wb = new XSSFWorkbook();
-        CreationHelper createHelper = wb.getCreationHelper();
+        //CreationHelper createHelper = wb.getCreationHelper();
         Sheet sheet = wb.createSheet("ST Results");
-        Sheet sheet2 = wb.createSheet("Feedback");
-        Sheet sheet3 = wb.createSheet("Notepad");
-        Sheet sheet4 = wb.createSheet("Scores");
+        Sheet sheet = wb.createSheet("Feedback");
+        Sheet sheet = wb.createSheet("Notepad");
+        Sheet sheet = wb.createSheet("Scores (Overall)");
+        Sheet sheet = wb.createSheet("Scores (Stage 1 Only)");*/
 
         //row.createCell(colNum).setCellValue(createHelper.createRichTextString("This is a string"));
         
         // Create a row and put some cells in it. Rows are 0 based.
-        Row rowHeader = sheet.createRow(0);
-        Row row = sheet.createRow(1);
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
 
         // Create a cell and put a value in it.
         //Cell cell = row.createCell(0);
@@ -774,176 +999,180 @@ public final class AssessmentData {
         int uid = 0;
 
         // ID
-        rowHeader.createCell(colNum).setCellValue("ID");
+        writeRowHeader(rowHeader, colNum, "ID");
         addDataPoint(row, colNum, Player.getId());
 
         // Name 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Name");
+        writeRowHeader(rowHeader, colNum, "Name");
         addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
         
         // Email 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Email");
+        writeRowHeader(rowHeader, colNum, "Email");
         addDataPoint(row, colNum, Player.getEmail());
 
         // Now do the demographics
         // Residence place
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Residence");
+        writeRowHeader(rowHeader, colNum, "Residence");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(2));
 
         // Age
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Age");
+        writeRowHeader(rowHeader, colNum, "Age");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(3));
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Age Code");
+        writeRowHeader(rowHeader, colNum, "Age Code");
         addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(3));
 
         // Gender
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Gender");
+        writeRowHeader(rowHeader, colNum, "Gender");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(1));
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Gender Code");
+        writeRowHeader(rowHeader, colNum, "Gender Code");
         addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(1));
 
         // Language
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("English");
+        writeRowHeader(rowHeader, colNum, "English");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(4));
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("English Code");
+        writeRowHeader(rowHeader, colNum, "English Code");
         addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(4));
 
         // Gaming exp
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Gaming XP");
+        writeRowHeader(rowHeader, colNum, "Gaming XP");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(8));
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Gaming XP Code");
+        writeRowHeader(rowHeader, colNum, "Gaming XP Code");
         addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(8));
 
         // Learning Style
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Learning Styles");
+        writeRowHeader(rowHeader, colNum, "Learning Styles");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(9));
-        Utils.log(Player.getStrAnswerForQuestionUID(9));
 
         // Education
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Education");
+        writeRowHeader(rowHeader, colNum, "Education");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(5));
         
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Education Code");
+        writeRowHeader(rowHeader, colNum, "Education Code");
         addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(5));
 
         // ST XP
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("ST XP");
+        writeRowHeader(rowHeader, colNum, "Stated ST Exp");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(7));
 
         // Study areas
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Study Areas");
+        writeRowHeader(rowHeader, colNum, "Study Areas");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(6));
 
         // Occupational Area
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Occupational Area");
+        writeRowHeader(rowHeader, colNum, "Occupational Area");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(10));
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Job Titles");
+        writeRowHeader(rowHeader, colNum, "Job Titles");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(11));
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Career Experience");
+        writeRowHeader(rowHeader, colNum, "Career Experience");
         addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(12));
 
         // This is my own rating of them based on their prior experience, I just
         // want a column for it so I can fill it in myself
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("ST Level");
+        writeRowHeader(rowHeader, colNum, "ST Level");
         addDataPoint(row, colNum, 1);
 
         // A "score" based on yrs of experience from background
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("ST XP Yrs");
+        writeRowHeader(rowHeader, colNum, "ST XP Yrs");
         addDataPoint(row, colNum, 0);
 
         // scores 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Scores");
+        writeRowHeader(rowHeader, colNum, "Scores");
         addDataPoint(row, colNum, Player.getScoreText());
 
         // Now I need the numerical scores
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Stg1.1 Score");
+        writeRowHeader(rowHeader, colNum, "Stg1.1 Score");
         addDataPoint(row, colNum, Player.getStrScoreForStageRound(1, 1));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Stg1.2 Score");
+        writeRowHeader(rowHeader, colNum, "Stg1.2 Score");
         addDataPoint(row, colNum, Player.getStrScoreForStageRound(1, 2));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Stg2.1 Score");
+        writeRowHeader(rowHeader, colNum, "Stg2.1 Score");
         addDataPoint(row, colNum, Player.getStrScoreForStageRound(2, 1));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Stg2.2 Score");
+        writeRowHeader(rowHeader, colNum, "Stg2.2 Score");
         addDataPoint(row, colNum, Player.getStrScoreForStageRound(2, 2));
 
         // tut 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Tutorial");
+        writeRowHeader(rowHeader, colNum, "Tutorial");
         addDataPoint(row, colNum, printTutorialDataString());
 
         // times played 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Times Played");
+        writeRowHeader(rowHeader, colNum, "Times Played");
         addDataPoint(row, colNum, Player.getTimesPlayed());
 
         // total time
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Total Time");
+        writeRowHeader(rowHeader, colNum, "Total Time");
         addDataPoint(row, colNum, Utils.printHoursMinsSecsFromMS(Player.getEndTime() - Player.getStartTime()));
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Time Obs");
+        writeRowHeader(rowHeader, colNum, "Time Obs");
         addDataPoint(row, colNum, Utils.printHoursMinsSecsFromMS(calcTotalTimeObs()));
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Time Exp");
+        writeRowHeader(rowHeader, colNum, "Time Exp");
         addDataPoint(row, colNum, Utils.printHoursMinsSecsFromMS(calcTotalTimeExp()));
         
         // # exp 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("# Exp");
+        writeRowHeader(rowHeader, colNum, "# Exp");
         addDataPoint(row, colNum, printNumExps());
         
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Time Self-A");
+        writeRowHeader(rowHeader, colNum, "Time Self-A");
         addDataPoint(row, colNum, Utils.printHoursMinsSecsFromMS(calcSelfAssessmentTime()));
 
         // time in each section
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Stg1.1 Time");
+        writeRowHeader(rowHeader, colNum, "Stg1.1 Time");
         addDataPoint(row, colNum, Utils.printHoursMinsSecsFromMS(calcTimeForTask(3, 0, 3, 1)));
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Stg1.2 Time");
+        writeRowHeader(rowHeader, colNum, "Stg1.2 Time");
         addDataPoint(row, colNum, Utils.printHoursMinsSecsFromMS(calcTimeForTask(3, 1, 4, 0)));
         
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Stg2.1 Time");
+        writeRowHeader(rowHeader, colNum, "Stg2.1 Time");
         addDataPoint(row, colNum, Utils.printHoursMinsSecsFromMS(calcTimeForTask(4, 0, 4, 1)));
         
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Stg2.2 Time");
+        writeRowHeader(rowHeader, colNum, "Stg2.2 Time");
         addDataPoint(row, colNum, Utils.printHoursMinsSecsFromMS(calcTimeForTask(4, 1, 5, 0)));
         
         int stageNum = 0; 
@@ -960,7 +1189,7 @@ public final class AssessmentData {
         turnNum = 0;
         for (turnNum = 0; turnNum < 5; turnNum++) {
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("Vars:1.1." + (turnNum+1));  // The readable text is different than the internal #s
+            writeRowHeader(rowHeader, colNum, "Vars:1.1." + (turnNum+1));  // The readable text is different than the internal #s
             addDataPoint(row, colNum, printChangedVarsForStageRoundTurn(stageNum, roundNum, turnNum));
         }
 
@@ -973,7 +1202,7 @@ public final class AssessmentData {
         prevRatings = "";
         for (turnNum = 0; turnNum < 5; turnNum++) {
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("Ratings:1.1." + (turnNum+1));  // The readable text is different than the internal #s
+            writeRowHeader(rowHeader, colNum, "Ratings:1.1." + (turnNum+1));  // The readable text is different than the internal #s
             prevRatings = addRatings(row, colNum, prevRatings, stageNum, roundNum, turnNum);
             /*String ratings = printVarRatingsForStageRoundTurn(stageNum, roundNum, turnNum);
             if (ratings.equals(prevRatings) == true) {
@@ -987,7 +1216,7 @@ public final class AssessmentData {
         turnNum = 0;
         for (turnNum = 0; turnNum < 5; turnNum++) {
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("Vars:1.2." + (turnNum+1));  // The readable text is different than the internal #s
+            writeRowHeader(rowHeader, colNum, "Vars:1.2." + (turnNum+1));  // The readable text is different than the internal #s
             addDataPoint(row, colNum, printChangedVarsForStageRoundTurn(stageNum, roundNum, turnNum));
         }
 
@@ -997,7 +1226,7 @@ public final class AssessmentData {
         prevRatings = "";
         for (turnNum = 0; turnNum < 5; turnNum++) {
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("Ratings:1.2." + (turnNum+1));  // The readable text is different than the internal #s
+            writeRowHeader(rowHeader, colNum, "Ratings:1.2." + (turnNum+1));  // The readable text is different than the internal #s
             //addDataPoint(row, colNum, printVarRatingsForStageRoundTurn(stageNum, roundNum, turnNum));
             prevRatings = addRatings(row, colNum, prevRatings, stageNum, roundNum, turnNum);
         }
@@ -1007,7 +1236,7 @@ public final class AssessmentData {
         turnNum = 0;
         for (turnNum = 0; turnNum < 10; turnNum++) {
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("Vars:2.1." + (turnNum+1));  // The readable text is different than the internal #s
+            writeRowHeader(rowHeader, colNum, "Vars:2.1." + (turnNum+1));  // The readable text is different than the internal #s
             addDataPoint(row, colNum, printChangedVarsForStageRoundTurn(stageNum, roundNum, turnNum));
         }
 
@@ -1020,7 +1249,7 @@ public final class AssessmentData {
         prevRatings = "";
         for (turnNum = 0; turnNum < 10; turnNum++) {
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("Ratings:2.1." + (turnNum+1));  // The readable text is different than the internal #s
+            writeRowHeader(rowHeader, colNum, "Ratings:2.1." + (turnNum+1));  // The readable text is different than the internal #s
             prevRatings = addRatings(row, colNum, prevRatings, stageNum, roundNum, turnNum);
             /*String ratings = printVarRatingsForStageRoundTurn(stageNum, roundNum, turnNum);
             if (ratings.equals(prevRatings) == true) {
@@ -1035,7 +1264,7 @@ public final class AssessmentData {
         turnNum = 0;
         for (turnNum = 0; turnNum < 10; turnNum++) {
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("Vars:2.2." + (turnNum+1));  // The readable text is different than the internal #s
+            writeRowHeader(rowHeader, colNum, "Vars:2.2." + (turnNum+1));  // The readable text is different than the internal #s
             addDataPoint(row, colNum, printChangedVarsForStageRoundTurn(stageNum, roundNum, turnNum));
         }
 
@@ -1048,7 +1277,7 @@ public final class AssessmentData {
         prevRatings = "";
         for (turnNum = 0; turnNum < 10; turnNum++) {
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("Ratings:2.2." + (turnNum+1));  // The readable text is different than the internal #s
+            writeRowHeader(rowHeader, colNum, "Ratings:2.2." + (turnNum+1));  // The readable text is different than the internal #s
             prevRatings = addRatings(row, colNum, prevRatings, stageNum, roundNum, turnNum);
             //addDataPoint(row, colNum, printVarRatingsForStageRoundTurn(stageNum, roundNum, turnNum));
         }
@@ -1061,11 +1290,23 @@ public final class AssessmentData {
         // 14-23
         for (uid = 14; uid <= 23; uid++) {
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("Stg1: " + Data.getQuestionByUID(uid).getText().replace("\n", "").replace("\r", ""));
+            writeRowHeader(rowHeader, colNum, "Stg1: " + Data.getQuestionByUID(uid).getText().replace("\n", "").replace("\r", ""));
             addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(uid));
 
             // And show total correct and not correct
             Answer ans = Player.getAnswerForQuestionUID(uid);
+            if (ans == null) {
+                // If they didn't answer these, just leave it all blank
+                // so that I will know that there isn't an answer and not try to 
+                // grade it as a zero
+                colNum++;
+                writeRowHeader(rowHeader, colNum, "C" + uid);
+                colNum++;
+                writeRowHeader(rowHeader, colNum, "P" + uid);
+                colNum++;
+                writeRowHeader(rowHeader, colNum, "I" + uid);
+                continue;
+            }
             int numCorrect = ans.getTotalCorrect();
             int numPartial = ans.getTotalPartial();
             int numWrong = ans.getTotalIncorrect();
@@ -1075,15 +1316,15 @@ public final class AssessmentData {
             totalWrong += numWrong;
             
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("C" + uid);
+            writeRowHeader(rowHeader, colNum, "C" + uid);
             addDataPoint(row, colNum, numCorrect);
 
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("P" + uid);
+            writeRowHeader(rowHeader, colNum, "P" + uid);
             addDataPoint(row, colNum, numPartial);
 
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("I" + uid);
+            writeRowHeader(rowHeader, colNum, "I" + uid);
             addDataPoint(row, colNum, numCorrect);
         }
         
@@ -1091,43 +1332,59 @@ public final class AssessmentData {
         // 24-35
         for (uid = 24; uid <= 35; uid++) {
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("Stg2: " + Data.getQuestionByUID(uid).getText().replace("\n", "").replace("\r", ""));
+            writeRowHeader(rowHeader, colNum, "Stg2: " + Data.getQuestionByUID(uid).getText().replace("\n", "").replace("\r", ""));
             addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(uid));
 
             // And show total correct and not correct
             Answer ans = Player.getAnswerForQuestionUID(uid);
+            if (ans == null) {
+                // If they didn't answer these, just leave it all blank
+                // so that I will know that there isn't an answer and not try to 
+                // grade it as a zero
+                colNum++;
+                writeRowHeader(rowHeader, colNum, "C" + uid);
+                colNum++;
+                writeRowHeader(rowHeader, colNum, "P" + uid);
+                colNum++;
+                writeRowHeader(rowHeader, colNum, "I" + uid);
+                continue;
+            }
             int numCorrect = ans.getTotalCorrect();
             int numPartial = ans.getTotalPartial();
             int numWrong = ans.getTotalIncorrect();
+
+            numCorrect = ans.getTotalCorrect();
+            numPartial = ans.getTotalPartial();
+            numWrong = ans.getTotalIncorrect();
 
             totalCorrect += numCorrect;
             totalPartial += numPartial;
             totalWrong += numWrong;
             
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("C" + uid);
+            writeRowHeader(rowHeader, colNum, "C" + uid);
             addDataPoint(row, colNum, numCorrect);
 
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("P" + uid);
+            writeRowHeader(rowHeader, colNum, "P" + uid);
             addDataPoint(row, colNum, numPartial);
 
             colNum++;
-            rowHeader.createCell(colNum).setCellValue("I" + uid);
+            writeRowHeader(rowHeader, colNum, "I" + uid);
             addDataPoint(row, colNum, numWrong);
         }
         
         // Now total the rights/wrongs/partials for all the questions
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Total C");
+        writeRowHeader(rowHeader, colNum, "Total C");
         addDataPoint(row, colNum, totalCorrect);
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Total P");
+        writeRowHeader(rowHeader, colNum, "Total P");
         addDataPoint(row, colNum, totalPartial);
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("Total I");
+        writeRowHeader(rowHeader, colNum, "Total I");
         addDataPoint(row, colNum, totalWrong);
 
         // Now do totals for the ratings, just for turn 0 of each stage- add up the ratings for specific
@@ -1139,159 +1396,383 @@ public final class AssessmentData {
         RatingData ratings22 = new RatingData(4, 1, 0);
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("1.1 Total O Rating");
-        addDataPoint(row, colNum, ratings11.getWeightedSumOverallRatings());
+        writeRowHeader(rowHeader, colNum, "1.1 Total O Rating");
+        if (ratings11 != null) {
+            addDataPoint(row, colNum, ratings11.getWeightedSumOverallRatings());
+        }
         
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("1.1 Total S Rating");
-        addDataPoint(row, colNum, ratings11.getWeightedSumSpecificRatings());
+        writeRowHeader(rowHeader, colNum, "1.1 Total S Rating");
+        if (ratings11 != null) {
+            addDataPoint(row, colNum, ratings11.getWeightedSumSpecificRatings());
+        }
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("1.2 Total O Rating");
-        addDataPoint(row, colNum, ratings12.getWeightedSumOverallRatings());
+        writeRowHeader(rowHeader, colNum, "1.2 Total O Rating");
+        if (ratings12 != null) {
+            addDataPoint(row, colNum, ratings12.getWeightedSumOverallRatings());
+        }
         
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("1.2 Total S Rating");
-        addDataPoint(row, colNum, ratings12.getWeightedSumSpecificRatings());
+        writeRowHeader(rowHeader, colNum, "1.2 Total S Rating");
+        if (ratings12 != null) {
+            addDataPoint(row, colNum, ratings12.getWeightedSumSpecificRatings());
+        }
 
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("2.1 Total O Rating");
-        addDataPoint(row, colNum, ratings21.getWeightedSumOverallRatings());
+        writeRowHeader(rowHeader, colNum, "2.1 Total O Rating");
+        if (ratings21 != null) {
+            addDataPoint(row, colNum, ratings21.getWeightedSumOverallRatings());
+        }
         
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("2.1 Total S Rating");
-        addDataPoint(row, colNum, ratings21.getWeightedSumSpecificRatings());
+        writeRowHeader(rowHeader, colNum, "2.1 Total S Rating");
+        if (ratings21 != null) {
+            addDataPoint(row, colNum, ratings21.getWeightedSumSpecificRatings());
+        }
         
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("2.2 Total O Rating");
-        addDataPoint(row, colNum, ratings22.getWeightedSumOverallRatings());
+        writeRowHeader(rowHeader, colNum, "2.2 Total O Rating");
+        if (ratings22 != null) {
+            addDataPoint(row, colNum, ratings22.getWeightedSumOverallRatings());
+        }
         
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("2.2 Total S Rating");
-        addDataPoint(row, colNum, ratings22.getWeightedSumSpecificRatings());
+        writeRowHeader(rowHeader, colNum, "2.2 Total S Rating");
+        if (ratings22 != null) {
+            addDataPoint(row, colNum, ratings22.getWeightedSumSpecificRatings());
+        }
         
         // self-assess questions
         // starting with uid 42
         uid = 42;
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("1.1");
+        writeRowHeader(rowHeader, colNum, "1.1");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("1.2");
+        writeRowHeader(rowHeader, colNum, "1.2");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("1.3");
+        writeRowHeader(rowHeader, colNum, "1.3");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("1.4");
+        writeRowHeader(rowHeader, colNum, "1.4");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("1.5");
+        writeRowHeader(rowHeader, colNum, "1.5");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("2.1");
+        writeRowHeader(rowHeader, colNum, "2.1");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("2.2");
+        writeRowHeader(rowHeader, colNum, "2.2");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("2.3");
+        writeRowHeader(rowHeader, colNum, "2.3");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("3.1");
+        writeRowHeader(rowHeader, colNum, "3.1");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("3.2");
+        writeRowHeader(rowHeader, colNum, "3.2");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("3.3");
+        writeRowHeader(rowHeader, colNum, "3.3");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("3.4");
+        writeRowHeader(rowHeader, colNum, "3.4");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("4.1");
+        writeRowHeader(rowHeader, colNum, "4.1");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("4.2");
+        writeRowHeader(rowHeader, colNum, "4.2");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("4.3");
+        writeRowHeader(rowHeader, colNum, "4.3");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         colNum++;
-        rowHeader.createCell(colNum).setCellValue("4.4");
+        writeRowHeader(rowHeader, colNum, "4.4");
         addDataPoint(row, colNum, Player.getFirstCharForAnswerUID(uid++));
         
-        // Now create a new sheet for the feedback since it can be verbose and really get in the
-        // way of the othe rdata and doens' tneed to be graphed
-        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+
+    // Demographics only
+    public static void writeExcelSheet2(Sheet sheet, int rowNum) {
         // Create a row and put some cells in it. Rows are 0 based.
-        Row sheet2_rowHeader = sheet2.createRow(0);
-        Row sheet2_row = sheet2.createRow(1);
-        colNum = 0;
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
 
         // ID
-        sheet2_rowHeader.createCell(colNum).setCellValue("ID");
-        addDataPoint(sheet2_row, colNum, Player.getId());
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
 
         // Name 
         colNum++;
-        sheet2_rowHeader.createCell(colNum).setCellValue("Name");
-        addDataPoint(sheet2_row, colNum, Player.getName());
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
+
+        // Now do the demographics
+        // Residence place
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Residence");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(2));
+
+        // Age
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Age");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(3));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Age Code");
+        addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(3));
+
+        // Gender
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Gender");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(1));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Gender Code");
+        addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(1));
+
+        // Language
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "English");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(4));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "English Code");
+        addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(4));
+
+        // Gaming exp
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Gaming XP");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(8));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Gaming XP Code");
+        addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(8));
+
+        // Learning Style
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Learning Styles");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(9));
+
+        // Education
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Education");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(5));
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Education Code");
+        addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(5));
+
+        // Study areas
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Study Areas");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(6));
+
+        // Occupational Area
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Occupational Area");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(10));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Job Titles");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(11));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Career Experience");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(12));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Career Code");
+        addDataPoint(row, colNum, Player.getCodeAnswerForQuestionUID(12));
+
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+
+    public static void writeExcelSheet3(Sheet sheet, int rowNum) {
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
+
+        // ID
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
+
+        // Name 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
 
         // feedback ans 
         // starts with uid 36
         uid = 36;
         colNum++;
-        sheet2_rowHeader.createCell(colNum).setCellValue("FB1: " + Data.getQuestionByUID(uid).getText());
-        addDataPoint(sheet2_row, colNum, Player.getStrAnswerForQuestionUID(uid++));
+        writeRowHeader(rowHeader, colNum, "FB1: " + Data.getQuestionByUID(uid).getText());
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(uid++));
         colNum++;
-        sheet2_rowHeader.createCell(colNum).setCellValue("FB2: " + Data.getQuestionByUID(uid).getText());
-        addDataPoint(sheet2_row, colNum, Player.getStrAnswerForQuestionUID(uid++));
+        writeRowHeader(rowHeader, colNum, "FB2: " + Data.getQuestionByUID(uid).getText());
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(uid++));
         colNum++;
-        sheet2_rowHeader.createCell(colNum).setCellValue("FB3: " + Data.getQuestionByUID(uid).getText());
-        addDataPoint(sheet2_row, colNum, Player.getStrAnswerForQuestionUID(uid++));
+        writeRowHeader(rowHeader, colNum, "FB3: " + Data.getQuestionByUID(uid).getText());
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(uid++));
         colNum++;
-        sheet2_rowHeader.createCell(colNum).setCellValue("FB4: " + Data.getQuestionByUID(uid).getText());
-        addDataPoint(sheet2_row, colNum, Player.getStrAnswerForQuestionUID(uid++));
+        writeRowHeader(rowHeader, colNum, "FB4: " + Data.getQuestionByUID(uid).getText());
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(uid++));
         colNum++;
-        sheet2_rowHeader.createCell(colNum).setCellValue("FB5: " + Data.getQuestionByUID(uid).getText());
-        addDataPoint(sheet2_row, colNum, Player.getStrAnswerForQuestionUID(uid++));
+        writeRowHeader(rowHeader, colNum, "FB5: " + Data.getQuestionByUID(uid).getText());
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(uid++));
         colNum++;
-        sheet2_rowHeader.createCell(colNum).setCellValue("FB6: " + Data.getQuestionByUID(uid).getText());
-        addDataPoint(sheet2_row, colNum, Player.getStrAnswerForQuestionUID(uid++));
+        writeRowHeader(rowHeader, colNum, "FB6: " + Data.getQuestionByUID(uid).getText());
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(uid++));
         
-        // notepad
-        Row sheet3_rowHeader = sheet3.createRow(0);
-        Row sheet3_row = sheet3.createRow(1);
-        colNum = 0;
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+    
+    public static void writeExcelSheet4(Sheet sheet, int rowNum) {
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
 
         // ID
-        sheet3_rowHeader.createCell(colNum).setCellValue("ID");
-        addDataPoint(sheet3_row, colNum, Player.getId());
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
 
         // Name 
         colNum++;
-        sheet3_rowHeader.createCell(colNum).setCellValue("Name");
-        addDataPoint(sheet3_row, colNum, Player.getName());
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
 
         colNum++;
-        sheet3_rowHeader.createCell(colNum).setCellValue("Notepad");
-        addDataPoint(sheet3_row, colNum, Player.getScratchPadData());
+        writeRowHeader(rowHeader, colNum, "Notepad");
+        addDataPoint(row, colNum, Player.getScratchPadData());
+        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
 
-        // Now create a sheet for the actual scores
-        Row sheet4_rowHeader = sheet4.createRow(0);
-        Row sheet4_row = sheet4.createRow(1);
-        colNum = 0;
+    
+    public static void writeExcelSheet5(Sheet sheet, int rowNum) {
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
 
         // ID
-        sheet4_rowHeader.createCell(colNum).setCellValue("ID");
-        addDataPoint(sheet4_row, colNum, Player.getId());
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
 
         // Name 
         colNum++;
-        sheet4_rowHeader.createCell(colNum).setCellValue("Name");
-        addDataPoint(sheet4_row, colNum, Player.getName());
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Career Experience");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(12));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Job Titles");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(11));
+
+        // Education
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Education");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(5));
+
+        // ST XP
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stated ST Exp");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(7));
+
+        // Study areas
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Study Areas");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(6));
+
+        // Occupational Area
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Occupational Area");
+        addDataPoint(row, colNum, Player.getStrAnswerForQuestionUID(10));
+        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+
+    public static void writeExcelSheet6(Sheet sheet, int rowNum) {
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
+
+        // ID
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
+
+        // Name 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
         
         // Now do the grading based on my rubric for what skills need which questions
         // Here are the ones I'm scoring:
@@ -1308,48 +1789,652 @@ public final class AssessmentData {
         // 4.3  Respond to Changes over Time
         // 4.4  Use Leverage Points to Produce Effects
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 1, 2);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 1, 2);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 1, 3);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 1, 3);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 1, 4);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 1, 4);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 2, 2);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 2, 2);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 2, 3);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 2, 3);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 3, 1);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 1);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 3, 2);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 2);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 3, 3);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 3);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 3, 4);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 4);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 4, 2);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 4, 2);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 4, 3);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 4, 3);
         colNum++;
-        colNum = addScoreForSkill(sheet4_rowHeader, sheet4_row, colNum, 4, 4);
-
-
-        // Make them fit.
-        ExcelUtils.autoSizeColumns(wb);
-
-        // Limit their widths
-        //ExcelUtils.limitColumnWidths(wb, 50);
-        ExcelUtils.limitColumnWidths(sheet, 75);
-        ExcelUtils.limitColumnWidths(sheet2, 50);
-        ExcelUtils.limitColumnWidths(sheet3, 300);
-
-        // Wrap them all
-        ExcelUtils.wrapAllCells(wb);
-
-        // Dynamically adjust the row heights
-        row.setHeight((short)-1);
-        sheet2_row.setHeight((short)-1);
+        colNum = addScoreForSkill(rowHeader, row, colNum, 4, 4);
         
-        String fileNameAndPath = "C:/Ross/Work/Japan/Drones/Code/systems_thinking_game_evolved/data/using/" + Player.getName() + "_" + Player.getId();
-        ExcelUtils.writeExcelFile(wb, fileNameAndPath);
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+
+    public static void writeExcelSheet7(Sheet sheet, int rowNum) {
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
+
+        // ID
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
+
+        // Name 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
+        
+        // Now do the grading based on my rubric for what skills need which questions
+        // Here are the ones I'm scoring:
+        // 1.2  Wholes and Parts
+        // 1.3  Effectively Respond to Uncertainty and Ambiguity
+        // 1.4  Consider Issues Appropriately
+        // 2.2  Define and Maintain Boundaries
+        // 2.3  Differentiate and Quantify Elements
+        // 3.1  Identify Relationships
+        // 3.2  Characterize Relationships
+        // 3.3  Identify Feedback Loops
+        // 3.4  Characterize Feedback Loops
+        // 4.2  Predict Future System Behavior
+        // 4.3  Respond to Changes over Time
+        // 4.4  Use Leverage Points to Produce Effects
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 1, 2);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 1, 3);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 1, 4);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 2, 2);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 2, 3);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 3, 1);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 3, 2);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 3, 3);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 3, 4);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 4, 2);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 4, 3);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 4, 4);
+        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+
+    
+    public static void writeExcelSheet8(Sheet sheet, int rowNum) {
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
+
+        // ID
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
+
+        // Name 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
+        
+        // Now do the grading based on my rubric for what skills need which questions
+        // Here are the ones I'm scoring:
+        // 1.2  Wholes and Parts
+        // 1.3  Effectively Respond to Uncertainty and Ambiguity
+        // 1.4  Consider Issues Appropriately
+        // 2.2  Define and Maintain Boundaries
+        // 2.3  Differentiate and Quantify Elements
+        // 3.1  Identify Relationships
+        // 3.2  Characterize Relationships
+        // 3.3  Identify Feedback Loops
+        // 3.4  Characterize Feedback Loops
+        // 4.2  Predict Future System Behavior
+        // 4.3  Respond to Changes over Time
+        // 4.4  Use Leverage Points to Produce Effects
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 1, 2, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 1, 3, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 1, 4, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 2, 2, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 2, 3, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 1, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 2, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 3, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 4, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 4, 2, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 4, 3, true);
+        colNum++;
+        colNum = addScoreForSkill(rowHeader, row, colNum, 4, 4, true);
+        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+
+    public static void writeExcelSheet9(Sheet sheet, int rowNum) {
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
+
+        // ID
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
+
+        // Name 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
+        
+        // Now do the grading based on my rubric for what skills need which questions
+        // Here are the ones I'm scoring:
+        // 1.2  Wholes and Parts
+        // 1.3  Effectively Respond to Uncertainty and Ambiguity
+        // 1.4  Consider Issues Appropriately
+        // 2.2  Define and Maintain Boundaries
+        // 2.3  Differentiate and Quantify Elements
+        // 3.1  Identify Relationships
+        // 3.2  Characterize Relationships
+        // 3.3  Identify Feedback Loops
+        // 3.4  Characterize Feedback Loops
+        // 4.2  Predict Future System Behavior
+        // 4.3  Respond to Changes over Time
+        // 4.4  Use Leverage Points to Produce Effects
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 1, 2, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 1, 3, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 1, 4, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 2, 2, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 2, 3, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 3, 1, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 3, 2, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 3, 3, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 3, 4, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 4, 2, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 4, 3, true);
+        colNum++;
+        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 4, 4, true);
+        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+    
+    public static void writeExcelSheet10(Sheet sheet, int rowNum) {
+        // If you didn't even do stage 2, you should not be considered
+        // in the overall score measures
+        if (Player.getTopScoreForStage(2) < 0) {
+            return;
+        }
+
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
+
+        // ID
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
+
+        // Name 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "#EX");
+        addDataPoint(row, colNum, countNumNewExps());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg1");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(1));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Imp1");
+        addDataPoint(row, colNum, Player.getScoreForStageRound(1, 2) - Player.getScoreForStageRound(1, 1));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ1");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg2");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(2));
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Imp2");
+        addDataPoint(row, colNum, Player.getScoreForStageRound(2, 2) - Player.getScoreForStageRound(2, 1));
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ2");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQA");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1() + getTotalCorrectAnswersForStage2());
+        
+        // Now do the grading based on my rubric for what skills need which questions
+        // Here are the ones I'm scoring:
+        // 1.2  Wholes and Parts
+        // 1.3  Effectively Respond to Uncertainty and Ambiguity
+        // 1.4  Consider Issues Appropriately
+        // 2.2  Define and Maintain Boundaries
+        // 2.3  Differentiate and Quantify Elements
+        // 3.1  Identify Relationships
+        // 3.2  Characterize Relationships
+        // 3.3  Identify Feedback Loops
+        // 3.4  Characterize Feedback Loops
+        // 4.2  Predict Future System Behavior
+        // 4.3  Respond to Changes over Time
+        // 4.4  Use Leverage Points to Produce Effects
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 1, 2);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 1, 3);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 1, 4);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 2, 2);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 2, 3);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 3, 1);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 3, 2);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 3, 3);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 3, 4);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 4, 2);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 4, 3);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 4, 4);
+        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+
+    public static void writeExcelSheet11(Sheet sheet, int rowNum) {
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
+
+        // ID
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
+
+        // Name 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "#EX");
+        addDataPoint(row, colNum, countNumNewExps());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg1");
+        addDataPoint(row, colNum, Player.getStrScoreForStageRound(1, 2));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Imp1");
+        addDataPoint(row, colNum, Player.getScoreForStageRound(1, 2) - Player.getScoreForStageRound(1, 1));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ1");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg2");
+        addDataPoint(row, colNum, Player.getStrScoreForStageRound(2, 2));
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Imp2");
+        addDataPoint(row, colNum, Player.getScoreForStageRound(2, 2) - Player.getScoreForStageRound(2, 1));
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ2");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQA");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1() + getTotalCorrectAnswersForStage2());
+        
+        // Now do the grading based on my rubric for what skills need which questions
+        // Here are the ones I'm scoring:
+        // 1.2  Wholes and Parts
+        // 1.3  Effectively Respond to Uncertainty and Ambiguity
+        // 1.4  Consider Issues Appropriately
+        // 2.2  Define and Maintain Boundaries
+        // 2.3  Differentiate and Quantify Elements
+        // 3.1  Identify Relationships
+        // 3.2  Characterize Relationships
+        // 3.3  Identify Feedback Loops
+        // 3.4  Characterize Feedback Loops
+        // 4.2  Predict Future System Behavior
+        // 4.3  Respond to Changes over Time
+        // 4.4  Use Leverage Points to Produce Effects
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 1, 2);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 1, 3);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 1, 4);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 2, 2);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 2, 3);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 3, 1);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 3, 2);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 3, 3);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 3, 4);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 4, 2);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 4, 3);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 4, 4);
+        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+
+    public static void writeExcelSheet12(Sheet sheet, int rowNum) {
+        // If you didn't even do stage 2, you should not be considered
+        // in the overall score measures
+        if (Player.getTopScoreForStage(2) < 0) {
+            return;
+        }
+
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
+
+        // ID
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
+
+        // Name 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "#EX");
+        addDataPoint(row, colNum, countNumNewExps());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg1");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(1));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Imp1");
+        addDataPoint(row, colNum, Player.getScoreForStageRound(1, 2) - Player.getScoreForStageRound(1, 1));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ1");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg2");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(2));
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Imp2");
+        addDataPoint(row, colNum, Player.getScoreForStageRound(2, 2) - Player.getScoreForStageRound(2, 1));
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ2");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQA");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1() + getTotalCorrectAnswersForStage2());
+        
+        // Now do the grading based on my rubric for what skills need which questions
+        // Here are the ones I'm scoring:
+        // 1.2  Wholes and Parts
+        // 1.3  Effectively Respond to Uncertainty and Ambiguity
+        // 1.4  Consider Issues Appropriately
+        // 2.2  Define and Maintain Boundaries
+        // 2.3  Differentiate and Quantify Elements
+        // 3.1  Identify Relationships
+        // 3.2  Characterize Relationships
+        // 3.3  Identify Feedback Loops
+        // 3.4  Characterize Feedback Loops
+        // 4.2  Predict Future System Behavior
+        // 4.3  Respond to Changes over Time
+        // 4.4  Use Leverage Points to Produce Effects
+        STUtils.ScoreType type = STUtils.ScoreType.DPOnly;
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 1, 2, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 1, 3, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 1, 4, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 2, 2, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 2, 3, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 3, 1, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 3, 2, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 3, 3, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 3, 4, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 4, 2, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 4, 3, type);
+        colNum++;
+        colNum = addScoreRatingForSkill(rowHeader, row, colNum, 4, 4, type);
+        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+
+    public static void writeExcelSheet13(Sheet sheet, int rowNum) {
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
+
+        // ID
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
+
+        // Name 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "#EX");
+        addDataPoint(row, colNum, countNumNewExps());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg1");
+        addDataPoint(row, colNum, Player.getStrScoreForStageRound(1, 2));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Imp1");
+        addDataPoint(row, colNum, Player.getScoreForStageRound(1, 2) - Player.getScoreForStageRound(1, 1));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ1");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg2");
+        addDataPoint(row, colNum, Player.getStrScoreForStageRound(2, 2));
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Imp2");
+        addDataPoint(row, colNum, Player.getScoreForStageRound(2, 2) - Player.getScoreForStageRound(2, 1));
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ2");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQA");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1() + getTotalCorrectAnswersForStage2());
+        
+        // Now do the grading based on my rubric for what skills need which questions
+        // Here are the ones I'm scoring:
+        // 1.2  Wholes and Parts
+        // 1.3  Effectively Respond to Uncertainty and Ambiguity
+        // 1.4  Consider Issues Appropriately
+        // 2.2  Define and Maintain Boundaries
+        // 2.3  Differentiate and Quantify Elements
+        // 3.1  Identify Relationships
+        // 3.2  Characterize Relationships
+        // 3.3  Identify Feedback Loops
+        // 3.4  Characterize Feedback Loops
+        // 4.2  Predict Future System Behavior
+        // 4.3  Respond to Changes over Time
+        // 4.4  Use Leverage Points to Produce Effects
+        STUtils.ScoreType type = STUtils.ScoreType.DPOnly;
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 1, 2, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 1, 3, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 1, 4, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 2, 2, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 2, 3, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 3, 1, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 3, 2, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 3, 3, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 3, 4, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 4, 2, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 4, 3, type);
+        colNum++;
+        colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 4, 4, type);
+        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
     }
 }

@@ -1,0 +1,4474 @@
+MS: 1596467099846
+LT: 2020-08-03 17:04:59 +0200
+ZT: 2020-08-03 15:04:59 Z
+ID: 227159
+SubID: 0
+Consent: true
+Name: Laura Belmon
+Email: l.belmon@amsterdamumc.nl
+PB: false
+Times: 0
+MAC: 00-50-56-BB-2D-B4
+OS: Windows 7
+Mem: 1037
+JVer: 1.8.0_181
+STXP: 2
+Start: 1596459439535
+End: 0
+Tutorial: 
+TUTORIAL TURN 1: GOOD, Gravity Well was moved to bottom right corner (X:573,Y:509)
+TUTORIAL TURN 2: 
+TUTORIAL TURN 3: GOOD, rain rate was reduced to the lowest (0.0)
+TUTORIAL TURN 4: GOOD, paradigm is Cooperative
+TUTORIAL TURN 5: GOOD, growth was changed to NoGrowth
+EndTutorial
+ANS: 2
+AT: 2010746
+QI: 0
+UD: 1
+EI: 0
+RT: 0
+@STX
+0: Female
+@ETX
+ANS: 0
+AT: 2020752
+QI: 1
+UD: 2
+EI: 0
+RT: 0
+@STX
+The Netherlands
+@ETX
+ANS: 2
+AT: 2026520
+QI: 2
+UD: 3
+EI: 0
+RT: 0
+@STX
+3: 25 to 34 years
+@ETX
+ANS: 2
+AT: 2034736
+QI: 3
+UD: 4
+EI: 0
+RT: 0
+@STX
+1: Working proficiency
+@ETX
+ANS: 2
+AT: 2057441
+QI: 4
+UD: 5
+EI: 0
+RT: 0
+@STX
+6: Master's degree
+@ETX
+ANS: 1
+AT: 2193684
+QI: 5
+UD: 6
+EI: 0
+RT: 0
+@STX
+Main: Sleep health among children
+Sub: parenting; screen time behavior; fear and anxiety; low socioeconomic groups
+During my masters: physical activity among young adults
+@ETX
+ANS: 1
+AT: 2270567
+QI: 6
+UD: 7
+EI: 0
+RT: 0
+@STX
+Yes, reading articles, joining a working group on systems thinking, trying to apply it within my PhD research project.
+@ETX
+ANS: 2
+AT: 2282263
+QI: 7
+UD: 8
+EI: 0
+RT: 0
+@STX
+4: Never play computer games
+@ETX
+ANS: 3
+AT: 2327865
+QI: 8
+UD: 9
+EI: 0
+RT: 0
+@STX
+2: Visual (spatial): You prefer using pictures, images, and spatial understanding
+4: Verbal (linguistic): You prefer using words, both in speech and writing
+6: Logical (mathematical): You prefer using logic and reasoning
+8: Solitary (intrapersonal): You prefer to work alone and use self-study
+@ETX
+ANS: 1
+AT: 2383834
+QI: 0
+UD: 10
+EI: 1
+RT: 0
+@STX
+Intervention development
+Stakeholder engagement
+Networking
+Health behavior change
+@ETX
+ANS: 1
+AT: 2416771
+QI: 1
+UD: 11
+EI: 1
+RT: 0
+@STX
+Researcher; Project leader
+@ETX
+ANS: 2
+AT: 2424643
+QI: 2
+UD: 12
+EI: 1
+RT: 0
+@STX
+3: 4 to 7 years
+@ETX
+ANS: 1
+AT: 7118824
+QI: 0
+UD: 14
+EI: 3
+RT: 0
+@STX
+I tried to eliminate the stars, so that there would be no shapes destroyed. However, I only found out how to place the shapes at a place that there were less shapes destroyed. 
+
+I thought that darker color shapes would greater faster splitting of shapes into more shapes, but I am not sure if they really did.
+@ETX
+ANS: 1
+AT: 7191866
+QI: 1
+UD: 15
+EI: 3
+RT: 0
+@STX
+First I tried to understand the top part options with growth, rain size etc and what they did with the shapes and directions. The second part was about understanding the reactions of the shapes and amount of shapes when I changed the size, direction (of turning), color, etc.
+@ETX
+ANS: 2
+AT: 7230587
+QI: 2
+UD: 16
+EI: 3
+RT: 0
+@STX
+0: Actually this did not happen
+@ETX
+ANS: 2
+AT: 7246531
+QI: 3
+UD: 17
+EI: 3
+RT: 0
+@STX
+2: Its size
+@ETX
+ANS: 2
+AT: 7277885
+QI: 4
+UD: 18
+EI: 3
+RT: 0
+@STX
+1: It increases the size of shapes only
+@ETX
+ANS: 2
+AT: 7326037
+QI: 5
+UD: 19
+EI: 3
+RT: 0
+@STX
+1: Shapes would grow and multiply
+@ETX
+ANS: 3
+AT: 7352302
+QI: 6
+UD: 20
+EI: 3
+RT: 0
+@STX
+0: Impacting rain
+1: Impacting red balls
+5: Impacting the gravity well
+6: Stealing or "pulling" size from other nearby shapes
+@ETX
+ANS: 2
+AT: 7363119
+QI: 7
+UD: 21
+EI: 3
+RT: 0
+@STX
+4: The red balls bounce off of each other
+@ETX
+ANS: 2
+AT: 7377991
+QI: 8
+UD: 22
+EI: 3
+RT: 0
+@STX
+4: The spikes
+@ETX
+ANS: 1
+AT: 7660152
+QI: 9
+UD: 23
+EI: 3
+RT: 0
+@STX
+Not necessarily. Maybe some form of nature interacting with human action: With a lot of rain (or attention), plants (shapes) can grow. Some plants grow better with other plants next to it. The spikes (humans) change the origin of the nature by cutting the plants, trees, replacing it with other forms such as stones. No idea if I am making any sense.
+@ETX
+ACT: 0
+AT: 2898
+AX: 0 0 0
+AS: WelcomeWindow
+AD: OK
+ACT: 0
+AT: 1995487
+AX: 0 0 0
+AS: ContactConsentWindow
+AD: OK
+ACT: 0
+AT: 1998992
+AX: 0 0 0
+AS: StartSurveyWindow
+AD: OK
+ACT: 0
+AT: 2010745
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2020752
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2026520
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2034736
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2057441
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2193684
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2270567
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2282263
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2327865
+AX: 0 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2337208
+AX: 1 0 0
+AS: ExercisePopupWindow
+AD: OK
+ACT: 0
+AT: 2383834
+AX: 1 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2416771
+AX: 1 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2424643
+AX: 1 0 0
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 2472732
+AX: 2 0 0
+AS: StartSimulationWindow
+AD: OK
+ACT: 5
+AT: 2473222
+AX: 2 0 0
+AS: SimRunner
+AD: Started Tutorial
+ACT: 0
+AT: 2503310
+AX: 2 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 2548478
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 2580463
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: >
+ACT: 0
+AT: 2586367
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: >
+ACT: 0
+AT: 2587584
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: >
+ACT: 0
+AT: 2597528
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: >
+ACT: 0
+AT: 2598248
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: <<
+ACT: 0
+AT: 2638297
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 2642744
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: ||
+ACT: 0
+AT: 2666489
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 2668834
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: ||
+ACT: 0
+AT: 2670986
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: >
+ACT: 0
+AT: 2672138
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: ||
+ACT: 0
+AT: 2721963
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: >
+ACT: 0
+AT: 2749190
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 2750909
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: ||
+ACT: 0
+AT: 2756563
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 2765971
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Main Screen
+ACT: 0
+AT: 2767645
+AX: 2 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 2785332
+AX: 2 0 0
+AS: MainPanelLeft
+AD: Observe
+ACT: 0
+AT: 2789221
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Main Screen
+ACT: 0
+AT: 2810397
+AX: 2 0 0
+AS: ScreenInfoArea MainScreen
+AD: Score
+ACT: 0
+AT: 2811965
+AX: 2 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 2812677
+AX: 2 0 0
+AS: ScreenInfoArea MainScreen
+AD: Info
+ACT: 4
+AT: 2815951
+AX: 2 0 0
+AS: InfoScreen
+AD: Turns
+ACT: 4
+AT: 2824798
+AX: 2 0 0
+AS: InfoScreen
+AD: Turns
+ACT: 4
+AT: 2826397
+AX: 2 0 0
+AS: InfoScreen
+AD: Introduction
+ACT: 4
+AT: 2829110
+AX: 2 0 0
+AS: InfoScreen
+AD: Introduction
+ACT: 4
+AT: 2831046
+AX: 2 0 0
+AS: InfoScreen
+AD: Game Play
+ACT: 4
+AT: 2833118
+AX: 2 0 0
+AS: InfoScreen
+AD: Welcome
+ACT: 4
+AT: 2847839
+AX: 2 0 0
+AS: InfoScreen
+AD: Welcome
+ACT: 4
+AT: 2848863
+AX: 2 0 0
+AS: InfoScreen
+AD: Introduction
+ACT: 4
+AT: 2927465
+AX: 2 0 0
+AS: InfoScreen
+AD: General
+ACT: 4
+AT: 3024595
+AX: 2 0 0
+AS: InfoScreen
+AD: Turns
+ACT: 4
+AT: 3028131
+AX: 2 0 0
+AS: InfoScreen
+AD: Game Play
+ACT: 4
+AT: 3043820
+AX: 2 0 0
+AS: InfoScreen
+AD: Observe
+ACT: 4
+AT: 3073012
+AX: 2 0 0
+AS: InfoScreen
+AD: Experiment
+ACT: 4
+AT: 3095389
+AX: 2 0 0
+AS: InfoScreen
+AD: Change System
+ACT: 4
+AT: 3112677
+AX: 2 0 0
+AS: InfoScreen
+AD: Shapes
+ACT: 4
+AT: 3324740
+AX: 2 0 0
+AS: InfoScreen
+AD: Size
+ACT: 4
+AT: 3329875
+AX: 2 0 0
+AS: InfoScreen
+AD: Shapes
+ACT: 4
+AT: 3353125
+AX: 2 0 0
+AS: InfoScreen
+AD: Size
+ACT: 4
+AT: 3369341
+AX: 2 0 0
+AS: InfoScreen
+AD: Rain
+ACT: 4
+AT: 3382596
+AX: 2 0 0
+AS: InfoScreen
+AD: Gravity
+ACT: 4
+AT: 3402309
+AX: 2 0 0
+AS: InfoScreen
+AD: Circles
+ACT: 4
+AT: 3423382
+AX: 2 0 0
+AS: InfoScreen
+AD: Paradigm
+ACT: 4
+AT: 3440863
+AX: 2 0 0
+AS: InfoScreen
+AD: Change System
+ACT: 4
+AT: 3444390
+AX: 2 0 0
+AS: InfoScreen
+AD: Shapes
+ACT: 4
+AT: 3453262
+AX: 2 0 0
+AS: InfoScreen
+AD: Rain
+ACT: 4
+AT: 3454110
+AX: 2 0 0
+AS: InfoScreen
+AD: Size
+ACT: 4
+AT: 3509392
+AX: 2 0 0
+AS: InfoScreen
+AD: Rain
+ACT: 4
+AT: 3516368
+AX: 2 0 0
+AS: InfoScreen
+AD: Gravity
+ACT: 4
+AT: 3517753
+AX: 2 0 0
+AS: InfoScreen
+AD: Circles
+ACT: 4
+AT: 3524640
+AX: 2 0 0
+AS: InfoScreen
+AD: Paradigm
+ACT: 0
+AT: 3533513
+AX: 2 0 0
+AS: InfoScreen
+AD: Back
+ACT: 0
+AT: 3539817
+AX: 2 0 0
+AS: MainPanelLeft
+AD: Observe
+ACT: 0
+AT: 3613986
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: >
+ACT: 0
+AT: 3624291
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: ||
+ACT: 0
+AT: 3628243
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: >
+ACT: 0
+AT: 3629092
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: ||
+ACT: 0
+AT: 3630443
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: >
+ACT: 0
+AT: 3649644
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Main Screen
+ACT: 0
+AT: 3650844
+AX: 2 0 0
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 3652508
+AX: 2 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 3654859
+AX: 2 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 3730575
+AX: 2 0 0
+AS: ChangePanelBottom
+AD: Cancel
+ACT: 0
+AT: 3734533
+AX: 2 0 0
+AS: MainPanelLeft
+AD: Observe
+ACT: 0
+AT: 3765375
+AX: 2 0 0
+AS: ObservePanelBottom
+AD: Main Screen
+ACT: 0
+AT: 3766942
+AX: 2 0 0
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 3782343
+AX: 2 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 3787183
+AX: 2 0 0
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 3787197
+AX: 2 0 0
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.5 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R295 S262
+BEFORE_SHAPE @S n:6 x:145 y:145 vx:0 vy:0 s:55 vs:2 c:0 d:0 p:0 l:1
+CHANGED_VALUES !C
+V R573 S509
+S
+AFTER_VALUES V A1.0 B0 C0.5 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R573 S509
+AFTER_SHAPE @S n:6 x:145 y:145 vx:0 vy:0 s:55 vs:2 c:0 d:0 p:0 l:1
+!START_SNAPSHOT
+@S n:6 x:145 y:145 vx:0 vy:0 s:55 vs:2 c:0 d:0 p:0 l:0
+@S n:4 x:445 y:145 vx:0 vy:0 s:45 vs:3 c:0 d:0 p:1 l:0
+@S n:5 x:145 y:395 vx:0 vy:0 s:35 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:445 y:395 vx:0 vy:0 s:25 vs:4 c:0 d:0 p:1 l:0
+@S n:5 x:295 y:95 vx:0 vy:0 s:35 vs:3 c:0 d:0 p:0 l:0
+@S n:3 x:295 y:445 vx:0 vy:0 s:45 vs:2 c:0 d:0 p:1 l:0
+@G x:573 y:509
+V A1.0 B0 C0.5 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R573 S509
+!END_SNAPSHOT
+
+ACT: 6
+AT: 3796921
+AX: 2 0 0
+AS: SimRunner
+AD: TurnEnd 2:0:0 Tutorial, SCORE: There is no score for the tutorial.
+ACT: 0
+AT: 3812496
+AX: 2 0 1
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 3836441
+AX: 2 0 1
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 3877513
+AX: 2 0 1
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 3877518
+AX: 2 0 1
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.5 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R573 S509
+BEFORE_SHAPE @S n:3 x:579 y:490 vx:0 vy:0 s:48 vs:4 c:0 d:0 p:1 l:1 st:16
+CHANGED_VALUES !C
+V
+S Dfalse
+AFTER_VALUES V A1.0 B0 C0.5 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R573 S509
+AFTER_SHAPE @S n:3 x:579 y:490 vx:0 vy:0 s:48 vs:4 c:0 d:0 p:0 l:1 st:16
+!START_SNAPSHOT
+@S n:5 x:462 y:344 vx:0 vy:0 s:5 vs:3 c:0 d:0 p:0 l:0 sf:18 sg:35 to:10
+@S n:4 x:507 y:377 vx:0 vy:0 s:20 vs:3 c:0 d:0 p:1 l:0 t:1 st:16 to:13
+@S n:3 x:489 y:494 vx:0 vy:0 s:21 vs:2 c:0 d:0 p:1 l:0 st:3 sf:12 to:1
+@S n:3 x:510 y:496 vx:0 vy:0 s:20 vs:2 c:0 d:0 p:1 l:0 st:2 sf:12 to:1
+@S n:5 x:440 y:467 vx:0 vy:0 s:50 vs:1 c:0 d:0 p:0 l:0 sf:12 sg:7 to:3
+@S n:6 x:342 y:321 vx:0 vy:0 s:31 vs:2 c:0 d:0 p:0 l:0 sg:10 to:14
+@S n:6 x:375 y:333 vx:0 vy:0 s:38 vs:2 c:0 d:0 p:0 l:0 sg:15 to:20
+@S n:3 x:537 y:490 vx:0 vy:0 s:33 vs:4 c:0 d:0 p:1 l:0 st:18
+@S n:3 x:579 y:490 vx:0 vy:0 s:48 vs:4 c:0 d:0 p:0 l:0 st:16
+@S n:4 x:562 y:397 vx:0 vy:0 s:25 vs:3 c:0 d:0 p:1 l:0 st:12 sf:2 to:9
+@S n:5 x:346 y:459 vx:0 vy:0 s:25 vs:1 c:0 d:0 p:0 l:0 sg:3 to:3
+@S n:5 x:373 y:459 vx:0 vy:0 s:26 vs:1 c:0 d:0 p:0 l:0 sg:3 to:3
+@R x:167 y:464 r:2.0 d:Bottom
+@R x:155 y:510 r:2.3 d:Bottom
+@R x:237 y:440 r:2.0 d:Bottom
+@R x:40 y:508 r:2.4 d:Bottom
+@R x:458 y:433 r:2.2 d:Bottom
+@R x:2 y:515 r:2.7 d:Bottom
+@R x:470 y:486 r:2.6 d:Bottom
+@R x:192 y:469 r:2.7 d:Bottom
+@R x:461 y:371 r:2.2 d:Bottom
+@R x:107 y:484 r:2.9 d:Bottom
+@R x:170 y:448 r:2.7 d:Bottom
+@R x:241 y:386 r:2.4 d:Bottom
+@R x:154 y:351 r:2.2 d:Bottom
+@R x:107 y:345 r:2.2 d:Bottom
+@R x:565 y:359 r:2.4 d:Bottom
+@R x:444 y:312 r:2.1 d:Bottom
+@R x:266 y:488 r:3.3 d:Bottom
+@R x:276 y:394 r:2.7 d:Bottom
+@R x:85 y:304 r:2.1 d:Bottom
+@R x:242 y:343 r:2.4 d:Bottom
+@R x:499 y:305 r:2.2 d:Bottom
+@R x:427 y:441 r:3.2 d:Bottom
+@R x:499 y:281 r:2.1 d:Bottom
+@R x:203 y:385 r:2.9 d:Bottom
+@R x:287 y:393 r:3.0 d:Bottom
+@R x:76 y:429 r:3.3 d:Bottom
+@R x:183 y:399 r:3.1 d:Bottom
+@R x:39 y:317 r:2.5 d:Bottom
+@R x:234 y:300 r:2.4 d:Bottom
+@R x:244 y:347 r:2.8 d:Bottom
+@R x:438 y:402 r:3.3 d:Bottom
+@R x:476 y:363 r:3.0 d:Bottom
+@R x:494 y:360 r:3.0 d:Bottom
+@R x:390 y:464 r:3.9 d:Bottom
+@R x:560 y:247 r:2.1 d:Bottom
+@R x:411 y:386 r:3.3 d:Bottom
+@R x:270 y:230 r:2.0 d:Bottom
+@R x:196 y:399 r:3.5 d:Bottom
+@R x:531 y:310 r:2.8 d:Bottom
+@R x:36 y:230 r:2.1 d:Bottom
+@R x:193 y:316 r:2.9 d:Bottom
+@R x:292 y:246 r:2.3 d:Bottom
+@R x:35 y:424 r:4.0 d:Bottom
+@R x:23 y:230 r:2.2 d:Bottom
+@R x:339 y:260 r:2.5 d:Bottom
+@R x:69 y:278 r:2.7 d:Bottom
+@R x:441 y:306 r:3.0 d:Bottom
+@R x:26 y:252 r:2.5 d:Bottom
+@R x:434 y:280 r:2.8 d:Bottom
+@R x:130 y:346 r:3.5 d:Bottom
+@R x:437 y:343 r:3.5 d:Bottom
+@R x:172 y:252 r:2.6 d:Bottom
+@R x:589 y:230 r:2.4 d:Bottom
+@R x:88 y:300 r:3.2 d:Bottom
+@R x:521 y:334 r:3.6 d:Bottom
+@R x:215 y:184 r:2.0 d:Bottom
+@R x:219 y:236 r:2.6 d:Bottom
+@R x:444 y:305 r:3.4 d:Bottom
+@R x:107 y:302 r:3.4 d:Bottom
+@R x:215 y:220 r:2.5 d:Bottom
+@R x:242 y:321 r:3.7 d:Bottom
+@R x:14 y:309 r:3.6 d:Bottom
+@R x:424 y:297 r:3.5 d:Bottom
+@R x:403 y:273 r:3.3 d:Bottom
+@R x:163 y:213 r:2.6 d:Bottom
+@R x:316 y:218 r:2.7 d:Bottom
+@R x:73 y:232 r:2.9 d:Bottom
+@R x:197 y:268 r:3.4 d:Bottom
+@R x:308 y:249 r:3.2 d:Bottom
+@R x:62 y:246 r:3.2 d:Bottom
+@R x:417 y:190 r:2.5 d:Bottom
+@R x:277 y:210 r:2.8 d:Bottom
+@R x:219 y:244 r:3.3 d:Bottom
+@R x:388 y:146 r:2.0 d:Bottom
+@R x:555 y:266 r:3.7 d:Bottom
+@R x:512 y:241 r:3.4 d:Bottom
+@R x:2 y:280 r:4.0 d:Bottom
+@R x:389 y:186 r:2.7 d:Bottom
+@R x:72 y:258 r:3.8 d:Bottom
+@R x:251 y:180 r:2.7 d:Bottom
+@R x:21 y:231 r:3.5 d:Bottom
+@R x:276 y:214 r:3.3 d:Bottom
+@R x:422 y:134 r:2.1 d:Bottom
+@R x:206 y:182 r:2.9 d:Bottom
+@R x:15 y:235 r:3.8 d:Bottom
+@R x:190 y:219 r:3.6 d:Bottom
+@R x:321 y:125 r:2.1 d:Bottom
+@R x:354 y:206 r:3.5 d:Bottom
+@R x:369 y:191 r:3.3 d:Bottom
+@R x:270 y:210 r:3.7 d:Bottom
+@R x:329 y:224 r:4.0 d:Bottom
+@R x:128 y:154 r:2.8 d:Bottom
+@R x:266 y:216 r:4.0 d:Bottom
+@R x:308 y:180 r:3.4 d:Bottom
+@R x:148 y:150 r:2.9 d:Bottom
+@R x:262 y:193 r:3.8 d:Bottom
+@R x:16 y:195 r:3.9 d:Bottom
+@R x:590 y:147 r:3.0 d:Bottom
+@R x:148 y:163 r:3.4 d:Bottom
+@R x:247 y:169 r:3.6 d:Bottom
+@R x:458 y:151 r:3.3 d:Bottom
+@R x:133 y:148 r:3.3 d:Bottom
+@R x:377 y:118 r:2.7 d:Bottom
+@R x:164 y:133 r:3.1 d:Bottom
+@R x:117 y:109 r:2.6 d:Bottom
+@R x:367 y:135 r:3.3 d:Bottom
+@R x:158 y:131 r:3.3 d:Bottom
+@R x:581 y:105 r:2.7 d:Bottom
+@R x:101 y:136 r:3.6 d:Bottom
+@R x:9 y:118 r:3.2 d:Bottom
+@R x:298 y:90 r:2.5 d:Bottom
+@R x:86 y:119 r:3.4 d:Bottom
+@R x:540 y:122 r:3.6 d:Bottom
+@R x:105 y:69 r:2.1 d:Bottom
+@R x:95 y:89 r:2.8 d:Bottom
+@R x:323 y:77 r:2.5 d:Bottom
+@R x:391 y:72 r:2.4 d:Bottom
+@R x:21 y:92 r:3.2 d:Bottom
+@R x:454 y:112 r:4.0 d:Bottom
+@R x:272 y:91 r:3.4 d:Bottom
+@R x:55 y:72 r:2.8 d:Bottom
+@R x:348 y:59 r:2.4 d:Bottom
+@R x:480 y:67 r:2.8 d:Bottom
+@R x:581 y:82 r:3.6 d:Bottom
+@R x:244 y:85 r:3.9 d:Bottom
+@R x:198 y:46 r:2.2 d:Bottom
+@R x:327 y:72 r:3.6 d:Bottom
+@R x:382 y:57 r:3.0 d:Bottom
+@R x:0 y:61 r:3.4 d:Bottom
+@R x:485 y:49 r:2.9 d:Bottom
+@R x:250 y:64 r:4.0 d:Bottom
+@R x:326 y:41 r:2.8 d:Bottom
+@R x:339 y:46 r:3.3 d:Bottom
+@R x:46 y:41 r:3.2 d:Bottom
+@R x:398 y:40 r:3.4 d:Bottom
+@R x:459 y:34 r:3.1 d:Bottom
+@R x:334 y:28 r:2.8 d:Bottom
+@R x:185 y:29 r:3.3 d:Bottom
+@R x:34 y:27 r:3.4 d:Bottom
+@R x:146 y:22 r:3.2 d:Bottom
+@R x:104 y:16 r:2.8 d:Bottom
+@R x:309 y:14 r:2.9 d:Bottom
+@R x:449 y:14 r:3.6 d:Bottom
+@R x:489 y:11 r:3.9 d:Bottom
+@R x:47 y:6 r:3.4 d:Bottom
+@R x:359 y:3 r:3.9 d:Bottom
+@R x:404 y:0 r:3.8 d:Bottom
+@K x:53 y:351 vx:0 vy:-1 s:5 h:0
+@K x:71 y:283 vx:0 vy:-1 s:25 h:0
+@K x:240 y:416 vx:1 vy:-1 s:20 h:0
+@K x:127 y:367 vx:-1 vy:-1 s:25 h:0
+@K x:35 y:324 vx:0 vy:-1 s:25 h:0
+@K x:201 y:390 vx:1 vy:-1 s:25 h:0
+@K x:287 y:330 vx:0 vy:-1 s:25 h:0
+@K x:133 y:317 vx:-1 vy:-1 s:25 h:0
+@K x:320 y:278 vx:1 vy:-1 s:25 h:0
+@K x:510 y:391 vx:1 vy:-1 s:17 h:1
+@K x:289 y:459 vx:0 vy:-1 s:18 h:0
+@K x:128 y:491 vx:0 vy:0 s:22 h:0
+@K x:33 y:402 vx:0 vy:-1 s:18 h:0
+@K x:27 y:478 vx:1 vy:-1 s:17 h:0
+@K x:132 y:428 vx:0 vy:-1 s:17 h:0
+@K x:287 y:481 vx:1 vy:-1 s:9 h:1
+@K x:129 y:469 vx:1 vy:-1 s:11 h:0
+@K x:27 y:461 vx:0 vy:-1 s:10 h:0
+@K x:164 y:498 vx:0 vy:-1 s:9 h:0
+@K x:207 y:498 vx:0 vy:-1 s:8 h:0
+@K x:296 y:407 vx:1 vy:-1 s:7 h:0
+@K x:154 y:435 vx:1 vy:-1 s:6 h:0
+@E x:260 y:511 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:524 y:450 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:28 y:422 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:114 y:492 vx:1 vy:-1 s:8 i:0 h:1 t:0
+@E x:70 y:409 vx:0 vy:-1 s:5 i:0 h:1 t:1
+@E x:43 y:453 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:238 y:469 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:126 y:452 vx:0 vy:-1 s:2 i:0 h:1 t:1
+@E x:329 y:504 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:311 y:484 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:41 y:487 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:67 y:478 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:255 y:491 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:89 y:494 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:65 y:512 vx:-1 vy:1 s:10 i:0 h:0 t:0
+@E x:79 y:460 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:62 y:419 vx:-1 vy:-1 s:10 i:0 h:1 t:0
+@E x:58 y:417 vx:-1 vy:0 s:10 i:0 h:1 t:0
+@E x:107 y:509 vx:0 vy:0 s:10 i:3 h:0 t:0
+@E x:154 y:466 vx:1 vy:0 s:10 i:3 h:0 t:0
+@E x:50 y:428 vx:-1 vy:0 s:6 i:20 h:0 t:0
+@E x:70 y:428 vx:-1 vy:-1 s:6 i:20 h:0 t:0
+@E x:60 y:408 vx:1 vy:1 s:6 i:20 h:0 t:0
+@E x:171 y:519 vx:-1 vy:-1 s:6 i:20 h:0 t:0
+@E x:183 y:519 vx:0 vy:-1 s:6 i:20 h:0 t:0
+@G x:573 y:509
+V A1.0 B0 C0.5 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R573 S509
+!END_SNAPSHOT
+
+ACT: 6
+AT: 3887425
+AX: 2 0 1
+AS: SimRunner
+AD: TurnEnd 2:0:1 Tutorial, SCORE: There is no score for the tutorial.
+ACT: 0
+AT: 3892690
+AX: 2 0 2
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 3901019
+AX: 2 0 2
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 3903202
+AX: 2 0 2
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 3903205
+AX: 2 0 2
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.5 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R573 S509
+BEFORE_SHAPE @S n:3 x:495 y:499 vx:0 vy:0 s:22 vs:2 c:0 d:0 p:1 l:1 st:24 sf:51 to:17
+CHANGED_VALUES !C
+V C0.0
+S
+AFTER_VALUES V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R573 S509
+AFTER_SHAPE @S n:3 x:495 y:499 vx:0 vy:0 s:22 vs:2 c:0 d:0 p:1 l:1 st:24 sf:51 to:17
+!START_SNAPSHOT
+@S n:3 x:495 y:499 vx:0 vy:0 s:22 vs:2 c:0 d:0 p:1 l:0 st:24 sf:51 to:17
+@S n:4 x:582 y:492 vx:0 vy:0 s:36 vs:3 c:0 d:0 p:1 l:0 st:41 sf:11 to:20
+@S n:4 x:597 y:461 vx:0 vy:0 s:23 vs:3 c:0 d:0 p:1 l:0 st:35 sf:11 to:19
+@S n:4 x:491 y:443 vx:0 vy:0 s:67 vs:3 c:0 d:0 p:1 l:0 st:66 sf:9 to:33
+@S n:4 x:555 y:449 vx:0 vy:0 s:62 vs:3 c:0 d:0 p:1 l:0 st:60 sf:9 to:30
+@S n:3 x:536 y:510 vx:0 vy:0 s:60 vs:4 c:0 d:0 p:1 l:0 st:86 to:10
+@S n:3 x:587 y:538 vx:0 vy:0 s:54 vs:4 c:0 d:0 p:1 l:0 st:81 to:9
+@S n:3 x:460 y:498 vx:0 vy:0 s:19 vs:2 c:0 d:0 p:1 l:0 st:29 sf:44 to:20
+@S n:3 x:477 y:497 vx:0 vy:0 s:13 vs:2 c:0 d:0 p:1 l:0 st:29 sf:48 to:20
+@R x:337 y:502 r:2.0 d:Bottom
+@R x:284 y:468 r:2.0 d:Bottom
+@R x:230 y:486 r:2.2 d:Bottom
+@R x:6 y:443 r:2.1 d:Bottom
+@R x:390 y:500 r:2.5 d:Bottom
+@R x:228 y:497 r:2.5 d:Bottom
+@R x:448 y:491 r:2.6 d:Bottom
+@R x:344 y:470 r:2.5 d:Bottom
+@R x:86 y:486 r:2.6 d:Bottom
+@R x:234 y:494 r:2.7 d:Bottom
+@R x:314 y:356 r:2.0 d:Bottom
+@R x:333 y:387 r:2.2 d:Bottom
+@R x:4 y:365 r:2.1 d:Bottom
+@R x:186 y:395 r:2.4 d:Bottom
+@R x:235 y:400 r:2.5 d:Bottom
+@R x:319 y:474 r:3.0 d:Bottom
+@R x:481 y:325 r:2.1 d:Bottom
+@R x:585 y:431 r:2.8 d:Bottom
+@R x:509 y:306 r:2.0 d:Bottom
+@R x:424 y:319 r:2.1 d:Bottom
+@R x:32 y:407 r:2.7 d:Bottom
+@R x:7 y:402 r:2.7 d:Bottom
+@R x:283 y:355 r:2.4 d:Bottom
+@R x:388 y:417 r:2.9 d:Bottom
+@R x:451 y:457 r:3.2 d:Bottom
+@R x:12 y:293 r:2.1 d:Bottom
+@R x:306 y:319 r:2.3 d:Bottom
+@R x:386 y:345 r:2.5 d:Bottom
+@R x:560 y:411 r:3.0 d:Bottom
+@R x:515 y:312 r:2.3 d:Bottom
+@R x:380 y:283 r:2.1 d:Bottom
+@R x:187 y:402 r:3.0 d:Bottom
+@R x:254 y:279 r:2.1 d:Bottom
+@R x:499 y:330 r:2.5 d:Bottom
+@R x:242 y:432 r:3.3 d:Bottom
+@R x:374 y:299 r:2.3 d:Bottom
+@R x:290 y:503 r:3.9 d:Bottom
+@R x:248 y:384 r:3.0 d:Bottom
+@R x:5 y:419 r:3.3 d:Bottom
+@R x:294 y:264 r:2.1 d:Bottom
+@R x:412 y:387 r:3.1 d:Bottom
+@R x:263 y:421 r:3.4 d:Bottom
+@R x:134 y:369 r:3.0 d:Bottom
+@R x:233 y:378 r:3.1 d:Bottom
+@R x:532 y:326 r:2.7 d:Bottom
+@R x:53 y:360 r:3.0 d:Bottom
+@R x:421 y:413 r:3.5 d:Bottom
+@R x:420 y:230 r:2.0 d:Bottom
+@R x:429 y:319 r:2.8 d:Bottom
+@R x:121 y:361 r:3.2 d:Bottom
+@R x:531 y:224 r:2.0 d:Bottom
+@R x:415 y:266 r:2.4 d:Bottom
+@R x:570 y:373 r:3.4 d:Bottom
+@R x:430 y:248 r:2.3 d:Bottom
+@R x:381 y:256 r:2.4 d:Bottom
+@R x:449 y:296 r:2.8 d:Bottom
+@R x:235 y:378 r:3.6 d:Bottom
+@R x:463 y:332 r:3.2 d:Bottom
+@R x:122 y:288 r:2.8 d:Bottom
+@R x:476 y:346 r:3.4 d:Bottom
+@R x:280 y:404 r:4.0 d:Bottom
+@R x:468 y:310 r:3.1 d:Bottom
+@R x:103 y:287 r:2.9 d:Bottom
+@R x:359 y:343 r:3.5 d:Bottom
+@R x:429 y:320 r:3.3 d:Bottom
+@R x:51 y:288 r:3.0 d:Bottom
+@R x:585 y:237 r:2.5 d:Bottom
+@R x:72 y:241 r:2.6 d:Bottom
+@R x:541 y:193 r:2.1 d:Bottom
+@R x:491 y:336 r:3.7 d:Bottom
+@R x:374 y:287 r:3.2 d:Bottom
+@R x:58 y:338 r:3.8 d:Bottom
+@R x:262 y:343 r:3.9 d:Bottom
+@R x:218 y:182 r:2.1 d:Bottom
+@R x:574 y:283 r:3.3 d:Bottom
+@R x:240 y:271 r:3.2 d:Bottom
+@R x:53 y:327 r:3.9 d:Bottom
+@R x:384 y:315 r:3.8 d:Bottom
+@R x:263 y:205 r:2.5 d:Bottom
+@R x:420 y:202 r:2.5 d:Bottom
+@R x:293 y:287 r:3.6 d:Bottom
+@R x:226 y:252 r:3.2 d:Bottom
+@R x:2 y:288 r:3.7 d:Bottom
+@R x:29 y:200 r:2.6 d:Bottom
+@R x:402 y:258 r:3.4 d:Bottom
+@R x:130 y:262 r:3.5 d:Bottom
+@R x:538 y:170 r:2.3 d:Bottom
+@R x:180 y:175 r:2.4 d:Bottom
+@R x:354 y:165 r:2.3 d:Bottom
+@R x:136 y:262 r:3.7 d:Bottom
+@R x:17 y:168 r:2.4 d:Bottom
+@R x:399 y:269 r:3.9 d:Bottom
+@R x:547 y:156 r:2.3 d:Bottom
+@R x:159 y:194 r:2.9 d:Bottom
+@R x:416 y:204 r:3.1 d:Bottom
+@R x:371 y:195 r:3.0 d:Bottom
+@R x:439 y:243 r:3.8 d:Bottom
+@R x:353 y:163 r:2.6 d:Bottom
+@R x:211 y:241 r:3.9 d:Bottom
+@R x:176 y:176 r:2.9 d:Bottom
+@R x:277 y:198 r:3.3 d:Bottom
+@R x:362 y:141 r:2.4 d:Bottom
+@R x:273 y:226 r:3.9 d:Bottom
+@R x:305 y:199 r:3.5 d:Bottom
+@R x:165 y:145 r:2.6 d:Bottom
+@R x:92 y:121 r:2.2 d:Bottom
+@R x:280 y:145 r:2.7 d:Bottom
+@R x:291 y:121 r:2.3 d:Bottom
+@R x:293 y:140 r:2.7 d:Bottom
+@R x:211 y:178 r:3.5 d:Bottom
+@R x:93 y:145 r:2.9 d:Bottom
+@R x:317 y:102 r:2.1 d:Bottom
+@R x:512 y:110 r:2.3 d:Bottom
+@R x:224 y:126 r:2.7 d:Bottom
+@R x:301 y:156 r:3.4 d:Bottom
+@R x:264 y:144 r:3.2 d:Bottom
+@R x:539 y:123 r:2.8 d:Bottom
+@R x:282 y:129 r:3.0 d:Bottom
+@R x:139 y:100 r:2.4 d:Bottom
+@R x:222 y:114 r:2.8 d:Bottom
+@R x:93 y:156 r:3.9 d:Bottom
+@R x:256 y:132 r:3.4 d:Bottom
+@R x:519 y:117 r:3.1 d:Bottom
+@R x:10 y:125 r:3.4 d:Bottom
+@R x:235 y:111 r:3.1 d:Bottom
+@R x:196 y:94 r:2.7 d:Bottom
+@R x:225 y:71 r:2.1 d:Bottom
+@R x:146 y:132 r:4.0 d:Bottom
+@R x:436 y:67 r:2.1 d:Bottom
+@R x:262 y:120 r:3.9 d:Bottom
+@R x:23 y:63 r:2.1 d:Bottom
+@R x:459 y:66 r:2.3 d:Bottom
+@R x:189 y:109 r:3.9 d:Bottom
+@R x:533 y:91 r:3.4 d:Bottom
+@R x:78 y:98 r:3.8 d:Bottom
+@R x:346 y:89 r:3.6 d:Bottom
+@R x:77 y:81 r:3.4 d:Bottom
+@R x:376 y:69 r:3.0 d:Bottom
+@R x:226 y:55 r:2.5 d:Bottom
+@R x:354 y:54 r:2.6 d:Bottom
+@R x:143 y:60 r:3.0 d:Bottom
+@R x:417 y:72 r:3.8 d:Bottom
+@R x:195 y:36 r:2.0 d:Bottom
+@R x:216 y:52 r:3.1 d:Bottom
+@R x:319 y:46 r:2.9 d:Bottom
+@R x:476 y:40 r:2.7 d:Bottom
+@R x:465 y:47 r:3.4 d:Bottom
+@R x:284 y:42 r:3.3 d:Bottom
+@R x:33 y:32 r:2.7 d:Bottom
+@R x:281 y:25 r:2.3 d:Bottom
+@R x:131 y:28 r:2.9 d:Bottom
+@R x:400 y:34 r:3.8 d:Bottom
+@R x:392 y:24 r:3.1 d:Bottom
+@R x:179 y:21 r:3.0 d:Bottom
+@R x:516 y:21 r:3.5 d:Bottom
+@R x:377 y:18 r:3.6 d:Bottom
+@R x:397 y:13 r:3.3 d:Bottom
+@R x:337 y:8 r:2.9 d:Bottom
+@R x:149 y:6 r:3.4 d:Bottom
+@R x:316 y:2 r:2.8 d:Bottom
+@R x:579 y:0 r:2.7 d:Bottom
+@K x:37 y:265 vx:0 vy:1 s:25 h:0
+@K x:353 y:83 vx:-1 vy:-1 s:20 h:0
+@K x:384 y:181 vx:-1 vy:1 s:12 h:0
+@K x:275 y:279 vx:0 vy:1 s:18 h:0
+@K x:171 y:41 vx:0 vy:-1 s:25 h:0
+@K x:226 y:168 vx:0 vy:1 s:11 h:1
+@K x:341 y:195 vx:0 vy:-1 s:15 h:0
+@K x:525 y:48 vx:-1 vy:1 s:25 h:0
+@K x:310 y:100 vx:0 vy:1 s:17 h:0
+@K x:226 y:89 vx:0 vy:1 s:13 h:0
+@K x:340 y:91 vx:0 vy:-1 s:7 h:0
+@K x:433 y:178 vx:-1 vy:-1 s:12 h:0
+@K x:105 y:90 vx:0 vy:-1 s:17 h:0
+@K x:501 y:239 vx:1 vy:0 s:7 h:0
+@K x:46 y:351 vx:0 vy:0 s:18 h:0
+@K x:491 y:148 vx:1 vy:-1 s:17 h:0
+@K x:32 y:298 vx:0 vy:0 s:16 h:0
+@K x:216 y:176 vx:0 vy:-1 s:21 h:0
+@K x:101 y:230 vx:0 vy:-1 s:19 h:0
+@K x:452 y:314 vx:1 vy:-1 s:16 h:0
+@K x:383 y:204 vx:0 vy:-1 s:25 h:0
+@K x:126 y:336 vx:0 vy:-1 s:9 h:0
+@K x:468 y:291 vx:0 vy:-1 s:25 h:0
+@K x:134 y:423 vx:0 vy:0 s:5 h:1
+@K x:329 y:262 vx:0 vy:-1 s:21 h:0
+@K x:200 y:261 vx:0 vy:-1 s:11 h:0
+@K x:503 y:287 vx:-1 vy:-1 s:25 h:0
+@K x:324 y:370 vx:0 vy:0 s:11 h:0
+@K x:440 y:273 vx:0 vy:-1 s:13 h:0
+@K x:135 y:212 vx:0 vy:-1 s:25 h:0
+@K x:347 y:326 vx:0 vy:-1 s:22 h:0
+@K x:230 y:318 vx:1 vy:-1 s:12 h:0
+@K x:319 y:342 vx:1 vy:-1 s:14 h:0
+@K x:125 y:385 vx:-1 vy:-1 s:14 h:0
+@K x:479 y:362 vx:1 vy:-1 s:25 h:0
+@K x:316 y:284 vx:1 vy:-1 s:25 h:0
+@K x:48 y:373 vx:0 vy:-1 s:7 h:1
+@K x:214 y:401 vx:0 vy:-1 s:18 h:0
+@K x:189 y:297 vx:1 vy:-1 s:25 h:0
+@K x:164 y:440 vx:0 vy:-1 s:20 h:0
+@K x:58 y:397 vx:0 vy:-1 s:25 h:0
+@K x:383 y:411 vx:0 vy:-1 s:20 h:0
+@K x:74 y:507 vx:0 vy:0 s:25 h:0
+@K x:322 y:463 vx:-1 vy:-1 s:25 h:0
+@K x:216 y:469 vx:1 vy:-1 s:12 h:0
+@K x:440 y:434 vx:1 vy:-1 s:20 h:0
+@K x:143 y:477 vx:1 vy:-1 s:20 h:0
+@K x:271 y:455 vx:-1 vy:-1 s:20 h:0
+@K x:407 y:443 vx:0 vy:-1 s:19 h:0
+@K x:370 y:428 vx:1 vy:-1 s:18 h:0
+@K x:13 y:436 vx:-1 vy:-1 s:15 h:0
+@K x:233 y:482 vx:-1 vy:-1 s:11 h:0
+@K x:286 y:516 vx:0 vy:1 s:10 h:0
+@K x:198 y:485 vx:0 vy:-1 s:9 h:0
+@K x:8 y:499 vx:0 vy:-1 s:7 h:0
+@K x:443 y:442 vx:1 vy:-1 s:1 h:1
+@K x:88 y:358 vx:-1 vy:-1 s:6 h:0
+@E x:-7 y:400 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:86 y:350 vx:1 vy:-1 s:10 i:0 h:1 t:1
+@E x:23 y:502 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:245 y:412 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:345 y:444 vx:-1 vy:-1 s:10 i:0 h:1 t:1
+@E x:178 y:481 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:275 y:485 vx:0 vy:-1 s:5 i:0 h:1 t:0
+@E x:19 y:480 vx:0 vy:-1 s:2 i:0 h:1 t:0
+@E x:246 y:441 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:268 y:479 vx:0 vy:0 s:5 i:0 h:1 t:0
+@E x:147 y:490 vx:-1 vy:-1 s:2 i:0 h:1 t:0
+@E x:15 y:481 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:29 y:481 vx:-1 vy:-1 s:4 i:0 h:1 t:0
+@E x:54 y:487 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:59 y:477 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:5 y:490 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:359 y:495 vx:0 vy:-1 s:10 i:5 h:0 t:0
+@E x:399 y:497 vx:0 vy:-1 s:10 i:5 h:0 t:0
+@E x:252 y:494 vx:0 vy:-1 s:10 i:6 h:0 t:0
+@E x:270 y:497 vx:0 vy:-1 s:10 i:6 h:0 t:0
+@E x:289 y:518 vx:0 vy:-1 s:3 i:17 h:1 t:0
+@E x:303 y:516 vx:0 vy:-1 s:6 i:16 h:1 t:1
+@E x:21 y:491 vx:1 vy:0 s:9 i:16 h:0 t:0
+@E x:40 y:488 vx:1 vy:0 s:9 i:16 h:0 t:0
+@E x:28 y:465 vx:0 vy:-1 s:9 i:16 h:0 t:0
+@E x:234 y:517 vx:1 vy:-1 s:9 i:16 h:0 t:0
+@E x:237 y:517 vx:-1 vy:-1 s:9 i:16 h:0 t:0
+@E x:261 y:493 vx:0 vy:0 s:8 i:17 h:0 t:0
+@E x:284 y:495 vx:0 vy:0 s:8 i:17 h:0 t:0
+@E x:269 y:469 vx:-1 vy:-1 s:6 i:18 h:1 t:0
+@G x:573 y:509
+V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R573 S509
+!END_SNAPSHOT
+
+ACT: 6
+AT: 3913132
+AX: 2 0 2
+AS: SimRunner
+AD: TurnEnd 2:0:2 Tutorial, SCORE: There is no score for the tutorial.
+ACT: 0
+AT: 3915418
+AX: 2 0 3
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 3926651
+AX: 2 0 3
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 3931307
+AX: 2 0 3
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 3931309
+AX: 2 0 3
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R573 S509
+BEFORE_SHAPE @S n:4 x:583 y:495 vx:0 vy:0 s:24 vs:3 c:0 d:0 p:1 l:1 st:49 sf:32 to:20
+CHANGED_VALUES !C
+V P1
+S
+AFTER_VALUES V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R573 S509
+AFTER_SHAPE @S n:4 x:583 y:495 vx:0 vy:0 s:24 vs:3 c:0 d:0 p:1 l:1 st:49 sf:32 to:20
+!START_SNAPSHOT
+@S n:4 x:583 y:495 vx:0 vy:0 s:24 vs:3 c:0 d:0 p:1 l:0 st:49 sf:32 to:20
+@S n:4 x:590 y:480 vx:0 vy:0 s:7 vs:3 c:0 d:0 p:1 l:0 st:38 sf:31 to:19
+@S n:4 x:534 y:481 vx:0 vy:0 s:19 vs:3 c:0 d:0 p:1 l:0 t:2 st:75 sf:30 to:33
+@S n:3 x:448 y:516 vx:0 vy:0 s:69 vs:4 c:0 d:0 p:1 l:0 st:130 to:10
+@S n:3 x:511 y:514 vx:0 vy:0 s:55 vs:4 c:0 d:0 p:1 l:0 st:131 to:10
+@S n:4 x:553 y:471 vx:0 vy:0 s:23 vs:3 c:0 d:0 p:1 l:0 st:68 sf:30 to:30
+@S n:4 x:572 y:478 vx:0 vy:0 s:15 vs:3 c:0 d:0 p:1 l:0 st:68 sf:30 to:30
+@S n:3 x:560 y:536 vx:0 vy:0 s:49 vs:4 c:0 d:0 p:1 l:0 st:125 to:9
+@S n:3 x:608 y:531 vx:0 vy:0 s:46 vs:4 c:0 d:0 p:1 l:0 st:122 to:9
+@R x:512 y:481 r:2.9 d:Bottom
+@R x:277 y:354 r:2.2 d:Bottom
+@R x:341 y:367 r:2.4 d:Bottom
+@R x:69 y:429 r:2.9 d:Bottom
+@R x:330 y:228 r:2.1 d:Bottom
+@R x:85 y:278 r:2.6 d:Bottom
+@R x:494 y:270 r:2.6 d:Bottom
+@R x:480 y:313 r:3.2 d:Bottom
+@R x:223 y:314 r:3.7 d:Bottom
+@R x:259 y:160 r:2.5 d:Bottom
+@R x:515 y:170 r:3.4 d:Bottom
+@R x:317 y:94 r:2.3 d:Bottom
+@R x:294 y:81 r:2.1 d:Bottom
+@R x:490 y:32 r:2.3 d:Bottom
+@K x:357 y:352 vx:-1 vy:1 s:14 h:0
+@K x:529 y:161 vx:0 vy:1 s:9 h:0
+@K x:367 y:109 vx:0 vy:0 s:9 h:1
+@K x:563 y:202 vx:0 vy:1 s:13 h:0
+@K x:319 y:47 vx:1 vy:1 s:7 h:0
+@K x:286 y:59 vx:-1 vy:1 s:12 h:0
+@K x:157 y:451 vx:0 vy:0 s:8 h:0
+@K x:208 y:123 vx:0 vy:-1 s:14 h:0
+@K x:173 y:194 vx:0 vy:-1 s:15 h:0
+@K x:483 y:87 vx:0 vy:-1 s:8 h:0
+@K x:68 y:161 vx:1 vy:1 s:11 h:0
+@K x:183 y:171 vx:1 vy:1 s:16 h:0
+@K x:295 y:11 vx:1 vy:-1 s:16 h:0
+@K x:486 y:62 vx:0 vy:-1 s:25 h:0
+@K x:488 y:30 vx:0 vy:-1 s:14 h:0
+@K x:393 y:217 vx:-1 vy:-1 s:10 h:0
+@K x:120 y:52 vx:0 vy:-1 s:15 h:0
+@K x:230 y:130 vx:0 vy:-1 s:7 h:0
+@K x:378 y:112 vx:-1 vy:-1 s:15 h:0
+@K x:562 y:236 vx:0 vy:-1 s:21 h:0
+@K x:365 y:225 vx:0 vy:-1 s:20 h:0
+@K x:536 y:321 vx:0 vy:-1 s:15 h:0
+@K x:231 y:314 vx:-1 vy:-1 s:25 h:0
+@K x:274 y:208 vx:0 vy:-1 s:13 h:0
+@K x:552 y:230 vx:1 vy:-1 s:13 h:1
+@K x:120 y:417 vx:1 vy:0 s:13 h:0
+@K x:534 y:359 vx:1 vy:-1 s:25 h:0
+@K x:64 y:219 vx:1 vy:-1 s:17 h:0
+@K x:60 y:246 vx:-1 vy:-1 s:8 h:0
+@K x:411 y:348 vx:0 vy:-1 s:15 h:0
+@K x:504 y:347 vx:1 vy:-1 s:25 h:0
+@K x:470 y:399 vx:1 vy:-1 s:15 h:0
+@K x:198 y:234 vx:0 vy:-1 s:25 h:0
+@K x:270 y:377 vx:0 vy:-1 s:25 h:0
+@K x:276 y:501 vx:0 vy:0 s:25 h:0
+@K x:106 y:440 vx:1 vy:0 s:25 h:0
+@K x:278 y:255 vx:0 vy:-1 s:25 h:0
+@E x:-3 y:177 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:578 y:352 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:183 y:460 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:73 y:343 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:90 y:351 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:383 y:512 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:428 y:434 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:81 y:380 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:59 y:481 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:407 y:374 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:51 y:494 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:118 y:377 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:129 y:331 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:128 y:445 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:238 y:445 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@G x:573 y:509
+V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R573 S509
+!END_SNAPSHOT
+
+ACT: 6
+AT: 3941075
+AX: 2 0 3
+AS: SimRunner
+AD: TurnEnd 2:0:3 Tutorial, SCORE: There is no score for the tutorial.
+ACT: 0
+AT: 3959884
+AX: 2 0 4
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 3970964
+AX: 2 0 4
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 3973276
+AX: 2 0 4
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 3973277
+AX: 2 0 4
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q0 R573 S509
+BEFORE_SHAPE @S n:4 x:584 y:501 vx:0 vy:0 s:30 vs:3 c:0 d:0 p:1 l:1 st:49 sf:32 to:20
+CHANGED_VALUES !C
+V Q1
+S B30.953333333332978
+AFTER_VALUES V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q1 R573 S509
+AFTER_SHAPE @S n:4 x:584 y:501 vx:0 vy:0 s:30 vs:3 c:0 d:0 p:1 l:1 st:49 sf:32 to:20
+!START_SNAPSHOT
+@S n:4 x:584 y:501 vx:0 vy:0 s:30 vs:3 c:0 d:0 p:1 l:0 st:49 sf:32 to:20
+@S n:4 x:592 y:480 vx:0 vy:0 s:13 vs:3 c:0 d:0 p:1 l:0 st:38 sf:31 to:19
+@S n:4 x:529 y:484 vx:0 vy:0 s:25 vs:3 c:0 d:0 p:1 l:0 t:2 st:75 sf:30 to:33
+@S n:3 x:446 y:515 vx:0 vy:0 s:39 vs:4 c:0 d:0 p:1 l:0 t:2 st:130 to:10
+@S n:3 x:497 y:517 vx:0 vy:0 s:62 vs:4 c:0 d:0 p:1 l:0 st:131 to:10
+@S n:4 x:557 y:486 vx:0 vy:0 s:29 vs:3 c:0 d:0 p:1 l:0 st:68 sf:30 to:30
+@S n:3 x:554 y:536 vx:0 vy:0 s:55 vs:4 c:0 d:0 p:1 l:0 st:125 to:9
+@S n:3 x:609 y:535 vx:0 vy:0 s:52 vs:4 c:0 d:0 p:1 l:0 st:122 to:9
+@R x:454 y:494 r:2.2 d:Bottom
+@R x:583 y:472 r:2.7 d:Bottom
+@R x:567 y:381 r:2.4 d:Bottom
+@R x:11 y:314 r:2.0 d:Bottom
+@R x:533 y:377 r:2.6 d:Bottom
+@R x:571 y:462 r:3.7 d:Bottom
+@R x:320 y:267 r:2.5 d:Bottom
+@R x:231 y:391 r:3.8 d:Bottom
+@R x:551 y:225 r:2.3 d:Bottom
+@R x:105 y:153 r:2.1 d:Bottom
+@R x:37 y:132 r:2.0 d:Bottom
+@R x:223 y:114 r:2.3 d:Bottom
+@R x:266 y:105 r:2.2 d:Bottom
+@R x:304 y:132 r:3.0 d:Bottom
+@R x:468 y:84 r:2.0 d:Bottom
+@R x:49 y:136 r:3.7 d:Bottom
+@R x:452 y:88 r:2.6 d:Bottom
+@R x:443 y:66 r:2.0 d:Bottom
+@R x:167 y:37 r:3.1 d:Bottom
+@R x:84 y:18 r:3.0 d:Bottom
+@K x:240 y:396 vx:0 vy:0 s:8 h:0
+@K x:210 y:405 vx:0 vy:1 s:17 h:0
+@K x:303 y:165 vx:0 vy:1 s:8 h:0
+@K x:121 y:63 vx:1 vy:1 s:25 h:0
+@K x:528 y:235 vx:-1 vy:0 s:9 h:0
+@K x:313 y:11 vx:-1 vy:-1 s:9 h:0
+@K x:222 y:353 vx:0 vy:1 s:12 h:0
+@K x:222 y:32 vx:0 vy:-1 s:20 h:0
+@K x:451 y:425 vx:0 vy:0 s:21 h:0
+@K x:549 y:161 vx:1 vy:0 s:25 h:0
+@K x:12 y:344 vx:0 vy:1 s:20 h:0
+@K x:382 y:17 vx:-1 vy:1 s:16 h:0
+@K x:518 y:288 vx:1 vy:0 s:25 h:0
+@K x:87 y:62 vx:0 vy:0 s:25 h:0
+@K x:343 y:182 vx:1 vy:-1 s:20 h:0
+@K x:164 y:184 vx:0 vy:-1 s:17 h:0
+@K x:427 y:70 vx:1 vy:-1 s:18 h:0
+@K x:97 y:346 vx:0 vy:0 s:25 h:0
+@K x:132 y:355 vx:0 vy:0 s:15 h:0
+@E x:0 y:55 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:197 y:45 vx:0 vy:1 s:10 i:0 h:0 t:0
+@E x:461 y:311 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:340 y:264 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:116 y:416 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:317 y:362 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:265 y:455 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:125 y:460 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:182 y:472 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:387 y:408 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:422 y:489 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:280 y:479 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:311 y:506 vx:0 vy:1 s:10 i:0 h:0 t:0
+@E x:323 y:496 vx:0 vy:1 s:10 i:0 h:0 t:0
+@E x:324 y:450 vx:0 vy:0 s:10 i:0 h:0 t:0
+@G x:573 y:509
+V A1.0 B0 C0.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P1 Q1 R573 S509
+!END_SNAPSHOT
+
+ACT: 6
+AT: 3982994
+AX: 2 0 4
+AS: SimRunner
+AD: TurnEnd 2:0:4 Tutorial, SCORE: There is no score for the tutorial.
+ACT: 0
+AT: 3986324
+AX: 2 0 5
+AS: NextTaskWindow
+AD: OK
+ACT: 5
+AT: 3986326
+AX: 3 0 0
+AS: SimRunner
+AD: Started Four Shapes
+ACT: 4
+AT: 4029734
+AX: 3 0 0
+AS: StartRealGameWindow
+AD: Observe
+ACT: 4
+AT: 4048934
+AX: 3 0 0
+AS: StartRealGameWindow
+AD: Observe
+ACT: 4
+AT: 4049311
+AX: 3 0 0
+AS: StartRealGameWindow
+AD: Experiment
+ACT: 0
+AT: 4076215
+AX: 3 0 0
+AS: StartRealGameWindow
+AD: OK
+ACT: 0
+AT: 4086439
+AX: 3 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 4089920
+AX: 3 0 0
+AS: MainPanelLeft
+AD: Observe
+ACT: 0
+AT: 4092351
+AX: 3 0 0
+AS: ObservePanelBottom
+AD: Play All
+ACT: 0
+AT: 4119746
+AX: 3 0 0
+AS: ObservePanelBottom
+AD: Main Screen
+ACT: 0
+AT: 4121912
+AX: 3 0 0
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 4135584
+AX: 3 0 0
+AS: OKWindow
+AD: OK
+ACT: 0
+AT: 4142616
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Create New
+ACT: 0
+AT: 4155217
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4155218
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V P1
+S
+
+ACT: 0
+AT: 4176777
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4187547
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4187547
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V P1 Q1
+S
+
+ACT: 0
+AT: 4201314
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4205530
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4205531
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 P1 Q1
+S
+
+ACT: 0
+AT: 4217138
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4223843
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4223843
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 P1
+S
+
+ACT: 0
+AT: 4238988
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4241635
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4241636
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S
+
+ACT: 0
+AT: 4257427
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4271604
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4271605
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S C1.8 Dtrue
+
+ACT: 0
+AT: 4283965
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4286428
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4286429
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S C1.0 Dtrue
+
+ACT: 0
+AT: 4301941
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4318054
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4318054
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S C1.0 Dfalse
+
+ACT: 0
+AT: 4331702
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4344710
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4344711
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S C1.6 Dtrue
+
+ACT: 0
+AT: 4364182
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4420432
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4420433
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S Dtrue
+
+ACT: 0
+AT: 4445280
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4457153
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4457153
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S C1.0 Dtrue
+
+ACT: 0
+AT: 4474481
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4486442
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4486442
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S C1.0 Dfalse
+
+ACT: 0
+AT: 4502362
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4505538
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4505539
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A4 B45.0 C1.7 E0xa6c06fff
+
+ACT: 0
+AT: 4517482
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4537716
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4537716
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A4 C1.7 Dfalse
+
+ACT: 0
+AT: 4550780
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4558484
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4558485
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S C1.6 Dtrue
+
+ACT: 0
+AT: 4571965
+AX: 3 0 0
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 4578301
+AX: 3 0 0
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 4659744
+AX: 3 0 0
+AS: VariableWindow
+AD: Cancel
+ACT: 0
+AT: 4660155
+AX: 3 0 0
+AS: ChangePanelBottom
+AD: Submit
+ACT: 0
+AT: 4660878
+AX: 3 0 0
+AS: ChangePanelBottom
+AD: Cancel
+ACT: 0
+AT: 4662495
+AX: 3 0 0
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 4665022
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4669319
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4669319
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R550 S487
+S A5 B35.0 C1.6 Dtrue E0xb9c936ff
+
+ACT: 0
+AT: 4688887
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4692951
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4692952
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R62 S498
+S A5 B35.0 C1.6 Dtrue E0xb9c936ff
+
+ACT: 0
+AT: 4705496
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4708393
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4708393
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R54 S60
+S A5 B35.0 C1.6 Dtrue E0xb9c936ff
+
+ACT: 0
+AT: 4720672
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4724233
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4724233
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R289 S51
+S A5 B35.0 C1.6 Dtrue E0xb9c936ff
+
+ACT: 0
+AT: 4736296
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4740377
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4740377
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R569 S42
+S A5 B35.0 C1.6 Dtrue E0xb9c936ff
+
+ACT: 0
+AT: 4754749
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4760185
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4760186
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R394 S267
+S A5 B35.0 C1.6 Dtrue E0xb9c936ff
+
+ACT: 0
+AT: 4771961
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4774937
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4774938
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R68 S273
+S A5 B35.0 C1.6 Dtrue E0xb9c936ff
+
+ACT: 0
+AT: 4787747
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4795153
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4795154
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R189 S447
+S A5 B35.0 C1.6 Dtrue E0xb9c936ff
+
+ACT: 0
+AT: 4809291
+AX: 3 0 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 4816250
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 4816251
+AX: 3 0 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R151 S379
+S A5 B35.0 C1.6 Dtrue E0xb9c936ff
+
+ACT: 0
+AT: 4830139
+AX: 3 0 0
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 4831867
+AX: 3 0 0
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 4834627
+AX: 3 0 0
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 4835515
+AX: 3 0 0
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 5003151
+AX: 3 0 0
+AS: VariableWindow
+AD: Submit
+ACT: 3
+AT: 5003151
+AX: 3 0 0
+AS: VariableWindow
+AD: Paradigm: 10
+Gravity Direction: 9
+Gravity Well Location: 8
+Rain Rate: 8
+Growth: 7
+Shape Spin Direction: 5
+Shape Spin Speed: 5
+Shape Type: 3
+Shape Color: 0
+Rationale:
+With a cooperative paradigm less shapes are destroyed. 
+ACT: 0
+AT: 5003565
+AX: 3 0 0
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 5003566
+AX: 3 0 0
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.5 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R295 S262
+BEFORE_SHAPE @S n:3 x:390 y:365 vx:0 vy:0 s:25 vs:4 c:0 d:0 p:1 l:1
+CHANGED_VALUES !C
+V C1.0 N1 P1
+S C1.4 Dfalse
+AFTER_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+AFTER_SHAPE @S n:3 x:390 y:365 vx:0 vy:0 s:25 vs:1 c:0 d:0 p:0 l:1
+!START_SNAPSHOT
+@S n:6 x:190 y:165 vx:0 vy:0 s:55 vs:2 c:0 d:0 p:0 l:0
+@S n:4 x:390 y:165 vx:0 vy:0 s:45 vs:3 c:0 d:0 p:1 l:0
+@S n:5 x:190 y:365 vx:0 vy:0 s:35 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:390 y:365 vx:0 vy:0 s:25 vs:1 c:0 d:0 p:0 l:0
+@G x:295 y:262
+V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+!END_SNAPSHOT
+
+ACT: 6
+AT: 5013418
+AX: 3 0 0
+AS: SimRunner
+AD: TurnEnd 3:0:0 Four Shapes, SCORE: You finished with 18 shapes.
+ACT: 0
+AT: 5029880
+AX: 3 0 1
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 5034123
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5042176
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5042177
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R151 S379
+S A5 B35.0 C1.6 Dtrue E0x1a0068ff
+
+ACT: 0
+AT: 5053970
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5082825
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5082826
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R151 S379
+S E0x001a80ff
+
+ACT: 0
+AT: 5118373
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5126138
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5126139
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R151 S379
+S A5
+
+ACT: 0
+AT: 5142086
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5146707
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5146708
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R151 S379
+S A5
+
+ACT: 0
+AT: 5159028
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5180133
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5180133
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 Q1 R151 S379
+S A5 B25.0 C4.0 Dtrue E0xbe754fff
+
+ACT: 0
+AT: 5194924
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5204485
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5204485
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 Q1 R151 S379
+S A5 B25.0 C4.0 Dtrue E0xbe754fff
+
+ACT: 0
+AT: 5219558
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5227711
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5227711
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 Q1 R316 S90
+S A5 B25.0 C4.0 Dtrue E0xbe754fff
+
+ACT: 0
+AT: 5237053
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5241447
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5241448
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 R316 S90
+S A5 B25.0 C4.0 Dtrue E0xbe754fff
+
+ACT: 0
+AT: 5253870
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5258207
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5258207
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 R308 S330
+S A5 B25.0 C4.0 Dtrue E0xbe754fff
+
+ACT: 0
+AT: 5269561
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5275582
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5275583
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C0.487 N1 R308 S330
+S A5 B25.0 C4.0 Dtrue E0xbe754fff
+
+ACT: 0
+AT: 5288111
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5294464
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5294465
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 R308 S330
+S A5 B25.0 C4.0 Dtrue E0xbe754fff
+
+ACT: 0
+AT: 5306599
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5320744
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5320745
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 R308 S330
+S A5
+
+ACT: 0
+AT: 5333648
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5340232
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5340233
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P2 R308 S330
+S A5 B45.0 C3.0 Dtrue E0xa6c06fff
+
+ACT: 0
+AT: 5351434
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5358457
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5358458
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R308 S330
+S A5 B45.0 C3.0 E0xa6c06fff
+
+ACT: 0
+AT: 5368298
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5403386
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5403387
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R308 S330
+S Dtrue
+
+ACT: 0
+AT: 5414946
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5427218
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5427219
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R308 S330
+S Dtrue
+
+ACT: 0
+AT: 5438835
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5442523
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Cancel
+ACT: 0
+AT: 5444059
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Create New
+ACT: 0
+AT: 5457499
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5457500
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V
+S Dtrue
+
+ACT: 0
+AT: 5469220
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5476196
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5476196
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V N1
+S Dtrue
+
+ACT: 0
+AT: 5488485
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5493261
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5493261
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1
+S Dtrue
+
+ACT: 0
+AT: 5506221
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5509189
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5509190
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S Dtrue
+
+ACT: 0
+AT: 5522413
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5532134
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5532134
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S Dfalse
+
+ACT: 0
+AT: 5544046
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5549127
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5549128
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A4 B25.0 C4.0 E0xbe754fff
+
+ACT: 0
+AT: 5559999
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5568255
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5568256
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A5 B25.0 C4.0 E0xbe754fff
+
+ACT: 0
+AT: 5582552
+AX: 3 0 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5587816
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5587817
+AX: 3 0 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A5 B25.0 C4.0 E0x4d8080ff
+
+ACT: 0
+AT: 5600512
+AX: 3 0 1
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 5603823
+AX: 3 0 1
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 5637809
+AX: 3 0 1
+AS: VariableWindow
+AD: Cancel
+ACT: 0
+AT: 5638231
+AX: 3 0 1
+AS: ChangePanelBottom
+AD: Submit
+ACT: 0
+AT: 5674875
+AX: 3 0 1
+AS: VariableWindow
+AD: Submit
+ACT: 3
+AT: 5674875
+AX: 3 0 1
+AS: VariableWindow
+AD: Paradigm: 10
+Gravity Direction: 9
+Growth: 8
+Gravity Well Location: 8
+Rain Rate: 8
+Shape Spin Direction: 6
+Shape Spin Speed: 5
+Shape Type: 3
+Shape Color: 0
+Rationale:
+
+ACT: 0
+AT: 5675294
+AX: 3 0 1
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 5675299
+AX: 3 0 1
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+BEFORE_SHAPE @S n:6 x:105 y:44 vx:0 vy:0 s:48 vs:2 c:0 d:0 p:0 l:1
+CHANGED_VALUES !C
+V
+S C1.0 Dtrue
+AFTER_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+AFTER_SHAPE @S n:6 x:105 y:44 vx:0 vy:0 s:48 vs:1 c:0 d:0 p:1 l:1
+!START_SNAPSHOT
+@S n:5 x:0 y:501 vx:0 vy:0 s:72 vs:1 c:0 d:0 p:0 l:0 t:1
+@S n:3 x:425 y:514 vx:0 vy:0 s:35 vs:1 c:0 d:0 p:0 l:0 t:2
+@S n:3 x:474 y:506 vx:0 vy:0 s:65 vs:1 c:0 d:1 p:0 l:0
+@S n:3 x:530 y:505 vx:0 vy:0 s:65 vs:1 c:0 d:1 p:0 l:0
+@S n:3 x:598 y:507 vx:0 vy:0 s:65 vs:1 c:0 d:1 p:0 l:0
+@S n:6 x:-33 y:20 vx:0 vy:0 s:48 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:8 y:44 vx:0 vy:0 s:48 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:56 y:43 vx:0 vy:0 s:48 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:105 y:44 vx:0 vy:0 s:48 vs:1 c:0 d:0 p:1 l:0
+@S n:4 x:455 y:16 vx:0 vy:0 s:42 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:497 y:16 vx:0 vy:0 s:42 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:537 y:28 vx:0 vy:0 s:42 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:578 y:17 vx:0 vy:0 s:42 vs:3 c:0 d:0 p:1 l:0
+@S n:5 x:56 y:495 vx:0 vy:0 s:39 vs:1 c:0 d:0 p:0 l:0
+@S n:5 x:96 y:496 vx:0 vy:0 s:39 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:596 y:507 vx:0 vy:0 s:25 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:600 y:507 vx:0 vy:0 s:25 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:528 y:505 vx:0 vy:0 s:25 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:532 y:505 vx:0 vy:0 s:25 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:469 y:505 vx:0 vy:0 s:25 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:473 y:505 vx:0 vy:0 s:25 vs:1 c:0 d:0 p:0 l:0
+@R x:212 y:523 r:2.2 d:Bottom
+@R x:315 y:487 r:2.1 d:Bottom
+@R x:498 y:464 r:2.1 d:Bottom
+@R x:218 y:481 r:2.2 d:Bottom
+@R x:353 y:499 r:2.3 d:Bottom
+@R x:364 y:464 r:2.2 d:Bottom
+@R x:312 y:442 r:2.2 d:Bottom
+@R x:437 y:457 r:2.3 d:Bottom
+@R x:347 y:424 r:2.2 d:Bottom
+@R x:579 y:448 r:2.4 d:Bottom
+@R x:19 y:457 r:2.5 d:Bottom
+@R x:383 y:393 r:2.2 d:Bottom
+@R x:330 y:439 r:2.6 d:Bottom
+@R x:548 y:360 r:2.2 d:Bottom
+@R x:372 y:333 r:2.1 d:Bottom
+@R x:381 y:331 r:2.1 d:Bottom
+@R x:262 y:345 r:2.2 d:Bottom
+@R x:582 y:462 r:3.0 d:Bottom
+@R x:145 y:432 r:2.9 d:Bottom
+@R x:333 y:292 r:2.0 d:Bottom
+@R x:288 y:347 r:2.4 d:Bottom
+@R x:355 y:429 r:3.0 d:Bottom
+@R x:269 y:355 r:2.5 d:Bottom
+@R x:333 y:521 r:3.7 d:Bottom
+@R x:280 y:307 r:2.2 d:Bottom
+@R x:163 y:458 r:3.3 d:Bottom
+@R x:574 y:383 r:2.8 d:Bottom
+@R x:210 y:351 r:2.6 d:Bottom
+@R x:381 y:361 r:2.7 d:Bottom
+@R x:236 y:393 r:3.0 d:Bottom
+@R x:347 y:285 r:2.2 d:Bottom
+@R x:359 y:309 r:2.4 d:Bottom
+@R x:213 y:315 r:2.5 d:Bottom
+@R x:237 y:258 r:2.1 d:Bottom
+@R x:309 y:341 r:2.8 d:Bottom
+@R x:360 y:261 r:2.2 d:Bottom
+@R x:265 y:444 r:3.9 d:Bottom
+@R x:282 y:259 r:2.3 d:Bottom
+@R x:428 y:291 r:2.6 d:Bottom
+@R x:420 y:351 r:3.2 d:Bottom
+@R x:175 y:378 r:3.5 d:Bottom
+@R x:414 y:388 r:3.7 d:Bottom
+@R x:208 y:350 r:3.4 d:Bottom
+@R x:260 y:316 r:3.1 d:Bottom
+@R x:367 y:306 r:3.1 d:Bottom
+@R x:417 y:320 r:3.3 d:Bottom
+@R x:264 y:313 r:3.3 d:Bottom
+@R x:423 y:193 r:2.1 d:Bottom
+@R x:136 y:345 r:3.8 d:Bottom
+@R x:517 y:270 r:3.0 d:Bottom
+@R x:515 y:338 r:3.8 d:Bottom
+@R x:176 y:325 r:3.7 d:Bottom
+@R x:254 y:331 r:3.9 d:Bottom
+@R x:202 y:277 r:3.3 d:Bottom
+@R x:363 y:240 r:2.9 d:Bottom
+@R x:152 y:287 r:3.5 d:Bottom
+@R x:325 y:175 r:2.2 d:Bottom
+@R x:391 y:269 r:3.5 d:Bottom
+@R x:157 y:281 r:3.7 d:Bottom
+@R x:270 y:219 r:3.0 d:Bottom
+@R x:351 y:252 r:3.5 d:Bottom
+@R x:422 y:177 r:2.5 d:Bottom
+@R x:241 y:151 r:2.2 d:Bottom
+@R x:247 y:170 r:2.5 d:Bottom
+@R x:517 y:207 r:3.2 d:Bottom
+@R x:140 y:129 r:2.2 d:Bottom
+@R x:146 y:203 r:3.5 d:Bottom
+@R x:417 y:222 r:3.9 d:Bottom
+@R x:338 y:111 r:2.1 d:Bottom
+@R x:224 y:171 r:3.5 d:Bottom
+@R x:176 y:165 r:3.6 d:Bottom
+@R x:184 y:125 r:2.8 d:Bottom
+@R x:272 y:135 r:3.3 d:Bottom
+@R x:412 y:88 r:2.2 d:Bottom
+@R x:315 y:99 r:2.7 d:Bottom
+@R x:186 y:97 r:2.7 d:Bottom
+@R x:360 y:97 r:2.8 d:Bottom
+@R x:228 y:108 r:3.3 d:Bottom
+@R x:307 y:86 r:2.7 d:Bottom
+@R x:427 y:120 r:3.9 d:Bottom
+@R x:420 y:98 r:3.3 d:Bottom
+@R x:138 y:95 r:3.3 d:Bottom
+@R x:430 y:95 r:3.4 d:Bottom
+@R x:424 y:62 r:2.4 d:Bottom
+@R x:399 y:85 r:3.4 d:Bottom
+@R x:354 y:86 r:3.6 d:Bottom
+@R x:277 y:50 r:2.3 d:Bottom
+@R x:313 y:75 r:3.6 d:Bottom
+@R x:430 y:64 r:3.8 d:Bottom
+@R x:207 y:46 r:2.9 d:Bottom
+@R x:239 y:36 r:2.6 d:Bottom
+@R x:296 y:32 r:2.5 d:Bottom
+@R x:235 y:31 r:2.9 d:Bottom
+@R x:173 y:38 r:3.9 d:Bottom
+@R x:292 y:33 r:3.7 d:Bottom
+@R x:271 y:25 r:3.6 d:Bottom
+@R x:414 y:12 r:2.0 d:Bottom
+@R x:388 y:17 r:3.5 d:Bottom
+@R x:115 y:14 r:3.6 d:Bottom
+@R x:236 y:10 r:3.5 d:Bottom
+@R x:171 y:6 r:3.2 d:Bottom
+@R x:270 y:2 r:2.2 d:Bottom
+@R x:382 y:0 r:2.6 d:Bottom
+@K x:411 y:306 vx:0 vy:-1 s:16 h:0
+@K x:71 y:288 vx:-1 vy:-1 s:25 h:0
+@K x:550 y:354 vx:0 vy:-1 s:21 h:0
+@K x:385 y:347 vx:1 vy:-1 s:25 h:0
+@K x:97 y:410 vx:-1 vy:-1 s:25 h:0
+@K x:338 y:372 vx:1 vy:-1 s:25 h:0
+@K x:76 y:346 vx:-1 vy:-1 s:25 h:0
+@K x:212 y:315 vx:1 vy:-1 s:25 h:0
+@K x:355 y:496 vx:0 vy:0 s:25 h:0
+@K x:285 y:331 vx:0 vy:-1 s:25 h:0
+@K x:370 y:400 vx:1 vy:-1 s:10 h:0
+@K x:370 y:424 vx:0 vy:-1 s:3 h:1
+@K x:256 y:479 vx:0 vy:-1 s:22 h:0
+@K x:124 y:450 vx:-1 vy:-1 s:22 h:0
+@K x:221 y:486 vx:1 vy:-1 s:12 h:0
+@K x:158 y:489 vx:-1 vy:-1 s:11 h:0
+@K x:170 y:480 vx:0 vy:-1 s:8 h:0
+@K x:312 y:495 vx:0 vy:-1 s:6 h:0
+@E x:242 y:321 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:33 y:379 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:337 y:460 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:207 y:441 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:154 y:470 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:109 y:470 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:284 y:458 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:185 y:479 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:370 y:488 vx:-1 vy:-1 s:10 i:0 h:1 t:0
+@E x:228 y:499 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:254 y:507 vx:-1 vy:0 s:10 i:3 h:1 t:1
+@E x:271 y:486 vx:0 vy:0 s:10 i:3 h:0 t:0
+@E x:406 y:508 vx:0 vy:-1 s:8 i:11 h:1 t:0
+@G x:295 y:262
+V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+!END_SNAPSHOT
+
+ACT: 6
+AT: 5685182
+AX: 3 0 1
+AS: SimRunner
+AD: TurnEnd 3:0:1 Four Shapes, SCORE: You finished with 34 shapes.
+ACT: 0
+AT: 5715539
+AX: 3 0 2
+AS: MainPanelLeft
+AD: Observe
+ACT: 0
+AT: 5717883
+AX: 3 0 2
+AS: ObservePanelBottom
+AD: Main Screen
+ACT: 0
+AT: 5724430
+AX: 3 0 2
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 5727610
+AX: 3 0 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5740683
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5740683
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S Dtrue
+
+ACT: 0
+AT: 5752756
+AX: 3 0 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5756387
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5756388
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S Dtrue E0x990000ff
+
+ACT: 0
+AT: 5767555
+AX: 3 0 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5770445
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5770445
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A3 Dtrue E0x990000ff
+
+ACT: 0
+AT: 5782149
+AX: 3 0 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5785548
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5785548
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A4 Dtrue E0x990000ff
+
+ACT: 0
+AT: 5797901
+AX: 3 0 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5804524
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5804525
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A5 Dtrue E0x990000ff
+
+ACT: 0
+AT: 5816197
+AX: 3 0 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5822277
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5822278
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A5 Dtrue E0x993300ff
+
+ACT: 0
+AT: 5833742
+AX: 3 0 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5837070
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5837070
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A5 Dtrue E0xe6b34dff
+
+ACT: 0
+AT: 5848639
+AX: 3 0 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 5852838
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 5852839
+AX: 3 0 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S A5 Dtrue E0x99cc99ff
+
+ACT: 0
+AT: 5866782
+AX: 3 0 2
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 5870463
+AX: 3 0 2
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 5919473
+AX: 3 0 2
+AS: VariableWindow
+AD: Submit
+ACT: 3
+AT: 5919473
+AX: 3 0 2
+AS: VariableWindow
+AD: Paradigm: 10
+Gravity Direction: 9
+Growth: 8
+Gravity Well Location: 8
+Rain Rate: 8
+Shape Spin Direction: 6
+Shape Color: 5
+Shape Spin Speed: 5
+Shape Type: 3
+Rationale:
+
+ACT: 0
+AT: 5919883
+AX: 3 0 2
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 5919888
+AX: 3 0 2
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+BEFORE_SHAPE @S n:5 x:47 y:500 vx:0 vy:0 s:60 vs:1 c:0 d:0 p:0 l:1
+CHANGED_VALUES !C
+V
+S B60.80000000000002 E0x4d3399ff
+AFTER_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+AFTER_SHAPE @S n:5 x:47 y:500 vx:0 vy:0 s:60 vs:1 c:0 d:0 p:0 l:1
+!START_SNAPSHOT
+@S n:3 x:255 y:516 vx:0 vy:0 s:20 vs:1 c:0 d:0 p:0 l:0 t:9
+@S n:5 x:47 y:500 vx:0 vy:0 s:60 vs:1 c:0 d:0 p:0 l:0
+@S n:5 x:98 y:506 vx:0 vy:0 s:43 vs:1 c:0 d:0 p:0 l:0 t:1
+@S n:3 x:592 y:507 vx:0 vy:0 s:67 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:645 y:511 vx:0 vy:0 s:39 vs:1 c:0 d:0 p:0 l:0
+@S n:4 x:513 y:11 vx:0 vy:0 s:37 vs:3 c:0 d:0 p:1 l:0 t:2
+@S n:4 x:553 y:16 vx:0 vy:0 s:71 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:474 y:13 vx:0 vy:0 s:61 vs:3 c:0 d:0 p:1 l:0 t:1
+@S n:6 x:56 y:14 vx:0 vy:0 s:38 vs:1 c:0 d:0 p:1 l:0 t:1
+@S n:6 x:102 y:16 vx:0 vy:0 s:53 vs:1 c:0 d:0 p:1 l:0
+@S n:6 x:-33 y:16 vx:0 vy:0 s:49 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:14 y:30 vx:0 vy:0 s:49 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:-126 y:16 vx:0 vy:0 s:46 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:-80 y:32 vx:0 vy:0 s:49 vs:2 c:0 d:0 p:0 l:0
+@S n:4 x:595 y:17 vx:0 vy:0 s:58 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:648 y:13 vx:0 vy:0 s:49 vs:3 c:0 d:0 p:1 l:0
+@S n:3 x:379 y:511 vx:0 vy:0 s:48 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:421 y:511 vx:0 vy:0 s:48 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:290 y:511 vx:0 vy:0 s:48 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:333 y:511 vx:0 vy:0 s:48 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:520 y:511 vx:0 vy:0 s:29 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:548 y:511 vx:0 vy:0 s:29 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:455 y:510 vx:0 vy:0 s:48 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:488 y:510 vx:0 vy:0 s:45 vs:1 c:0 d:0 p:0 l:0
+@S n:6 x:-207 y:13 vx:0 vy:0 s:35 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:-170 y:16 vx:0 vy:0 s:38 vs:2 c:0 d:0 p:0 l:0
+@S n:5 x:-38 y:512 vx:0 vy:0 s:36 vs:1 c:0 d:0 p:0 l:0
+@S n:5 x:-1 y:505 vx:0 vy:0 s:36 vs:1 c:0 d:0 p:0 l:0
+@S n:4 x:401 y:14 vx:0 vy:0 s:31 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:432 y:14 vx:0 vy:0 s:31 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:341 y:13 vx:0 vy:0 s:29 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:370 y:13 vx:0 vy:0 s:30 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:274 y:13 vx:0 vy:0 s:26 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:292 y:13 vx:0 vy:0 s:26 vs:3 c:0 d:0 p:1 l:0
+@R x:181 y:422 r:2.1 d:Bottom
+@R x:253 y:417 r:2.1 d:Bottom
+@R x:354 y:382 r:2.0 d:Bottom
+@R x:307 y:441 r:2.4 d:Bottom
+@R x:311 y:437 r:2.5 d:Bottom
+@R x:279 y:363 r:2.1 d:Bottom
+@R x:320 y:351 r:2.2 d:Bottom
+@R x:132 y:304 r:2.0 d:Bottom
+@R x:351 y:377 r:2.5 d:Bottom
+@R x:175 y:470 r:3.2 d:Bottom
+@R x:181 y:429 r:3.0 d:Bottom
+@R x:290 y:454 r:3.2 d:Bottom
+@R x:185 y:451 r:3.2 d:Bottom
+@R x:270 y:322 r:2.3 d:Bottom
+@R x:249 y:421 r:3.1 d:Bottom
+@R x:340 y:425 r:3.2 d:Bottom
+@R x:213 y:469 r:3.7 d:Bottom
+@R x:190 y:435 r:3.6 d:Bottom
+@R x:301 y:456 r:3.8 d:Bottom
+@R x:272 y:273 r:2.3 d:Bottom
+@R x:285 y:243 r:2.1 d:Bottom
+@R x:320 y:330 r:2.9 d:Bottom
+@R x:282 y:344 r:3.1 d:Bottom
+@R x:273 y:360 r:3.5 d:Bottom
+@R x:210 y:303 r:3.0 d:Bottom
+@R x:210 y:223 r:2.3 d:Bottom
+@R x:196 y:334 r:3.6 d:Bottom
+@R x:237 y:332 r:3.7 d:Bottom
+@R x:200 y:313 r:3.6 d:Bottom
+@R x:152 y:255 r:3.0 d:Bottom
+@R x:294 y:215 r:2.6 d:Bottom
+@R x:199 y:292 r:4.0 d:Bottom
+@R x:213 y:234 r:3.4 d:Bottom
+@R x:225 y:142 r:2.1 d:Bottom
+@R x:266 y:159 r:2.9 d:Bottom
+@R x:183 y:172 r:3.2 d:Bottom
+@R x:158 y:153 r:2.9 d:Bottom
+@R x:221 y:195 r:3.9 d:Bottom
+@R x:260 y:148 r:3.1 d:Bottom
+@R x:179 y:138 r:3.3 d:Bottom
+@R x:155 y:113 r:3.9 d:Bottom
+@R x:224 y:41 r:2.2 d:Bottom
+@R x:232 y:21 r:3.0 d:Bottom
+@R x:148 y:10 r:3.5 d:Bottom
+@R x:78 y:2 r:2.0 d:Bottom
+@R x:269 y:0 r:3.8 d:Bottom
+@K x:368 y:169 vx:1 vy:1 s:18 h:0
+@K x:478 y:190 vx:1 vy:1 s:6 h:1
+@K x:329 y:42 vx:1 vy:-1 s:25 h:0
+@K x:111 y:106 vx:1 vy:-1 s:12 h:0
+@K x:507 y:224 vx:0 vy:-1 s:3 h:1
+@K x:30 y:289 vx:1 vy:-1 s:12 h:0
+@K x:26 y:132 vx:1 vy:-1 s:16 h:0
+@K x:490 y:200 vx:0 vy:-1 s:22 h:0
+@K x:49 y:197 vx:-1 vy:-1 s:12 h:0
+@K x:513 y:207 vx:0 vy:-1 s:14 h:0
+@K x:328 y:251 vx:0 vy:-1 s:25 h:0
+@K x:198 y:300 vx:0 vy:-1 s:25 h:0
+@K x:77 y:337 vx:1 vy:-1 s:25 h:0
+@K x:104 y:189 vx:-1 vy:-1 s:17 h:0
+@K x:397 y:250 vx:0 vy:-1 s:25 h:0
+@K x:55 y:290 vx:-1 vy:-1 s:25 h:0
+@K x:83 y:375 vx:0 vy:0 s:25 h:0
+@K x:578 y:257 vx:-1 vy:-1 s:25 h:0
+@K x:300 y:334 vx:0 vy:-1 s:16 h:0
+@K x:107 y:343 vx:-1 vy:-1 s:25 h:0
+@K x:393 y:375 vx:1 vy:-1 s:25 h:0
+@K x:175 y:451 vx:-1 vy:-1 s:22 h:0
+@K x:256 y:446 vx:0 vy:-1 s:20 h:0
+@K x:242 y:381 vx:0 vy:-1 s:25 h:0
+@K x:250 y:491 vx:1 vy:-1 s:12 h:0
+@K x:126 y:480 vx:0 vy:0 s:12 h:0
+@K x:142 y:425 vx:0 vy:-1 s:11 h:0
+@K x:225 y:421 vx:1 vy:-1 s:11 h:0
+@K x:152 y:498 vx:0 vy:-1 s:8 h:0
+@K x:179 y:472 vx:-1 vy:-1 s:7 h:0
+@E x:38 y:313 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:58 y:257 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:432 y:342 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:142 y:426 vx:-1 vy:-1 s:2 i:0 h:1 t:1
+@E x:68 y:445 vx:-1 vy:-1 s:10 i:0 h:1 t:1
+@E x:133 y:440 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:216 y:479 vx:0 vy:-1 s:4 i:0 h:1 t:1
+@E x:96 y:466 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:117 y:487 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:239 y:514 vx:0 vy:-1 s:8 i:17 h:0 t:0
+@E x:250 y:519 vx:-1 vy:-1 s:1 i:20 h:1 t:0
+@G x:295 y:262
+V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+!END_SNAPSHOT
+
+ACT: 6
+AT: 5929742
+AX: 3 0 2
+AS: SimRunner
+AD: TurnEnd 3:0:2 Four Shapes, SCORE: You finished with 46 shapes.
+ACT: 0
+AT: 5950249
+AX: 3 0 3
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 5962553
+AX: 3 0 3
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 5999203
+AX: 3 0 3
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 6001419
+AX: 3 0 3
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6006690
+AX: 3 0 3
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6006690
+AX: 3 0 3
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1
+S Dtrue
+
+ACT: 0
+AT: 6022155
+AX: 3 0 3
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 6024755
+AX: 3 0 3
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 6056699
+AX: 3 0 3
+AS: VariableWindow
+AD: Submit
+ACT: 3
+AT: 6056699
+AX: 3 0 3
+AS: VariableWindow
+AD: Paradigm: 10
+Gravity Direction: 9
+Growth: 8
+Gravity Well Location: 8
+Rain Rate: 8
+Shape Spin Direction: 7
+Shape Color: 5
+Shape Spin Speed: 5
+Shape Type: 3
+Rationale:
+
+ACT: 0
+AT: 6057113
+AX: 3 0 3
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 6057116
+AX: 3 0 3
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+BEFORE_SHAPE @S n:6 x:87 y:13 vx:0 vy:0 s:38 vs:1 c:0 d:0 p:1 l:1 t:1
+CHANGED_VALUES !C
+V
+S Dfalse E0x990000ff
+AFTER_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+AFTER_SHAPE @S n:6 x:87 y:13 vx:0 vy:0 s:38 vs:1 c:0 d:0 p:0 l:1 t:1
+!START_SNAPSHOT
+@S n:3 x:151 y:516 vx:0 vy:0 s:71 vs:1 c:0 d:0 p:0 l:0 t:9
+@S n:5 x:85 y:509 vx:0 vy:0 s:66 vs:1 c:0 d:0 p:0 l:0 t:2
+@S n:3 x:592 y:507 vx:0 vy:0 s:67 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:645 y:511 vx:0 vy:0 s:39 vs:1 c:0 d:0 p:0 l:0
+@S n:4 x:502 y:11 vx:0 vy:0 s:56 vs:3 c:0 d:0 p:1 l:0 t:3
+@S n:6 x:30 y:14 vx:0 vy:0 s:64 vs:1 c:0 d:0 p:1 l:0 t:2
+@S n:6 x:-241 y:16 vx:0 vy:0 s:49 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:-181 y:32 vx:0 vy:0 s:72 vs:2 c:0 d:0 p:0 l:0
+@S n:4 x:675 y:13 vx:0 vy:0 s:74 vs:3 c:0 d:0 p:1 l:0
+@S n:3 x:208 y:511 vx:0 vy:0 s:63 vs:1 c:0 d:0 p:0 l:0 t:1
+@S n:3 x:520 y:511 vx:0 vy:0 s:31 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:548 y:511 vx:0 vy:0 s:29 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:446 y:510 vx:0 vy:0 s:58 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:488 y:510 vx:0 vy:0 s:51 vs:1 c:0 d:0 p:0 l:0
+@S n:6 x:-325 y:13 vx:0 vy:0 s:35 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:-287 y:16 vx:0 vy:0 s:39 vs:2 c:0 d:0 p:0 l:0
+@S n:5 x:-99 y:512 vx:0 vy:0 s:41 vs:1 c:0 d:0 p:0 l:0
+@S n:5 x:-54 y:505 vx:0 vy:0 s:48 vs:1 c:0 d:0 p:0 l:0
+@S n:4 x:294 y:13 vx:0 vy:0 s:36 vs:3 c:0 d:0 p:1 l:0 t:2
+@S n:4 x:147 y:12 vx:0 vy:0 s:74 vs:3 c:0 d:0 p:1 l:0 t:2
+@S n:4 x:531 y:16 vx:0 vy:0 s:68 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:568 y:16 vx:0 vy:0 s:34 vs:3 c:0 d:0 p:1 l:0 t:1
+@S n:5 x:-10 y:508 vx:0 vy:0 s:39 vs:1 c:0 d:0 p:0 l:0
+@S n:5 x:31 y:507 vx:0 vy:0 s:43 vs:1 c:0 d:0 p:0 l:0
+@S n:4 x:472 y:13 vx:0 vy:0 s:34 vs:3 c:0 d:0 p:1 l:0 t:1
+@S n:3 x:251 y:511 vx:0 vy:0 s:41 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:282 y:511 vx:0 vy:0 s:41 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:315 y:511 vx:0 vy:0 s:41 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:353 y:511 vx:0 vy:0 s:39 vs:1 c:0 d:0 p:0 l:0
+@S n:6 x:-128 y:14 vx:0 vy:0 s:39 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:-86 y:16 vx:0 vy:0 s:43 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:87 y:13 vx:0 vy:0 s:38 vs:1 c:0 d:0 p:0 l:0 t:1
+@S n:4 x:381 y:12 vx:0 vy:0 s:19 vs:3 c:0 d:0 p:1 l:0 t:1
+@S n:4 x:404 y:14 vx:0 vy:0 s:58 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:214 y:13 vx:0 vy:0 s:65 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:260 y:7 vx:0 vy:0 s:36 vs:3 c:0 d:0 p:1 l:0 t:1
+@S n:4 x:331 y:14 vx:0 vy:0 s:45 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:351 y:14 vx:0 vy:0 s:41 vs:3 c:0 d:0 p:1 l:0
+@S n:3 x:385 y:511 vx:0 vy:0 s:26 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:405 y:511 vx:0 vy:0 s:26 vs:1 c:0 d:0 p:0 l:0
+@S n:4 x:597 y:17 vx:0 vy:0 s:27 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:623 y:13 vx:0 vy:0 s:25 vs:3 c:0 d:0 p:1 l:0
+@S n:6 x:-49 y:21 vx:0 vy:0 s:31 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:-17 y:22 vx:0 vy:0 s:31 vs:2 c:0 d:0 p:0 l:0
+@S n:4 x:436 y:13 vx:0 vy:0 s:28 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:447 y:13 vx:0 vy:0 s:28 vs:3 c:0 d:0 p:1 l:0
+@R x:185 y:485 r:2.1 d:Bottom
+@R x:69 y:298 r:2.1 d:Bottom
+@R x:50 y:471 r:3.6 d:Bottom
+@R x:168 y:268 r:2.2 d:Bottom
+@R x:162 y:428 r:3.6 d:Bottom
+@R x:152 y:389 r:3.3 d:Bottom
+@R x:163 y:315 r:2.7 d:Bottom
+@R x:141 y:291 r:3.1 d:Bottom
+@R x:91 y:242 r:2.7 d:Bottom
+@R x:153 y:311 r:3.5 d:Bottom
+@R x:209 y:228 r:2.6 d:Bottom
+@R x:133 y:266 r:3.7 d:Bottom
+@R x:107 y:266 r:3.8 d:Bottom
+@R x:126 y:189 r:3.1 d:Bottom
+@R x:186 y:0 r:3.9 d:Bottom
+@K x:221 y:120 vx:0 vy:0 s:16 h:0
+@K x:352 y:144 vx:0 vy:-1 s:20 h:0
+@K x:282 y:58 vx:0 vy:-1 s:25 h:0
+@K x:434 y:135 vx:0 vy:-1 s:25 h:0
+@K x:100 y:81 vx:0 vy:-1 s:20 h:0
+@K x:86 y:47 vx:0 vy:-1 s:9 h:1
+@K x:276 y:291 vx:0 vy:0 s:25 h:0
+@E x:294 y:232 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@G x:295 y:262
+V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R295 S262
+!END_SNAPSHOT
+
+ACT: 6
+AT: 6058920
+AX: 3 0 3
+AS: SimRunner
+AD: TurnEnd 3:0:3 Four Shapes, SCORE: Wow, nice job!
+You finished with 50 shapes.
+ACT: 0
+AT: 6080045
+AX: 3 0 4
+AS: NextTaskWindow
+AD: OK
+ACT: 5
+AT: 6080046
+AX: 3 1 0
+AS: SimRunner
+AD: Started Four Shapes: Round Two
+ACT: 0
+AT: 6093349
+AX: 3 1 0
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 6101350
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Create New
+ACT: 0
+AT: 6109838
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Cancel
+ACT: 0
+AT: 6113453
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Create New
+ACT: 0
+AT: 6116213
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6116213
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: !C
+V
+S
+
+ACT: 0
+AT: 6131423
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6139558
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6139558
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: !C
+V N2
+S
+
+ACT: 0
+AT: 6150446
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6153174
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6153174
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: !C
+V N1
+S
+
+ACT: 0
+AT: 6166742
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6169431
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6169432
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1
+S
+
+ACT: 0
+AT: 6181415
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6185752
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6185752
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 R309 S410
+S
+
+ACT: 0
+AT: 6197711
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6203024
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6203024
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 R246 S434
+S
+
+ACT: 0
+AT: 6214376
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6216328
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6216328
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 R135 S429
+S
+
+ACT: 0
+AT: 6231745
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6238161
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6238162
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S
+
+ACT: 0
+AT: 6250673
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6254850
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Cancel
+ACT: 0
+AT: 6256465
+AX: 3 1 0
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 6257448
+AX: 3 1 0
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 6259953
+AX: 3 1 0
+AS: ChangePanelBottom
+AD: Cancel
+ACT: 0
+AT: 6260857
+AX: 3 1 0
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 6261577
+AX: 3 1 0
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6270985
+AX: 3 1 0
+AS: ExpCreationPanelBottom
+AD: Cancel
+ACT: 0
+AT: 6272017
+AX: 3 1 0
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 6273146
+AX: 3 1 0
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 6292267
+AX: 3 1 0
+AS: VariableWindow
+AD: Cancel
+ACT: 0
+AT: 6292672
+AX: 3 1 0
+AS: ChangePanelBottom
+AD: Submit
+ACT: 0
+AT: 6370212
+AX: 3 1 0
+AS: VariableWindow
+AD: Submit
+ACT: 3
+AT: 6370212
+AX: 3 1 0
+AS: VariableWindow
+AD: Gravity Direction: 10
+Growth: 9
+Paradigm: 9
+Gravity Well Location: 8
+Rain Rate: 8
+Shape Spin Direction: 1
+Shape Type: 1
+Shape Spin Speed: 1
+Shape Color: 1
+Rationale:
+
+ACT: 0
+AT: 6370628
+AX: 3 1 0
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 6370629
+AX: 3 1 0
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C0.5 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N0 O0 P0 Q0 R295 S262
+BEFORE_SHAPE @S n:6 x:190 y:165 vx:0 vy:0 s:55 vs:2 c:0 d:0 p:0 l:1
+CHANGED_VALUES !C
+V C1.0 N1 P1 R170 S420
+S
+AFTER_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+AFTER_SHAPE @S n:6 x:190 y:165 vx:0 vy:0 s:55 vs:2 c:0 d:0 p:0 l:1
+!START_SNAPSHOT
+@S n:6 x:190 y:165 vx:0 vy:0 s:55 vs:2 c:0 d:0 p:0 l:0
+@S n:4 x:390 y:165 vx:0 vy:0 s:45 vs:3 c:0 d:0 p:1 l:0
+@S n:5 x:190 y:365 vx:0 vy:0 s:35 vs:1 c:0 d:0 p:0 l:0
+@S n:3 x:390 y:365 vx:0 vy:0 s:25 vs:4 c:0 d:0 p:1 l:0
+@G x:170 y:420
+V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+!END_SNAPSHOT
+
+ACT: 6
+AT: 6380380
+AX: 3 1 0
+AS: SimRunner
+AD: TurnEnd 3:1:0 Four Shapes: Round Two, SCORE: You finished with 11 shapes.
+ACT: 0
+AT: 6393765
+AX: 3 1 1
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 6395196
+AX: 3 1 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6398207
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6398207
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S C4.0
+
+ACT: 0
+AT: 6409822
+AX: 3 1 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6415086
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6415086
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S C4.0
+
+ACT: 0
+AT: 6427822
+AX: 3 1 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6430599
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6430599
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S C4.0
+
+ACT: 0
+AT: 6442142
+AX: 3 1 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6449894
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6449896
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S Dfalse
+
+ACT: 0
+AT: 6462095
+AX: 3 1 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6469271
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6469271
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A4
+
+ACT: 0
+AT: 6481496
+AX: 3 1 1
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6499233
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6499234
+AX: 3 1 1
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S C4.0 Dtrue
+
+ACT: 0
+AT: 6511745
+AX: 3 1 1
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 6514033
+AX: 3 1 1
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 6553177
+AX: 3 1 1
+AS: VariableWindow
+AD: Submit
+ACT: 3
+AT: 6553177
+AX: 3 1 1
+AS: VariableWindow
+AD: Gravity Direction: 10
+Growth: 9
+Paradigm: 9
+Gravity Well Location: 8
+Rain Rate: 8
+Shape Spin Speed: 7
+Shape Spin Direction: 7
+Shape Type: 1
+Shape Color: 1
+Rationale:
+
+ACT: 0
+AT: 6553597
+AX: 3 1 1
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 6553600
+AX: 3 1 1
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+BEFORE_SHAPE @S n:3 x:577 y:288 vx:0 vy:0 s:49 vs:4 c:0 d:0 p:1 l:1
+CHANGED_VALUES !C
+V
+S Dfalse
+AFTER_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+AFTER_SHAPE @S n:3 x:577 y:288 vx:0 vy:0 s:49 vs:4 c:0 d:0 p:0 l:1
+!START_SNAPSHOT
+@S n:3 x:577 y:288 vx:0 vy:0 s:49 vs:4 c:0 d:0 p:0 l:0
+@S n:6 x:212 y:15 vx:0 vy:0 s:38 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:252 y:16 vx:0 vy:0 s:38 vs:2 c:0 d:0 p:0 l:0
+@S n:5 x:264 y:103 vx:0 vy:0 s:37 vs:1 c:0 d:0 p:0 l:0
+@S n:5 x:303 y:100 vx:0 vy:0 s:37 vs:1 c:0 d:0 p:0 l:0
+@S n:4 x:543 y:20 vx:0 vy:0 s:34 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:578 y:16 vx:0 vy:0 s:34 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:472 y:17 vx:0 vy:0 s:36 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:508 y:16 vx:0 vy:0 s:34 vs:3 c:0 d:0 p:1 l:0
+@S n:6 x:137 y:15 vx:0 vy:0 s:33 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:171 y:16 vx:0 vy:0 s:33 vs:2 c:0 d:0 p:0 l:0
+@R x:26 y:477 r:2.2 d:Bottom
+@R x:517 y:472 r:2.2 d:Bottom
+@R x:411 y:485 r:2.3 d:Bottom
+@R x:301 y:483 r:2.3 d:Bottom
+@R x:90 y:482 r:2.4 d:Bottom
+@R x:123 y:472 r:2.4 d:Bottom
+@R x:520 y:448 r:2.3 d:Bottom
+@R x:354 y:446 r:2.3 d:Bottom
+@R x:140 y:455 r:2.4 d:Bottom
+@R x:81 y:393 r:2.2 d:Bottom
+@R x:34 y:393 r:2.3 d:Bottom
+@R x:15 y:476 r:2.8 d:Bottom
+@R x:301 y:517 r:3.1 d:Bottom
+@R x:537 y:412 r:2.5 d:Bottom
+@R x:341 y:372 r:2.3 d:Bottom
+@R x:63 y:333 r:2.1 d:Bottom
+@R x:356 y:431 r:2.8 d:Bottom
+@R x:402 y:404 r:2.7 d:Bottom
+@R x:436 y:447 r:3.0 d:Bottom
+@R x:389 y:482 r:3.4 d:Bottom
+@R x:538 y:437 r:3.1 d:Bottom
+@R x:40 y:462 r:3.3 d:Bottom
+@R x:57 y:375 r:2.7 d:Bottom
+@R x:361 y:414 r:3.0 d:Bottom
+@R x:301 y:356 r:2.6 d:Bottom
+@R x:350 y:462 r:3.4 d:Bottom
+@R x:103 y:321 r:2.4 d:Bottom
+@R x:3 y:369 r:2.8 d:Bottom
+@R x:123 y:412 r:3.2 d:Bottom
+@R x:57 y:406 r:3.2 d:Bottom
+@R x:47 y:478 r:3.8 d:Bottom
+@R x:445 y:437 r:3.5 d:Bottom
+@R x:344 y:344 r:2.8 d:Bottom
+@R x:343 y:353 r:2.9 d:Bottom
+@R x:367 y:278 r:2.3 d:Bottom
+@R x:313 y:383 r:3.2 d:Bottom
+@R x:384 y:345 r:2.9 d:Bottom
+@R x:413 y:342 r:2.9 d:Bottom
+@R x:407 y:444 r:3.8 d:Bottom
+@R x:451 y:276 r:2.4 d:Bottom
+@R x:87 y:410 r:3.6 d:Bottom
+@R x:326 y:414 r:3.7 d:Bottom
+@R x:113 y:410 r:3.7 d:Bottom
+@R x:124 y:228 r:2.1 d:Bottom
+@R x:451 y:331 r:3.1 d:Bottom
+@R x:20 y:286 r:2.7 d:Bottom
+@R x:355 y:388 r:3.7 d:Bottom
+@R x:105 y:416 r:4.0 d:Bottom
+@R x:454 y:387 r:3.8 d:Bottom
+@R x:365 y:242 r:2.4 d:Bottom
+@R x:387 y:269 r:2.7 d:Bottom
+@R x:411 y:227 r:2.3 d:Bottom
+@R x:38 y:343 r:3.5 d:Bottom
+@R x:43 y:220 r:2.3 d:Bottom
+@R x:43 y:246 r:2.6 d:Bottom
+@R x:68 y:347 r:3.7 d:Bottom
+@R x:41 y:279 r:3.0 d:Bottom
+@R x:102 y:193 r:2.1 d:Bottom
+@R x:68 y:350 r:3.9 d:Bottom
+@R x:586 y:228 r:2.6 d:Bottom
+@R x:424 y:182 r:2.1 d:Bottom
+@R x:77 y:327 r:3.9 d:Bottom
+@R x:31 y:278 r:3.4 d:Bottom
+@R x:362 y:226 r:2.8 d:Bottom
+@R x:51 y:295 r:3.7 d:Bottom
+@R x:22 y:249 r:3.2 d:Bottom
+@R x:425 y:261 r:3.4 d:Bottom
+@R x:321 y:212 r:2.8 d:Bottom
+@R x:32 y:270 r:3.7 d:Bottom
+@R x:348 y:192 r:3.0 d:Bottom
+@R x:34 y:226 r:3.6 d:Bottom
+@R x:438 y:189 r:3.1 d:Bottom
+@R x:440 y:206 r:3.5 d:Bottom
+@R x:25 y:134 r:2.4 d:Bottom
+@R x:201 y:116 r:2.2 d:Bottom
+@R x:39 y:178 r:3.5 d:Bottom
+@R x:349 y:155 r:3.3 d:Bottom
+@R x:340 y:130 r:3.1 d:Bottom
+@R x:64 y:85 r:2.2 d:Bottom
+@R x:5 y:125 r:3.3 d:Bottom
+@R x:528 y:132 r:3.8 d:Bottom
+@R x:321 y:76 r:2.4 d:Bottom
+@R x:70 y:95 r:3.4 d:Bottom
+@R x:26 y:62 r:2.3 d:Bottom
+@R x:438 y:62 r:2.7 d:Bottom
+@R x:331 y:50 r:2.4 d:Bottom
+@R x:190 y:57 r:3.6 d:Bottom
+@R x:298 y:50 r:3.4 d:Bottom
+@R x:63 y:43 r:3.1 d:Bottom
+@R x:333 y:50 r:3.9 d:Bottom
+@R x:98 y:32 r:2.7 d:Bottom
+@R x:403 y:28 r:2.6 d:Bottom
+@R x:283 y:21 r:2.1 d:Bottom
+@R x:83 y:16 r:2.4 d:Bottom
+@R x:304 y:22 r:3.8 d:Bottom
+@R x:303 y:14 r:3.7 d:Bottom
+@R x:463 y:0 r:3.7 d:Bottom
+@K x:14 y:237 vx:1 vy:-1 s:25 h:0
+@K x:492 y:221 vx:0 vy:-1 s:25 h:0
+@K x:82 y:269 vx:0 vy:-1 s:25 h:0
+@K x:40 y:317 vx:1 vy:-1 s:22 h:0
+@K x:134 y:286 vx:-1 vy:-1 s:16 h:0
+@K x:450 y:303 vx:0 vy:-1 s:14 h:0
+@K x:453 y:319 vx:1 vy:-1 s:5 h:1
+@K x:389 y:387 vx:0 vy:-1 s:22 h:0
+@K x:114 y:384 vx:1 vy:-1 s:15 h:0
+@K x:98 y:423 vx:0 vy:-1 s:17 h:0
+@K x:468 y:404 vx:-1 vy:-1 s:15 h:0
+@K x:488 y:351 vx:0 vy:-1 s:17 h:0
+@K x:465 y:356 vx:1 vy:-1 s:22 h:0
+@K x:132 y:317 vx:1 vy:-1 s:6 h:1
+@K x:92 y:446 vx:0 vy:-1 s:25 h:0
+@K x:81 y:353 vx:-1 vy:-1 s:25 h:0
+@K x:136 y:487 vx:1 vy:0 s:24 h:0
+@K x:302 y:442 vx:0 vy:-1 s:22 h:0
+@K x:116 y:451 vx:0 vy:-1 s:23 h:0
+@K x:39 y:437 vx:1 vy:-1 s:17 h:0
+@K x:190 y:451 vx:1 vy:-1 s:20 h:0
+@K x:78 y:434 vx:1 vy:-1 s:8 h:1
+@K x:144 y:414 vx:0 vy:-1 s:19 h:0
+@K x:343 y:474 vx:0 vy:-1 s:18 h:0
+@K x:527 y:432 vx:-1 vy:-1 s:18 h:0
+@K x:34 y:461 vx:0 vy:-1 s:12 h:1
+@K x:123 y:349 vx:-1 vy:-1 s:17 h:0
+@K x:398 y:428 vx:0 vy:0 s:16 h:0
+@K x:538 y:463 vx:0 vy:-1 s:15 h:0
+@K x:437 y:453 vx:1 vy:-1 s:14 h:0
+@K x:311 y:485 vx:0 vy:0 s:12 h:0
+@K x:16 y:486 vx:1 vy:0 s:8 h:0
+@K x:291 y:450 vx:0 vy:-1 s:3 h:1
+@K x:338 y:496 vx:1 vy:-1 s:5 h:0
+@E x:171 y:497 vx:-1 vy:0 s:2 i:0 h:1 t:0
+@E x:490 y:433 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:548 y:466 vx:-1 vy:-1 s:1 i:0 h:1 t:0
+@E x:235 y:518 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:151 y:478 vx:0 vy:-1 s:2 i:0 h:1 t:0
+@E x:151 y:494 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:279 y:474 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:246 y:507 vx:0 vy:1 s:10 i:0 h:0 t:0
+@E x:259 y:451 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:181 y:500 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:171 y:498 vx:-1 vy:0 s:4 i:0 h:1 t:0
+@E x:149 y:479 vx:-1 vy:0 s:4 i:0 h:1 t:0
+@E x:513 y:515 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:568 y:512 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:521 y:508 vx:1 vy:-1 s:10 i:8 h:0 t:0
+@E x:498 y:502 vx:-1 vy:-1 s:10 i:8 h:0 t:0
+@E x:29 y:504 vx:0 vy:-1 s:10 i:9 h:0 t:0
+@E x:38 y:504 vx:0 vy:-1 s:10 i:9 h:0 t:0
+@E x:3 y:510 vx:0 vy:-1 s:8 i:13 h:1 t:1
+@E x:12 y:508 vx:0 vy:-1 s:10 i:12 h:0 t:0
+@E x:271 y:473 vx:0 vy:0 s:10 i:13 h:0 t:0
+@E x:289 y:467 vx:0 vy:0 s:10 i:13 h:0 t:0
+@E x:291 y:441 vx:1 vy:-1 s:4 i:16 h:1 t:0
+@E x:166 y:485 vx:1 vy:0 s:9 i:16 h:0 t:0
+@E x:145 y:464 vx:-1 vy:-1 s:9 i:16 h:0 t:0
+@E x:156 y:503 vx:-1 vy:-1 s:9 i:16 h:0 t:0
+@E x:175 y:512 vx:-1 vy:1 s:9 i:16 h:0 t:0
+@E x:172 y:486 vx:0 vy:0 s:9 i:16 h:0 t:0
+@E x:429 y:517 vx:0 vy:-1 s:6 i:19 h:0 t:0
+@E x:440 y:518 vx:0 vy:-1 s:6 i:19 h:0 t:0
+@E x:378 y:517 vx:0 vy:-1 s:6 i:19 h:0 t:0
+@E x:390 y:517 vx:0 vy:-1 s:6 i:19 h:1 t:1
+@G x:170 y:420
+V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+!END_SNAPSHOT
+
+ACT: 6
+AT: 6563477
+AX: 3 1 1
+AS: SimRunner
+AD: TurnEnd 3:1:1 Four Shapes: Round Two, SCORE: You finished with 23 shapes.
+ACT: 0
+AT: 6572993
+AX: 3 1 2
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 6574258
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6586325
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6586325
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A6
+
+ACT: 0
+AT: 6599787
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6604384
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6604384
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A4 B35.0 C1.0 E0xdeb8a1ff
+
+ACT: 0
+AT: 6619388
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6632579
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6632580
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A6
+
+ACT: 0
+AT: 6644907
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6650740
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6650740
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A5
+
+ACT: 0
+AT: 6661596
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6665164
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6665164
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A3
+
+ACT: 0
+AT: 6678005
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6688205
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6688206
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C0.796 N1 P1 R135 S429
+S A3
+
+ACT: 0
+AT: 6698909
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6707822
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6707823
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S Dtrue
+
+ACT: 0
+AT: 6720126
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6722974
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6722975
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A5 B35.0 C1.0 E0xdeb8a1ff
+
+ACT: 0
+AT: 6735566
+AX: 3 1 2
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 6736910
+AX: 3 1 2
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 6737951
+AX: 3 1 2
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 6738569
+AX: 3 1 2
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 6760775
+AX: 3 1 2
+AS: ChangePanelBottom
+AD: Cancel
+ACT: 0
+AT: 6761770
+AX: 3 1 2
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 6763727
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6768648
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6768649
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A5 B35.0 C1.0 Dtrue E0xdeb8a1ff
+
+ACT: 0
+AT: 6782863
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6785967
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6785967
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S Dtrue
+
+ACT: 0
+AT: 6804312
+AX: 3 1 2
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 6808032
+AX: 3 1 2
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 6813184
+AX: 3 1 2
+AS: ChangePanelBottom
+AD: Cancel
+ACT: 0
+AT: 6813992
+AX: 3 1 2
+AS: MainPanelLeft
+AD: Experiment
+ACT: 0
+AT: 6816280
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6820553
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6820553
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S E0x001a80ff
+
+ACT: 0
+AT: 6832993
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6836635
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6836635
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A5 B35.0 C1.0 E0xcce6ffff
+
+ACT: 0
+AT: 6849195
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6855273
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6855273
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A5 B35.0 C1.0 E0x001a80ff
+
+ACT: 0
+AT: 6867362
+AX: 3 1 2
+AS: ExperimentPanelLeft
+AD: Edit Last
+ACT: 0
+AT: 6873529
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: Create
+ACT: 1
+AT: 6873530
+AX: 3 1 2
+AS: ExpCreationPanelBottom
+AD: !C
+V C1.0 N1 P1 R135 S429
+S A5 B35.0 C1.0 E0x990000ff
+
+ACT: 0
+AT: 6887418
+AX: 3 1 2
+AS: ExperimentPanelBottom
+AD: Main Screen
+ACT: 0
+AT: 6888690
+AX: 3 1 2
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 6902322
+AX: 3 1 2
+AS: VariableWindow
+AD: Submit
+ACT: 3
+AT: 6902323
+AX: 3 1 2
+AS: VariableWindow
+AD: Gravity Direction: 10
+Growth: 9
+Paradigm: 9
+Gravity Well Location: 8
+Rain Rate: 8
+Shape Spin Speed: 7
+Shape Spin Direction: 7
+Shape Color: 4
+Shape Type: 1
+Rationale:
+
+ACT: 0
+AT: 6902731
+AX: 3 1 2
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 6902738
+AX: 3 1 2
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+BEFORE_SHAPE @S n:5 x:275 y:29 vx:0 vy:0 s:57 vs:1 c:0 d:0 p:0 l:1 t:1
+CHANGED_VALUES !C
+V
+S B57.82286602286616 E0x1a0068ff
+AFTER_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+AFTER_SHAPE @S n:5 x:275 y:29 vx:0 vy:0 s:57 vs:1 c:0 d:0 p:0 l:1 t:1
+!START_SNAPSHOT
+@S n:5 x:309 y:9 vx:0 vy:0 s:20 vs:1 c:0 d:0 p:0 l:0 t:2
+@S n:6 x:215 y:-41 vx:0 vy:-4 s:25 vs:1 c:0 d:1 p:0 l:0
+@S n:6 x:291 y:-35 vx:0 vy:-2 s:45 vs:1 c:0 d:1 p:0 l:0
+@S n:5 x:227 y:16 vx:0 vy:0 s:41 vs:1 c:0 d:0 p:0 l:0 t:1
+@S n:5 x:275 y:29 vx:0 vy:0 s:57 vs:1 c:0 d:0 p:0 l:0 t:1
+@S n:4 x:456 y:14 vx:0 vy:0 s:63 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:499 y:14 vx:0 vy:0 s:22 vs:3 c:0 d:0 p:1 l:0 t:1
+@S n:6 x:53 y:14 vx:0 vy:0 s:48 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:100 y:6 vx:0 vy:0 s:12 vs:2 c:0 d:0 p:0 l:0 t:1
+@S n:4 x:537 y:14 vx:0 vy:0 s:53 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:568 y:14 vx:0 vy:0 s:49 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:599 y:14 vx:0 vy:0 s:45 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:641 y:13 vx:0 vy:0 s:40 vs:3 c:0 d:0 p:1 l:0
+@S n:6 x:0 y:13 vx:0 vy:0 s:37 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:23 y:2 vx:0 vy:0 s:13 vs:2 c:0 d:0 p:0 l:0 t:1
+@S n:4 x:393 y:17 vx:0 vy:0 s:41 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:419 y:16 vx:0 vy:0 s:13 vs:3 c:0 d:0 p:1 l:0 t:1
+@S n:6 x:143 y:13 vx:0 vy:0 s:37 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:184 y:14 vx:0 vy:0 s:41 vs:2 c:0 d:0 p:0 l:0
+@S n:5 x:332 y:16 vx:0 vy:0 s:29 vs:1 c:0 d:0 p:0 l:0
+@S n:5 x:359 y:16 vx:0 vy:0 s:29 vs:1 c:0 d:0 p:0 l:0
+@S n:6 x:209 y:-41 vx:0 vy:0 s:25 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:221 y:-41 vx:0 vy:0 s:25 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:287 y:-35 vx:0 vy:0 s:25 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:295 y:-35 vx:0 vy:0 s:25 vs:2 c:0 d:0 p:0 l:0
+@R x:21 y:400 r:2.6 d:Bottom
+@R x:8 y:390 r:2.6 d:Bottom
+@R x:94 y:476 r:3.5 d:Bottom
+@R x:585 y:429 r:3.3 d:Bottom
+@R x:0 y:450 r:3.6 d:Bottom
+@R x:197 y:195 r:3.0 d:Bottom
+@R x:306 y:98 r:2.1 d:Bottom
+@R x:307 y:133 r:3.7 d:Bottom
+@R x:347 y:3 r:3.6 d:Bottom
+@R x:90 y:0 r:3.7 d:Bottom
+@K x:388 y:44 vx:0 vy:-1 s:7 h:0
+@K x:429 y:43 vx:0 vy:-1 s:3 h:1
+@K x:514 y:243 vx:1 vy:0 s:25 h:0
+@K x:278 y:163 vx:1 vy:-1 s:16 h:0
+@K x:459 y:141 vx:0 vy:-1 s:10 h:0
+@K x:499 y:54 vx:0 vy:-1 s:4 h:1
+@K x:103 y:50 vx:0 vy:-1 s:13 h:1
+@K x:333 y:216 vx:1 vy:-1 s:11 h:0
+@K x:388 y:462 vx:-1 vy:0 s:21 h:0
+@K x:410 y:92 vx:1 vy:-1 s:15 h:0
+@K x:408 y:241 vx:0 vy:-1 s:15 h:0
+@K x:175 y:267 vx:0 vy:-1 s:19 h:0
+@K x:190 y:48 vx:0 vy:-1 s:20 h:0
+@K x:175 y:314 vx:0 vy:0 s:25 h:0
+@K x:12 y:244 vx:0 vy:-1 s:17 h:0
+@K x:377 y:455 vx:1 vy:0 s:8 h:1
+@K x:339 y:177 vx:0 vy:-1 s:17 h:0
+@K x:124 y:491 vx:0 vy:0 s:10 h:0
+@K x:73 y:147 vx:0 vy:-1 s:25 h:0
+@K x:63 y:179 vx:0 vy:-1 s:25 h:0
+@K x:71 y:298 vx:0 vy:-1 s:19 h:0
+@K x:23 y:340 vx:0 vy:-1 s:25 h:0
+@K x:570 y:232 vx:1 vy:-1 s:17 h:0
+@K x:280 y:403 vx:-1 vy:0 s:25 h:0
+@K x:168 y:398 vx:1 vy:-1 s:25 h:0
+@K x:27 y:454 vx:0 vy:-1 s:25 h:0
+@K x:317 y:465 vx:-1 vy:-1 s:21 h:0
+@K x:32 y:472 vx:0 vy:-1 s:7 h:0
+@E x:501 y:103 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:391 y:334 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:153 y:234 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:429 y:246 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:192 y:276 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:532 y:404 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:59 y:369 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:235 y:418 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:358 y:478 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:303 y:490 vx:1 vy:0 s:10 i:0 h:0 t:0
+@E x:164 y:493 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:283 y:493 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:236 y:471 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:50 y:491 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:357 y:495 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:435 y:473 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:258 y:495 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:244 y:523 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:210 y:470 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:55 y:516 vx:0 vy:0 s:10 i:6 h:0 t:0
+@E x:97 y:508 vx:1 vy:0 s:10 i:6 h:0 t:0
+@E x:71 y:489 vx:0 vy:0 s:10 i:6 h:0 t:0
+@E x:15 y:498 vx:0 vy:0 s:10 i:13 h:0 t:0
+@E x:52 y:499 vx:1 vy:0 s:10 i:13 h:0 t:0
+@E x:301 y:516 vx:0 vy:-1 s:8 i:17 h:0 t:0
+@E x:313 y:518 vx:0 vy:-1 s:8 i:17 h:0 t:0
+@G x:170 y:420
+V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+!END_SNAPSHOT
+
+ACT: 6
+AT: 6912577
+AX: 3 1 2
+AS: SimRunner
+AD: TurnEnd 3:1:2 Four Shapes: Round Two, SCORE: You finished with 31 shapes.
+ACT: 0
+AT: 6924131
+AX: 3 1 3
+AS: MainPanelBottom
+AD: Change System
+ACT: 0
+AT: 6952884
+AX: 3 1 3
+AS: VariableWindow
+AD: Submit
+ACT: 3
+AT: 6952884
+AX: 3 1 3
+AS: VariableWindow
+AD: Gravity Direction: 10
+Growth: 9
+Paradigm: 9
+Gravity Well Location: 8
+Rain Rate: 8
+Shape Spin Speed: 7
+Shape Spin Direction: 7
+Shape Color: 4
+Shape Type: 1
+Rationale:
+
+ACT: 0
+AT: 6953294
+AX: 3 1 3
+AS: ChangePanelBottom
+AD: Submit
+ACT: 2
+AT: 6953295
+AX: 3 1 3
+AS: ChangePanelBottom
+AD: BEFORE_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+BEFORE_SHAPE @S n:5 x:295 y:24 vx:0 vy:0 s:62 vs:1 c:0 d:0 p:0 l:1 t:1
+CHANGED_VALUES !C
+V
+S E0x1a0068ff
+AFTER_VALUES V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+AFTER_SHAPE @S n:5 x:295 y:24 vx:0 vy:0 s:62 vs:1 c:0 d:0 p:0 l:1 t:1
+!START_SNAPSHOT
+@S n:5 x:271 y:11 vx:0 vy:0 s:50 vs:1 c:0 d:0 p:0 l:0 t:3
+@S n:5 x:180 y:11 vx:0 vy:0 s:45 vs:1 c:0 d:0 p:0 l:0 t:3
+@S n:4 x:442 y:14 vx:0 vy:0 s:34 vs:3 c:0 d:0 p:1 l:0 t:4
+@S n:4 x:576 y:14 vx:0 vy:0 s:73 vs:3 c:0 d:0 p:1 l:0 t:1
+@S n:4 x:678 y:13 vx:0 vy:0 s:68 vs:3 c:0 d:0 p:1 l:0
+@S n:6 x:-69 y:13 vx:0 vy:0 s:68 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:-10 y:2 vx:0 vy:0 s:49 vs:2 c:0 d:0 p:0 l:0 t:1
+@S n:6 x:74 y:6 vx:0 vy:0 s:49 vs:2 c:0 d:0 p:0 l:0 t:1
+@S n:6 x:128 y:8 vx:0 vy:0 s:63 vs:2 c:0 d:0 p:0 l:0 t:1
+@S n:5 x:295 y:24 vx:0 vy:0 s:62 vs:1 c:0 d:0 p:0 l:0 t:1
+@S n:4 x:512 y:14 vx:0 vy:0 s:54 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:541 y:14 vx:0 vy:0 s:53 vs:3 c:0 d:0 p:1 l:0
+@S n:5 x:214 y:19 vx:0 vy:0 s:63 vs:1 c:0 d:0 p:0 l:0
+@S n:5 x:243 y:20 vx:0 vy:0 s:37 vs:1 c:0 d:0 p:0 l:0 t:1
+@S n:6 x:33 y:13 vx:0 vy:0 s:40 vs:2 c:0 d:0 p:0 l:0
+@S n:4 x:364 y:24 vx:0 vy:0 s:48 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:403 y:24 vx:0 vy:0 s:46 vs:3 c:0 d:0 p:1 l:0
+@S n:5 x:317 y:26 vx:0 vy:0 s:44 vs:1 c:0 d:0 p:0 l:0
+@S n:5 x:347 y:26 vx:0 vy:0 s:42 vs:1 c:0 d:0 p:0 l:0
+@S n:6 x:155 y:-44 vx:0 vy:0 s:34 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:190 y:-44 vx:0 vy:0 s:34 vs:2 c:0 d:0 p:0 l:0
+@S n:4 x:599 y:14 vx:0 vy:0 s:32 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:629 y:14 vx:0 vy:0 s:29 vs:3 c:0 d:0 p:1 l:0
+@S n:6 x:315 y:-36 vx:0 vy:0 s:33 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:348 y:-36 vx:0 vy:0 s:32 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:238 y:-41 vx:0 vy:0 s:32 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:271 y:-41 vx:0 vy:0 s:32 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:394 y:-37 vx:0 vy:0 s:28 vs:2 c:0 d:0 p:0 l:0
+@S n:6 x:422 y:-37 vx:0 vy:0 s:28 vs:2 c:0 d:0 p:0 l:0
+@S n:4 x:471 y:14 vx:0 vy:0 s:27 vs:3 c:0 d:0 p:1 l:0
+@S n:4 x:478 y:14 vx:0 vy:0 s:27 vs:3 c:0 d:0 p:1 l:0
+@R x:109 y:499 r:2.2 d:Bottom
+@R x:172 y:448 r:3.5 d:Bottom
+@R x:68 y:210 r:2.8 d:Bottom
+@R x:56 y:156 r:2.8 d:Bottom
+@R x:459 y:2 r:2.3 d:Bottom
+@R x:464 y:0 r:3.6 d:Bottom
+@K x:119 y:386 vx:1 vy:0 s:17 h:0
+@K x:425 y:60 vx:-1 vy:-1 s:16 h:1
+@K x:158 y:43 vx:0 vy:-1 s:21 h:0
+@K x:250 y:77 vx:1 vy:-1 s:12 h:0
+@K x:212 y:416 vx:0 vy:0 s:14 h:0
+@K x:127 y:520 vx:0 vy:0 s:20 h:0
+@K x:393 y:267 vx:1 vy:0 s:25 h:0
+@K x:134 y:196 vx:0 vy:-1 s:25 h:0
+@E x:219 y:71 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:46 y:175 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:566 y:58 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:318 y:76 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:582 y:493 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:472 y:403 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:127 y:300 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:10 y:346 vx:1 vy:-1 s:10 i:0 h:0 t:0
+@E x:142 y:477 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:163 y:457 vx:-1 vy:-1 s:10 i:0 h:0 t:0
+@E x:263 y:457 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:293 y:395 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:507 y:276 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:584 y:215 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:360 y:503 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:458 y:490 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:436 y:495 vx:0 vy:0 s:10 i:0 h:0 t:0
+@E x:432 y:305 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:455 y:298 vx:-1 vy:0 s:10 i:0 h:0 t:0
+@E x:490 y:213 vx:0 vy:-1 s:10 i:0 h:0 t:0
+@E x:75 y:495 vx:0 vy:-1 s:10 i:8 h:0 t:0
+@E x:77 y:503 vx:-1 vy:-1 s:10 i:8 h:0 t:0
+@G x:170 y:420
+V A1.0 B0 C1.0 D1.0 E1.0 F120 G42 H42 I10.0 J5 K1.0 Lfalse Mfalse N1 O0 P1 Q0 R170 S420
+!END_SNAPSHOT
+
+ACT: 6
+AT: 6963071
+AX: 3 1 3
+AS: SimRunner
+AD: TurnEnd 3:1:3 Four Shapes: Round Two, SCORE: Wow, nice job!
+You finished with 50 shapes.
+ACT: 0
+AT: 6972108
+AX: 3 1 4
+AS: NextTaskWindow
+AD: OK
+ACT: 0
+AT: 7118824
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 7191866
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 7230587
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 7246531
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 7277885
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 7295957
+AX: 3 1 4
+AS: AnswerScreen
+AD: Back
+ACT: 0
+AT: 7303805
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 7326037
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 7352302
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 7363119
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 7377991
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+ACT: 0
+AT: 7660152
+AX: 3 1 4
+AS: AnswerScreen
+AD: Submit
+
+ScratchPad:
+This is free space for you to take notes and record observations.  Anything you write here will stick around for the whole game, even if you close this window.
+
+SCORE:
+Stage 0.1: There is no score for the tutorial.
+Stage 1.1: Wow, nice job!
+You finished with 49 shapes.
+Stage 1.2: Wow, nice job!
+You finished with 49 shapes.

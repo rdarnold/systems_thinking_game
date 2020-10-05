@@ -608,7 +608,8 @@
         <answerOption>The researcher's goal to improve complex problem solving skills globally</answerOption>
         <answerOption>I don't know</answerOption>
     </answerOptions>
-    <correct>2,3,5</correct>
+    <correct>3,5</correct>
+    <partial>0,2</partial>
   </question>
   <question>
     <exercise>4</exercise>

@@ -290,7 +290,6 @@ public final class STUtils {
         return Utils.tryParseInt(vals[2]);
     }
 
-
     // So we need to be able to load up the system at any point in any stage based on the player
     // data. 
     public static boolean loadSystemAtStageRoundTurn(int stageNum, int roundNum, int turnNum) {
@@ -309,6 +308,18 @@ public final class STUtils {
         // Then we restore it to the sim
         snap.restore(Gos.sim);
         return true;
+    }
+
+    /*Action submitExpAction = AssessmentData.findSubmitExpChangeActionForStageRoundTurn(stageNum, roundNum, turnNum);
+    if (submitExpAction == null) {
+        return 0;
+    }
+*/
+
+    // So we can look down and just see how many the player did at any point in time and see if we
+    // have any trends
+    public static int getNumExpsForStageRoundTurn(int stageNum, int roundNum, int turnNum) {
+        return AssessmentData.countSubmitExpChangeActionForStageRoundTurn(stageNum, roundNum, turnNum);
     }
 
     // So now, calc each "data point" and then I can put a chart together showing which
@@ -347,6 +358,28 @@ public final class STUtils {
     }
     public static boolean dp1_rainAndGrowth_stg2() {
         return dp1_rainAndGrowth(STAGE_CHAOS, ROUND_2, MAX_TURNS_CHAOS);
+    }
+
+    public static boolean dp1_rain(int stg, int rnd, int maxTurns) {
+        // Check to see if rain rate was turned down to keep spike growth minimized
+        int turn = 0;
+        for (turn = 0; turn < maxTurns; turn++) {
+            if (loadSystemAtStageRoundTurn(stg, rnd, turn) == true) {
+                if (Data.currentValues.rainRate < 0.2) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // We only check the 2nd round of each stage, assuming the first is practice
+    // This is generally true across the board, much scoring is based off of round 2
+    public static boolean dp1_rain_stg1() {
+        return dp1_rain(STAGE_FOUR_SHAPES, ROUND_2, MAX_TURNS_FOUR_SHAPES);
+    }
+    public static boolean dp1_rain_stg2() {
+        return dp1_rain(STAGE_CHAOS, ROUND_2, MAX_TURNS_CHAOS);
     }
 
     // Did they “block” the screen at any point so that new spike formation was
@@ -489,28 +522,47 @@ public final class STUtils {
     }
 
     // Did the player increase spin speed of own shape to max while spinning clockwise
-    // in Chaos stage?
+    // in Chaos stage? Or in round 2 of Four Shapes if we don't have chaos data
     public static boolean dp7_spinSpeedMaxWhileClockwise() {
         // So look through until we find turns where it's clockwise, then see
         // if we max it, and make sure we don't flip it back or unmax it
-        // (or at least, it's in the proper configuration at the turn's end)
+        // (or at least, it's in the proper configuration at the round's end)
         int turn = 0;
         boolean spinDir = false;
         boolean maxSpeed = false;
-        for (turn = 0; turn < MAX_TURNS_CHAOS; turn++) {
-            if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, turn) == true) {
-                SysShape shape = Player.getSelectedShape();
-                spinDir = shape.getSpin();
-                maxSpeed = false;
-                if (spinDir == true && shape.getSpinSpeedPercent() > 90) {
-                    maxSpeed = true;
+        if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, 0) == true) {
+            for (turn = 0; turn < MAX_TURNS_CHAOS; turn++) {
+                if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, turn) == true) {
+                    SysShape shape = Player.getSelectedShape();
+                    spinDir = shape.getSpin();
+                    maxSpeed = false;
+                    if (spinDir == true && shape.getSpinSpeedPercent() > 90) {
+                        maxSpeed = true;
+                    }
+                }
+                else {
+                    break;
                 }
             }
-            else {
-                break;
-            }
+            return (spinDir && maxSpeed);
         }
-        return (spinDir && maxSpeed);
+        else if (loadSystemAtStageRoundTurn(STAGE_FOUR_SHAPES, ROUND_2, 0) == true) {
+            for (turn = 0; turn < MAX_TURNS_FOUR_SHAPES; turn++) {
+                if (loadSystemAtStageRoundTurn(STAGE_FOUR_SHAPES, ROUND_2, turn) == true) {
+                    SysShape shape = Player.getSelectedShape();
+                    spinDir = shape.getSpin();
+                    maxSpeed = false;
+                    if (spinDir == true && shape.getSpinSpeedPercent() > 90) {
+                        maxSpeed = true;
+                    }
+                }
+                else {
+                    break;
+                }
+            }
+            return (spinDir && maxSpeed);
+        }
+        return false;
     }
 
     // Did they switch paradigm to cooperative on the chaos stage?    
@@ -572,53 +624,38 @@ public final class STUtils {
         return false;
     }  
 
-    // Did the player try changing every single variable in experiments? (should be weighted the highest)  
-    public static boolean dp13_changeAllExpVars() {
-        // Let's just look through all experiments in the entire game and see if they did
-        // at least one with each variable changed.
+    // How about a point for each different variable the player tried in experiments?  It
+    // seems systems thinkers generally did a lot more experimenting?
+    // Let's give one point for each different variable checked, then one additional point for
+    // each different variable checked before starting the exercise
+    // Then I can just graph the # of experiments done by systems thinkers and see if there is
+    // a trend there, and from that I can state, in a future design, the approach to the problem
+    // should probably be the primary measure, rather than the solution to the problem.  That's
+    // the Mindset stuff.
+
+    public static boolean dp13_changeExpVarOnStageRoundTurn(Constants.VariableType varType, int stageNum, int roundNum, int turnNum) {
+        for (Action action : Player.actions) {
+            if (action.actionType != Action.Type.SubmitExpChange)
+                continue;
+            if (stageNum != -1 && roundNum != -1 && turnNum != -1) {
+                if (action.exNum != stageNum || action.taskNum != roundNum || action.turnNum != turnNum)
+                    continue;
+            }
+            ChangeSet cs = new ChangeSet();
+            cs.fromString(action.getDesc());
+            if (cs.wasChanged(varType)) {
+                return true;
+            }
+        }
         return false;
     }
-    // Did the player try changing at least 3 variables in experiments?
-    public static boolean dp13_changeThreeExpVars() {
-        // Let's just look through all experiments in the entire game and see if they did
-        // at least one with each variable changed.
-        return false;
+
+    public static boolean dp13_changeExpVarBefore(Constants.VariableType varType) {
+        return dp13_changeExpVarOnStageRoundTurn(varType, 3, 0, 0);
     }
-    // Did the player try changing at least 3 overall variables in experiments?
-    public static boolean dp13_changeThreeOverallExpVars() {
-        // Let's just look through all experiments in the entire game and see if they did
-        // at least one with each variable changed.
-        return false;
-    }
-    // Did the player try changing at least 3 specific variables in experiments?
-    public static boolean dp13_changeThreeSpecificExpVars() {
-        // Let's just look through all experiments in the entire game and see if they did
-        // at least one with each variable changed.
-        return false;
-    }
-    // Did the player try changing every single variable BEFORE jumping into the sim?
-    public static boolean dp13_changeAllExpVarsFirst() {
-        // Let's just look through all experiments in the entire game and see if they did
-        // at least one with each variable changed.
-        return false;
-    }
-    // Did the player try changing at least 3 variables BEFORE jumping into the sim?
-    public static boolean dp13_changeThreeExpVarsFirst() {
-        // Let's just look through all experiments in the entire game and see if they did
-        // at least one with each variable changed.
-        return false;
-    }
-    // Did the player try changing at least 3 overall variables BEFORE jumping into the sim?
-    public static boolean dp13_changeThreeOverallExpVarsFirst() {
-        // Let's just look through all experiments in the entire game and see if they did
-        // at least one with each variable changed.
-        return false;
-    }
-    // Did the player try changing at least 3 specific variables BEFORE jumping into the sim?
-    public static boolean dp13_changeThreeSpecificExpVarsFirst() {
-        // Let's just look through all experiments in the entire game and see if they did
-        // at least one with each variable changed.
-        return false;
+
+    public static boolean dp13_changeExpVar(Constants.VariableType varType) {
+        return dp13_changeExpVarOnStageRoundTurn(varType, -1, -1, -1);
     }
     
     // At turn 1, did they order the overall variable ratings (generally) correctly
@@ -630,7 +667,7 @@ public final class STUtils {
     public static boolean dp14_orderGrowthVariable(int stg) {
         RatingData ratings = new RatingData(stg, 1, 0);
         if (ratings != null) {
-            if (ratings.inTopX(4, RatingData.RatingType.Growth) == true) {
+            if (ratings.inTopX(4, Constants.VariableType.Growth) == true) {
                 return true;
             }
         }
@@ -646,7 +683,7 @@ public final class STUtils {
     public static boolean dp14_orderParadigmVariable(int stg) {
         RatingData ratings = new RatingData(stg, 1, 0);
         if (ratings != null) {
-            if (ratings.inTopX(4, RatingData.RatingType.Paradigm) == true) {
+            if (ratings.inTopX(4, Constants.VariableType.Paradigm) == true) {
                 return true;
             }
         }
@@ -664,7 +701,7 @@ public final class STUtils {
     public static boolean dp14_orderGravityWellLocationVariable(int stg) {
         RatingData ratings = new RatingData(stg, 1, 0);
         if (ratings != null) {
-            if (ratings.inTopX(4, RatingData.RatingType.GravityWellLocation) == true) {
+            if (ratings.inTopX(4, Constants.VariableType.GravityWellLocation) == true) {
                 return true;
             }
         }
@@ -682,10 +719,10 @@ public final class STUtils {
         // So, for individual vars, spin dir has to come first, then spin speed,
         // then color/type
         RatingData ratings = new RatingData(stg, 1, 0);
-        int spinDirRating = ratings.getRatingFor(RatingData.RatingType.ShapeSpinDirection);
-        int spinSpeedRating = ratings.getRatingFor(RatingData.RatingType.ShapeSpinSpeed);
-        int typeRating = ratings.getRatingFor(RatingData.RatingType.ShapeType);
-        int colorRating = ratings.getRatingFor(RatingData.RatingType.ShapeColor);
+        int spinDirRating = ratings.getRatingFor(Constants.VariableType.ShapeSpinDirection);
+        int spinSpeedRating = ratings.getRatingFor(Constants.VariableType.ShapeSpinSpeed);
+        int typeRating = ratings.getRatingFor(Constants.VariableType.ShapeType);
+        int colorRating = ratings.getRatingFor(Constants.VariableType.ShapeColor);
         if (spinDirRating <= typeRating || spinDirRating <= colorRating) {
             return false;
         }
@@ -708,10 +745,10 @@ public final class STUtils {
         // So, for individual vars, spin dir has to come first, then spin speed,
         // then color/type
         RatingData ratings = new RatingData(stg, 1, 0);
-        int spinDirRating = ratings.getRatingFor(RatingData.RatingType.ShapeSpinDirection);
-        int spinSpeedRating = ratings.getRatingFor(RatingData.RatingType.ShapeSpinSpeed);
-        int typeRating = ratings.getRatingFor(RatingData.RatingType.ShapeType);
-        int colorRating = ratings.getRatingFor(RatingData.RatingType.ShapeColor);
+        int spinDirRating = ratings.getRatingFor(Constants.VariableType.ShapeSpinDirection);
+        int spinSpeedRating = ratings.getRatingFor(Constants.VariableType.ShapeSpinSpeed);
+        int typeRating = ratings.getRatingFor(Constants.VariableType.ShapeType);
+        int colorRating = ratings.getRatingFor(Constants.VariableType.ShapeColor);
         if (spinDirRating <= spinSpeedRating || spinDirRating <= typeRating || spinDirRating <= colorRating) {
             return false;
         }
@@ -751,10 +788,10 @@ public final class STUtils {
         return false;
     }
     public static boolean dp16_overallVarRating_stg1() {
-        return dp15_orderSpecificVariables(3);
+        return dp16_overallVarRating(3);
     }
     public static boolean dp16_overallVarRating_stg2() {
-        return dp15_orderSpecificVariables(4);
+        return dp16_overallVarRating(4);
     }
 
     // Did the player change variable ratings on different turns on round 2
@@ -783,25 +820,42 @@ public final class STUtils {
     }
     
     // Did the player NOT change Shape Type ever in Chaos stage round 2?  
+    // Or in earlier stages if there is no Chaos stage data available?
     public static boolean dp18_noChangeShapeType() {
         int turn = 0;
         boolean spinDir = false;
-        if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, 0) == false) {
-            return false;
-        }
-        SysShape shape = Player.getSelectedShape();
-        int startingType = shape.getNumCorners();
+        if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, 0) == true) {
+            SysShape shape = Player.getSelectedShape();
+            int startingType = shape.getNumCorners();
 
-        for (turn = 1; turn < MAX_TURNS_CHAOS; turn++) {
-            if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, turn) == true) {
-                shape = Player.getSelectedShape();
-                if (startingType != shape.getNumCorners()) {
-                    // Oops, they changed it...
+            for (turn = 1; turn < MAX_TURNS_CHAOS; turn++) {
+                if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, turn) == true) {
+                    shape = Player.getSelectedShape();
+                    if (startingType != shape.getNumCorners()) {
+                        // Oops, they changed it...
+                        return false;
+                    }
+                }
+                else {
                     return false;
                 }
             }
-            else {
-                return false;
+        }
+        else if (loadSystemAtStageRoundTurn(STAGE_FOUR_SHAPES, ROUND_2, 0) == true) {
+            SysShape shape = Player.getSelectedShape();
+            int startingType = shape.getNumCorners();
+
+            for (turn = 1; turn < MAX_TURNS_FOUR_SHAPES; turn++) {
+                if (loadSystemAtStageRoundTurn(STAGE_FOUR_SHAPES, ROUND_2, turn) == true) {
+                    shape = Player.getSelectedShape();
+                    if (startingType != shape.getNumCorners()) {
+                        // Oops, they changed it...
+                        return false;
+                    }
+                }
+                else {
+                    return false;
+                }
             }
         }
         return true;
@@ -914,6 +968,17 @@ public final class STUtils {
         return (total_perc * getScoreWeightForSkill(domain, num));
     }
 
+    public static double getWeightedFourShapesScoreForSkill(int domain, int num) {
+        // It's 0-4, so a 4 is 100% for this stage
+        double stg1_perc = calcFourShapesScoreTier() * 25;
+
+        // Now, weight the scores
+        stg1_perc *= getScoreWeightForStage(STAGE_FOUR_SHAPES);
+
+        // Now, multiply by weight for this skill (generally ending up at 0-30%)
+        return (stg1_perc * getScoreWeightForSkill(domain, num));
+    }
+
     public static double calcMaxScoreForQuestion(int uid) {
         Answer ans = Player.getAnswerForQuestionUID(uid);
         if (ans == null) {
@@ -983,46 +1048,146 @@ public final class STUtils {
         return score;
     }
 
-    // Returned as a percentile from 0-100% right now
+    public static int convertPercentScoreToRating(int percScore) {
+        if (percScore <= 20) {
+            return 0;
+        }
+        else if (percScore <= 40) {
+            return 1;
+        }
+        else if (percScore <= 60) {
+            return 2;
+        }
+        else if (percScore <= 80) {
+            return 3;
+        }
+        return 4;
+    }
+
+    // Do we want the full score, do we want it with only questions,
+    // do we want it with only data points (in addition to the game score)
+    public static enum ScoreType {
+        Full, QOnly, DPOnly;
+    }
+
+    public static int getIntForScoreStr(String scoreStr) {
+        double score = 0.0;
+        // Sometimes I just want to take out that first line of that skill and save it as a number
+        String lines[] = scoreStr.split("\\r?\\n");
+        score = Utils.tryParseDouble(lines[0]);
+        return (int)score;
+    }
+
+    public static int calcIntScoreForSkill_Stage1(int domain, int skillnum) {
+        return calcIntScoreForSkill_Stage1(domain, skillnum, ScoreType.Full);
+    }
+    
+    public static int calcIntScoreForSkill_Stage1(int domain, int skillnum, ScoreType type) {
+        String scoreStr = calcScoreForSkill_Stage1(domain, skillnum, type);
+        return getIntForScoreStr(scoreStr);
+    }
+
+    public static int calcIntScoreForSkill(int domain, int skillnum) {
+        return calcIntScoreForSkill(domain, skillnum, ScoreType.Full);
+    }
+
+    public static int calcIntScoreForSkill(int domain, int skillnum, ScoreType type) {
+        String scoreStr = calcScoreForSkill(domain, skillnum, type);
+        return getIntForScoreStr(scoreStr);
+    }
+
     public static String calcScoreForSkill(int domain, int skillnum) {
+        return calcScoreForSkill(domain, skillnum, ScoreType.Full);
+    }
+
+    // Returned as a percentile from 0-100% right now
+    public static String calcScoreForSkill(int domain, int skillnum, ScoreType type) {
         if (domain == 1 && skillnum == 2) {
-            return calcConsiderWholesAndParts();
+            return calcConsiderWholesAndParts(false, type);
         }
         if (domain == 1 && skillnum == 3) {
-            return calcEffectivelyRespondToUncertaintyAndAmbiguity();
+            return calcEffectivelyRespondToUncertaintyAndAmbiguity(false, type);
         }
         if (domain == 1 && skillnum == 4) {
-            return calcConsiderIssuesAppropriately();
+            return calcConsiderIssuesAppropriately(false, type);
         }
 
         if (domain == 2 && skillnum == 2) {
-            return calcMaintainBoundaries();
+            return calcMaintainBoundaries(false, type);
         }
         if (domain == 2 && skillnum == 3) {
-            return calcDifferentiateAndQuantifyElements();
+            return calcDifferentiateAndQuantifyElements(false, type);
         }
 
         if (domain == 3 && skillnum == 1) {
-            return calcIdentifyRelationships();
+            return calcIdentifyRelationships(false, type);
         }
         if (domain == 3 && skillnum == 2) {
-            return calcCharacterizeRelationships();
+            return calcCharacterizeRelationships(false, type);
         }
         if (domain == 3 && skillnum == 3) {
-            return calcIdentifyFeedbackLoops();
+            return calcIdentifyFeedbackLoops(false, type);
         }
         if (domain == 3 && skillnum == 4) {
-            return calcCharacterizeFeedbackLoops();
+            return calcCharacterizeFeedbackLoops(false, type);
         }
 
         if (domain == 4 && skillnum == 2) {
-            return calcPredictFutureSystemBehavior();
+            return calcPredictFutureSystemBehavior(false, type);
         }
         if (domain == 4 && skillnum == 3) {
-            return calcRespondToChangesOverTime();
+            return calcRespondToChangesOverTime(false, type);
         }
         if (domain == 4 && skillnum == 4) {
-            return calcUseLeveragePoints();
+            return calcUseLeveragePoints(false, type);
+        }
+        return "";
+    }
+
+    public static String calcScoreForSkill_Stage1(int domain, int skillnum) {
+        return calcScoreForSkill_Stage1(domain, skillnum, ScoreType.Full);
+    }
+    
+    // Returned as a percentile from 0-100% right now
+    public static String calcScoreForSkill_Stage1(int domain, int skillnum, ScoreType type) {
+        if (domain == 1 && skillnum == 2) {
+            return calcConsiderWholesAndParts(true, type);
+        }
+        if (domain == 1 && skillnum == 3) {
+            return calcEffectivelyRespondToUncertaintyAndAmbiguity(true, type);
+        }
+        if (domain == 1 && skillnum == 4) {
+            return calcConsiderIssuesAppropriately(true, type);
+        }
+
+        if (domain == 2 && skillnum == 2) {
+            return calcMaintainBoundaries(true, type);
+        }
+        if (domain == 2 && skillnum == 3) {
+            return calcDifferentiateAndQuantifyElements(true, type);
+        }
+
+        if (domain == 3 && skillnum == 1) {
+            return calcIdentifyRelationships(true, type);
+        }
+        if (domain == 3 && skillnum == 2) {
+            return calcCharacterizeRelationships(true, type);
+        }
+        if (domain == 3 && skillnum == 3) {
+            return calcIdentifyFeedbackLoops(true, type);
+        }
+        if (domain == 3 && skillnum == 4) {
+            return calcCharacterizeFeedbackLoops(true, type);
+        }
+
+        if (domain == 4 && skillnum == 2) {
+            return calcPredictFutureSystemBehavior(true, type);
+        }
+        if (domain == 4 && skillnum == 3) {
+            return calcRespondToChangesOverTime(true, type);
+        }
+        if (domain == 4 && skillnum == 4) {
+            return calcUseLeveragePoints(true, type);
         }
         return "";
     }
@@ -1060,6 +1225,10 @@ public final class STUtils {
     }
 
     public static String calcConsiderWholesAndParts() {
+        return calcConsiderWholesAndParts(false, ScoreType.Full);
+    }
+    
+    public static String calcConsiderWholesAndParts(boolean stageOneOnly, ScoreType type) {
 
         // The string basically "tells the story" of the score and where it came from,
         // and how each variable affected it.  It's pre-pended with a single number
@@ -1097,25 +1266,45 @@ public final class STUtils {
 
         int domain = 1;
         int skillNum = 2;
-        String strQuestions = "32";
+        String strQuestions = "";
+        double score = 0;
 
+        if (stageOneOnly == true || type == ScoreType.DPOnly) {
+            // We can't really do a score for this in stage 1 or with only DPs,
+            // we don't have enough info
+            return "";
+        }
+        
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            strQuestions = "32";
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
         double dp_score = 0;
         
-        max_dp_score += calcMaxScoreForQuestions(strQuestions);
-        dp_score += calcScoreForQuestions(strQuestions);
+        // Questions
+        if (type != ScoreType.DPOnly) {
+            max_dp_score += calcMaxScoreForQuestions(strQuestions);
+            dp_score += calcScoreForQuestions(strQuestions);
+        }
 
         // Now add game dps
         // We have none for this skill
+        if (type == ScoreType.DPOnly) {
+            return "";
+        }
 
-        double dp_perc = dp_score / max_dp_score;
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from questions";
 
         // Add it in
         score += dp_perc;
@@ -1125,13 +1314,25 @@ public final class STUtils {
     }
 
     public static String calcEffectivelyRespondToUncertaintyAndAmbiguity() {
+        return calcEffectivelyRespondToUncertaintyAndAmbiguity(false, ScoreType.Full);
+    }
+
+    public static String calcEffectivelyRespondToUncertaintyAndAmbiguity(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 1;
         int skillNum = 3;
+        double score = 0;
         //String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            score = getWeightedFourShapesScoreForSkill(domain, skillNum);
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
@@ -1140,17 +1341,27 @@ public final class STUtils {
         // No questions for this one
         //max_dp_score += calcMaxScoreForQuestions(strQuestions);
         //dp_score += calcScoreForQuestions(strQuestions);
+        if (type == ScoreType.QOnly) {
+            return "";
+        }
 
         // Game data points
-        max_dp_score++;
-        dp_score += dp5_scoreImproved_stg1() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp5_scoreImproved_stg2() ? 1 : 0;
+        if (type != ScoreType.QOnly) {
+            max_dp_score++;
+            dp_score += dp5_scoreImproved_stg1() ? 1 : 0;
 
-        double dp_perc = dp_score / max_dp_score;
+            if (stageOneOnly == false) {
+                max_dp_score++;
+                dp_score += dp5_scoreImproved_stg2() ? 1 : 0;
+            }
+        }
+
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from data points";
 
         // Add it in
         score += dp_perc;
@@ -1160,13 +1371,24 @@ public final class STUtils {
     }
 
     public static String calcConsiderIssuesAppropriately() {
+        return calcConsiderIssuesAppropriately(false, ScoreType.Full);
+    }
+    public static String calcConsiderIssuesAppropriately(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 1;
         int skillNum = 4;
+        double score = 0;
         //String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            score = getWeightedFourShapesScoreForSkill(domain, skillNum);
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
@@ -1175,37 +1397,38 @@ public final class STUtils {
         // No questions for this one
         //max_dp_score += calcMaxScoreForQuestions(strQuestions);
         //dp_score += calcScoreForQuestions(strQuestions);
+        if (type == ScoreType.QOnly) {
+            return "";
+        }
 
         // Game data points
-        max_dp_score++;
-        dp_score += dp9_playAllFourShapes() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp10_playAllChaos() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp11_experiments() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp12_newExpChaos() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp13_changeAllExpVars() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp13_changeThreeExpVars() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp13_changeThreeOverallExpVars() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp13_changeThreeSpecificExpVars() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp13_changeAllExpVarsFirst() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp13_changeThreeExpVarsFirst() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp13_changeThreeOverallExpVarsFirst() ? 1 : 0;
-        max_dp_score++;
-        dp_score += dp13_changeThreeSpecificExpVarsFirst() ? 1 : 0;
+        if (type != ScoreType.QOnly) {
+            max_dp_score++;
+            dp_score += dp9_playAllFourShapes() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp11_experiments() ? 1 : 0;
 
-        double dp_perc = dp_score / max_dp_score;
+            for (int i = 0; i < 9; i++) {
+                max_dp_score++;
+                dp_score += dp13_changeExpVarBefore(Constants.VariableType.fromInt(i)) ? 1 : 0;
+                max_dp_score++;
+                dp_score += dp13_changeExpVar(Constants.VariableType.fromInt(i)) ? 1 : 0;
+            }
+
+            if (stageOneOnly == false) {
+                max_dp_score++;
+                dp_score += dp10_playAllChaos() ? 1 : 0;
+                max_dp_score++;
+                dp_score += dp12_newExpChaos() ? 1 : 0;
+            }
+        }
+
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from data points";
 
         // Add it in
         score += dp_perc;
@@ -1234,29 +1457,49 @@ public final class STUtils {
     }
 
     public static String calcMaintainBoundaries() {
+        return calcMaintainBoundaries(false, ScoreType.Full);
+    }
+    public static String calcMaintainBoundaries(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 2;
         int skillNum = 2;
-        String strQuestions = "31 32";
+        double score = 0;
+        String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            strQuestions = "31 32";
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            // We can't do a score for stage 1, we don't have any info
+            return "";
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
         double dp_score = 0;
         
         // Questions
-        max_dp_score += calcMaxScoreForQuestions(strQuestions);
-        dp_score += calcScoreForQuestions(strQuestions);
+        if (type != ScoreType.DPOnly) {
+            max_dp_score += calcMaxScoreForQuestions(strQuestions);
+            dp_score += calcScoreForQuestions(strQuestions);
+        }
 
         // Game data points
         // No game dps for this one
+        if (type == ScoreType.DPOnly) {
+            return "";
+        }
 
-        double dp_perc = dp_score / max_dp_score;
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from questions";
 
         // Add it in
         score += dp_perc;
@@ -1266,30 +1509,49 @@ public final class STUtils {
     }
 
     public static String calcDifferentiateAndQuantifyElements() {
+        return calcDifferentiateAndQuantifyElements(false, ScoreType.Full);
+    }
+    public static String calcDifferentiateAndQuantifyElements(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 2;
         int skillNum = 3;
-        String strQuestions = "17 20 22 27 28 29 30";
+        double score = 0;
+        String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            strQuestions = "17 20 22 27 28 29 30";
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            strQuestions = "17 20 22";
+            score = getWeightedFourShapesScoreForSkill(domain, skillNum);
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
         double dp_score = 0;
         
         // Questions
-        max_dp_score += calcMaxScoreForQuestions(strQuestions);
-        dp_score += calcScoreForQuestions(strQuestions);
+        if (type != ScoreType.DPOnly) {
+            max_dp_score += calcMaxScoreForQuestions(strQuestions);
+            dp_score += calcScoreForQuestions(strQuestions);
+        }
 
         // Game data points
-        max_dp_score++;
-        dp_score += dp18_noChangeShapeType() ? 1 : 0;
+        if (type != ScoreType.QOnly) {
+            max_dp_score++;
+            dp_score += dp18_noChangeShapeType() ? 1 : 0;
+        }
 
-        double dp_perc = dp_score / max_dp_score;
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from questions and data points";
 
         // Add it in
         score += dp_perc;
@@ -1298,50 +1560,75 @@ public final class STUtils {
         return returnStr(score, strScore);
     }
 
-    
     ////////////////////////
     //// Structure Domain ////
     ////////////////////////
     public static String calcIdentifyRelationships() {
+        return calcIdentifyRelationships(false, ScoreType.Full);
+    }
+    public static String calcIdentifyRelationships(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 3;
         int skillNum = 1;
-        String strQuestions = "16 18 21 27 28 31 32";
+        double score = 0;
+        String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            strQuestions = "16 18 21 27 28 31 32";
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            strQuestions = "16 18 21";
+            score = getWeightedFourShapesScoreForSkill(domain, skillNum);
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
         double dp_score = 0;
         
         // Questions
-        max_dp_score += calcMaxScoreForQuestions(strQuestions);
-        dp_score += calcScoreForQuestions(strQuestions);
+        if (type != ScoreType.DPOnly) {
+            max_dp_score += calcMaxScoreForQuestions(strQuestions);
+            dp_score += calcScoreForQuestions(strQuestions);
+        }
 
         // Game data points
         // More heavily weight stage 2
-        max_dp_score++;
-        dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp2_stoppedSpikes_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp2_stoppedSpikes_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp7_clockwise() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp8_paradigmCoop() ? 2 : 0;
+        if (type != ScoreType.QOnly) {
+            max_dp_score++;
+            dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp1_rain_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp2_stoppedSpikes_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
+            
+            if (stageOneOnly == false) {
+                max_dp_score+=2;
+                dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp1_rain_stg2() ? 1 : 0;
+                max_dp_score+=2;
+                dp_score += dp2_stoppedSpikes_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
+                max_dp_score++;
+                dp_score += dp7_clockwise() ? 1 : 0;
+                max_dp_score+=2;
+                dp_score += dp8_paradigmCoop() ? 2 : 0;
+            }
+        }
 
-        double dp_perc = dp_score / max_dp_score;
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from questions and data points";
 
         // Add it in
         score += dp_perc;
@@ -1351,43 +1638,72 @@ public final class STUtils {
     }
 
     public static String calcCharacterizeRelationships() {
+        return calcCharacterizeRelationships(false, ScoreType.Full);
+    }
+    public static String calcCharacterizeRelationships(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 3;
         int skillNum = 2;
-        String strQuestions = "18 21";
+        double score = 0;
+        String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            strQuestions = "18 21";
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            strQuestions = "18 21";
+            score = getWeightedFourShapesScoreForSkill(domain, skillNum);
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
         double dp_score = 0;
         
         // Questions
-        max_dp_score += calcMaxScoreForQuestions(strQuestions);
-        dp_score += calcScoreForQuestions(strQuestions);
+        if (type != ScoreType.DPOnly) {
+            max_dp_score += calcMaxScoreForQuestions(strQuestions);
+            dp_score += calcScoreForQuestions(strQuestions);
+        }
 
         // Game data points
-        // More heavily weight stage 2
-        max_dp_score++;
-        dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp2_stoppedSpikes_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp2_stoppedSpikes_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
-        max_dp_score+=2;
-        dp_score += dp7_spinSpeedMaxWhileClockwise() ? 2 : 0;
+        if (type != ScoreType.QOnly) {
+            max_dp_score++;
+            dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp1_rain_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp2_stoppedSpikes_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp7_spinSpeedMaxWhileClockwise() ? 1 : 0;
+            
+            // More heavily weight stage 2
+            if (stageOneOnly == false) {
+                // Add this one again in stage 2 to increase its weight
+                max_dp_score++;
+                dp_score += dp7_spinSpeedMaxWhileClockwise() ? 1 : 0;
+                max_dp_score+=2;
+                dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp1_rain_stg2() ? 1 : 0;
+                max_dp_score+=2;
+                dp_score += dp2_stoppedSpikes_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
+            }
+        }
 
-        double dp_perc = dp_score / max_dp_score;
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from questions and data points";
 
         // Add it in
         score += dp_perc;
@@ -1397,37 +1713,63 @@ public final class STUtils {
     }
 
     public static String calcIdentifyFeedbackLoops() {
+        return calcIdentifyFeedbackLoops(false, ScoreType.Full);
+    }
+    public static String calcIdentifyFeedbackLoops(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 3;
         int skillNum = 3;
-        String strQuestions = "16 19 22 26 27";
+        double score = 0;
+        String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            strQuestions = "16 19 22 26 27";
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            strQuestions = "16 19 22";
+            score = getWeightedFourShapesScoreForSkill(domain, skillNum);
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
         double dp_score = 0;
         
         // Questions
-        max_dp_score += calcMaxScoreForQuestions(strQuestions);
-        dp_score += calcScoreForQuestions(strQuestions);
+        if (type != ScoreType.DPOnly) {
+            max_dp_score += calcMaxScoreForQuestions(strQuestions);
+            dp_score += calcScoreForQuestions(strQuestions);
+        }
 
         // Game data points
         // More heavily weight stage 2
-        max_dp_score++;
-        dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
+        if (type != ScoreType.QOnly) {
+            max_dp_score++;
+            dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp1_rain_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
 
-        double dp_perc = dp_score / max_dp_score;
+            if (stageOneOnly == false) {
+                max_dp_score+=2;
+                dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp1_rain_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
+            }
+        }
+
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from questions and data points";
 
         // Add it in
         score += dp_perc;
@@ -1437,37 +1779,63 @@ public final class STUtils {
     }
 
     public static String calcCharacterizeFeedbackLoops() {
+        return calcCharacterizeFeedbackLoops(false, ScoreType.Full);
+    }
+    public static String calcCharacterizeFeedbackLoops(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 3;
         int skillNum = 4;
-        String strQuestions = "19 22 27";
+        double score = 0;
+        String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            strQuestions = "19 22 27";
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            strQuestions = "19 22";
+            score = getWeightedFourShapesScoreForSkill(domain, skillNum);
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
         double dp_score = 0;
         
         // Questions
-        max_dp_score += calcMaxScoreForQuestions(strQuestions);
-        dp_score += calcScoreForQuestions(strQuestions);
+        if (type != ScoreType.DPOnly) {
+            max_dp_score += calcMaxScoreForQuestions(strQuestions);
+            dp_score += calcScoreForQuestions(strQuestions);
+        }
 
         // Game data points
         // More heavily weight stage 2
-        max_dp_score++;
-        dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
+        if (type != ScoreType.QOnly) {
+            max_dp_score++;
+            dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp1_rain_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp3_ballSpikeRatio_stg1() ? 1 : 0;
 
-        double dp_perc = dp_score / max_dp_score;
+            if (stageOneOnly == false) {
+                max_dp_score+=2;
+                dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp1_rain_stg2() ? 1 : 0;
+                max_dp_score+=2;
+                dp_score += dp3_ballSpikeRatio_stg2() ? 2 : 0;
+            }
+        }
+
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from questions and data points";
 
         // Add it in
         score += dp_perc;
@@ -1486,29 +1854,52 @@ public final class STUtils {
     }
     
     public static String calcPredictFutureSystemBehavior() {
+        return calcPredictFutureSystemBehavior(false, ScoreType.Full);
+    }
+    public static String calcPredictFutureSystemBehavior(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 4;
         int skillNum = 2;
-        String strQuestions = "26 27 30";
+        double score = 0;
+        String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            strQuestions = "26 27 30";
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            //strQuestions = "";
+            //score = getWeightedFourShapesScoreForSkill(domain, skillNum);
+            // We can't really do a score for this in stage 1, we don't have
+            // enough specific info.
+            return "";
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
         double dp_score = 0;
         
         // Questions
-        max_dp_score += calcMaxScoreForQuestions(strQuestions);
-        dp_score += calcScoreForQuestions(strQuestions);
+        if (type != ScoreType.DPOnly) {
+            max_dp_score += calcMaxScoreForQuestions(strQuestions);
+            dp_score += calcScoreForQuestions(strQuestions);
+        }
 
         // Game data points
         // None for this one
+        if (type == ScoreType.DPOnly) {
+            return "";
+        }
 
-        double dp_perc = dp_score / max_dp_score;
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from questions";
 
         // Add it in
         score += dp_perc;
@@ -1518,13 +1909,24 @@ public final class STUtils {
     }
 
     public static String calcRespondToChangesOverTime() {
+        return calcRespondToChangesOverTime(false, ScoreType.Full);
+    }
+    public static String calcRespondToChangesOverTime(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 4;
         int skillNum = 3;
+        double score = 0;
         //String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            score = getWeightedFourShapesScoreForSkill(domain, skillNum);
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
@@ -1532,17 +1934,27 @@ public final class STUtils {
         
         // Questions
         // None for this one
+        if (type == ScoreType.QOnly) {
+            return "";
+        }
 
         // Game data points
-        max_dp_score++;
-        dp_score += dp17_changedVarRatings_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp17_changedVarRatings_stg2() ? 2 : 0;
+        if (type != ScoreType.QOnly) {
+            max_dp_score++;
+            dp_score += dp17_changedVarRatings_stg1() ? 1 : 0;
+            
+            if (stageOneOnly == false) {
+                max_dp_score+=2;
+                dp_score += dp17_changedVarRatings_stg2() ? 2 : 0;
+            }
+        }
 
-        double dp_perc = dp_score / max_dp_score;
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from data points";
 
         // Add it in
         score += dp_perc;
@@ -1552,13 +1964,24 @@ public final class STUtils {
     }
 
     public static String calcUseLeveragePoints() {
+        return calcUseLeveragePoints(false, ScoreType.Full);
+    }
+    public static String calcUseLeveragePoints(boolean stageOneOnly, ScoreType type) {
         String strScore = "";
         int domain = 4;
         int skillNum = 4;
+        double score = 0;
         //String strQuestions = "";
 
         // Start with the overall score
-        double score = getWeightedOverallScoreForSkill(domain, skillNum);
+        if (stageOneOnly == false) {
+            score = getWeightedOverallScoreForSkill(domain, skillNum);
+        }
+        else {
+            score = getWeightedFourShapesScoreForSkill(domain, skillNum);
+        }
+
+        strScore += "" + Utils.round(score, 0) + " from game score\n";
 
         // Now factor in the answers and data points score
         double max_dp_score = 0;
@@ -1566,41 +1989,55 @@ public final class STUtils {
         
         // Questions
         // None for this one
+        if (type == ScoreType.QOnly) {
+            return "";
+        }
 
         // Game data points
-        max_dp_score++;
-        dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
-        max_dp_score+=2;
-        dp_score += dp8_paradigmCoop() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp14_orderGrowthVariable_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp14_orderGrowthVariable_stg2() ? 2 : 0;
-        max_dp_score+=2;
-        dp_score += dp14_orderParadigmVariable_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp14_orderGravityWellLocationVariable_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp14_orderGravityWellLocationVariable_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp15_rateSpinDirOverType_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp15_rateSpinDirOverType_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp15_orderSpecificVariables_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp15_orderSpecificVariables_stg2() ? 2 : 0;
-        max_dp_score++;
-        dp_score += dp16_overallVarRating_stg1() ? 1 : 0;
-        max_dp_score+=2;
-        dp_score += dp16_overallVarRating_stg2() ? 2 : 0;
+        if (type != ScoreType.QOnly) {
+            max_dp_score++;
+            dp_score += dp1_rainAndGrowth_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp1_rain_stg1() ? 2 : 0;
+            max_dp_score++;
+            dp_score += dp14_orderGrowthVariable_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp14_orderGravityWellLocationVariable_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp15_rateSpinDirOverType_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp15_orderSpecificVariables_stg1() ? 1 : 0;
+            max_dp_score++;
+            dp_score += dp16_overallVarRating_stg1() ? 1 : 0;
 
-        double dp_perc = dp_score / max_dp_score;
+            if (stageOneOnly == false) {
+                max_dp_score+=2;
+                dp_score += dp1_rainAndGrowth_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp1_rain_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp8_paradigmCoop() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp14_orderGrowthVariable_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp14_orderParadigmVariable_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp14_orderGravityWellLocationVariable_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp15_rateSpinDirOverType_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp15_orderSpecificVariables_stg2() ? 2 : 0;
+                max_dp_score+=2;
+                dp_score += dp16_overallVarRating_stg2() ? 2 : 0;
+            }
+        }
+
+        double dp_perc = (dp_score / max_dp_score) * 100;
         
         // Weight it
         dp_perc *= getDataPointWeightForSkill(domain, skillNum);
+
+        strScore += "" + dp_score + " / " + max_dp_score + " (" + Utils.round(dp_perc, 1) + ") from data points";
 
         // Add it in
         score += dp_perc;
@@ -1610,7 +2047,7 @@ public final class STUtils {
     }
 
     public static String returnStr(double score, String strScore) {
-        return "" + Utils.round(score, 0) + strScore;
+        return "" + (int)Utils.round(score, 0) + "\n" + strScore;
     }
 
     public static String calcStrategy() {

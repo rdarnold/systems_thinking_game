@@ -9,44 +9,6 @@ public class RatingData {
 
     String m_strRating = "";
 
-    public static enum RatingType {
-        RainRate(0, "Rain Rate"),
-        GravityWellLocation(1, "Gravity Well Location"),
-        GravityDirection(2, "Gravity Direction"),
-        Growth(3, "Growth"),
-        Paradigm(4, "Paradigm"),
-        ShapeSpinSpeed(5, "Shape Spin Speed"),
-        ShapeSpinDirection(6, "Shape Spin Direction"),
-        ShapeType(7, "Shape Type"),
-        ShapeColor(8, "Shape Color");
-
-        private int _value;
-        private String _label;
-
-        RatingType(int value, String label) {
-            this._value = value;
-            this._label = label;
-        }
-
-        public int getValue() {
-                return _value;
-        }
-        public String toString() {
-                return _label;
-        }
-        public String getLabel() {
-                return _label;
-        }
-
-        private static RatingType[] cachedValues = null;
-        public static RatingType fromInt(int i) {
-            if (RatingType.cachedValues == null) {
-                RatingType.cachedValues = RatingType.values();
-            }
-            return RatingType.cachedValues[i];
-        }
-    }
-
     int rainRate = -1; // (Rate)
     int gravityWellLocation = -1; //  (Law)
     int gravityDirection = -1; // (Law)
@@ -133,15 +95,15 @@ public class RatingData {
         Shape Type: -1
         Shape Color: -1
         */
-        rainRate = getRatingFromStrFor("Rain Rate: ");
-        gravityWellLocation = getRatingFromStrFor("Gravity Well Location: ");
-        gravityDirection = getRatingFromStrFor("Gravity Direction: ");
-        growth = getRatingFromStrFor("Growth: ");
-        paradigm = getRatingFromStrFor("Paradigm: ");
-        shapeSpinSpeed = getRatingFromStrFor("Shape Spin Speed: ");
-        shapeSpinDirection = getRatingFromStrFor("Shape Spin Direction: ");
-        shapeType = getRatingFromStrFor("Shape Type: ");
-        shapeColor = getRatingFromStrFor("Shape Color: ");
+        rainRate = getRatingFromStrFor(Constants.VariableType.RainRate.toString() + ": ");
+        gravityWellLocation = getRatingFromStrFor(Constants.VariableType.GravityWellLocation.toString() + ": ");
+        gravityDirection = getRatingFromStrFor(Constants.VariableType.GravityDirection.toString() + ": ");
+        growth = getRatingFromStrFor(Constants.VariableType.Growth.toString() + ": ");
+        paradigm = getRatingFromStrFor(Constants.VariableType.Paradigm.toString() + ": ");
+        shapeSpinSpeed = getRatingFromStrFor(Constants.VariableType.ShapeSpinSpeed.toString() + ": ");
+        shapeSpinDirection = getRatingFromStrFor(Constants.VariableType.ShapeSpinDirection.toString() + ": ");
+        shapeType = getRatingFromStrFor(Constants.VariableType.ShapeType.toString() + ": ");
+        shapeColor = getRatingFromStrFor(Constants.VariableType.ShapeColor.toString() + ": ");
     }
 
     // Since we have 5 overall and 4 specific, we return a weighted sum
@@ -188,7 +150,7 @@ public class RatingData {
     }
 
     // Is the passed in type in the top X ratings?
-    public boolean inTopX(int x, RatingType type) {
+    public boolean inTopX(int x, Constants.VariableType type) {
         int rating = getRatingFor(type);
 
         // So, if you're in the top 2, it means only one
@@ -197,38 +159,38 @@ public class RatingData {
         // So add up the number that are rated better than or equal
         // to you.  That, plus you, should be equal to or less than x.
         int better = 1; // Since you are better than or equal to yourself
-        if (RatingType.RainRate != type && getRatingFor(RatingType.RainRate) >= rating) {
+        if (Constants.VariableType.RainRate != type && getRatingFor(Constants.VariableType.RainRate) >= rating) {
             better++;
         }
-        if (RatingType.GravityWellLocation != type && getRatingFor(RatingType.GravityWellLocation) >= rating) {
+        if (Constants.VariableType.GravityWellLocation != type && getRatingFor(Constants.VariableType.GravityWellLocation) >= rating) {
             better++;
         }
-        if (RatingType.GravityDirection != type && getRatingFor(RatingType.GravityDirection) >= rating) {
+        if (Constants.VariableType.GravityDirection != type && getRatingFor(Constants.VariableType.GravityDirection) >= rating) {
             better++;
         }
-        if (RatingType.Growth != type && getRatingFor(RatingType.Growth) >= rating) {
+        if (Constants.VariableType.Growth != type && getRatingFor(Constants.VariableType.Growth) >= rating) {
             better++;
         }
-        if (RatingType.Paradigm != type && getRatingFor(RatingType.Paradigm) >= rating) {
+        if (Constants.VariableType.Paradigm != type && getRatingFor(Constants.VariableType.Paradigm) >= rating) {
             better++;
         }
-        if (RatingType.ShapeSpinSpeed != type && getRatingFor(RatingType.ShapeSpinSpeed) >= rating) {
+        if (Constants.VariableType.ShapeSpinSpeed != type && getRatingFor(Constants.VariableType.ShapeSpinSpeed) >= rating) {
             better++;
         }
-        if (RatingType.ShapeSpinDirection != type && getRatingFor(RatingType.ShapeSpinDirection) >= rating) {
+        if (Constants.VariableType.ShapeSpinDirection != type && getRatingFor(Constants.VariableType.ShapeSpinDirection) >= rating) {
             better++;
         }
-        if (RatingType.ShapeType != type && getRatingFor(RatingType.ShapeType) >= rating) {
+        if (Constants.VariableType.ShapeType != type && getRatingFor(Constants.VariableType.ShapeType) >= rating) {
             better++;
         }
-        if (RatingType.ShapeColor != type && getRatingFor(RatingType.ShapeColor) >= rating) {
+        if (Constants.VariableType.ShapeColor != type && getRatingFor(Constants.VariableType.ShapeColor) >= rating) {
             better++;
         }
 
         return (better >= x);
     }
     
-    public int getRatingFor(RatingType type) {
+    public int getRatingFor(Constants.VariableType type) {
         switch (type) {
             case RainRate:
                 return rainRate;

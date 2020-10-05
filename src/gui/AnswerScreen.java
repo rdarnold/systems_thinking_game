@@ -248,7 +248,7 @@ public class AnswerScreen extends GosSceneBase {
                 GridPane.setHalignment(field, HPos.CENTER);
 
                 if (priorAnswer != null) {
-                    field.setText(Utils.stripLastCRLF(priorAnswer.getStrAnswer()));
+                    field.setText(Utils.chomp(priorAnswer.getStrAnswer()));
                 }
                 break;
             }
@@ -265,7 +265,7 @@ public class AnswerScreen extends GosSceneBase {
                 GridPane.setHalignment(area, HPos.CENTER);
                 
                 if (priorAnswer != null) {  
-                    area.setText(Utils.stripLastCRLF(priorAnswer.getStrAnswer()));
+                    area.setText(Utils.chomp(priorAnswer.getStrAnswer()));
                 }
                 break;
             }

@@ -90,6 +90,9 @@ public final class Player {
     private static String javaVersion = "";
     private static String tutorialData = "";
     private static String scoreText = ""; // Only used for the data analyzer right now just so I can see what the score is
+
+     // How much Systems Thinking exposure years?  This is something I rate based on background and experience provided.
+    private static int stExposure = 0;
     
     public static int getId() { return id; }
     public static int getSubmittedId() { return submittedId; }
@@ -104,6 +107,9 @@ public final class Player {
         tutorialData += str + "\r\n";
     }
     public static String getScoreText() { return scoreText; }
+
+    public static int getSTExposure() { return stExposure; }
+    public static void setSTExposure(int num) { stExposure = num; }
 
     public static void incSaveNum() { saveNum++; }
     public static void setId(int num) { id = num; }
@@ -297,7 +303,7 @@ public final class Player {
         if (ans == null) {
             return "";
         }
-        return ans.getStrAnswer();
+        return Utils.chomp(ans.getStrAnswer());
     }
 
     public static int getCodeAnswerForQuestionUID(int uID) {
@@ -441,6 +447,16 @@ public final class Player {
         return "\r\nSCORE:\r\n" + result.toString(); 
     }
 
+    public static int getTopScoreForStage(int stage) {
+        int score1 = getScoreForStageRound(stage, 1);
+        int score2 = getScoreForStageRound(stage, 2);
+
+        if (score1 > score2) {
+            return score1;
+        }
+        return score2;
+    }
+
     public static int getScoreForStageRound(int stage, int round) {
         String str = getStrScoreForStageRound(stage, round);
         if (str == null || str.equals("") == true || str.length() < 1) {
@@ -550,6 +566,7 @@ public final class Player {
         appendLine(result, "OS: " + osName); // Put in the OS if we were able to
         appendLine(result, "Mem: " + JVMMemory); // Max RAM in MB
         appendLine(result, "JVer: " + javaVersion);
+        appendLine(result, "STXP: " + stExposure);
         appendLine(result, "Start: " + startTime);
         appendLine(result, "End: " + endTime);
         appendLine(result, "Tutorial: \r\n" + tutorialData + "EndTutorial");
@@ -590,21 +607,28 @@ public final class Player {
         result.append(getScratchPadData());*/
 
         // Load general data
+        Utils.log("--------------------");
+        Utils.log("Loading general data");
         i = loadGeneralData(lines, i);
 
         // Load answer data
+        Utils.log("Loading answer data");
         i = loadAnswerData(lines, i);
 
         // Load actions
+        Utils.log("Loading action data");
         i = loadActionData(lines, i);
 
         // Now load the scratch pad
+        Utils.log("Loading notepad data");
         i = loadScratchPadData(lines, i);
 
         // Load scores
+        Utils.log("Loading score data");
         i = loadScoreData(lines, i);
 
-        Utils.log(Player.getPlayerData());
+        //Utils.log(Player.getPlayerData());
+        Utils.log("Loaded player " + Player.getName() + ", ID: " + Player.getId());
         return true;
     }
 
@@ -708,9 +732,31 @@ public final class Player {
         return i;
     }
 
+    // This should match the default data at the top
+    private static void resetGeneralData() {
+        id = 0;
+        submittedId = 0; // If they tried to submit their own ID we record that too
+        saveNum = 1; // How many times have we saved the data?  Increment each time so it's easy to see
+        name = "Anon";
+        email = "";
+        timesPlayed = 0;
+        contactConsent = false;
+        playedBefore = false;
+        macAddress = "";
+        osName = "";
+        JVMMemory = "";
+        javaVersion = "";
+        tutorialData = "";
+        scoreText = ""; // Only used for the data analyzer right now just so I can see what the score is
+    
+        stExposure = 0;
+    }
+
     private static int loadGeneralData(List<String> lines, int start_index) {
         String str;
         int i = start_index;
+
+        resetGeneralData();
         
         // So right now it's just quick and dirty since we know the order
         str = lines.get(i);
@@ -756,7 +802,6 @@ public final class Player {
         str = lines.get(i);
         macAddress = str.substring(("MAC: ").length(), str.length());
         //appendLine(result, "MAC: " + Utils.getMacAddress()); // Add in the MAC if we are allowed.
-
         // Now check OS; older results might not have it; we need a better way to do this
         i++;
         str = lines.get(i);
@@ -788,6 +833,17 @@ public final class Player {
         }
         else {
             javaVersion = str.substring(("JVer: ").length(), str.length());
+        }
+
+        // Now check ST field; older results might not have it; we need a better way to do this
+        i++;
+        str = lines.get(i);
+        if (str.length() < ("STXP: ").length() || str.substring(0, ("STXP: ").length()).equals("STXP: ") == false) {
+            // They didn't have the string so just move on
+            i--;
+        }
+        else {
+            stExposure = Utils.tryParseInt(str.substring(("STXP: ").length(), str.length()));
         }
 
         i++;
@@ -858,6 +914,9 @@ public final class Player {
     }
 
     private static int loadScratchPadData(List<String> lines, int start_index) {
+        // Effectively reset it
+        Gos.scratchPadWindow.setText("");
+
         int i = 0;
         for (i = start_index; i < lines.size(); i++) {
             String line = lines.get(i);
@@ -877,6 +936,9 @@ public final class Player {
     }
 
     private static int loadScoreData(List<String> lines, int start_index) {
+        // Reset the score data
+        Player.scoreText = "";
+
         int i = 0;
         for (i = start_index; i < lines.size(); i++) {
             String line = lines.get(i);
@@ -895,17 +957,28 @@ public final class Player {
     private static int loadScoreFromString(List<String> lines, int start) {
         int i = start + 1;
 
+        if (i >= lines.size()) {
+            return i;
+        }
+
         List<String> loadLines = new ArrayList<String>();
 
         // Now we just keep going until we hit the end
-        String line = lines.get(i);
-        while (line != null) {
-            if (i >= lines.size()) {
-                break;
+        try {
+            String line = lines.get(i);
+            while (line != null) {
+                if (i >= lines.size()) {
+                    break;
+                }
+                line = lines.get(i);
+                loadLines.add(line);
+                i++;
             }
-            line = lines.get(i);
-            loadLines.add(line);
-            i++;
+        }
+        catch (Exception e) {
+            Utils.log("Exception in SCORE for player " + Player.getName() + ", ID: " + Player.getId());
+            Utils.log(e.toString());
+            return i;
         }
 
         // Now we have loadLines which is what we want to load

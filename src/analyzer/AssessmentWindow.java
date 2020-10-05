@@ -4,6 +4,7 @@ package gos.analyzer;
 import java.io.*;
 import java.util.*;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -66,6 +67,7 @@ import javafx.scene.text.TextAlignment;
 
 import java.nio.file.Files; 
 import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import javafx.stage.FileChooser;
@@ -82,7 +84,13 @@ import java.text.DecimalFormat;
 import java.time.ZonedDateTime;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-    
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+
 import gos.*;
 import gos.analyzer.STUtils;
 import gos.gui.*;
@@ -711,6 +719,15 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         });        
  
         menuFile.getItems().addAll(add);
+        
+        add = new MenuItem("Load and Write All Excel Data");
+            add.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent t) {
+                onClickWriteAllExcelData();
+            }
+        });        
+ 
+        menuFile.getItems().addAll(add);
         return bar;
     }
 
@@ -772,17 +789,53 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
         FileTransfer.downloadFiles();
     }
 
-    private void onClickLoadPlayerData() {
+    private boolean loadPlayerFile(File selectedFile) {
         List<String> lines = null;
+        if (selectedFile == null)
+            return false;
+
+        try {
+            lines = Files.readAllLines(Paths.get(selectedFile.getPath()));
+        } catch (IOException ex) {
+            Utils.log("Error loading player data: " + ex + ", filename: " + Paths.get(selectedFile.getPath()));
+            Utils.log("Trying ISO_8859_1 encoding...");
+
+            try {
+                lines = Files.readAllLines(Paths.get(selectedFile.getPath()), StandardCharsets.ISO_8859_1);
+            }
+            catch (IOException ex2) {
+                Utils.log("Error loading player data: " + ex2 + ", filename: " + Paths.get(selectedFile.getPath()));
+                return false;
+            }
+        }
+
+        Utils.log("Loading player file: " + selectedFile.getPath());
+        Player.loadPlayerData(lines);
+       
+        // Now build the time slice arrays and such so we have everything organized by time
+        Utils.log("Building time slices");
+        AssessmentData.buildTimeSlices();
+
+        // Now present it in some viewable fashion
+        Utils.log("Showing data");
+        showLoadedData();
+
+        Utils.log("Load complete");
+        return true;
+    }
+
+    private void onClickLoadPlayerData() {
 
         FileChooser fileChooser = new FileChooser(); 
         //String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
-        fileChooser.setInitialDirectory(new File("C://Ross//Work//Japan//Drones//Code//systems_thinking_game_evolved//data//using"));   
+        fileChooser.setInitialDirectory(new File("C://Ross//Work//Japan//Drones//Code//systems_thinking_game_evolved//data//using//Final"));   
         fileChooser.setTitle("Open Player Data File");      
         fileChooser.getExtensionFilters().addAll(
          new ExtensionFilter("Text Files", "*.txt"));                              
         File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile == null)
+
+        loadPlayerFile(selectedFile);
+        /*if (selectedFile == null)
             return;
 
         try {
@@ -800,22 +853,44 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
             }
         }
 
-        /*for (String line : lines) {
-            Utils.log(line);
-        }*/
-
         Player.loadPlayerData(lines);
-       // processLoadedData(lines);
        
         // Now build the time slice arrays and such so we have everything organized by time
         AssessmentData.buildTimeSlices();
 
         // Now present it in some viewable fashion
-        showLoadedData();
+        showLoadedData();*/
     } 
 
     private void onClickWriteExcelData() {
-        AssessmentData.writeExcelData();
+        Workbook wb = AssessmentData.createExcelFile();
+        AssessmentData.writeExcelData(wb, 1);
+        AssessmentData.finalizeExcelData(wb, true);
+    }
+
+    private void onClickWriteAllExcelData() {
+        // So iterate through the "using" folder, load each player,
+        // and write out to the same excel file
+        List<Path> txtFiles = null;
+        try {
+            txtFiles = Files.walk(Paths.get("C://Ross//Work//Japan//Drones//Code//systems_thinking_game_evolved//data//using//Final"))
+                            .filter(p -> p.toString().endsWith(".txt"))
+                            .collect(Collectors.toList());
+        } catch (IOException ex) {
+            Utils.log("Error loading player data file list");
+            return;
+        }
+
+        Workbook wb = AssessmentData.createExcelFile();
+        int rowNum = 1;
+        for (Path path : txtFiles) {
+            if (loadPlayerFile(path.toFile()) == true) {
+                AssessmentData.writeExcelData(wb, rowNum);
+                rowNum++;
+            } 
+        }
+
+        AssessmentData.finalizeExcelData(wb);
     }
 
     private void showLoadedGeneralData() {
