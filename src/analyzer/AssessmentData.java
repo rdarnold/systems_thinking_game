@@ -782,9 +782,29 @@ public final class AssessmentData {
     public static int addScoreForSkill_Stage1(Row rowHeader, Row row, int colNum, int domainNum, int skillNum, boolean numberOnly) {
         int col = colNum;
         if (rowHeader != null) {
-            rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum + " Total");
+            rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum); //+ " Total");
         }
         String scoreStr = STUtils.calcScoreForSkill_Stage1(domainNum, skillNum);
+        if (numberOnly == true) {
+            int score = STUtils.getIntForScoreStr(scoreStr);
+            addDataPoint(row, col, (int)score);
+        }
+        else {
+            addDataPoint(row, col, scoreStr);
+        }
+        return col;
+    }
+
+    public static int addScoreForSkill_Stage2(Row rowHeader, Row row, int colNum, int domainNum, int skillNum) {
+        return addScoreForSkill_Stage2(rowHeader, row, colNum, domainNum, skillNum, false);
+    }
+
+    public static int addScoreForSkill_Stage2(Row rowHeader, Row row, int colNum, int domainNum, int skillNum, boolean numberOnly) {
+        int col = colNum;
+        if (rowHeader != null) {
+            rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum); //+ " Total");
+        }
+        String scoreStr = STUtils.calcScoreForSkill_Stage2(domainNum, skillNum);
         if (numberOnly == true) {
             int score = STUtils.getIntForScoreStr(scoreStr);
             addDataPoint(row, col, (int)score);
@@ -802,7 +822,7 @@ public final class AssessmentData {
     public static int addScoreForSkill(Row rowHeader, Row row, int colNum, int domainNum, int skillNum, boolean numberOnly) {
         int col = colNum;
         if (rowHeader != null) {
-            rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum + " Total");
+            rowHeader.createCell(col).setCellValue("" + domainNum + "." + skillNum); // + " Total");
         }
         String scoreStr = STUtils.calcScoreForSkill(domainNum, skillNum);
         if (numberOnly == true) {
@@ -873,44 +893,49 @@ public final class AssessmentData {
         Workbook wb = new HSSFWorkbook();
         //Workbook wb = new XSSFWorkbook();
         //CreationHelper createHelper = wb.getCreationHelper();
-        wb.createSheet("ST Results");
-        wb.createSheet("Demographics");
-        wb.createSheet("Feedback");
-        wb.createSheet("Notepad");
-        wb.createSheet("ST Exposure");
-        wb.createSheet("Scores (Overall)");
-        wb.createSheet("Scores (Stg1)");
-        wb.createSheet("Score #s (Overall)");
-        wb.createSheet("Score #s (Stg1)");
-        wb.createSheet("Score R#s (Overall)"); // Ratings not percentiles
-        wb.createSheet("Score R#s (Stg1)"); // Ratings not percentiles
-        wb.createSheet("Score DP (Overall)"); // DP only
-        wb.createSheet("Score DP (Stg1)"); // DP only
+        wb.createSheet("ST Results");           // 0
+        wb.createSheet("Demographics");         // 1
+        wb.createSheet("Feedback");             // 2
+        wb.createSheet("Notepad");              // 3
+        wb.createSheet("ST Exposure");          // 4
+        wb.createSheet("Scores (Overall)");     // 5
+        wb.createSheet("Scores (Stg1)");        // 6
+        wb.createSheet("Score #s (Overall)");   // 7
+        wb.createSheet("Score #s (Stg1)");      // 8 
+        wb.createSheet("Score R#s (Overall)");  // 9 Ratings not percentiles
+        wb.createSheet("Score R#s (Stg1)");     // 10 Ratings not percentiles
+        wb.createSheet("Score DP (Overall)");   // 11 DP only
+        wb.createSheet("Score DP (Stg1)");      // 12 DP only
         return wb;
     }
 
     public static void writeExcelData(Workbook wb, int rowNum) {
-        writeExcelSheet1(wb.getSheetAt(0), rowNum);
-        writeExcelSheet2(wb.getSheetAt(1), rowNum);
-        writeExcelSheet3(wb.getSheetAt(2), rowNum);
-        writeExcelSheet4(wb.getSheetAt(3), rowNum);
-        writeExcelSheet5(wb.getSheetAt(4), rowNum);
-        writeExcelSheet6(wb.getSheetAt(5), rowNum);
-        writeExcelSheet7(wb.getSheetAt(6), rowNum);
-        writeExcelSheet8(wb.getSheetAt(7), rowNum);
-        writeExcelSheet9(wb.getSheetAt(8), rowNum);
-        writeExcelSheet10(wb.getSheetAt(9), rowNum);
-        writeExcelSheet11(wb.getSheetAt(10), rowNum);
-        writeExcelSheet12(wb.getSheetAt(11), rowNum);
-        writeExcelSheet13(wb.getSheetAt(12), rowNum);
-
-        // Do some aligning
-        ExcelUtils.centerAlignColumns(wb.getSheetAt(7), 2);
-        ExcelUtils.centerAlignColumns(wb.getSheetAt(8), 2);
-        ExcelUtils.centerAlignColumns(wb.getSheetAt(9), 2);
-        ExcelUtils.centerAlignColumns(wb.getSheetAt(10), 2);
-        ExcelUtils.centerAlignColumns(wb.getSheetAt(11), 2);
-        ExcelUtils.centerAlignColumns(wb.getSheetAt(12), 2);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 0"); }
+        writeExcelSheet0(wb.getSheetAt(0), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 1"); }
+        writeExcelSheet1(wb.getSheetAt(1), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 2"); }
+        writeExcelSheet2(wb.getSheetAt(2), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 3"); }
+        writeExcelSheet3(wb.getSheetAt(3), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 4"); }
+        writeExcelSheet4(wb.getSheetAt(4), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 5"); }
+        writeExcelSheet5(wb.getSheetAt(5), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 6"); }
+        writeExcelSheet6(wb.getSheetAt(6), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 7"); }
+        writeExcelSheet7(wb.getSheetAt(7), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 8"); }
+        writeExcelSheet8(wb.getSheetAt(8), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 9"); }
+        writeExcelSheet9(wb.getSheetAt(9), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 10"); }
+        writeExcelSheet10(wb.getSheetAt(10), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 11"); }
+        writeExcelSheet11(wb.getSheetAt(11), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 12"); }
+        writeExcelSheet12(wb.getSheetAt(12), rowNum);
 
         // Make them fit.
         ExcelUtils.autoSizeColumns(wb);
@@ -922,6 +947,14 @@ public final class AssessmentData {
         ExcelUtils.limitColumnWidths(wb.getSheetAt(2), 50);
         ExcelUtils.limitColumnWidths(wb.getSheetAt(3), 300);
         ExcelUtils.limitColumnWidths(wb.getSheetAt(4), 50);
+
+        // Do some aligning
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(7), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(8), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(9), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(10), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(11), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(12), 2);
 
         // Wrap them all
         ExcelUtils.wrapAllCells(wb);
@@ -956,7 +989,7 @@ public final class AssessmentData {
     
     // So in here we want things like the player's scores, calculated total times of various activities, etc.
     // And here we will write out the data to Excel just as a more straight-forward data dump for analysis
-    public static void writeExcelSheet1(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet0(Sheet sheet, int rowNum) {
         // So, write the data out to excel from the currently loaded player.  So we'll have to do these one at a time
         // and hand-merge the excel data for now but it shouldn't be too bad.  If we get a lot more results I can
         // automate that whole portion too.
@@ -1502,7 +1535,7 @@ public final class AssessmentData {
     }
 
     // Demographics only
-    public static void writeExcelSheet2(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet1(Sheet sheet, int rowNum) {
         // Create a row and put some cells in it. Rows are 0 based.
         Row rowHeader = null;
         if (rowNum == 1) {
@@ -1609,7 +1642,7 @@ public final class AssessmentData {
         row.setHeight((short)-1);
     }
 
-    public static void writeExcelSheet3(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet2(Sheet sheet, int rowNum) {
         Row rowHeader = null;
         if (rowNum == 1) {
             rowHeader = sheet.createRow(0);
@@ -1660,7 +1693,7 @@ public final class AssessmentData {
         row.setHeight((short)-1);
     }
     
-    public static void writeExcelSheet4(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet3(Sheet sheet, int rowNum) {
         Row rowHeader = null;
         if (rowNum == 1) {
             rowHeader = sheet.createRow(0);
@@ -1694,7 +1727,7 @@ public final class AssessmentData {
     }
 
     
-    public static void writeExcelSheet5(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet4(Sheet sheet, int rowNum) {
         Row rowHeader = null;
         if (rowNum == 1) {
             rowHeader = sheet.createRow(0);
@@ -1751,7 +1784,13 @@ public final class AssessmentData {
         row.setHeight((short)-1);
     }
 
-    public static void writeExcelSheet6(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet5(Sheet sheet, int rowNum) {
+        // If you didn't even do stage 2, you should not be considered
+        // in the overall score measures
+        if (Player.getTopScoreForStage(2) < 0) {
+            return;
+        }
+
         Row rowHeader = null;
         if (rowNum == 1) {
             rowHeader = sheet.createRow(0);
@@ -1799,13 +1838,13 @@ public final class AssessmentData {
         colNum++;
         colNum = addScoreForSkill(rowHeader, row, colNum, 2, 3);
         colNum++;
-        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 1);
+        colNum = addScoreForSkill_Stage2(rowHeader, row, colNum, 3, 1);
         colNum++;
-        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 2);
+        colNum = addScoreForSkill_Stage2(rowHeader, row, colNum, 3, 2);
         colNum++;
-        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 3);
+        colNum = addScoreForSkill_Stage2(rowHeader, row, colNum, 3, 3);
         colNum++;
-        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 4);
+        colNum = addScoreForSkill_Stage2(rowHeader, row, colNum, 3, 4);
         colNum++;
         colNum = addScoreForSkill(rowHeader, row, colNum, 4, 2);
         colNum++;
@@ -1819,7 +1858,7 @@ public final class AssessmentData {
         row.setHeight((short)-1);
     }
 
-    public static void writeExcelSheet7(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet6(Sheet sheet, int rowNum) {
         Row rowHeader = null;
         if (rowNum == 1) {
             rowHeader = sheet.createRow(0);
@@ -1888,7 +1927,13 @@ public final class AssessmentData {
     }
 
     
-    public static void writeExcelSheet8(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet7(Sheet sheet, int rowNum) {
+        // If you didn't even do stage 2, you should not be considered
+        // in the overall score measures
+        if (Player.getTopScoreForStage(2) < 0) {
+            return;
+        }
+
         Row rowHeader = null;
         if (rowNum == 1) {
             rowHeader = sheet.createRow(0);
@@ -1910,7 +1955,39 @@ public final class AssessmentData {
         colNum++;
         writeRowHeader(rowHeader, colNum, "STXP");
         addDataPoint(row, colNum, Player.getSTExposure());
+    
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg1");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(1));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg2");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(2));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ1");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1());
         
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ2");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQA");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1() + getTotalCorrectAnswersForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "DP1");
+        addDataPoint(row, colNum, STUtils.getTotalCorrectDataPointsForStage1());
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "DP2");
+        addDataPoint(row, colNum, STUtils.getTotalCorrectDataPointsForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "DPA");
+        addDataPoint(row, colNum, STUtils.getTotalCorrectDataPointsForStage1() + STUtils.getTotalCorrectDataPointsForStage2());
+
         // Now do the grading based on my rubric for what skills need which questions
         // Here are the ones I'm scoring:
         // 1.2  Wholes and Parts
@@ -1936,13 +2013,13 @@ public final class AssessmentData {
         colNum++;
         colNum = addScoreForSkill(rowHeader, row, colNum, 2, 3, true);
         colNum++;
-        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 1, true);
+        colNum = addScoreForSkill_Stage2(rowHeader, row, colNum, 3, 1, true); // For Structure skills I only use stage 2
         colNum++;
-        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 2, true);
+        colNum = addScoreForSkill_Stage2(rowHeader, row, colNum, 3, 2, true);
         colNum++;
-        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 3, true);
+        colNum = addScoreForSkill_Stage2(rowHeader, row, colNum, 3, 3, true);
         colNum++;
-        colNum = addScoreForSkill(rowHeader, row, colNum, 3, 4, true);
+        colNum = addScoreForSkill_Stage2(rowHeader, row, colNum, 3, 4, true);
         colNum++;
         colNum = addScoreForSkill(rowHeader, row, colNum, 4, 2, true);
         colNum++;
@@ -1956,7 +2033,7 @@ public final class AssessmentData {
         row.setHeight((short)-1);
     }
 
-    public static void writeExcelSheet9(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet8(Sheet sheet, int rowNum) {
         Row rowHeader = null;
         if (rowNum == 1) {
             rowHeader = sheet.createRow(0);
@@ -1978,11 +2055,42 @@ public final class AssessmentData {
         colNum++;
         writeRowHeader(rowHeader, colNum, "STXP");
         addDataPoint(row, colNum, Player.getSTExposure());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg1");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(1));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg2");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(2));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ1");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1());
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ2");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQA");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1() + getTotalCorrectAnswersForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "DP1");
+        addDataPoint(row, colNum, STUtils.getTotalCorrectDataPointsForStage1());
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "DP2");
+        addDataPoint(row, colNum, STUtils.getTotalCorrectDataPointsForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "DPA");
+        addDataPoint(row, colNum, STUtils.getTotalCorrectDataPointsForStage1() + STUtils.getTotalCorrectDataPointsForStage2());
         
         // Now do the grading based on my rubric for what skills need which questions
         // Here are the ones I'm scoring:
         // 1.2  Wholes and Parts
-        // 1.3  Effectively Respond to Uncertainty and Ambiguity
         // 1.4  Consider Issues Appropriately
         // 2.2  Define and Maintain Boundaries
         // 2.3  Differentiate and Quantify Elements
@@ -1995,8 +2103,8 @@ public final class AssessmentData {
         // 4.4  Use Leverage Points to Produce Effects
         colNum++;
         colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 1, 2, true);
-        colNum++;
-        colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 1, 3, true);
+        //colNum++;
+        //colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 1, 3, true);
         colNum++;
         colNum = addScoreForSkill_Stage1(rowHeader, row, colNum, 1, 4, true);
         colNum++;
@@ -2024,7 +2132,7 @@ public final class AssessmentData {
         row.setHeight((short)-1);
     }
     
-    public static void writeExcelSheet10(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet9(Sheet sheet, int rowNum) {
         // If you didn't even do stage 2, you should not be considered
         // in the overall score measures
         if (Player.getTopScoreForStage(2) < 0) {
@@ -2130,7 +2238,7 @@ public final class AssessmentData {
         row.setHeight((short)-1);
     }
 
-    public static void writeExcelSheet11(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet10(Sheet sheet, int rowNum) {
         Row rowHeader = null;
         if (rowNum == 1) {
             rowHeader = sheet.createRow(0);
@@ -2230,7 +2338,7 @@ public final class AssessmentData {
         row.setHeight((short)-1);
     }
 
-    public static void writeExcelSheet12(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet11(Sheet sheet, int rowNum) {
         // If you didn't even do stage 2, you should not be considered
         // in the overall score measures
         if (Player.getTopScoreForStage(2) < 0) {
@@ -2337,7 +2445,7 @@ public final class AssessmentData {
         row.setHeight((short)-1);
     }
 
-    public static void writeExcelSheet13(Sheet sheet, int rowNum) {
+    public static void writeExcelSheet12(Sheet sheet, int rowNum) {
         Row rowHeader = null;
         if (rowNum == 1) {
             rowHeader = sheet.createRow(0);

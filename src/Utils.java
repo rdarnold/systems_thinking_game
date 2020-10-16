@@ -51,6 +51,8 @@ import gos.gui.*;
 // This is essentially like a static class in C#
 public final class Utils {
     public static Random rand;
+    private static boolean SAVE_LOG = true;
+    private static String strLog = "";
 
     private Utils() { // private constructor
     }
@@ -95,12 +97,30 @@ public final class Utils {
         return (obj1.equals(obj2));
     }
 
+    private static void save_log() {
+        // Write out the log file
+        String path = "C:/Ross/Work/Japan/Drones/Code/systems_thinking_game_evolved/data/using";
+        String fileAndPath = path + "/" + "UtilsLog.txt";
+
+        try {
+            Files.write(Paths.get(fileAndPath), strLog.getBytes());
+        }
+        catch (IOException e) {
+            System.out.println(e.toString());
+        }
+    }
+
     private static long logNum = 0; // Keep track of all the logs we have logged.
     public static void log() {
         log("");
     }
 
     public static void log(String str) {
+        if (SAVE_LOG == true) {
+            strLog += "[" + logNum  + "] LOG: " + str + "\r\n";
+            save_log();
+        }
+
         System.out.println("[" + logNum  + "] LOG: " + str);
         if (logNum >= Long.MAX_VALUE - 1) {
             // Unlikely that this will ever happen but who knows.

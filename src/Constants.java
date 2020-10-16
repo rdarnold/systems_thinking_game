@@ -17,6 +17,8 @@ public final class Constants {
 
     public static final String RES_LOAD_PATH = "/res/";
 
+    public static final boolean LOGGING_VERBOSE = true;
+
     public static final String SAVED_DATA_FILE_NAME = "SystemThinkingGame_Data.txt";
 
     // If we want to change the date/time after which we download results, change this:
@@ -48,6 +50,70 @@ public final class Constants {
         Top, Bottom, Left, Right;
     }
 
+    public static enum GameStage {
+        StageOne(1, "Stage 1"),
+        StageTwo(2, "Stage 2"),
+        Both(3, "Both Stages");
+        
+        private int _value;
+        private String _label;
+
+        GameStage(int value, String label) {
+            this._value = value;
+            this._label = label;
+        }
+
+        public int getValue() {
+                return _value;
+        }
+        public String toString() {
+                return _label;
+        }
+        public String getLabel() {
+                return _label;
+        }
+
+        private static GameStage[] cachedValues = null;
+        public static GameStage fromInt(int i) {
+            if (GameStage.cachedValues == null) {
+                GameStage.cachedValues = GameStage.values();
+            }
+            return GameStage.cachedValues[i];
+        }
+    }
+
+    public static enum SkillDomain {
+        Mindset(1, "Mindset"),
+        Content(2, "Content"),
+        Structure(3, "Structure"),
+        Behavior(4, "Behavior");
+
+        private int _value;
+        private String _label;
+
+        SkillDomain(int value, String label) {
+            this._value = value;
+            this._label = label;
+        }
+
+        public int getValue() {
+                return _value;
+        }
+        public String toString() {
+                return _label;
+        }
+        public String getLabel() {
+                return _label;
+        }
+
+        private static SkillDomain[] cachedValues = null;
+        public static SkillDomain fromInt(int i) {
+            if (SkillDomain.cachedValues == null) {
+                SkillDomain.cachedValues = SkillDomain.values();
+            }
+            return SkillDomain.cachedValues[i];
+        }
+    }
     public static enum VariableType {
         RainRate(0, "Rain Rate"),
         GravityWellLocation(1, "Gravity Well Location"),

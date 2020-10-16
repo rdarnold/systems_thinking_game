@@ -190,6 +190,16 @@ public class Answer {
         return corValues.length;
     }
 
+    public int getMaxPartial() {
+        Question q = Data.getQuestionByUID(getQuestionUid());
+        String str = q.getPartial();
+        if (str == null || str.equals("")) {
+            return 0;
+        }
+        String[] corValues = str.split(",");
+        return corValues.length;
+    }
+
     // Does the answer contain the numerical option passed in?  as in,
     // if we selected answer number 2, is that this one?  Only works
     // for Choice and Check
