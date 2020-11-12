@@ -290,6 +290,10 @@ public final class Player {
         return getDataSizeString(getPlayerData());
     }
 
+    public static int getIntAnswerForUID(int uID) {
+        return Utils.tryParseInt(getFirstCharForAnswerUID(uID));
+    }
+
     public static String getFirstCharForAnswerUID(int uID) {
         Answer ans = getAnswerForQuestionUID(uID);
         if (ans == null || ans.getStrAnswer() == null || ans.getStrAnswer().length() < 1) {
