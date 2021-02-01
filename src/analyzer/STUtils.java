@@ -1257,6 +1257,11 @@ public final class STUtils {
         return num;
     }
     
+    public static int getMaxDataPointsForStage1() {
+        // Just the number of "lines" from above, this is not the weighted point total
+        return 23;
+    }
+    
     public static int getTotalCorrectDataPointsForStage2() {
         int num = 0;
         num += dp1_rainAndGrowth_stg2() ? 1 : 0;
@@ -1282,6 +1287,11 @@ public final class STUtils {
         }
         return num;
     }
+    public static int getMaxDataPointsForStage2() {
+        // Just the number of "lines" from above, this is not the weighted point total
+        return 27;
+    }
+
 
     // These skills do not take into account ANY game score at all
     // They are only questions and data points so they are independent

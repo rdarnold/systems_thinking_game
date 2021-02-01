@@ -702,12 +702,12 @@ public final class AssessmentData {
         }
         return action.getDesc();
     }
-
-    public static int getTotalCorrectAnswersForStage1() {
+    
+    public static int getTotalCorrectAnswersForQuestions(int firstUID, int lastUID) {
         int totalCorrect = 0;
         int totalPartial = 0;
         int totalWrong = 0;
-        for (int uid = 14; uid <= 23; uid++) {
+        for (int uid = firstUID; uid <= lastUID; uid++) {
             // And show total correct and not correct
             Answer ans = Player.getAnswerForQuestionUID(uid);
             if (ans == null) {
@@ -724,25 +724,12 @@ public final class AssessmentData {
         return totalCorrect;
     }
 
+    public static int getTotalCorrectAnswersForStage1() {
+        return (getTotalCorrectAnswersForQuestions(14, 23));
+    }
+
     public static int getTotalCorrectAnswersForStage2() {
-        int totalCorrect = 0;
-        int totalPartial = 0;
-        int totalWrong = 0;
-        for (int uid = 24; uid <= 35; uid++) {
-            // And show total correct and not correct
-            Answer ans = Player.getAnswerForQuestionUID(uid);
-            if (ans == null) {
-                continue;
-            }
-            int numCorrect = ans.getTotalCorrect();
-            int numPartial = ans.getTotalPartial();
-            int numWrong = ans.getTotalIncorrect();
-    
-            totalCorrect += numCorrect;
-            totalPartial += numPartial;
-            totalWrong += numWrong;
-        }
-        return totalCorrect;
+        return (getTotalCorrectAnswersForQuestions(24, 35));
     }
     
     public static int addScoreRatingForSkill_Stage1(Row rowHeader, Row row, int colNum, int domainNum, int skillNum) {
@@ -906,6 +893,7 @@ public final class AssessmentData {
         wb.createSheet("Score R#s (Stg1)");     // 10 Ratings not percentiles
         wb.createSheet("Score DP (Overall)");   // 11 DP only
         wb.createSheet("Score DP (Stg1)");      // 12 DP only
+        wb.createSheet("Q & DP %");           // 13 Percentages of Qs and DPs
         return wb;
     }
 
@@ -936,6 +924,8 @@ public final class AssessmentData {
         writeExcelSheet11(wb.getSheetAt(11), rowNum);
         if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 12"); }
         writeExcelSheet12(wb.getSheetAt(12), rowNum);
+        if (Constants.LOGGING_VERBOSE == true) { Utils.log(Player.getName() + ": WRITING SHEET 13"); }
+        writeExcelSheet13(wb.getSheetAt(13), rowNum);
 
         // Make them fit.
         ExcelUtils.autoSizeColumns(wb);
@@ -955,6 +945,7 @@ public final class AssessmentData {
         ExcelUtils.centerAlignColumns(wb.getSheetAt(10), 2);
         ExcelUtils.centerAlignColumns(wb.getSheetAt(11), 2);
         ExcelUtils.centerAlignColumns(wb.getSheetAt(12), 2);
+        ExcelUtils.centerAlignColumns(wb.getSheetAt(13), 2);
 
         // Wrap them all
         ExcelUtils.wrapAllCells(wb);
@@ -2539,6 +2530,85 @@ public final class AssessmentData {
         colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 4, 3, type);
         colNum++;
         colNum = addScoreRatingForSkill_Stage1(rowHeader, row, colNum, 4, 4, type);
+        
+        if (rowHeader != null) {
+            rowHeader.setHeight((short)-1);
+        }
+        row.setHeight((short)-1);
+    }
+
+    
+    public static void writeExcelSheet13(Sheet sheet, int rowNum) {
+        Row rowHeader = null;
+        if (rowNum == 1) {
+            rowHeader = sheet.createRow(0);
+        }
+        Row row = sheet.createRow(rowNum);
+        int colNum = 0;
+        int uid = 0;
+
+        // ID
+        writeRowHeader(rowHeader, colNum, "ID");
+        addDataPoint(row, colNum, Player.getId());
+
+        // Name 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Name");
+        addDataPoint(row, colNum, Player.getName());
+
+        // STXP 
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STXP");
+        addDataPoint(row, colNum, Player.getSTExposure());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg1");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(1));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "Stg2");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(2));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "STM");
+        addDataPoint(row, colNum, Player.getTopScoreForStage(1) + Player.getTopScoreForStage(2));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ1");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1());
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ2");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQA");
+        addDataPoint(row, colNum, getTotalCorrectAnswersForStage1() + getTotalCorrectAnswersForStage2());
+
+        // 14-23 stg1, 24-35 stg2
+        String strQuestions = "14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35";
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "CQ%");
+        addDataPoint(row, colNum, STUtils.calcScoreForQuestions(strQuestions) / STUtils.calcMaxScoreForQuestions(strQuestions));
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "DP1");
+        addDataPoint(row, colNum, STUtils.getTotalCorrectDataPointsForStage1());
+        
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "DP2");
+        addDataPoint(row, colNum, STUtils.getTotalCorrectDataPointsForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "DPA");
+        addDataPoint(row, colNum, STUtils.getTotalCorrectDataPointsForStage1() + STUtils.getTotalCorrectDataPointsForStage2());
+
+        colNum++;
+        writeRowHeader(rowHeader, colNum, "DP%");
+        addDataPoint(row, colNum, 
+            (STUtils.getTotalCorrectDataPointsForStage1() + STUtils.getTotalCorrectDataPointsForStage2()) /
+            (STUtils.getMaxDataPointsForStage1() + STUtils.getMaxDataPointsForStage2()));
         
         if (rowHeader != null) {
             rowHeader.setHeight((short)-1);
