@@ -807,6 +807,7 @@ public class AssessmentWindow extends Stage implements ClassInfo  {
                 Utils.log("Error loading player data: " + ex2 + ", filename: " + Paths.get(selectedFile.getPath()));
                 return false;
             }
+            Utils.log("Successfully loaded using ISO_8859_1 encoding");
         }
 
         Utils.log("Loading player file: " + selectedFile.getPath());

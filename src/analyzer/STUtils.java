@@ -967,7 +967,13 @@ public final class STUtils {
         boolean spinDir = false;
         if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, 0) == true) {
             SysShape shape = Player.getSelectedShape();
-            int startingType = shape.getNumCorners();
+            int startingType = 0;
+            try {
+                startingType = shape.getNumCorners();
+            } 
+            catch (Exception e) {
+                Utils.log("\r\n!!!!!!!!!!!!!\r\nError!  Ross remember you need to start up Four Shapes to load and write data.  Exit, restart right now and do that.");
+            }
 
             for (turn = 1; turn < MAX_TURNS_CHAOS; turn++) {
                 if (loadSystemAtStageRoundTurn(STAGE_CHAOS, ROUND_2, turn) == true) {
